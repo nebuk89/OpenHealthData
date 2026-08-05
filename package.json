@@ -1,0 +1,21 @@
+{
+  "name": "open-health-data-research",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "research": "tsx scripts/run-research-harness.ts",
+    "research:list": "tsx scripts/run-research-harness.ts --list",
+    "research:smoke": "tsx scripts/run-research-harness.ts --smoke",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@github/copilot-sdk": "1.0.8",
+    "gray-matter": "4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.2",
+    "tsx": "4.23.8",
+    "typescript": "5.9.3"
+  }
+}
