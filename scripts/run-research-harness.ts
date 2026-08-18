@@ -1,10 +1,11 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { CopilotClient, approveAll, type CustomAgentConfig } from "@github/copilot-sdk";
 import matter from "gray-matter";
 
 const repositoryRoot = path.resolve(import.meta.dirname, "..");
+const providerRoot = path.join(repositoryRoot, "providers");
 
 const agentSpecs = [
   {
@@ -21,20 +22,37 @@ const agentSpecs = [
   },
 ] as const;
 
+const mainStartMarker = "<!-- OPENHEALTHDATA_MAIN_START -->";
+const mainEndMarker = "<!-- OPENHEALTHDATA_MAIN_END -->";
+const resourcesStartMarker = "<!-- OPENHEALTHDATA_RESOURCES_START -->";
+const resourcesEndMarker = "<!-- OPENHEALTHDATA_RESOURCES_END -->";
+
 interface LoadedAgent {
   config: CustomAgentConfig;
   output: string;
 }
 
+interface Provider {
+  priority: number;
+  name: string;
+  slug: string;
+}
+
 interface HarnessOptions {
   list: boolean;
   smoke: boolean;
-  providers?: string[];
+  status: boolean;
+  provider?: string;
   outputDirectory?: string;
 }
 
+interface AgentResult {
+  agent: LoadedAgent;
+  content: string;
+}
+
 function parseArguments(arguments_: string[]): HarnessOptions {
-  const options: HarnessOptions = { list: false, smoke: false };
+  const options: HarnessOptions = { list: false, smoke: false, status: false };
 
   for (let index = 0; index < arguments_.length; index += 1) {
     const argument = arguments_[index];
@@ -49,17 +67,19 @@ function parseArguments(arguments_: string[]): HarnessOptions {
       continue;
     }
 
-    if (argument === "--providers" || argument === "--output-dir") {
+    if (argument === "--status") {
+      options.status = true;
+      continue;
+    }
+
+    if (argument === "--provider" || argument === "--output-dir") {
       const value = arguments_[index + 1];
       if (!value) {
         throw new Error(`${argument} requires a value`);
       }
 
-      if (argument === "--providers") {
-        options.providers = value
-          .split(",")
-          .map((provider) => provider.trim())
-          .filter(Boolean);
+      if (argument === "--provider") {
+        options.provider = value.trim();
       } else {
         options.outputDirectory = value;
       }
@@ -94,6 +114,26 @@ function optionalStringArray(value: unknown, field: string, file: string): strin
   return value;
 }
 
+function providerSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+async function fileExists(file: string): Promise<boolean> {
+  try {
+    await access(file);
+    return true;
+  } catch (error: unknown) {
+    if (error instanceof Error && "code" in error && error.code === "ENOENT") {
+      return false;
+    }
+    throw error;
+  }
+}
+
 async function loadAgents(): Promise<LoadedAgent[]> {
   return Promise.all(
     agentSpecs.map(async (spec) => {
@@ -126,12 +166,24 @@ async function loadAgents(): Promise<LoadedAgent[]> {
   );
 }
 
-async function loadProviderNames(): Promise<string[]> {
+async function loadProviderRoster(): Promise<Provider[]> {
   const source = await readFile(path.join(repositoryRoot, "fitness-data-providers.md"), "utf8");
   const providers = source
     .split("\n")
-    .map((line) => line.match(/^\|\s*\d+\s*\|\s*\*\*(.+?)\*\*\s*\|/)?.[1])
-    .filter((provider): provider is string => Boolean(provider));
+    .map((line) => {
+      const match = line.match(/^\|\s*(\d+)\s*\|\s*\*\*(.+?)\*\*\s*\|/);
+      if (!match) {
+        return undefined;
+      }
+
+      return {
+        priority: Number.parseInt(match[1], 10),
+        name: match[2],
+        slug: providerSlug(match[2]),
+      };
+    })
+    .filter((provider): provider is Provider => Boolean(provider))
+    .sort((left, right) => left.priority - right.priority);
 
   if (providers.length === 0) {
     throw new Error("No providers found in fitness-data-providers.md");
@@ -140,39 +192,52 @@ async function loadProviderNames(): Promise<string[]> {
   return providers;
 }
 
-function selectProviders(requested: string[] | undefined, available: string[]): string[] {
-  if (!requested) {
-    return available;
-  }
+function providerMainPath(provider: Provider): string {
+  return path.join(providerRoot, provider.slug, "README.md");
+}
 
-  const canonical = new Map(available.map((provider) => [provider.toLowerCase(), provider]));
-  const selected = requested.map((provider) => {
-    const match = canonical.get(provider.toLowerCase());
-    if (!match) {
+async function selectProvider(requested: string | undefined, roster: Provider[]): Promise<Provider> {
+  if (requested) {
+    const normalized = requested.toLowerCase();
+    const selected = roster.find(
+      (provider) => provider.name.toLowerCase() === normalized || provider.slug === normalized,
+    );
+
+    if (!selected) {
       throw new Error(
-        `Unknown provider "${provider}". Available providers: ${available.join(", ")}`,
+        `Unknown provider "${requested}". Available providers: ${roster
+          .map((provider) => provider.name)
+          .join(", ")}`,
       );
     }
-    return match;
-  });
 
-  return [...new Set(selected)];
+    return selected;
+  }
+
+  for (const provider of roster) {
+    if (!(await fileExists(providerMainPath(provider)))) {
+      return provider;
+    }
+  }
+
+  throw new Error("All providers in fitness-data-providers.md have completed write-ups");
 }
 
-function defaultOutputDirectory(): string {
+function defaultRawOutputDirectory(provider: Provider): string {
   const timestamp = new Date().toISOString().replaceAll(":", "-").replace(/\.\d{3}Z$/, "Z");
-  return path.join(repositoryRoot, "research", "runs", timestamp);
+  return path.join(repositoryRoot, "research", "runs", timestamp, provider.slug);
 }
 
-function researchPrompt(agentName: string, providers: string[]): string {
+function researchPrompt(agentName: string, provider: Provider): string {
   return [
-    `Run the ${agentName} workstream for the following providers:`,
-    providers.map((provider) => `- ${provider}`).join("\n"),
+    `Run the ${agentName} workstream for ${provider.name}, priority ${provider.priority} in`,
+    "fitness-data-providers.md.",
     "",
-    "Use fitness-data-providers.md only as the provider roster; independently verify every",
-    "substantive claim against current sources. Research the full assigned scope, follow the",
-    "agent's required output format, and return a self-contained Markdown report. Do not edit",
-    "repository files because the harness persists your final response.",
+    "Independently verify every substantive claim against current sources. Research the full",
+    "assigned scope, follow the agent's required output format, and return a self-contained",
+    "Markdown report. Include direct, dated links and clearly distinguish confirmed facts from",
+    "inferences or evidence gaps. Do not edit repository files because the harness persists your",
+    "final response.",
   ].join("\n");
 }
 
@@ -180,9 +245,9 @@ async function runAgent(
   client: CopilotClient,
   agent: LoadedAgent,
   allConfigs: CustomAgentConfig[],
-  providers: string[],
+  provider: Provider,
   smoke: boolean,
-): Promise<{ agent: LoadedAgent; content: string }> {
+): Promise<AgentResult> {
   const session = await client.createSession({
     model: process.env.COPILOT_MODEL ?? "auto",
     workingDirectory: repositoryRoot,
@@ -193,8 +258,8 @@ async function runAgent(
 
   try {
     const prompt = smoke
-      ? "Do not use tools. In one sentence, state your assigned research role and confirm readiness."
-      : researchPrompt(agent.config.name, providers);
+      ? `Do not use tools. In one sentence, state your research role for ${provider.name} and confirm readiness.`
+      : researchPrompt(agent.config.name, provider);
     const timeout = Number.parseInt(process.env.COPILOT_TIMEOUT_MS ?? "1800000", 10);
 
     if (!Number.isFinite(timeout) || timeout <= 0) {
@@ -214,10 +279,155 @@ async function runAgent(
   }
 }
 
+function extractSection(content: string, start: string, end: string): string {
+  const startIndex = content.indexOf(start);
+  const endIndex = content.indexOf(end);
+
+  if (startIndex === -1 || endIndex === -1 || endIndex <= startIndex) {
+    throw new Error(`Synthesis response is missing required marker pair: ${start} ... ${end}`);
+  }
+
+  const section = content.slice(startIndex + start.length, endIndex).trim();
+  if (!section) {
+    throw new Error(`Synthesis response contains an empty section after ${start}`);
+  }
+
+  return section;
+}
+
+async function synthesizeProvider(
+  client: CopilotClient,
+  provider: Provider,
+  rawReports: Array<{ path: string; displayName: string }>,
+): Promise<{ main: string; resources: string }> {
+  const synthesizer: CustomAgentConfig = {
+    name: "open-health-synthesizer",
+    displayName: "Open Health Synthesizer",
+    description: "Synthesizes independent provider research into canonical audit documents.",
+    tools: [],
+    infer: false,
+    prompt: [
+      "You are the editorial synthesizer for OpenHealthData.",
+      "Reconcile the three attached specialist reports without inventing facts.",
+      "Prefer primary sources, preserve meaningful disagreements, mark uncertainty, and deduplicate",
+      "repeated claims and links. Write concise, durable documentation rather than a transcript.",
+    ].join(" "),
+  };
+  const session = await client.createSession({
+    model: process.env.COPILOT_MODEL ?? "auto",
+    workingDirectory: repositoryRoot,
+    customAgents: [synthesizer],
+    agent: synthesizer.name,
+    onPermissionRequest: approveAll,
+  });
+
+  try {
+    const response = await session.sendAndWait(
+      {
+        prompt: [
+          `Synthesize the attached research for ${provider.name}.`,
+          "",
+          `Return exactly two Markdown documents using these markers, with no code fences:`,
+          mainStartMarker,
+          `# ${provider.name}`,
+          "",
+          "The main audit must include: an evidence date; a short bottom line; product/ecosystem",
+          "scope; official access routes; data available and granularity; direct export and privacy",
+          "routes; supported ecosystem integrations and their directionality; credible open-source",
+          "routes; material restrictions and risks; evidence gaps; and a provisional openness",
+          "assessment that explains its reasoning without pretending to be a final score.",
+          mainEndMarker,
+          resourcesStartMarker,
+          `# ${provider.name} resources`,
+          "",
+          "The resource index must deduplicate every useful URL from the reports and group links",
+          "under Official documentation, Official support and policy, Integrations, Open-source",
+          "projects, and Secondary context. For each link include the owner/project, access date",
+          `${new Date().toISOString().slice(0, 10)}, and one-line relevance. Include license and`,
+          "maintenance notes for open-source projects when confirmed.",
+          resourcesEndMarker,
+          "",
+          "Every non-obvious factual claim in the main audit must have a clickable citation. Do not",
+          "carry weak or contradictory claims into the bottom line without explicitly qualifying",
+          "them.",
+        ].join("\n"),
+        attachments: rawReports.map((report) => ({
+          type: "file" as const,
+          path: report.path,
+          displayName: report.displayName,
+        })),
+      },
+      Number.parseInt(process.env.COPILOT_TIMEOUT_MS ?? "1800000", 10),
+    );
+    const content = response?.data.content;
+
+    if (!content) {
+      throw new Error("The synthesis agent returned no content");
+    }
+
+    return {
+      main: extractSection(content, mainStartMarker, mainEndMarker),
+      resources: extractSection(content, resourcesStartMarker, resourcesEndMarker),
+    };
+  } finally {
+    await session.disconnect();
+  }
+}
+
+async function writeProviderIndex(roster: Provider[]): Promise<void> {
+  const rows = await Promise.all(
+    roster.map(async (provider) => {
+      const complete = await fileExists(providerMainPath(provider));
+      const providerCell = complete
+        ? `[${provider.name}](./${provider.slug}/README.md)`
+        : provider.name;
+      const resourcesCell = complete
+        ? `[Resources](./${provider.slug}/resources.md)`
+        : "Pending";
+
+      return `| ${provider.priority} | ${providerCell} | ${complete ? "Complete" : "Pending"} | ${resourcesCell} |`;
+    }),
+  );
+
+  const content = [
+    "# Provider audits",
+    "",
+    "Provider research proceeds in priority order from",
+    "[the fitness data provider landscape](../fitness-data-providers.md). Each completed provider",
+    "has a canonical audit and a separate resource index.",
+    "",
+    "| Priority | Provider | Status | Resource index |",
+    "|---:|---|---|---|",
+    ...rows,
+    "",
+  ].join("\n");
+
+  await mkdir(providerRoot, { recursive: true });
+  await writeFile(path.join(providerRoot, "README.md"), content, "utf8");
+}
+
+async function printStatus(roster: Provider[]): Promise<void> {
+  let nextProvider: Provider | undefined;
+
+  for (const provider of roster) {
+    const complete = await fileExists(providerMainPath(provider));
+    console.log(`${provider.priority}\t${complete ? "complete" : "pending"}\t${provider.name}`);
+    if (!complete && !nextProvider) {
+      nextProvider = provider;
+    }
+  }
+
+  console.log(
+    nextProvider
+      ? `\nNext provider: ${nextProvider.name} (${nextProvider.slug})`
+      : "\nAll providers are complete",
+  );
+}
+
 async function main(): Promise<void> {
   const options = parseArguments(process.argv.slice(2));
   const agents = await loadAgents();
-  const availableProviders = await loadProviderNames();
+  const roster = await loadProviderRoster();
 
   if (options.list) {
     for (const agent of agents) {
@@ -226,30 +436,26 @@ async function main(): Promise<void> {
     return;
   }
 
-  const providers = selectProviders(options.providers, availableProviders);
+  if (options.status) {
+    await printStatus(roster);
+    return;
+  }
+
+  const provider = await selectProvider(options.provider, roster);
   const client = new CopilotClient({ workingDirectory: repositoryRoot });
   await client.start();
 
   try {
     const configs = agents.map((agent) => agent.config);
     const settled = await Promise.allSettled(
-      agents.map((agent) => runAgent(client, agent, configs, providers, options.smoke)),
+      agents.map((agent) => runAgent(client, agent, configs, provider, options.smoke)),
     );
     const failures = settled.filter(
       (result): result is PromiseRejectedResult => result.status === "rejected",
     );
-
-    if (failures.length > 0) {
-      throw new AggregateError(
-        failures.map((failure) => failure.reason),
-        `${failures.length} research agent(s) failed`,
-      );
-    }
-
     const results = settled
       .filter(
-        (result): result is PromiseFulfilledResult<Awaited<ReturnType<typeof runAgent>>> =>
-          result.status === "fulfilled",
+        (result): result is PromiseFulfilledResult<AgentResult> => result.status === "fulfilled",
       )
       .map((result) => result.value);
 
@@ -257,23 +463,46 @@ async function main(): Promise<void> {
       for (const result of results) {
         console.log(`${result.agent.config.name}: ${result.content}`);
       }
+
+      if (failures.length > 0) {
+        throw new AggregateError(
+          failures.map((failure) => failure.reason),
+          `${failures.length} research agent(s) failed`,
+        );
+      }
       return;
     }
 
-    const outputDirectory = path.resolve(options.outputDirectory ?? defaultOutputDirectory());
-    await mkdir(outputDirectory, { recursive: true });
-
-    await Promise.all(
-      results.map((result) =>
-        writeFile(
-          path.join(outputDirectory, result.agent.output),
-          `${result.content.trim()}\n`,
-          "utf8",
-        ),
-      ),
+    const rawOutputDirectory = path.resolve(
+      options.outputDirectory ?? defaultRawOutputDirectory(provider),
+    );
+    await mkdir(rawOutputDirectory, { recursive: true });
+    const rawReports = await Promise.all(
+      results.map(async (result) => {
+        const reportPath = path.join(rawOutputDirectory, result.agent.output);
+        await writeFile(reportPath, `${result.content.trim()}\n`, "utf8");
+        return { path: reportPath, displayName: result.agent.output };
+      }),
     );
 
-    console.log(`Research complete: ${outputDirectory}`);
+    if (failures.length > 0) {
+      throw new AggregateError(
+        failures.map((failure) => failure.reason),
+        `${failures.length} research agent(s) failed; successful reports were preserved in ${rawOutputDirectory}`,
+      );
+    }
+
+    const synthesis = await synthesizeProvider(client, provider, rawReports);
+    const outputDirectory = path.join(providerRoot, provider.slug);
+    await mkdir(outputDirectory, { recursive: true });
+    await Promise.all([
+      writeFile(path.join(outputDirectory, "README.md"), `${synthesis.main}\n`, "utf8"),
+      writeFile(path.join(outputDirectory, "resources.md"), `${synthesis.resources}\n`, "utf8"),
+    ]);
+    await writeProviderIndex(roster);
+
+    console.log(`Provider audit complete: ${path.relative(repositoryRoot, outputDirectory)}`);
+    console.log(`Raw specialist reports: ${path.relative(repositoryRoot, rawOutputDirectory)}`);
   } finally {
     await client.stop();
   }

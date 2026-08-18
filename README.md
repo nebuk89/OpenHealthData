@@ -4,6 +4,7 @@ Our goal is to audit how open different health data trackers (Garmin, Apple, Fit
 ## Research
 
 - [Fitness data provider landscape](fitness-data-providers.md) - the initial 20-provider audit list
+- [Provider audits](providers/README.md) - completed provider write-ups and resource indexes
 
 ### Copilot research agents
 
@@ -21,17 +22,24 @@ directly with:
 copilot --agent=open-health-api-docs --prompt "Research Apple and Garmin"
 ```
 
-The research harness loads the same profiles through the GitHub Copilot SDK and runs all three
-workstreams concurrently:
+The research harness works through the provider list from the top down. For each run it selects
+one provider, loads the same three profiles through the GitHub Copilot SDK, runs their research
+workstreams concurrently, and synthesizes:
+
+- `providers/<provider>/README.md` - the canonical provider audit;
+- `providers/<provider>/resources.md` - a deduplicated evidence and project index; and
+- `research/runs/<timestamp>/<provider>/` - ignored raw specialist reports for debugging.
 
 ```bash
 npm install
 npm run research:list
+npm run research:status
 npm run research:smoke
-npm run research -- --providers "Apple,Garmin"
 npm run research
+npm run research -- --provider Garmin
 ```
 
-Full runs write separate Markdown reports to a timestamped directory under `research/runs/`.
-Set `COPILOT_MODEL` to override the default model or `COPILOT_TIMEOUT_MS` to change the
-per-agent timeout.
+With no `--provider`, the harness selects the first provider without a completed audit. An
+explicit provider reruns or targets that provider regardless of list position. Set
+`COPILOT_MODEL` to override the default model or `COPILOT_TIMEOUT_MS` to change the per-agent
+timeout.
