@@ -1,12 +1,13 @@
 # Provider audits
 
 Provider research proceeds in priority order from
-[the fitness data provider landscape](../fitness-data-providers.md). Each completed provider
-has a canonical audit and a separate resource index.
+[the fitness data provider landscape](../fitness-data-providers.md) and uses the
+[provider audit rubric](../audit-rubric.md). Each published provider has a canonical audit,
+resource index, claim ledger, verification report and publication manifest.
 
 | Priority | Provider | Status | Resource index |
 |---:|---|---|---|
-| 1 | [Apple](./apple/README.md) | Complete | [Resources](./apple/resources.md) |
+| 1 | [Apple](./apple/README.md) | Verified | [Resources](./apple/resources.md) |
 | 2 | Garmin | Pending | Pending |
 | 3 | Google / Fitbit | Pending | Pending |
 | 4 | Samsung | Pending | Pending |

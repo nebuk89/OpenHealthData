@@ -5,6 +5,7 @@ Our goal is to audit how open different health data trackers (Garmin, Apple, Fit
 
 - [Fitness data provider landscape](fitness-data-providers.md) - the initial 20-provider audit list
 - [Provider audits](providers/README.md) - completed provider write-ups and resource indexes
+- [Provider audit rubric](audit-rubric.md) - normalized evidence dimensions and publication states
 
 ### Copilot research agents
 
@@ -27,7 +28,10 @@ one provider, loads the same three profiles through the GitHub Copilot SDK, runs
 workstreams concurrently, and synthesizes:
 
 - `providers/<provider>/README.md` - the canonical provider audit;
-- `providers/<provider>/resources.md` - a deduplicated evidence and project index; and
+- `providers/<provider>/resources.md` - a deduplicated evidence and project index;
+- `providers/<provider>/claims.json` - decision-relevant claims with evidence and confidence;
+- `providers/<provider>/verification.json` and `manifest.json` - automated evidence checks and
+  publication state; and
 - `research/runs/<timestamp>/<provider>/` - ignored raw specialist reports for debugging.
 
 ```bash
@@ -37,9 +41,13 @@ npm run research:status
 npm run research:smoke
 npm run research
 npm run research -- --provider Garmin
+npm run research:verify -- --provider Apple
+npm run research:review -- --provider Apple
 ```
 
-With no `--provider`, the harness selects the first provider without a completed audit. An
+With no `--provider`, the harness selects the first provider without a verified audit. An
 explicit provider reruns or targets that provider regardless of list position. Set
 `COPILOT_MODEL` to override the default model or `COPILOT_TIMEOUT_MS` to change the per-agent
-timeout.
+timeout. Generated packages are staged, checked for required sections, claim/source coverage,
+dead links, repository existence and GitHub licence mismatches, then atomically published as
+`verified`. `research:review` is the explicit human approval step.

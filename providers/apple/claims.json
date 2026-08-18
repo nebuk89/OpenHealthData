@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "provider": "Apple",
+  "evidenceDate": "2026-08-18",
+  "claims": [
+    {
+      "id": "healthkit-local-framework",
+      "claim": "Apple's primary supported programmatic health-data surface is the on-device HealthKit framework rather than a consumer cloud API.",
+      "sourceUrl": "https://developer.apple.com/documentation/healthkit",
+      "evidence": "Apple documents HealthKit as the framework through which apps share health and fitness data while maintaining user privacy and control.",
+      "confidence": "high"
+    },
+    {
+      "id": "healthkit-granular-authorization",
+      "claim": "HealthKit read and write access is requested for specific data types and the system does not disclose read denial in a way that distinguishes it from an empty store.",
+      "sourceUrl": "https://developer.apple.com/documentation/healthkit/authorizing-access-to-health-data",
+      "evidence": "Apple's authorization guide describes type-specific sharing and reading requests and the privacy-preserving treatment of read authorization.",
+      "confidence": "high"
+    },
+    {
+      "id": "healthkit-retained-history",
+      "claim": "An authorized app can query historical records retained in the HealthKit store; Apple documents no universal fixed history window.",
+      "sourceUrl": "https://developer.apple.com/documentation/healthkit/reading-data-from-healthkit",
+      "evidence": "Apple documents sample and statistics queries over predicates and date ranges rather than an account-wide retrospective cap.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-app-xml-export",
+      "claim": "The Health app provides a user-initiated Export All Health Data route in XML format.",
+      "sourceUrl": "https://support.apple.com/guide/iphone/share-your-health-data-iph5ede58c3d/ios",
+      "evidence": "The iPhone User Guide instructs users to export all health and fitness data from their Health profile and identifies XML as the export format.",
+      "confidence": "high"
+    },
+    {
+      "id": "account-request-includes-health",
+      "claim": "Apple Health data can also be downloaded as part of an Apple Account data-copy request.",
+      "sourceUrl": "https://support.apple.com/en-us/102208",
+      "evidence": "Apple states: \"There are two ways to access your Health data. You can download it as part of your data request, or you can access your data directly from the Health app on your iPhone.\"",
+      "confidence": "high"
+    },
+    {
+      "id": "export-equivalence-undocumented",
+      "claim": "Apple does not publicly document whether the Health-app export and account data request have equivalent files, granularity and historical coverage.",
+      "sourceUrl": "https://support.apple.com/en-us/102208",
+      "evidence": "Apple confirms both access routes and describes general account-export formats, but does not specify that the Health files are identical to the Health-app XML archive.",
+      "confidence": "medium"
+    },
+    {
+      "id": "strava-selective-recent-sync",
+      "claim": "Strava's supported Apple Health integration moves eligible workouts rather than the complete Health store and limits retrospective Health imports.",
+      "sourceUrl": "https://support.strava.com/hc/en-us/articles/216917527-Health-App-and-Strava",
+      "evidence": "Strava's support documentation describes Health workout import/export behavior and a recent-workout import window.",
+      "confidence": "high"
+    },
+    {
+      "id": "garmin-one-way-health-sync",
+      "claim": "Garmin Connect documents selected Garmin-to-Apple Health sharing but not a general Apple Health-to-Garmin import.",
+      "sourceUrl": "https://support.garmin.com/en-US/?faq=lK5FPB9iPF5PXFkIpFlFPA",
+      "evidence": "Garmin's support page lists data Garmin Connect can share with Apple Health after synchronization.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-connect-android-local",
+      "claim": "Health Connect is an Android health-data store and no first-party generic bridge to Apple Health was documented in this research pass.",
+      "sourceUrl": "https://support.google.com/android/answer/12201227",
+      "evidence": "Google documents Health Connect as an Android feature for managing app access to health and fitness data; the source does not document an Apple Health bridge.",
+      "confidence": "medium"
+    },
+    {
+      "id": "healthkit-data-use-restrictions",
+      "claim": "Apple restricts HealthKit data use, including advertising, marketing and use-based data mining.",
+      "sourceUrl": "https://developer.apple.com/app-store/review/guidelines/#health-and-health-research",
+      "evidence": "App Review Guideline 5.1.3 defines health-data handling and prohibited uses for HealthKit applications.",
+      "confidence": "high"
+    }
+  ],
+  "projects": [
+    {
+      "name": "kingstinct/react-native-healthkit",
+      "repositoryUrl": "https://github.com/kingstinct/react-native-healthkit",
+      "license": "MIT"
+    },
+    {
+      "name": "StanfordSpezi/SpeziHealthKit",
+      "repositoryUrl": "https://github.com/StanfordSpezi/SpeziHealthKit",
+      "license": "MIT"
+    },
+    {
+      "name": "StanfordBDHG/HealthKitOnFHIR",
+      "repositoryUrl": "https://github.com/StanfordBDHG/HealthKitOnFHIR",
+      "license": "MIT"
+    },
+    {
+      "name": "tdda/applehealthdata",
+      "repositoryUrl": "https://github.com/tdda/applehealthdata",
+      "license": "MIT"
+    },
+    {
+      "name": "abrignoni/iLEAPP",
+      "repositoryUrl": "https://github.com/abrignoni/iLEAPP",
+      "license": "MIT"
+    },
+    {
+      "name": "libimobiledevice/libimobiledevice",
+      "repositoryUrl": "https://github.com/libimobiledevice/libimobiledevice",
+      "license": "LGPL-2.1"
+    },
+    {
+      "name": "dogsheep/healthkit-to-sqlite",
+      "repositoryUrl": "https://github.com/dogsheep/healthkit-to-sqlite",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "k0rventen/apple-health-grafana",
+      "repositoryUrl": "https://github.com/k0rventen/apple-health-grafana",
+      "license": "NOASSERTION"
+    },
+    {
+      "name": "dariosalvi78/cordova-plugin-health",
+      "repositoryUrl": "https://github.com/dariosalvi78/cordova-plugin-health",
+      "license": "MIT"
+    },
+    {
+      "name": "agencyenterprise/react-native-health",
+      "repositoryUrl": "https://github.com/agencyenterprise/react-native-health",
+      "license": "MIT"
+    }
+  ]
+}

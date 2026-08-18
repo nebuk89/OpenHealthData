@@ -7,14 +7,18 @@ frameworks
 
 ## Bottom line
 
-Apple provides unusually broad, record-level access to a person's retained health and fitness
-data through [HealthKit](https://developer.apple.com/documentation/healthkit), including
-historical samples, workouts, routes, activity summaries and some clinical records. The catch is
-architectural: HealthKit is a permissioned database on Apple devices, not a consumer cloud API.
-Automated access therefore requires a signed Apple-platform app, while the only first-party bulk
-route for an ordinary user is a manual
+Apple provides broad, record-level access to a person's retained health and fitness data through
+[HealthKit](https://developer.apple.com/documentation/healthkit), including historical samples,
+workouts, routes, activity summaries and some clinical records. The catch is architectural:
+HealthKit is a permissioned database on Apple devices, not a consumer cloud API. Automated access
+therefore requires an existing trusted app or a signed Apple-platform app.
+
+An ordinary user has two first-party bulk routes: the Health app's manual
 [XML export](https://support.apple.com/guide/iphone/share-your-health-data-iph5ede58c3d/ios)
-whose complete schema is not publicly versioned.
+and an Apple Account
+[data-copy request](https://support.apple.com/en-us/102208). Apple explicitly says Health data
+can be downloaded through either route, but does not document whether their contents, formats and
+historical coverage are equivalent.
 
 Apple Health is also a valuable interchange layer, but partner integrations move selected
 records, not a complete health history. Apple-derived metrics, vendor-specific recovery scores,
@@ -22,12 +26,13 @@ edits, deletions and historical backfill are frequently lost or restricted.
 
 ## Access snapshot
 
-| Route | Ordinary user? | Automated? | Historical reach | Main limitation |
+| Route | Who can use it? | Automated? | Historical reach | Main limitation |
 |---|---:|---:|---|---|
-| HealthKit app | Yes, after per-type consent | Yes | Retained, authorized local history | Requires an entitled Apple-platform app |
+| Existing HealthKit app | Consumer, after per-type consent | App-dependent | Retained, authorized local history | User must trust the app's data handling and supported types |
+| Self-built HealthKit app | Developer | Yes | Retained, authorized local history | Apple hardware/tooling, signing and entitlement required |
 | Export All Health Data | Yes | No | Broad retained Health-store contents | Manual XML archive; no stable public schema |
 | Individual reports | Yes | No | Feature-specific | PDF or partial human-readable output |
-| Apple Data & Privacy portal | Yes | No | Apple-retained account data | Granular HealthKit inclusion is not confirmed |
+| Apple Data & Privacy portal | Yes | Request-based | Apple-retained Health data | Exact equivalence with the device XML export is not documented |
 | SensorKit | Only in approved research | Yes | Prospective system-buffered data | Apple entitlement and study consent |
 | Consumer cloud API | No | N/A | N/A | No documented REST API or OAuth scope |
 
@@ -35,7 +40,7 @@ edits, deletions and historical backfill are frequently lost or restricted.
 
 ### HealthKit
 
-[HealthKit](https://developer.apple.com/health-fitness/healthkit/) is Apple's primary supported
+[HealthKit](https://developer.apple.com/documentation/healthkit) is Apple's primary supported
 data surface. Apps query a protected local store using `HKHealthStore` and native
 Swift/Objective-C APIs. An app must be signed, include the HealthKit capability, declare why it
 needs the data and request separate read or write authorization for each type.
@@ -67,10 +72,11 @@ archive.
 ### Account and privacy export
 
 An Apple Account holder can request selected account data through
-[privacy.apple.com](https://privacy.apple.com/). Apple prepares this asynchronously, but its
-public documentation does not promise the complete sample-level HealthKit database, the same
-archive as the Health app, or end-to-end-encrypted Health data. It should not be treated as a
-replacement for the on-device export.
+[privacy.apple.com](https://privacy.apple.com/). Apple prepares this asynchronously and
+[explicitly documents](https://support.apple.com/en-us/102208) that Health data can be downloaded
+as part of the request. Apple does not document whether this is the same XML archive as the
+Health app or whether file layout, granularity and regional availability are equivalent, so the
+two routes require hands-on comparison.
 
 Jurisdictional access and portability rights are covered by the
 [Apple Privacy Policy](https://www.apple.com/legal/privacy/en-ww/), but a formal request does not
@@ -83,9 +89,10 @@ create an API or recover deleted or local-only data.
 - [SensorKit](https://developer.apple.com/documentation/sensorkit) provides approved research
   studies with prospective sensor and device-usage records. It requires Apple-granted
   entitlements and per-sensor consent.
-- [Clinical Health Records](https://developer.apple.com/documentation/healthkit/clinical-health-records)
-  lets authorized apps read records a participating institution supplied to Health, including an
-  underlying FHIR resource. Completeness depends on the institution and region.
+- Clinical Health Records in HealthKit let authorized apps read records a participating
+  institution supplied to Health, including an underlying FHIR resource. Completeness depends on
+  the institution and region; the previous deep-link source is pending replacement after Apple
+  removed it.
 - Apple supports partial human-readable exports such as ECG and medication PDFs. These are not
   machine-complete bulk exports.
 - Encrypted device backups can preserve Health data, but Apple documents them as restoration
@@ -134,10 +141,10 @@ ignore, and "visible in Health" does not mean another service will relay the rec
 | Samsung Health | None confirmed | None | No supported Apple Health bridge confirmed |
 | [Oura](https://support.ouraring.com/hc/en-us/articles/360025438734-How-to-Use-Apple-Health-with-Oura) | Apple ↔ Oura | Selected sleep, vitals, activity, body data and workouts | Oura scores do not transfer as equivalent Health records |
 | [WHOOP](https://support.whoop.com/s/article/Apple-Health-Integration?language=en_US) | Apple ↔ WHOOP | Selected sleep/vitals/workouts; Health workouts into WHOOP | WHOOP scores remain proprietary; membership and history constraints |
-| [Withings](https://support.withings.com/hc/en-us/articles/201494667-Partner-Apps-Apple-Health-What-is-the-Apple-Health-integration) | Selected types both ways | Body, blood pressure, HR, sleep and activity | Advanced Withings interpretations are omitted |
+| [Withings](https://support.withings.com/hc/en-us/articles/203728916-Partner-Apps-Apple-Health-Importing-Apple-Health-data-into-the-Withings-App) | Selected types both ways | Body, blood pressure, HR, sleep and activity | Advanced Withings interpretations are omitted |
 | [Polar Flow](https://support.polar.com/en/support/connecting_polar_flow_with_apple_health) | Polar → Apple | Workouts, HR, activity, energy and sleep | No general Apple → Polar path |
-| [Suunto](https://www.suunto.com/Support/faq-articles/suunto-app/how-do-i-use-the-suunto-app-with-apple-health/) | Suunto → Apple | Workouts and selected daily metrics | Routes, load and recovery data may be reduced |
-| [Peloton](https://support.onepeloton.com/s/article/360048773312-Apple-Health-Integration) | Peloton → Apple; Watch → Peloton in sessions | Workout summary, calories, HR and selected distance | Class, leaderboard and detailed output data are simplified or absent |
+| Suunto | Suunto → Apple reported, pending source replacement | Workouts and selected daily metrics | Previous official source is no longer live; requires reverification |
+| Peloton | Peloton → Apple reported, pending source replacement | Workout summary, calories, HR and selected distance | Previous official source is no longer live; requires reverification |
 
 Common ecosystem-wide gaps include limited historical backfill, blocked third-party relays,
 separate authorization for routes, recalculated rather than transferred derived scores, and no
@@ -154,15 +161,17 @@ Health export, or recovery from the user's own encrypted local backup.
 | [react-native-healthkit](https://github.com/kingstinct/react-native-healthkit) | HealthKit binding for a signed React Native app | Typed records for app-defined serialization | Strong reusable cross-platform-app layer; MIT |
 | [SpeziHealthKit](https://github.com/StanfordSpezi/SpeziHealthKit) | Native Swift HealthKit collection and synchronization | HealthKit samples through Spezi abstractions | Strong maintained native framework; MIT |
 | [applehealthdata](https://github.com/tdda/applehealthdata) | Parses the official export | Python analysis and CSV-oriented data | Practical starting point; test newer record types; MIT |
-| [HealthKitOnFHIR](https://github.com/StanfordBDHG/HealthKitOnFHIR) | Maps authorized HealthKit records to FHIR | FHIR resources, commonly JSON | Useful interoperability bridge; possible mapping loss; Apache-2.0 |
+| [HealthKitOnFHIR](https://github.com/StanfordBDHG/HealthKitOnFHIR) | Maps authorized HealthKit records to FHIR | FHIR resources, commonly JSON | Useful interoperability bridge; possible mapping loss; MIT |
 | [iLEAPP](https://github.com/abrignoni/iLEAPP) | Parses an authorized encrypted device backup | HTML and structured forensic reports | Strong maintained recovery tool but exposes far more private data; MIT |
-| [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) | Creates a local Finder/iTunes-compatible backup | Native backup container | Strong transport component, not a Health parser; LGPL-2.1-or-later |
+| [libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) | Creates a local Finder/iTunes-compatible backup | Native backup container | Strong transport component, not a Health parser; LGPL-2.1 |
 | [healthkit-to-sqlite](https://github.com/dogsheep/healthkit-to-sqlite) | Converts official export to SQLite | Queryable SQLite database | Convenient but low maintenance cadence; Apache-2.0 |
 
-There is no clearly maintained, fully open-source, one-click iPhone exporter matching proprietary
-tools such as Health Auto Export or HealthFit. No credible maintained personal Apple Health cloud
-API was found. Older bridges and direct `healthdb.sqlite` scripts are fragile because Apple
-changes SDKs and undocumented internal schemas.
+There is no clearly maintained, fully open-source, one-click iPhone exporter matching
+closed-source consumer tools such as Health Auto Export or HealthFit. Those products may be
+practical, but evaluating their cost, privacy, automation and output formats is outside the first
+research pass. No credible maintained personal Apple Health cloud API was found. Older bridges
+and direct `healthdb.sqlite` scripts are fragile because Apple changes SDKs and undocumented
+internal schemas.
 
 ## Material barriers and risks
 
@@ -182,14 +191,32 @@ changes SDKs and undocumented internal schemas.
 - **Backup overreach:** local backup tooling can expose much more than health data and depends on
   undocumented internal schemas.
 
+## Rubric snapshot
+
+This snapshot follows the repository's [provider audit rubric](../../audit-rubric.md).
+
+| Dimension | Apple finding |
+|---|---|
+| Consumer effort | Low for a manual export; medium to high for repeatable automation |
+| Cost | Export is included; self-built automation requires Apple hardware/tooling and may require developer membership for distribution |
+| Platform dependency | High: supported automation is tied to Apple operating systems and HealthKit |
+| Completeness | Broad retained records, but not every UI feature or raw sensor stream is exposed |
+| Granularity | Strong: samples, summaries, workouts and selected series/routes |
+| Historical depth | Retained authorized history; no universal duration guarantee |
+| Automation | Strong through an installed HealthKit app; absent for first-party bulk export |
+| Formats | Native HealthKit objects or manual XML; bulk schema is not publicly versioned |
+| Integrations | Broad but selective, directional and often lossy |
+| Provenance | HealthKit retains source/device metadata; downstream services may reduce it |
+| Portability | Good local extraction, weak platform-independent cloud access |
+| Evidence quality | Strong primary API evidence; export equivalence and several partner links need hands-on validation |
+
 ## Provisional openness assessment
 
 **Mixed, with strong local access and weak cloud portability.**
 
-Apple is comparatively open once the data is on an Apple device: HealthKit offers deep,
-permissioned, historical record access, and the Health app gives every user a broad
-machine-readable export without a commercial partnership. That is materially better than
-providers that expose only dashboards, PDFs or approved partner APIs.
+Once the data is on an Apple device, HealthKit offers deep, permissioned historical record access,
+and Apple gives users machine-readable account and device export routes without a commercial
+partnership.
 
 It is not fully open. There is no user-facing REST API, automated export, cross-platform client or
 stable bulk schema. Automated access is tied to Apple's hardware, SDK, signing and review
@@ -202,9 +229,12 @@ willing to use an iPhone app or process XML, but poor platform-independent autom
 2. Compare HealthKit queries with the XML export for routes, ECGs, sleep, rings, workout effort,
    symptoms, state of mind, medications and clinical documents.
 3. Confirm the oldest retrievable record after multi-device iCloud synchronization.
-4. Inspect privacy.apple.com output for Health/Fitness coverage across multiple regions.
+4. Compare privacy.apple.com Health files with the Health-app export across multiple regions.
 5. Test partner backfill, route transfer, duplicate handling and edit/deletion propagation.
-6. Recheck Fitbit and Samsung iOS settings for any newly supported Apple connector.
-7. Validate maintained open-source parsers against a large 2026 export without discarding unknown
+6. Recheck Fitbit and Samsung iOS settings for any newly supported Apple connector; describe
+   absence only as "no documented route found."
+7. Replace or remove the dead official Suunto and Peloton integration sources before treating
+   those rows as verified.
+8. Validate maintained open-source parsers against a large 2026 export without discarding unknown
    identifiers or nested metadata.
-8. Confirm current SensorKit entitlement criteria, buffer retention and physiological streams.
+9. Confirm current SensorKit entitlement criteria, buffer retention and physiological streams.

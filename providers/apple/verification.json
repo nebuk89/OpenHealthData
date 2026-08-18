@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "provider": "Apple",
+  "checkedAt": "2026-08-18T15:17:16.110Z",
+  "result": "passed",
+  "failures": [],
+  "warnings": [],
+  "links": [
+    {
+      "url": "https://developer.apple.com/documentation/healthkit",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.apple.com/documentation/healthkit"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/healthkit/authorizing-access-to-health-data",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.apple.com/documentation/healthkit/authorizing-access-to-health-data"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/workoutkit",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.apple.com/documentation/workoutkit"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/sensorkit",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.apple.com/documentation/sensorkit"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/healthkit/data-types",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.apple.com/documentation/healthkit/data-types"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/healthkit/setting-up-healthkit",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.apple.com/documentation/healthkit/setting-up-healthkit"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/healthkit/reading-data-from-healthkit",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.apple.com/documentation/healthkit/reading-data-from-healthkit"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/healthkit/workouts-and-activity-rings",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.apple.com/documentation/healthkit/workouts-and-activity-rings"
+    },
+    {
+      "url": "https://developer.apple.com/app-store/review/guidelines/#health-and-health-research",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.apple.com/app-store/review/guidelines/"
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/share-your-health-data-iph5ede58c3d/ios",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.apple.com/guide/iphone/share-your-health-data-iph5ede58c3d/ios"
+    },
+    {
+      "url": "https://support.apple.com/en-us/102208",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.apple.com/en-us/102208"
+    },
+    {
+      "url": "https://support.apple.com/en-us/108779",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.apple.com/en-us/108779"
+    },
+    {
+      "url": "https://support.apple.com/guide/security/healthkit-data-security-sec88be9900f/web",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.apple.com/guide/security/protecting-access-to-users-health-data-sec88be9900f/web"
+    },
+    {
+      "url": "https://support.apple.com/108353",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.apple.com/en-us/108353"
+    },
+    {
+      "url": "https://support.apple.com/guide/watch/use-gym-equipment-apd15b0268fd/watchos",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.apple.com/guide/watch/use-gym-equipment-apd15b0268fd/watchos"
+    },
+    {
+      "url": "https://privacy.apple.com/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://privacy.apple.com/"
+    },
+    {
+      "url": "https://www.apple.com/legal/privacy/en-ww/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.apple.com/legal/privacy/en-ww/"
+    },
+    {
+      "url": "https://support.strava.com/hc/en-us/articles/216917527-Health-App-and-Strava",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.strava.com/en-us/articles/15402024-apple-health-and-strava"
+    },
+    {
+      "url": "https://www.trainingpeaks.com/apple-watch/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.trainingpeaks.com/apple-watch/"
+    },
+    {
+      "url": "https://support.garmin.com/en-US/?faq=lK5FPB9iPF5PXFkIpFlFPA",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.garmin.com/en-US/?faq=lK5FPB9iPF5PXFkIpFlFPA"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360025438734-How-to-Use-Apple-Health-with-Oura",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360025438734-Apple-Health-Integration"
+    },
+    {
+      "url": "https://support.whoop.com/s/article/Apple-Health-Integration?language=en_US",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.whoop.com/s/article/Apple-Health-Integration?language=en_US"
+    },
+    {
+      "url": "https://support.withings.com/hc/en-us/articles/203728916-Partner-Apps-Apple-Health-Importing-Apple-Health-data-into-the-Withings-App",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.withings.com/hc/en-us/articles/203728916-Partner-Apps-Apple-Health-Importing-Apple-Health-data-into-the-Withings-App"
+    },
+    {
+      "url": "https://support.withings.com/hc/en-us/articles/46746224229777-Partner-Apps-Apple-Health-Exporting-Withings-data-into-Apple-Health",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.withings.com/hc/en-us/articles/46746224229777-Partner-Apps-Apple-Health-Exporting-Withings-data-into-Apple-Health"
+    },
+    {
+      "url": "https://support.polar.com/en/support/connecting_polar_flow_with_apple_health",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.polar.com/en/support/connecting_polar_flow_with_apple_health"
+    },
+    {
+      "url": "https://github.com/kingstinct/react-native-healthkit",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/kingstinct/react-native-healthkit"
+    },
+    {
+      "url": "https://github.com/StanfordSpezi/SpeziHealthKit",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/StanfordSpezi/SpeziHealthKit"
+    },
+    {
+      "url": "https://github.com/tdda/applehealthdata",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/tdda/applehealthdata"
+    },
+    {
+      "url": "https://github.com/StanfordBDHG/HealthKitOnFHIR",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/StanfordBDHG/HealthKitOnFHIR"
+    },
+    {
+      "url": "https://github.com/abrignoni/iLEAPP",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/abrignoni/iLEAPP"
+    },
+    {
+      "url": "https://github.com/libimobiledevice/libimobiledevice",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/libimobiledevice/libimobiledevice"
+    },
+    {
+      "url": "https://github.com/dogsheep/healthkit-to-sqlite",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/dogsheep/healthkit-to-sqlite"
+    },
+    {
+      "url": "https://github.com/k0rventen/apple-health-grafana",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/k0rventen/apple-health-grafana"
+    },
+    {
+      "url": "https://github.com/dariosalvi78/cordova-plugin-health",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/dariosalvi78/cordova-plugin-health"
+    },
+    {
+      "url": "https://github.com/agencyenterprise/react-native-health",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/agencyenterprise/react-native-health"
+    },
+    {
+      "url": "https://support.google.com/android/answer/12201227",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.google.com/android/answer/12201227"
+    },
+    {
+      "url": "https://www.npmjs.com/package/@kingstinct/react-native-healthkit",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.npmjs.com/package/@kingstinct/react-native-healthkit"
+    },
+    {
+      "url": "https://swiftpackageindex.com/StanfordSpezi/SpeziHealthKit",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://swiftpackageindex.com/StanfordSpezi/SpeziHealthKit"
+    }
+  ],
+  "projects": [
+    {
+      "name": "kingstinct/react-native-healthkit",
+      "repositoryUrl": "https://github.com/kingstinct/react-native-healthkit",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "StanfordSpezi/SpeziHealthKit",
+      "repositoryUrl": "https://github.com/StanfordSpezi/SpeziHealthKit",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "StanfordBDHG/HealthKitOnFHIR",
+      "repositoryUrl": "https://github.com/StanfordBDHG/HealthKitOnFHIR",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "tdda/applehealthdata",
+      "repositoryUrl": "https://github.com/tdda/applehealthdata",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "abrignoni/iLEAPP",
+      "repositoryUrl": "https://github.com/abrignoni/iLEAPP",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "libimobiledevice/libimobiledevice",
+      "repositoryUrl": "https://github.com/libimobiledevice/libimobiledevice",
+      "declaredLicense": "LGPL-2.1",
+      "detectedLicense": "LGPL-2.1",
+      "status": "ok"
+    },
+    {
+      "name": "dogsheep/healthkit-to-sqlite",
+      "repositoryUrl": "https://github.com/dogsheep/healthkit-to-sqlite",
+      "declaredLicense": "Apache-2.0",
+      "detectedLicense": "Apache-2.0",
+      "status": "ok"
+    },
+    {
+      "name": "k0rventen/apple-health-grafana",
+      "repositoryUrl": "https://github.com/k0rventen/apple-health-grafana",
+      "declaredLicense": "NOASSERTION",
+      "detectedLicense": "NOASSERTION",
+      "status": "ok"
+    },
+    {
+      "name": "dariosalvi78/cordova-plugin-health",
+      "repositoryUrl": "https://github.com/dariosalvi78/cordova-plugin-health",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "agencyenterprise/react-native-health",
+      "repositoryUrl": "https://github.com/agencyenterprise/react-native-health",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    }
+  ]
+}

@@ -10,8 +10,6 @@ publication date.
 
 - [HealthKit reference](https://developer.apple.com/documentation/healthkit) — **Apple**;
   accessed 2026-08-18. Primary framework and API reference.
-- [HealthKit overview](https://developer.apple.com/health-fitness/healthkit/) — **Apple**;
-  accessed 2026-08-18. Platform overview and supported use cases.
 - [HealthKit data types](https://developer.apple.com/documentation/healthkit/data-types) —
   **Apple**; accessed 2026-08-18. Current data-type catalogue.
 - [Setting up HealthKit](https://developer.apple.com/documentation/healthkit/setting-up-healthkit)
@@ -22,8 +20,6 @@ publication date.
   — **Apple**; accessed 2026-08-18. Query patterns and historical reads.
 - [Workouts and activity rings](https://developer.apple.com/documentation/healthkit/workouts-and-activity-rings)
   — **Apple**; accessed 2026-08-18. Workout sessions, records and activity summaries.
-- [Clinical Health Records](https://developer.apple.com/documentation/healthkit/clinical-health-records)
-  — **Apple**; accessed 2026-08-18. User-authorized institutional records and FHIR payloads.
 - [WorkoutKit](https://developer.apple.com/documentation/workoutkit) — **Apple**; accessed
   2026-08-18. Structured workout creation and scheduling.
 - [SensorKit](https://developer.apple.com/documentation/sensorkit) — **Apple**; accessed
@@ -40,7 +36,8 @@ publication date.
 - [HealthKit data security](https://support.apple.com/guide/security/healthkit-data-security-sec88be9900f/web)
   — **Apple**; accessed 2026-08-18. Device and iCloud security model.
 - [Get a copy of Apple account data](https://support.apple.com/en-us/102208) — **Apple**;
-  accessed 2026-08-18. Data & Privacy portal process.
+  accessed 2026-08-18. Data & Privacy process and confirmation that Health data is available
+  through an account data request.
 - [Apple Data & Privacy portal](https://privacy.apple.com/) — **Apple**; accessed 2026-08-18.
   Authenticated account export and privacy controls.
 - [Apple Privacy Policy](https://www.apple.com/legal/privacy/en-ww/) — **Apple**; accessed
@@ -60,18 +57,14 @@ publication date.
   — **Oura**; accessed 2026-08-18. Selected bidirectional HealthKit sync.
 - [WHOOP and Apple Health](https://support.whoop.com/s/article/Apple-Health-Integration?language=en_US)
   — **WHOOP**; accessed 2026-08-18. Selected workouts, sleep and physiological records.
-- [Withings and Apple Health](https://support.withings.com/hc/en-us/articles/201494667-Partner-Apps-Apple-Health-What-is-the-Apple-Health-integration)
-  — **Withings**; accessed 2026-08-18. Body, vital, sleep and activity integration.
+- [Importing Apple Health data into Withings](https://support.withings.com/hc/en-us/articles/203728916-Partner-Apps-Apple-Health-Importing-Apple-Health-data-into-the-Withings-App)
+  — **Withings**; accessed 2026-08-18. Selected Apple Health data imported into Withings.
+- [Exporting Withings data into Apple Health](https://support.withings.com/hc/en-us/articles/46746224229777-Partner-Apps-Apple-Health-Exporting-Withings-data-into-Apple-Health)
+  — **Withings**; accessed 2026-08-18. Selected Withings data exported to Apple Health.
 - [Polar Flow and Apple Health](https://support.polar.com/en/support/connecting_polar_flow_with_apple_health)
   — **Polar**; accessed 2026-08-18. Polar-to-Health transfer.
-- [Suunto app and Apple Health](https://www.suunto.com/Support/faq-articles/suunto-app/how-do-i-use-the-suunto-app-with-apple-health/)
-  — **Suunto**; accessed 2026-08-18. Suunto-to-Health transfer.
-- [Peloton Apple Health integration](https://support.onepeloton.com/s/article/360048773312-Apple-Health-Integration)
-  — **Peloton**; accessed 2026-08-18. Peloton workout records written to Health.
 - [Health Connect](https://support.google.com/android/answer/12201227) — **Google**; accessed
   2026-08-18. Confirms Android-local architecture; no first-party Apple bridge.
-- [Samsung Health Connect developer guide](https://developer.samsung.com/health/android/data/guide/health-connect.html)
-  — **Samsung**; accessed 2026-08-18. Samsung's Android interchange route.
 - [Apple GymKit equipment support](https://support.apple.com/guide/watch/use-gym-equipment-apd15b0268fd/watchos)
   — **Apple**; accessed 2026-08-18. Session-level Apple Watch and equipment exchange.
 
@@ -83,7 +76,7 @@ publication date.
 - [StanfordSpezi/SpeziHealthKit](https://github.com/StanfordSpezi/SpeziHealthKit) —
   **MIT; Swift**; accessed 2026-08-18. Maintained native HealthKit collection framework.
 - [StanfordBDHG/HealthKitOnFHIR](https://github.com/StanfordBDHG/HealthKitOnFHIR) —
-  **Apache-2.0; Swift**; accessed 2026-08-18. Maps supported HealthKit records to FHIR resources;
+  **MIT; Swift**; accessed 2026-08-18. Maps supported HealthKit records to FHIR resources;
   verify current dependency compatibility.
 - [tdda/applehealthdata](https://github.com/tdda/applehealthdata) — **MIT; Python**; accessed
   2026-08-18. Parser for official Apple Health exports; lower maintenance cadence and newer
@@ -92,29 +85,23 @@ publication date.
   2026-08-18. Actively maintained forensic parser for authorized local backups; produces broad,
   highly sensitive reports.
 - [libimobiledevice/libimobiledevice](https://github.com/libimobiledevice/libimobiledevice) —
-  **LGPL-2.1-or-later; C**; accessed 2026-08-18. Active component for creating local
+  **LGPL-2.1; C**; accessed 2026-08-18. Active component for creating local
   Finder/iTunes-compatible backups; not a Health normalizer.
 - [dogsheep/healthkit-to-sqlite](https://github.com/dogsheep/healthkit-to-sqlite) —
   **Apache-2.0; Python**; accessed 2026-08-18. Converts official export XML to SQLite; useful but
   not actively maintained enough to assume current type coverage.
 - [k0rventen/apple-health-grafana](https://github.com/k0rventen/apple-health-grafana) —
-  **MIT; Python/Docker**; accessed 2026-08-18. Visualizes selected export records; not a lossless
-  archive and maintenance is less dependable than its adoption suggests.
+  **No licence detected; Python/Docker**; accessed 2026-08-18. Visualizes selected export
+  records, but has no detected reusable licence and is not a lossless archive.
 - [dariosalvi78/cordova-plugin-health](https://github.com/dariosalvi78/cordova-plugin-health) —
   **MIT; JavaScript/native**; accessed 2026-08-18. Mature HealthKit bridge for existing Cordova
   apps; lower cadence and not preferred for new exporters.
 
 ## Historical or fragile projects
 
-- [quantifiedself/qs-access](https://github.com/quantifiedself/qs-access) — **Open-source iOS
-  exporter**; accessed 2026-08-18. Historically important but effectively abandoned and tied to
-  old HealthKit/Xcode assumptions.
 - [agencyenterprise/react-native-health](https://github.com/agencyenterprise/react-native-health)
   — **MIT; React Native**; accessed 2026-08-18. Legacy bridge superseded for new work by
   `react-native-healthkit`.
-- [openmhealth/omh-ios](https://github.com/openmhealth/omh-ios) — **Apache-2.0; Swift**;
-  accessed 2026-08-18. Inactive HealthKit-to-Open mHealth mapping retained mainly for schema
-  research.
 
 ## Secondary package context
 
