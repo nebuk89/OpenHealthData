@@ -8,7 +8,7 @@ resource index, claim ledger, verification report and publication manifest.
 | Priority | Provider | Status | Resource index |
 |---:|---|---|---|
 | 1 | [Apple](./apple/README.md) | Verified | [Resources](./apple/resources.md) |
-| 2 | Garmin | Pending | Pending |
+| 2 | [Garmin](./garmin/README.md) | Verified | [Resources](./garmin/resources.md) |
 | 3 | Google / Fitbit | Pending | Pending |
 | 4 | Samsung | Pending | Pending |
 | 5 | Huawei | Pending | Pending |

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "provider": "Garmin",
+  "evidenceDate": "2026-08-19",
+  "claims": [
+    {
+      "id": "account-export-requires-sign-in",
+      "claim": "Garmin provides a signed-in Export Your Data route for account holders.",
+      "sourceUrl": "https://www.garmin.com/en-US/account/datamanagement/exportdata/",
+      "evidence": "The official Export Your Data endpoint redirects an unauthenticated visitor to Garmin Account Management SSO.",
+      "confidence": "high"
+    },
+    {
+      "id": "developer-program-is-business-only",
+      "claim": "The Garmin Connect Developer Program is an enterprise/business integration surface rather than unrestricted personal developer access.",
+      "sourceUrl": "https://developer.garmin.com/gc-developer-program/program-faq/",
+      "evidence": "Garmin's FAQ says the program is available for enterprise use and is only for business use.",
+      "confidence": "high"
+    },
+    {
+      "id": "developer-program-uses-oauth2",
+      "claim": "All Garmin Connect Developer Program APIs use OAuth 2.0.",
+      "sourceUrl": "https://developer.garmin.com/gc-developer-program/program-faq/",
+      "evidence": "The program FAQ explicitly answers that all APIs in the Developer Program use OAuth 2.0.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-api-json-categories",
+      "claim": "The Garmin Connect Health API supplies JSON health data including heart rate, steps, calories, sleep, respiration, body composition, stress, pulse ox and epoch summaries.",
+      "sourceUrl": "https://developer.garmin.com/gc-developer-program/health-api/",
+      "evidence": "The official Health API page lists these data families and states that supported-device data is supplied in JSON after user consent.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-api-commercial-metrics",
+      "claim": "Commercial use of the Garmin Connect Health API requires a licence fee.",
+      "sourceUrl": "https://developer.garmin.com/gc-developer-program/health-api/",
+      "evidence": "The official Health API page includes the explicit note: Commercial use requires a license fee payment.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-api-backfill-is-developer-tooling",
+      "claim": "Garmin advertises backfill user data within pre-production Developer Web Tools, not as a documented guarantee of live pre-consent historical retrieval.",
+      "sourceUrl": "https://developer.garmin.com/gc-developer-program/health-api/",
+      "evidence": "The Health API page places sample data, backfill user data, and auto-verification together under easy onboarding and Developer Web Tools before production.",
+      "confidence": "high"
+    },
+    {
+      "id": "activity-api-file-formats",
+      "claim": "The Garmin Connect Activity API can provide complete activity details as FIT, GPX or TCX files after user consent and device synchronization.",
+      "sourceUrl": "https://developer.garmin.com/gc-developer-program/activity-api/",
+      "evidence": "The official Activity API page lists FIT, GPX and TCX files and explains that data becomes available after initial consent and Garmin Connect synchronization.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-sdks-enterprise-only",
+      "claim": "Garmin Health SDKs provide direct mobile and real-time wearable data access only to approved enterprise partners.",
+      "sourceUrl": "https://developer.garmin.com/health-sdk/overview/",
+      "evidence": "Garmin describes the Standard and Companion SDKs as available to Garmin Health enterprise partners through an access request and evaluation licence.",
+      "confidence": "high"
+    },
+    {
+      "id": "fit-is-local-file-protocol",
+      "claim": "Garmin FIT is a documented file protocol for storing and sharing sport, fitness and health-device data, not an account authentication API.",
+      "sourceUrl": "https://developer.garmin.com/fit/overview/",
+      "evidence": "Garmin documents FIT messages, SDKs and tools for encoding and decoding files already transferred from devices.",
+      "confidence": "high"
+    },
+    {
+      "id": "strava-automatic-activity-sync",
+      "claim": "Garmin Connect can automatically synchronize activities to Strava after the accounts are connected.",
+      "sourceUrl": "https://support.strava.com/en-us/articles/15401903-garmin-and-strava",
+      "evidence": "Strava's current Garmin article describes connecting a Garmin device or Garmin Connect account for automatic activity synchronization.",
+      "confidence": "high"
+    },
+    {
+      "id": "trainingpeaks-direction-and-history",
+      "claim": "TrainingPeaks can receive Garmin activities and selected health data, send structured workouts to Garmin, and optionally backfill up to five years of prior workouts.",
+      "sourceUrl": "https://help.trainingpeaks.com/hc/en-us/articles/204070854-How-to-Sync-Garmin-Connect-With-TrainingPeaks",
+      "evidence": "TrainingPeaks documents activity/body data from Garmin, workouts to Garmin, an optional five-year prior-workout sync, and no historical daily-health backfill.",
+      "confidence": "high"
+    },
+    {
+      "id": "myfitnesspal-category-specific-sync",
+      "claim": "Garmin and MyFitnessPal exchange selected workout, step, calorie and weight records, and information from before account linking is not transferred.",
+      "sourceUrl": "https://support.myfitnesspal.com/hc/en-us/articles/360040110912-Garmin-Connect-FAQ-and-Troubleshooting",
+      "evidence": "MyFitnessPal lists the exact categories in each direction and states that only future information posts after linking.",
+      "confidence": "high"
+    },
+    {
+      "id": "python-garminconnect-private-client",
+      "claim": "python-garminconnect provides broad personal Garmin Connect retrieval using the consumer mobile authentication flow rather than the approved Developer Program.",
+      "sourceUrl": "https://github.com/cyberjunky/python-garminconnect",
+      "evidence": "The project documents more than 130 account methods, JSON export, Garmin mobile SSO and locally stored refresh tokens.",
+      "confidence": "high"
+    },
+    {
+      "id": "legacy-exporter-currently-blocked",
+      "claim": "The pe-st Garmin Connect exporter is currently blocked by Garmin TLS fingerprinting and is not a dependable working route.",
+      "sourceUrl": "https://github.com/pe-st/garmin-connect-export",
+      "evidence": "The maintainer states that the community could not work around Garmin's new TLS fingerprinting and probably will not continue until access is possible.",
+      "confidence": "high"
+    }
+  ],
+  "projects": [
+    {
+      "name": "cyberjunky/python-garminconnect",
+      "repositoryUrl": "https://github.com/cyberjunky/python-garminconnect",
+      "license": "MIT"
+    },
+    {
+      "name": "tcgoetz/GarminDB",
+      "repositoryUrl": "https://github.com/tcgoetz/GarminDB",
+      "license": "GPL-2.0"
+    },
+    {
+      "name": "james-langridge/garmin-export-parser",
+      "repositoryUrl": "https://github.com/james-langridge/garmin-export-parser",
+      "license": "MIT"
+    },
+    {
+      "name": "polyvertex/fitdecode",
+      "repositoryUrl": "https://github.com/polyvertex/fitdecode",
+      "license": "MIT"
+    },
+    {
+      "name": "dtcooper/python-fitparse",
+      "repositoryUrl": "https://github.com/dtcooper/python-fitparse",
+      "license": "MIT"
+    },
+    {
+      "name": "garmin/fit-sdk-tools",
+      "repositoryUrl": "https://github.com/garmin/fit-sdk-tools",
+      "license": "NOASSERTION"
+    },
+    {
+      "name": "pe-st/garmin-connect-export",
+      "repositoryUrl": "https://github.com/pe-st/garmin-connect-export",
+      "license": "MIT"
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "provider": "Garmin",
+  "checkedAt": "2026-08-19T08:49:57.710Z",
+  "result": "passed",
+  "failures": [],
+  "warnings": [],
+  "links": [
+    {
+      "url": "https://www.garmin.com/en-US/account/datamanagement/exportdata/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://sso.garmin.com/portal/sso/en-US/sign-in?clientId=ACCOUNT_MANAGEMENT_CENTER&service=https%3A%2F%2Fwww.garmin.com%2Fen-US%2Faccount%2Fdatamanagement%2Fexportdata%2F"
+    },
+    {
+      "url": "https://www.garmin.com/en-US/privacy/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.garmin.com/en-US/privacy/"
+    },
+    {
+      "url": "https://developer.garmin.com/gc-developer-program/overview/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.garmin.com/gc-developer-program/overview/"
+    },
+    {
+      "url": "https://developer.garmin.com/gc-developer-program/health-api/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.garmin.com/gc-developer-program/health-api/"
+    },
+    {
+      "url": "https://developer.garmin.com/gc-developer-program/activity-api/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.garmin.com/gc-developer-program/activity-api/"
+    },
+    {
+      "url": "https://developer.garmin.com/gc-developer-program/womens-health-api/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.garmin.com/gc-developer-program/womens-health-api/"
+    },
+    {
+      "url": "https://developer.garmin.com/gc-developer-program/training-api/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.garmin.com/gc-developer-program/training-api/"
+    },
+    {
+      "url": "https://developer.garmin.com/gc-developer-program/courses-api/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.garmin.com/gc-developer-program/courses-api/"
+    },
+    {
+      "url": "https://developer.garmin.com/gc-developer-program/program-faq/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.garmin.com/gc-developer-program/program-faq/"
+    },
+    {
+      "url": "https://developer.garmin.com/health-sdk/overview/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.garmin.com/health-sdk/overview/"
+    },
+    {
+      "url": "https://developer.garmin.com/connect-iq/overview/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.garmin.com/connect-iq/overview/"
+    },
+    {
+      "url": "https://developer.garmin.com/fit/overview/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.garmin.com/fit/overview/"
+    },
+    {
+      "url": "https://github.com/james-langridge/garmin-export-parser",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/james-langridge/garmin-export-parser"
+    },
+    {
+      "url": "https://github.com/garmin/fit-sdk-tools",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/garmin/fit-sdk-tools"
+    },
+    {
+      "url": "https://github.com/cyberjunky/python-garminconnect",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/cyberjunky/python-garminconnect"
+    },
+    {
+      "url": "https://github.com/tcgoetz/GarminDB",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/tcgoetz/GarminDB"
+    },
+    {
+      "url": "https://github.com/polyvertex/fitdecode",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/polyvertex/fitdecode"
+    },
+    {
+      "url": "https://github.com/dtcooper/python-fitparse",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/dtcooper/python-fitparse"
+    },
+    {
+      "url": "https://github.com/pe-st/garmin-connect-export",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/pe-st/garmin-connect-export"
+    },
+    {
+      "url": "https://support.strava.com/en-us/articles/15402167-exporting-files-from-garmin-connect",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.strava.com/en-us/articles/15402167-exporting-files-from-garmin-connect"
+    },
+    {
+      "url": "https://support.strava.com/en-us/articles/15401903-garmin-and-strava",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.strava.com/en-us/articles/15401903-garmin-and-strava"
+    },
+    {
+      "url": "https://support.strava.com/en-us/articles/15401810-syncing-strava-routes-to-your-garmin-device",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.strava.com/en-us/articles/15401810-syncing-strava-routes-to-your-garmin-device"
+    },
+    {
+      "url": "https://support.garmin.com/en-US/?faq=lK5FPB9iPF5PXFkIpFlFPA",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.garmin.com/en-US/?faq=lK5FPB9iPF5PXFkIpFlFPA"
+    },
+    {
+      "url": "https://help.trainingpeaks.com/hc/en-us/articles/204070854-How-to-Sync-Garmin-Connect-With-TrainingPeaks",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://help.trainingpeaks.com/hc/en-us/articles/204070854-How-to-Sync-Garmin-Connect-With-TrainingPeaks"
+    },
+    {
+      "url": "https://support.myfitnesspal.com/hc/en-us/articles/360040110912-Garmin-Connect-FAQ-and-Troubleshooting",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.myfitnesspal.com/hc/en-us/articles/360040110912-Garmin-Connect-FAQ-and-Troubleshooting"
+    },
+    {
+      "url": "https://support.komoot.com/hc/en-us/articles/10317378384666-Use-the-komoot-app-for-Garmin",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.komoot.com/hc/en-us/articles/10317378384666-Use-the-komoot-app-for-Garmin"
+    },
+    {
+      "url": "https://developer.android.com/health-and-fitness/health-connect",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect"
+    }
+  ],
+  "projects": [
+    {
+      "name": "cyberjunky/python-garminconnect",
+      "repositoryUrl": "https://github.com/cyberjunky/python-garminconnect",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "tcgoetz/GarminDB",
+      "repositoryUrl": "https://github.com/tcgoetz/GarminDB",
+      "declaredLicense": "GPL-2.0",
+      "detectedLicense": "GPL-2.0",
+      "status": "ok"
+    },
+    {
+      "name": "james-langridge/garmin-export-parser",
+      "repositoryUrl": "https://github.com/james-langridge/garmin-export-parser",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "polyvertex/fitdecode",
+      "repositoryUrl": "https://github.com/polyvertex/fitdecode",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "dtcooper/python-fitparse",
+      "repositoryUrl": "https://github.com/dtcooper/python-fitparse",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "garmin/fit-sdk-tools",
+      "repositoryUrl": "https://github.com/garmin/fit-sdk-tools",
+      "declaredLicense": "NOASSERTION",
+      "detectedLicense": "NOASSERTION",
+      "status": "ok"
+    },
+    {
+      "name": "pe-st/garmin-connect-export",
+      "repositoryUrl": "https://github.com/pe-st/garmin-connect-export",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    }
+  ]
+}
