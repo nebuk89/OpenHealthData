@@ -36,6 +36,17 @@ edits, deletions and historical backfill are frequently lost or restricted.
 | SensorKit | Only in approved research | Yes | Prospective system-buffered data | Apple entitlement and study consent |
 | Consumer cloud API | No | N/A | N/A | No documented REST API or OAuth scope |
 
+## Openness comparison
+
+| Openness test | Result | Finding |
+|---|---|---|
+| App-to-interface parity | Partial | HealthKit and exports cover broad retained records, but Apple does not establish that every Health/Fitness UI value, raw stream and derived feature is available |
+| Self-service developer access | Partial | A person can build with HealthKit, but only through Apple's device, SDK, entitlement and signing model |
+| Official automation | Partial | An installed HealthKit app can automate local reads; Apple provides no automated first-party bulk export or consumer cloud API |
+| Complete history | Partial | Authorized retained local history is queryable, but there is no universal retention guarantee and the two export routes are not documented as equivalent |
+| Raw and derived data coverage | Partial | Samples, workouts, routes and metadata are strong; some raw sensors, rings, reports and proprietary derivations are absent or constrained |
+| **Overall personal-data openness** | **Partial** | Substantial user-controlled access exists, but it is incomplete and tightly dependent on Apple's platform |
+
 ## Official access routes
 
 ### HealthKit

@@ -31,6 +31,17 @@ Garmin changes login or endpoint behaviour.
 | FIT SDK and tools | Anyone with a FIT file | Yes, locally | Records present in that file | Does not retrieve data from Garmin Connect |
 | Unofficial account clients | Technically capable account holder | Yes | Broad private Garmin Connect surfaces | Unsupported, credential-sensitive and breakable |
 
+## Openness comparison
+
+| Openness test | Result | Finding |
+|---|---|---|
+| App-to-interface parity | Unknown | Garmin does not publish a complete mapping from Garmin Connect app data to its consumer export, partner APIs or FIT files |
+| Self-service developer access | No | Official Garmin Connect cloud APIs are for approved businesses, not ordinary users building personal clients |
+| Official automation | No | Consumers get manual account/activity exports; broad personal automation depends on unsupported private endpoints |
+| Complete history | Unknown | Archive depth, API retention and every-metric backfill are not publicly guaranteed |
+| Raw and derived data coverage | Partial | FIT and partner products expose rich records, but proprietary scores, source detail and every app-visible metric are not guaranteed |
+| **Overall personal-data openness** | **Restricted** | Useful machine-readable exports exist, but supported programmable access is partner-gated |
+
 ## Official access routes
 
 ### Account archive and privacy access

@@ -44,6 +44,7 @@ const claimsEndMarker = "<!-- OPENHEALTHDATA_CLAIMS_END -->";
 const mainRequiredSections = [
   "## Bottom line",
   "## Access snapshot",
+  "## Openness comparison",
   "## Official access routes",
   "## Data available",
   "## Ecosystem integrations",
@@ -53,6 +54,28 @@ const mainRequiredSections = [
   "## Provisional openness assessment",
   "## Evidence gaps",
 ] as const;
+
+const opennessComparisonRows = [
+  "App-to-interface parity",
+  "Self-service developer access",
+  "Official automation",
+  "Complete history",
+  "Raw and derived data coverage",
+  "Overall personal-data openness",
+] as const;
+
+const opennessRatings = [
+  "Open",
+  "Mostly open",
+  "Partial",
+  "Restricted",
+  "Closed",
+  "Unknown",
+] as const;
+
+type OpennessRating = (typeof opennessRatings)[number];
+
+const opennessTestResults = ["Yes", "Partial", "No", "Unknown"] as const;
 
 const resourceRequiredSections = [
   "## Official developer documentation",
@@ -542,10 +565,19 @@ async function synthesizeProvider(
           `# ${provider.name}`,
           "",
           "The main audit must follow audit-rubric.md and include: an evidence date; Bottom line;",
-          "Access snapshot; Official access routes; Data available and granularity; direct export",
-          "and privacy routes; Ecosystem integrations with explicit directionality; Open-source",
-          "routes; Material barriers and risks; Rubric snapshot; Provisional openness assessment",
-          "without cross-provider superlatives; and Evidence gaps and hands-on checks.",
+          "Access snapshot; Openness comparison; Official access routes; Data available and",
+          "granularity; direct export and privacy routes; Ecosystem integrations with explicit",
+          "directionality; Open-source routes; Material barriers and risks; Rubric snapshot;",
+          "Provisional openness assessment without cross-provider superlatives; and Evidence gaps",
+          "and hands-on checks.",
+          "",
+          "The Openness comparison section is mandatory. Use the exact six-row table from",
+          "audit-rubric.md: App-to-interface parity; Self-service developer access; Official",
+          "automation; Complete history; Raw and derived data coverage; and Overall personal-data",
+          "openness. Use exactly Yes, Partial, No, or Unknown for each of the first five results.",
+          "Rate the overall row with exactly one of: Open, Mostly open, Partial, Restricted,",
+          "Closed, or Unknown. Judge the route an ordinary account holder can use, not the richest",
+          "partner-only capability.",
           mainEndMarker,
           resourcesStartMarker,
           `# ${provider.name} resources`,
@@ -822,6 +854,55 @@ function checkRequiredSections(
     .map((section) => `${fileName} is missing required section "${section}"`);
 }
 
+function extractOpennessRating(content: string): OpennessRating | null {
+  const section = content.match(
+    /## Openness comparison\s*([\s\S]*?)(?=\n## |\s*$)/i,
+  )?.[1];
+  if (!section) {
+    return null;
+  }
+
+  const normalized = section.replaceAll("**", "");
+  const match = normalized.match(
+    /\|\s*Overall personal-data openness\s*\|\s*(Open|Mostly open|Partial|Restricted|Closed|Unknown)\s*\|/i,
+  );
+  if (!match) {
+    return null;
+  }
+
+  return opennessRatings.find((rating) => rating.toLowerCase() === match[1].toLowerCase()) ?? null;
+}
+
+function checkOpennessComparison(content: string): string[] {
+  const section = content.match(
+    /## Openness comparison\s*([\s\S]*?)(?=\n## |\s*$)/i,
+  )?.[1];
+  if (!section) {
+    return [];
+  }
+
+  const normalized = section.replaceAll("**", "").toLowerCase();
+  const failures = opennessComparisonRows.slice(0, -1).flatMap((row) => {
+    const rowPattern = new RegExp(
+      `\\|\\s*${row.toLowerCase()}\\s*\\|\\s*(${opennessTestResults.join("|")})\\s*\\|`,
+      "i",
+    );
+    return rowPattern.test(normalized)
+      ? []
+      : [
+          `README.md openness row "${row}" must use one of: ${opennessTestResults.join(", ")}`,
+        ];
+  });
+
+  if (!extractOpennessRating(content)) {
+    failures.push(
+      `README.md overall openness rating must be one of: ${opennessRatings.join(", ")}`,
+    );
+  }
+
+  return failures;
+}
+
 async function runQualityGate(
   provider: Provider,
   main: string,
@@ -830,6 +911,7 @@ async function runQualityGate(
 ): Promise<VerificationReport> {
   const failures = [
     ...checkRequiredSections(main, mainRequiredSections, "README.md"),
+    ...checkOpennessComparison(main),
     ...checkRequiredSections(resources, resourceRequiredSections, "resources.md"),
   ];
   const warnings: string[] = [];
@@ -1037,6 +1119,11 @@ async function writeProviderIndex(roster: Provider[]): Promise<void> {
       const manifest = await readManifest(provider);
       const status = manifest?.status ?? "pending";
       const published = isPublishable(manifest?.status);
+      const openness = published
+        ? extractOpennessRating(
+            await readFile(path.join(providerDirectory(provider), "README.md"), "utf8"),
+          ) ?? "Unknown"
+        : "Pending";
       const providerCell = published
         ? `[${provider.name}](./${provider.slug}/README.md)`
         : provider.name;
@@ -1044,7 +1131,7 @@ async function writeProviderIndex(roster: Provider[]): Promise<void> {
         ? `[Resources](./${provider.slug}/resources.md)`
         : "Pending";
 
-      return `| ${provider.priority} | ${providerCell} | ${status[0].toUpperCase()}${status.slice(1)} | ${resourcesCell} |`;
+      return `| ${provider.priority} | ${providerCell} | ${openness} | ${status[0].toUpperCase()}${status.slice(1)} | ${resourcesCell} |`;
     }),
   );
 
@@ -1056,8 +1143,8 @@ async function writeProviderIndex(roster: Provider[]): Promise<void> {
     "[provider audit rubric](../audit-rubric.md). Each published provider has a canonical audit,",
     "resource index, claim ledger, verification report and publication manifest.",
     "",
-    "| Priority | Provider | Status | Resource index |",
-    "|---:|---|---|---|",
+    "| Priority | Provider | Personal-data openness | Status | Resource index |",
+    "|---:|---|---|---|---|",
     ...rows,
     "",
   ].join("\n");
