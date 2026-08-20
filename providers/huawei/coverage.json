@@ -1,0 +1,706 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": "1.0.0",
+  "provider": "Huawei",
+  "evidenceDate": "2026-08-20",
+  "routes": [
+    {
+      "id": "privacy-export",
+      "label": "Huawei Health privacy export",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "health-kit-sdk",
+      "label": "Health Kit Android SDK",
+      "kind": "official-sdk",
+      "access": "unknown"
+    },
+    {
+      "id": "health-kit-rest",
+      "label": "Health Kit REST APIs",
+      "kind": "official-api",
+      "access": "unknown"
+    },
+    {
+      "id": "apple-health",
+      "label": "Apple Health integration",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "health-sync",
+      "label": "Health Sync bridge",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "gadgetbridge",
+      "label": "Gadgetbridge local device access",
+      "kind": "open-source",
+      "access": "unsupported"
+    },
+    {
+      "id": "hitrava",
+      "label": "Hitrava source-available privacy-export parser",
+      "kind": "unofficial",
+      "access": "self-service"
+    },
+    {
+      "id": "hisuite-backup",
+      "label": "HiSuite backup tooling",
+      "kind": "unofficial",
+      "access": "unsupported"
+    }
+  ],
+  "coverage": [
+    {
+      "taxonomyId": "body.composition",
+      "providerNames": [
+        "Weight",
+        "BMI",
+        "Body Fat"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "normalized",
+        "user-entered"
+      ],
+      "routeCoverage": {
+        "privacy-export": "P",
+        "health-kit-sdk": "A",
+        "health-kit-rest": "U",
+        "apple-health": "P",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Community parsers observe exported weight/body-composition JSON and CH100 local records separately; Huawei does not guarantee archive completeness."
+    },
+    {
+      "taxonomyId": "activity.daily",
+      "providerNames": [
+        "Steps",
+        "Distance",
+        "Activity"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "normalized",
+        "derived"
+      ],
+      "routeCoverage": {
+        "privacy-export": "P",
+        "health-kit-sdk": "A",
+        "health-kit-rest": "U",
+        "apple-health": "P",
+        "health-sync": "U",
+        "gadgetbridge": "P",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Huawei Health Importer fixtures observe exported steps, distance and energy; REST endpoint/scope/query coverage remains unverified."
+    },
+    {
+      "taxonomyId": "activity.energy",
+      "providerNames": [
+        "Calories",
+        "Exercise Duration"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "normalized",
+        "derived"
+      ],
+      "routeCoverage": {
+        "privacy-export": "P",
+        "health-kit-sdk": "A",
+        "health-kit-rest": "U",
+        "apple-health": "P",
+        "health-sync": "U",
+        "gadgetbridge": "P",
+        "hitrava": "P",
+        "hisuite-backup": "U"
+      },
+      "notes": "Workout calories can appear in Hitrava output; completeness of all-day energy is not established."
+    },
+    {
+      "taxonomyId": "cardio.heart-rate",
+      "providerNames": [
+        "Heart Rate",
+        "Resting Heart Rate",
+        "Workout Heart Rate"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "normalized",
+        "derived"
+      ],
+      "routeCoverage": {
+        "privacy-export": "P",
+        "health-kit-sdk": "A",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "P",
+        "hitrava": "P",
+        "hisuite-backup": "U"
+      },
+      "notes": "Huawei Health Importer observes dynamic/resting heart-rate export records; Hitrava is limited to activity telemetry."
+    },
+    {
+      "taxonomyId": "cardio.hrv",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "U",
+        "hisuite-backup": "U"
+      },
+      "notes": "No current primary source was retained that establishes Huawei HRV product visibility and route coverage at this taxonomy level."
+    },
+    {
+      "taxonomyId": "cardio.blood-pressure",
+      "providerNames": [
+        "Blood Pressure"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "normalized"
+      ],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "P",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Available only on supported products and in eligible regions; a universal interface/export guarantee is absent."
+    },
+    {
+      "taxonomyId": "cardio.ecg-rhythm",
+      "providerNames": [
+        "ECG"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "derived"
+      ],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Regulated product/region availability does not establish waveform or classification portability."
+    },
+    {
+      "taxonomyId": "cardio.vo2max",
+      "providerNames": [
+        "VO2 Max"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "derived"
+      ],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "U",
+        "hisuite-backup": "U"
+      },
+      "notes": "The app/device estimate is product dependent and no complete official route mapping was established."
+    },
+    {
+      "taxonomyId": "respiratory.rate-oxygen",
+      "providerNames": [
+        "SpO2",
+        "Respiration"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "normalized"
+      ],
+      "routeCoverage": {
+        "privacy-export": "P",
+        "health-kit-sdk": "P",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "P",
+        "hitrava": "U",
+        "hisuite-backup": "U"
+      },
+      "notes": "Huawei Health Importer observes BLOOD_OXYGEN_SATURATION export records; no complete provider or REST parity matrix was verified."
+    },
+    {
+      "taxonomyId": "temperature.body-skin",
+      "providerNames": [
+        "Skin Temperature"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "normalized"
+      ],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "U",
+        "hisuite-backup": "U"
+      },
+      "notes": "Compatible-device visibility is established at product level, while route coverage remains unknown."
+    },
+    {
+      "taxonomyId": "sleep.sessions-stages",
+      "providerNames": [
+        "Sleep",
+        "Sleep Stages"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "normalized",
+        "derived"
+      ],
+      "routeCoverage": {
+        "privacy-export": "P",
+        "health-kit-sdk": "A",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "P",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Huawei Health Importer observes PROFESSIONAL_SLEEP stage records; definitions, history, REST access and completeness need comparison."
+    },
+    {
+      "taxonomyId": "sleep.insights-score",
+      "providerNames": [
+        "TruSleep",
+        "Sleep Score",
+        "Sleep Guidance"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "derived"
+      ],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Underlying sleep records do not prove portability of Huawei's score, analysis or recommendations."
+    },
+    {
+      "taxonomyId": "recovery.stress",
+      "providerNames": [
+        "Stress",
+        "Emotional Wellbeing"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "derived"
+      ],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "P",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Selected stress records may be permissioned, but Huawei's derived emotional displays and guidance are not proven portable."
+    },
+    {
+      "taxonomyId": "recovery.energy-readiness",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "U",
+        "hisuite-backup": "U"
+      },
+      "notes": "No evidence was retained for a Huawei output equivalent to the canonical energy/readiness family."
+    },
+    {
+      "taxonomyId": "training.load-status",
+      "providerNames": [
+        "Training Load",
+        "Recovery Time"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "derived"
+      ],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "P",
+        "hisuite-backup": "U"
+      },
+      "notes": "Some workout exports may contain derived training fields, but complete status/history portability is not established."
+    },
+    {
+      "taxonomyId": "training.performance-predictions",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "U",
+        "hisuite-backup": "U"
+      },
+      "notes": "Current evidence did not establish a durable provider-level prediction family and extraction route."
+    },
+    {
+      "taxonomyId": "workout.sessions",
+      "providerNames": [
+        "Exercise Records",
+        "Workouts",
+        "Sport Activities"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "normalized"
+      ],
+      "routeCoverage": {
+        "privacy-export": "A",
+        "health-kit-sdk": "A",
+        "health-kit-rest": "U",
+        "apple-health": "P",
+        "health-sync": "U",
+        "gadgetbridge": "P",
+        "hitrava": "A",
+        "hisuite-backup": "U"
+      },
+      "notes": "Hitrava verifies structured workout data in current export generations and converts supported activities to TCX."
+    },
+    {
+      "taxonomyId": "workout.route-elevation",
+      "providerNames": [
+        "Workout Route",
+        "Elevation",
+        "Pace"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "normalized"
+      ],
+      "routeCoverage": {
+        "privacy-export": "A",
+        "health-kit-sdk": "P",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "P",
+        "hitrava": "A",
+        "hisuite-backup": "U"
+      },
+      "notes": "Supported exported workouts can retain GPS and elevation; not every activity or device records a route."
+    },
+    {
+      "taxonomyId": "workout.sport-dynamics",
+      "providerNames": [
+        "Cadence",
+        "Laps",
+        "Swim Metrics"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "captured",
+        "normalized",
+        "derived"
+      ],
+      "routeCoverage": {
+        "privacy-export": "P",
+        "health-kit-sdk": "P",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "P",
+        "hitrava": "P",
+        "hisuite-backup": "U"
+      },
+      "notes": "Fields vary by sport, wearable and exporter support; TCX conversion can be narrower than original Huawei records."
+    },
+    {
+      "taxonomyId": "workout.plans-courses",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Historical partner workout links were not backed by a live current primary source in this audit."
+    },
+    {
+      "taxonomyId": "mobility.gait-function",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Sport-specific dynamics do not establish a general clinical gait or functional-mobility family."
+    },
+    {
+      "taxonomyId": "reproductive.cycle-pregnancy",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "No current primary route evidence was retained for Huawei reproductive-health records."
+    },
+    {
+      "taxonomyId": "nutrition.hydration",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Workout calories do not establish a nutrition or hydration-log family."
+    },
+    {
+      "taxonomyId": "clinical.records-medications",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Device measurements do not establish portable clinical-record or medication-history support."
+    },
+    {
+      "taxonomyId": "wellbeing.mindfulness-mood",
+      "providerNames": [
+        "Emotional Wellbeing",
+        "Breathing Exercise"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "derived",
+        "user-entered"
+      ],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "Huawei product material shows mood and breathing guidance, but no portable record route was established."
+    },
+    {
+      "taxonomyId": "hearing.audio-audiogram",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "No Huawei hearing-health or audiogram family was established."
+    },
+    {
+      "taxonomyId": "insights.trends-alerts-awards",
+      "providerNames": [
+        "Health Trends",
+        "Alerts",
+        "Fitness Guidance"
+      ],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": [
+        "derived"
+      ],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "U",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "N",
+        "hisuite-backup": "U"
+      },
+      "notes": "App-visible guidance and trends are not mapped to a documented portable record."
+    },
+    {
+      "taxonomyId": "device.raw-sensors",
+      "providerNames": [
+        "Workout Sensor Samples",
+        "Wearable Sensor Data"
+      ],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": [
+        "captured"
+      ],
+      "routeCoverage": {
+        "privacy-export": "U",
+        "health-kit-sdk": "U",
+        "health-kit-rest": "U",
+        "apple-health": "NA",
+        "health-sync": "U",
+        "gadgetbridge": "U",
+        "hitrava": "U",
+        "hisuite-backup": "U"
+      },
+      "notes": "Workout GPS, heart rate, cadence and altitude belong to their metric families; no model-specific raw accelerometer or PPG stream proof was verified."
+    },
+    {
+      "taxonomyId": "provenance.metadata",
+      "providerNames": [
+        "Record ID",
+        "Source",
+        "Device",
+        "Timestamp"
+      ],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": [
+        "captured",
+        "normalized"
+      ],
+      "routeCoverage": {
+        "privacy-export": "P",
+        "health-kit-sdk": "P",
+        "health-kit-rest": "U",
+        "apple-health": "P",
+        "health-sync": "U",
+        "gadgetbridge": "P",
+        "hitrava": "P",
+        "hisuite-backup": "U"
+      },
+      "notes": "Record and workout formats carry some provenance, while integrations may normalize or replace source details."
+    }
+  ]
+}

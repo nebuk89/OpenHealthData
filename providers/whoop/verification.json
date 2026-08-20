@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "provider": "WHOOP",
+  "checkedAt": "2026-08-20T12:00:53.705Z",
+  "result": "passed",
+  "failures": [],
+  "warnings": [],
+  "links": [
+    {
+      "url": "https://www.whoop.com/thelocker/access-your-whoop-data-with-new-integrations-data-export-options/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.whoop.com/gb/en/thelocker/access-your-whoop-data-with-new-integrations-data-export-options/"
+    },
+    {
+      "url": "https://www.whoop.com/gb/en/thelocker/introducing-whoop-5-0-and-whoop-mg/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.whoop.com/gb/en/thelocker/introducing-whoop-5-0-and-whoop-mg/"
+    },
+    {
+      "url": "https://www.whoop.com/gb/en/thelocker/the-whoop-journal/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.whoop.com/gb/en/thelocker/the-whoop-journal/"
+    },
+    {
+      "url": "https://www.whoop.com/gb/en/life/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.whoop.com/gb/en/life/"
+    },
+    {
+      "url": "https://www.whoop.com/us/en/privacy/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.whoop.com/gb/en/whoop-privacy-policies/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/developing/overview",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/developing/overview/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/whoop-101",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/whoop-101/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/developing/getting-started",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/developing/getting-started/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/developing/oauth/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/developing/oauth/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/developing/app-approval",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/developing/app-approval/"
+    },
+    {
+      "url": "https://developer.whoop.com/api-terms-of-use/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/api-terms-of-use/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/developing/webhooks/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/developing/webhooks/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/developing/rate-limiting",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/developing/rate-limiting/"
+    },
+    {
+      "url": "https://developer.whoop.com/api/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/api/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/api-changelog",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/api-changelog/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/developing/user-data/cycle",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/developing/user-data/cycle/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/developing/user-data/recovery",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/developing/user-data/recovery/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/developing/user-data/sleep",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/developing/user-data/sleep/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/developing/user-data/workout",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/developing/user-data/workout/"
+    },
+    {
+      "url": "https://developer.whoop.com/docs/developing/user-data/user",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.whoop.com/docs/developing/user-data/user/"
+    },
+    {
+      "url": "https://api.prod.whoop.com/developer/doc/openapi.json",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://api.prod.whoop.com/developer/doc/openapi.json"
+    },
+    {
+      "url": "https://support.whoop.com/s/article/Apple-Health-Integration?language=en_US",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.whoop.com/s/article/Apple-Health-Integration?language=en_US"
+    },
+    {
+      "url": "https://support.whoop.com/s/article/Strava-Integration?language=en_US",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.whoop.com/s/article/Strava-Integration?language=en_US"
+    },
+    {
+      "url": "https://support.whoop.com/s/article/TrainingPeaks-Integration?language=en_US",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.whoop.com/s/article/TrainingPeaks-Integration?language=en_US"
+    },
+    {
+      "url": "https://support.whoop.com/s/article/Google-Health-Integration-For-Android?language=en_US",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.whoop.com/s/article/Google-Health-Integration-For-Android?language=en_US"
+    },
+    {
+      "url": "https://github.com/hedgertronic/whoop",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/hedgertronic/whoop"
+    },
+    {
+      "url": "https://github.com/prankstr/hassio-whoop",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/prankstr/hassio-whoop"
+    },
+    {
+      "url": "https://github.com/kryoseu/whoops",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/kryoseu/whoops"
+    },
+    {
+      "url": "https://github.com/christianmeurer/whoop-reader",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/christianmeurer/whoop-reader"
+    },
+    {
+      "url": "https://github.com/Sophonbot0/whoop-vault",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/Sophonbot0/whoop-vault"
+    },
+    {
+      "url": "https://privacy.whoop.com/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://privacy.whoop.com/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "hedgertronic/whoop",
+      "repositoryUrl": "https://github.com/hedgertronic/whoop",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "prankstr/hassio-whoop",
+      "repositoryUrl": "https://github.com/prankstr/hassio-whoop",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "kryoseu/whoops",
+      "repositoryUrl": "https://github.com/kryoseu/whoops",
+      "declaredLicense": "Apache-2.0",
+      "detectedLicense": "Apache-2.0",
+      "status": "ok"
+    },
+    {
+      "name": "christianmeurer/whoop-reader",
+      "repositoryUrl": "https://github.com/christianmeurer/whoop-reader",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "Sophonbot0/whoop-vault",
+      "repositoryUrl": "https://github.com/Sophonbot0/whoop-vault",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    }
+  ]
+}
