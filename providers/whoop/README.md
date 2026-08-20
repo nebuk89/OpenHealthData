@@ -34,6 +34,7 @@ several important app-derived experiences remain incomplete.
 | WHOOP API v2 | WHOOP member who creates an app | Yes | Profile, body measurements, cycles, Recovery, Sleep and workouts | No Stress, Journal, raw stream, ECG, blood-pressure or lab-result endpoint in the current public OpenAPI |
 | Webhooks plus API | Registered app | Yes | Change/delete notices for workout, sleep and Recovery followed by an API read | No cycle, Stress, Journal or raw-sensor event; notification payload is not the record |
 | Approved public app | Developer whose app passes WHOOP review | Yes | Same scoped API for more than ten members | Approval, privacy policy and design review required |
+| Health Connect | Android member granting record permissions | Yes | Bidirectional activities/calories; selected body measurements inward; steps, sleep and selected Recovery metrics outward | Standardized records are not equivalent to proprietary WHOOP scores; history and exact Recovery fields are not documented |
 | Supported integrations | Member with destination account and platform permissions | Yes, destination-specific | Selected workouts and standardized health fields | Direction, history and field mapping vary; WHOOP scores are not automatically portable |
 | Open-source API clients | Technical member with app credentials | Yes | Mirrors official OAuth/API coverage | Maintenance and token-storage burden; cannot exceed public API fields |
 | Direct BLE projects | Technical owner of a compatible strap | Yes, locally | Device-dependent live or retained sensor data | Unsupported, model/firmware-specific and does not reproduce cloud-derived scores |
@@ -63,36 +64,36 @@ route; `U` unknown; `NA` not applicable. `Open-source API` mirrors the public AP
 extra score coverage. `Direct BLE` covers only independently decoded device data, never a claim
 that cloud-derived WHOOP scores are portable.
 
-| Data family | Included metrics or app outputs | Captured or produced as | CSV export | Developer API v2 | Supported integrations | Open-source API | Direct BLE |
-|---|---|---|---|---|---|---|---|
-| Body measurements | Height, weight, max heart rate | User-entered and normalized profile values | U | A | U | A | N |
-| Daily activity | Physiological cycle boundaries, steps where supported | Captured and normalized | P | P | P | P | P |
-| Energy and active time | Cycle/workout kilojoules and active energy mappings | Normalized and derived | P | P | P | P | N |
-| Heart rate | Cycle/workout average and maximum HR; live/device HR | Captured samples and summaries | P | P | P | P | A |
-| HRV | Recovery RMSSD and trends | Captured input plus normalized daily value | A | A | P | A | P |
-| Blood pressure | WHOOP MG Blood Pressure Insights where available | Derived and device-dependent | P | N | U | N | U |
-| ECG and rhythm | WHOOP MG on-demand ECG where available | Captured electrical record plus classification | P | N | U | N | U |
-| Cardio fitness | VO2 max where available | Derived | U | N | U | N | N |
-| Respiration and oxygen | Sleep respiratory rate and Recovery SpO2 | Captured input plus normalized summary | A | A | P | A | U |
-| Skin temperature | Recovery skin-temperature value | Captured input plus normalized summary | U | A | P | A | A |
-| Sleep sessions and stages | Sleeps, naps, awake/light/SWS/REM totals and disturbances | Captured, normalized and derived | A | A | P | A | N |
-| Sleep insights | Performance, consistency, efficiency, need, debt and nap credit | Proprietary derived scores | A | A | P | A | N |
-| Stress Monitor | All-day 0-3 stress level, events and trends shown in the app | Proprietary derived output | U | N | U | N | N |
-| Recovery | Recovery score, calibration state, RHR, HRV, SpO2 and temperature | Proprietary derived score plus inputs | A | A | P | A | N |
-| Strain and training load | Cycle Strain, workout Strain and HR-zone load | Proprietary derived score | A | A | P | A | N |
-| Healthspan predictions | WHOOP Age, Pace of Aging and related trends where enabled | Proprietary derived outputs | U | N | U | N | N |
-| Workout sessions | Sport, start/end, score state, Strain, HR and energy | Captured session plus derived summary | A | A | A | A | P |
-| Route and elevation | Distance, altitude gain/change and app route where recorded | Captured/normalized session data | P | P | P | P | N |
-| Sport dynamics | HR zones, Strength Trainer classification and activity-specific detail | Captured, normalized and derived | P | P | P | P | U |
-| Strength Trainer and plans | Strength Trainer activities, exercise/set context and planned work | User-entered and derived | P | P | P | P | N |
-| Hormonal and reproductive logs | Journal symptoms, hormonal health and cycle-related context | User-entered and derived | A | N | U | N | N |
-| Nutrition and hydration | Journal nutrition behaviors and partner-originated nutrition | User-entered and external | P | N | P | N | N |
-| Clinical and laboratory data | WHOOP MG reports, Advanced Labs biomarkers, medications and conditions | Captured, external, user-entered and derived | P | N | U | N | N |
-| Journal, mood and symptoms | 300+ behaviors, quantities, times, reflections and symptoms | User-entered | A | N | U | N | N |
-| Journal Impacts and Trends | Recovery correlations, 90-day impacts, calendars and AI patterns | Proprietary derived outputs | U | N | N | N | N |
-| Insights and coaching | Health Monitor trends, WHOOP Coach/AI and alerts | Proprietary derived outputs | P | N | U | N | N |
-| Raw sensor streams | PPG/HR, motion, temperature and device events | Captured | N | N | N | N | P |
-| Provenance | Record IDs, timestamps, updates, timezone, score state and user/device context | Captured and normalized metadata | P | A | P | A | A |
+| Data family | Included metrics or app outputs | Captured or produced as | CSV export | Developer API v2 | Health Connect | Other integrations | Open-source API | Direct BLE |
+|---|---|---|---|---|---|---|---|---|
+| Body measurements | Height, weight, max heart rate | User-entered and normalized profile values | U | A | A | U | A | N |
+| Daily activity | Physiological cycle boundaries, steps where supported | Captured and normalized | P | P | A | P | P | P |
+| Energy and active time | Cycle/workout kilojoules and active energy mappings | Normalized and derived | P | P | A | P | P | N |
+| Heart rate | Cycle/workout average and maximum HR; live/device HR | Captured samples and summaries | P | P | U | P | P | A |
+| HRV | Recovery RMSSD and trends | Captured input plus normalized daily value | A | A | U | P | A | P |
+| Blood pressure | WHOOP MG Blood Pressure Insights where available | Derived and device-dependent | U | N | U | U | N | U |
+| ECG and rhythm | WHOOP MG on-demand ECG where available | Captured electrical record plus classification | U | N | U | U | N | U |
+| Cardio fitness | VO2 max where available | Derived | U | N | U | U | N | N |
+| Respiration and oxygen | Sleep respiratory rate and Recovery SpO2 | Captured input plus normalized summary | A | A | U | P | A | U |
+| Skin temperature | Recovery skin-temperature value | Captured input plus normalized summary | U | A | U | P | A | A |
+| Sleep sessions and stages | Sleeps, naps, awake/light/SWS/REM totals and disturbances | Captured, normalized and derived | A | A | P | P | A | N |
+| Sleep insights | Performance, consistency, efficiency, need, debt and nap credit | Proprietary derived scores | A | A | N | P | A | N |
+| Stress Monitor | All-day 0-3 stress level, events and trends shown in the app | Proprietary derived output | U | N | N | U | N | N |
+| Recovery | Recovery score, calibration state, RHR, HRV, SpO2 and temperature | Proprietary derived score plus inputs | A | A | P | P | A | N |
+| Strain and training load | Cycle Strain, workout Strain and HR-zone load | Proprietary derived score | A | A | N | P | A | N |
+| Healthspan predictions | WHOOP Age, Pace of Aging and related trends where enabled | Proprietary derived outputs | U | N | N | U | N | N |
+| Workout sessions | Sport, start/end, score state, Strain, HR and energy | Captured session plus derived summary | A | A | A | A | A | P |
+| Route and elevation | Distance, altitude gain/change and app route where recorded | Captured/normalized session data | P | P | P | P | P | N |
+| Sport dynamics | HR zones, Strength Trainer classification and activity-specific detail | Captured, normalized and derived | P | P | U | P | P | U |
+| Plans and courses | Planned workouts, training plans and courses | User-entered and external | U | N | N | U | N | N |
+| Hormonal and reproductive logs | Journal symptoms, hormonal health and cycle-related context | User-entered and derived | A | N | U | U | N | N |
+| Nutrition and hydration | Journal nutrition behaviors and partner-originated nutrition | User-entered and external | P | N | U | P | N | N |
+| Clinical and laboratory data | WHOOP MG reports, Advanced Labs biomarkers, medications and conditions | Captured, external, user-entered and derived | U | N | U | U | N | N |
+| Journal, mood and symptoms | Individual Journal entries; exact fields are not exhaustively documented | User-entered | P | N | U | U | N | N |
+| Journal Impacts and Trends | Recovery correlations, 90-day impacts, calendars and AI patterns | Proprietary derived outputs | U | N | N | N | N | N |
+| Insights and coaching | Health Monitor trends, WHOOP Coach/AI and alerts | Proprietary derived outputs | U | N | N | U | N | N |
+| Raw sensor streams | PPG/HR, motion, temperature and device events | Captured | U | N | N | N | N | P |
+| Provenance | Record IDs, timestamps, updates, timezone, score state and user/device context | Captured and normalized metadata | P | A | P | P | A | A |
 
 ## Official access routes
 
@@ -106,7 +107,8 @@ Strain scores, resting heart rate, HRV, respiratory rate, sleep architecture and
 entries. It also says WHOOP Life members receive additional medical-grade health data, but does not
 publish that file's exact fields.
 
-The same page does not claim inclusion of raw PPG or accelerometer samples, beat-to-beat HR,
+The same page is not an exhaustive schema and does not document inclusion of raw PPG or
+accelerometer samples, beat-to-beat HR,
 Stress Monitor history, Journal Impact percentages, Journal Trends, WHOOP AI narratives, deleted
 records or source-level provenance. The export should therefore be treated as broad and useful,
 not as a lossless account database. A real export is still required to establish the exact column
@@ -181,20 +183,22 @@ beat intervals, second-level motion or the source signals used to calculate prop
 
 WHOOP's current export article identifies
 [Apple Health](https://support.whoop.com/s/article/Apple-Health-Integration?language=en_US),
-[Strava](https://support.whoop.com/s/article/Strava-Integration?language=en_US) and TrainingPeaks
-as supported integrations. The support site is JavaScript/authentication sensitive, so the link
-gate establishes current route availability but not a complete field matrix.
+[Strava](https://support.whoop.com/s/article/Strava-Integration?language=en_US) and
+[TrainingPeaks](https://support.whoop.com/s/article/TrainingPeaks-Integration?language=en_US)
+as supported integrations. WHOOP also documents a current bidirectional
+[Health Connect integration](https://support.whoop.com/s/article/Google-Health-Integration-For-Android?language=en_US).
+The support site is JavaScript-sensitive, so payload claims below stay within the current
+first-party category lists.
 
 | Destination | Direction established | Confirmed useful scope | Material limits |
 |---|---|---|---|
 | Apple Health | WHOOP to Apple Health; selected Apple Health workouts can be imported to WHOOP | Selected workouts and standardized health samples under category permissions | No evidence that WHOOP Stress, Recovery, Strain or Journal-derived outputs become equivalent Apple Health records; backfill is not guaranteed |
+| Health Connect | Health Connect to WHOOP and WHOOP to Health Connect | Inbound activities, distance, calories, weight, height, body fat and lean mass; outbound activities, calories, steps, sleep and selected Recovery metrics | Normalized Health Connect records are not WHOOP's proprietary Recovery, Strain, Sleep or Stress scores; exact selected Recovery fields and backfill remain undocumented |
 | Strava | WHOOP to Strava | Workout/activity publication | Activity route, not Sleep, Recovery, Stress or Journal portability; edit and historical behavior require testing |
-| TrainingPeaks | WHOOP to TrainingPeaks | Training-oriented workout and selected recovery/sleep/strain context | Exact fields, subscription requirements, inbound plans and backfill are not specified on an accessible public matrix |
+| TrainingPeaks | WHOOP to TrainingPeaks | Recovery, Sleep and Strain metrics | TrainingPeaks Premium is required; inbound plans and historical backfill remain unknown |
 
-The specialist report also proposed Health Connect, MyFitnessPal and Peloton. This audit does not
-promote them to confirmed route rows because a current, field-level primary page could not be
-retrieved independently. They remain hands-on and primary-documentation checks rather than inferred
-coverage.
+The specialist report also proposed MyFitnessPal and Peloton. They remain hands-on and
+primary-documentation checks rather than inferred coverage.
 
 ## Open-source routes
 
@@ -217,8 +221,8 @@ Journal outputs.
   after cancellation is not documented.
 - **Parity gap:** Stress Monitor, Journal automation/insights, AI narratives and newer clinical
   surfaces are outside the current public OpenAPI.
-- **Raw-data gap:** public API and documented CSV do not offer raw optical, accelerometer or
-  beat-level history.
+- **Raw-data gap:** public API and the non-exhaustive CSV description do not document raw optical,
+  accelerometer or beat-level history.
 - **History ambiguity:** full account date range is offered in CSV, but API retention and field
   equivalence are not guaranteed.
 - **Secret and token handling:** server-side client secrets and rotating refresh tokens protect
@@ -244,10 +248,10 @@ Journal outputs.
 | Formats | API JSON and consumer CSV; no published stable CSV schema |
 | User authorization | OAuth scopes, explicit consent, refresh and revocation |
 | Developer access | Self-service for ten-member development; approval for wider launch |
-| Integrations | Apple Health, Strava and TrainingPeaks confirmed at route level; field/backfill detail incomplete |
+| Integrations | Health Connect is bidirectional by documented categories; Apple Health, Strava and TrainingPeaks are also confirmed with route-specific limits |
 | Provenance | Strong API IDs and timestamps; export/device provenance uncertain |
 | Corrections and deletion | API update timestamps and selected delete webhooks; export propagation unknown |
-| Portability | Good for summaries and individual Journal entries, weak for raw and several proprietary app outputs |
+| Portability | Good for summaries and some Journal data, weak for raw and several proprietary app outputs |
 | Evidence quality | Current docs/OpenAPI and repository metadata checked; account/device tests remain outstanding |
 
 ## Provisional openness assessment
@@ -265,8 +269,8 @@ AI/Healthspan/clinical outputs and raw sensor history are meaningful parts of th
 4. Confirm whether CSV Journal data includes quantities/times only or also Impacts, Trends and AI
    narratives.
 5. Test API pagination to the oldest account record and after membership cancellation.
-6. Verify current Apple Health, Strava and TrainingPeaks fields, backfill, edits and deletions.
-7. Obtain current primary documentation for Health Connect, MyFitnessPal and Peloton before rating
-   those routes.
+6. Verify current Apple Health, Health Connect, Strava and TrainingPeaks backfill, edits and
+   deletions.
+7. Obtain current primary documentation for MyFitnessPal and Peloton before rating those routes.
 8. Check WHOOP MG, Life and Advanced Labs export contents without inferring them from product inputs.
 9. Reproduce BLE projects on supported hardware/firmware before treating decoded fields as reliable.

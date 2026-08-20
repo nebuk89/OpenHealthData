@@ -102,6 +102,20 @@
       "confidence": "high"
     },
     {
+      "id": "health-connect-is-bidirectional",
+      "claim": "WHOOP's Health Connect integration is bidirectional with an explicit, asymmetric category list.",
+      "sourceUrl": "https://support.whoop.com/s/article/Google-Health-Integration-For-Android?language=en_US",
+      "evidence": "WHOOP documents Health Connect to WHOOP activities, distance, calories, weight, height, body fat and lean mass, and WHOOP to Health Connect activities, calories, steps, sleep and selected Recovery metrics.",
+      "confidence": "high"
+    },
+    {
+      "id": "trainingpeaks-is-premium-outbound",
+      "claim": "WHOOP sends Recovery, Sleep and Strain metrics to TrainingPeaks and requires TrainingPeaks Premium.",
+      "sourceUrl": "https://support.whoop.com/s/article/TrainingPeaks-Integration?language=en_US",
+      "evidence": "WHOOP's current integration article names the three outbound metric groups and the destination's Premium subscription prerequisite; it does not establish inbound plans or backfill.",
+      "confidence": "high"
+    },
+    {
       "id": "direct-ble-does-not-prove-score-portability",
       "claim": "Community BLE tools can expose selected device-side signals but do not reproduce WHOOP's cloud-derived Stress, Recovery, Sleep or Journal outputs.",
       "sourceUrl": "https://github.com/Sophonbot0/whoop-vault",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "WHOOP",
-  "checkedAt": "2026-08-20T11:38:37.461Z",
+  "checkedAt": "2026-08-20T11:59:20.407Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -143,6 +143,18 @@
       "status": "ok",
       "httpStatus": 200,
       "finalUrl": "https://support.whoop.com/s/article/Strava-Integration?language=en_US"
+    },
+    {
+      "url": "https://support.whoop.com/s/article/TrainingPeaks-Integration?language=en_US",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.whoop.com/s/article/TrainingPeaks-Integration?language=en_US"
+    },
+    {
+      "url": "https://support.whoop.com/s/article/Google-Health-Integration-For-Android?language=en_US",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.whoop.com/s/article/Google-Health-Integration-For-Android?language=en_US"
     },
     {
       "url": "https://github.com/hedgertronic/whoop",

@@ -64,9 +64,16 @@ the audit records accessible primary text.
 - [Apple Health Integration](https://support.whoop.com/s/article/Apple-Health-Integration?language=en_US)
   — **WHOOP Support**; current Apple Health connection route, category permissions and selected
   workout import/export behavior; page body may require browser rendering.
+- [Google Health Integration for Android](https://support.whoop.com/s/article/Google-Health-Integration-For-Android?language=en_US)
+  — **WHOOP Support**; bidirectional Health Connect categories: activities, distance, calories and
+  body measurements inward; activities, calories, steps, sleep and selected Recovery metrics
+  outward.
 - [Strava Integration](https://support.whoop.com/s/article/Strava-Integration?language=en_US) —
   **WHOOP Support**; current WHOOP workout publication route; page body may require browser
   rendering.
+- [TrainingPeaks Integration](https://support.whoop.com/s/article/TrainingPeaks-Integration?language=en_US)
+  — **WHOOP Support**; outbound Recovery, Sleep and Strain metrics and TrainingPeaks Premium
+  requirement; inbound plans and backfill are not documented.
 - [Access your WHOOP data: integration catalogue](https://www.whoop.com/thelocker/access-your-whoop-data-with-new-integrations-data-export-options/)
   — **WHOOP**; names Apple Health, Strava and TrainingPeaks as current integrations without
   publishing a complete field matrix.
