@@ -15,7 +15,7 @@ manifest.
 | 5 | Huawei | Pending | Pending | Pending | Pending |
 | 6 | Xiaomi | Pending | Pending | Pending | Pending |
 | 7 | Zepp Health / Amazfit | Pending | Pending | Pending | Pending |
-| 8 | WHOOP | Pending | Pending | Pending | Pending |
+| 8 | [WHOOP](./whoop/README.md) | Partial | Verified | [Coverage](./whoop/coverage.json) | [Resources](./whoop/resources.md) |
 | 9 | Oura | Pending | Pending | Pending | Pending |
 | 10 | Polar | Pending | Pending | Pending | Pending |
 | 11 | Suunto | Pending | Pending | Pending | Pending |

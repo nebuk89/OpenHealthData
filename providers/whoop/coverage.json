@@ -1,0 +1,475 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": "1.0.0",
+  "provider": "WHOOP",
+  "evidenceDate": "2026-08-20",
+  "routes": [
+    {
+      "id": "csv-export",
+      "label": "Data Export CSV",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "developer-api",
+      "label": "WHOOP Developer API v2",
+      "kind": "official-api",
+      "access": "self-service"
+    },
+    {
+      "id": "integrations",
+      "label": "Supported integrations",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "open-source-api",
+      "label": "Open-source OAuth/API clients",
+      "kind": "open-source",
+      "access": "self-service"
+    },
+    {
+      "id": "direct-ble",
+      "label": "Unofficial direct BLE projects",
+      "kind": "unofficial",
+      "access": "unsupported"
+    }
+  ],
+  "coverage": [
+    {
+      "taxonomyId": "body.composition",
+      "providerNames": ["Body Measurements", "Height", "Weight"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "normalized"],
+      "routeCoverage": {
+        "csv-export": "U",
+        "developer-api": "A",
+        "integrations": "U",
+        "open-source-api": "A",
+        "direct-ble": "N"
+      },
+      "notes": "The API exposes height, weight and maximum heart rate, not a complete body-composition panel."
+    },
+    {
+      "taxonomyId": "activity.daily",
+      "providerNames": ["Physiological Cycle", "Steps"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "P",
+        "integrations": "P",
+        "open-source-api": "P",
+        "direct-ble": "P"
+      },
+      "notes": "Cycles are available; the current public API has no documented steps field."
+    },
+    {
+      "taxonomyId": "activity.energy",
+      "providerNames": ["Kilojoules", "Active Energy"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["normalized", "derived"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "P",
+        "integrations": "P",
+        "open-source-api": "P",
+        "direct-ble": "N"
+      },
+      "notes": "Cycle and workout kilojoules are documented; resting energy and complete active-time parity are not."
+    },
+    {
+      "taxonomyId": "cardio.heart-rate",
+      "providerNames": ["Heart Rate", "Resting Heart Rate", "Heart Rate Zones"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "P",
+        "integrations": "P",
+        "open-source-api": "P",
+        "direct-ble": "A"
+      },
+      "notes": "The API exposes summary HR and zones, not the continuous wearable series; BLE projects provide device-dependent live/history samples."
+    },
+    {
+      "taxonomyId": "cardio.hrv",
+      "providerNames": ["HRV", "HRV RMSSD"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "csv-export": "A",
+        "developer-api": "A",
+        "integrations": "P",
+        "open-source-api": "A",
+        "direct-ble": "P"
+      },
+      "notes": "Daily Recovery HRV is explicitly available; beat-to-beat history is not a documented public API record."
+    },
+    {
+      "taxonomyId": "cardio.blood-pressure",
+      "providerNames": ["Blood Pressure Insights"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "N",
+        "integrations": "U",
+        "open-source-api": "N",
+        "direct-ble": "U"
+      },
+      "notes": "WHOOP Life additional medical-grade export data is documented, but exact blood-pressure fields are not; the public OpenAPI has no blood-pressure endpoint."
+    },
+    {
+      "taxonomyId": "cardio.ecg-rhythm",
+      "providerNames": ["WHOOP MG ECG"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "N",
+        "integrations": "U",
+        "open-source-api": "N",
+        "direct-ble": "U"
+      },
+      "notes": "Device/membership/region dependent; WHOOP says Life exports add medical-grade data but publishes no ECG schema, and the public API has no ECG route."
+    },
+    {
+      "taxonomyId": "cardio.vo2max",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "csv-export": "U",
+        "developer-api": "N",
+        "integrations": "U",
+        "open-source-api": "N",
+        "direct-ble": "N"
+      },
+      "notes": "WHOOP Age is mapped under performance predictions; a distinct first-party VO2 max record was not established."
+    },
+    {
+      "taxonomyId": "respiratory.rate-oxygen",
+      "providerNames": ["Respiratory Rate", "Blood Oxygen", "SpO2"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "csv-export": "A",
+        "developer-api": "A",
+        "integrations": "P",
+        "open-source-api": "A",
+        "direct-ble": "U"
+      },
+      "notes": "Sleep respiratory rate and Recovery SpO2 are documented, conditional on device/data availability."
+    },
+    {
+      "taxonomyId": "temperature.body-skin",
+      "providerNames": ["Skin Temperature"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {
+        "csv-export": "U",
+        "developer-api": "A",
+        "integrations": "P",
+        "open-source-api": "A",
+        "direct-ble": "A"
+      },
+      "notes": "Recovery skin temperature is an API field; BLE availability and decoding are hardware/firmware specific."
+    },
+    {
+      "taxonomyId": "sleep.sessions-stages",
+      "providerNames": ["Sleep", "Nap", "Light Sleep", "SWS", "REM"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "csv-export": "A",
+        "developer-api": "A",
+        "integrations": "P",
+        "open-source-api": "A",
+        "direct-ble": "N"
+      },
+      "notes": "Sessions, naps and stage totals are documented; direct BLE projects state that sleep phases are cloud-derived."
+    },
+    {
+      "taxonomyId": "sleep.insights-score",
+      "providerNames": ["Sleep Performance", "Sleep Consistency", "Sleep Efficiency", "Sleep Need", "Sleep Debt"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "csv-export": "A",
+        "developer-api": "A",
+        "integrations": "P",
+        "open-source-api": "A",
+        "direct-ble": "N"
+      },
+      "notes": "The main Sleep scores and need components are public API fields; coaching narratives are not."
+    },
+    {
+      "taxonomyId": "recovery.stress",
+      "providerNames": ["Stress Monitor"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "csv-export": "U",
+        "developer-api": "N",
+        "integrations": "U",
+        "open-source-api": "N",
+        "direct-ble": "N"
+      },
+      "notes": "Stress Monitor is an app-derived output; the current public OpenAPI has no Stress endpoint or scope."
+    },
+    {
+      "taxonomyId": "recovery.energy-readiness",
+      "providerNames": ["Recovery", "Recovery Score"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "csv-export": "A",
+        "developer-api": "A",
+        "integrations": "P",
+        "open-source-api": "A",
+        "direct-ble": "N"
+      },
+      "notes": "Recovery score and principal inputs are directly represented in the public API."
+    },
+    {
+      "taxonomyId": "training.load-status",
+      "providerNames": ["Cycle Strain", "Workout Strain"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "csv-export": "A",
+        "developer-api": "A",
+        "integrations": "P",
+        "open-source-api": "A",
+        "direct-ble": "N"
+      },
+      "notes": "WHOOP Strain is available at cycle and workout level; this does not expose the proprietary algorithm."
+    },
+    {
+      "taxonomyId": "training.performance-predictions",
+      "providerNames": ["WHOOP Age", "Pace of Aging"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "csv-export": "U",
+        "developer-api": "N",
+        "integrations": "U",
+        "open-source-api": "N",
+        "direct-ble": "N"
+      },
+      "notes": "Healthspan outputs are app-derived; no current public API route was found."
+    },
+    {
+      "taxonomyId": "workout.sessions",
+      "providerNames": ["Workout", "Activity"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "csv-export": "A",
+        "developer-api": "A",
+        "integrations": "A",
+        "open-source-api": "A",
+        "direct-ble": "P"
+      },
+      "notes": "Workout records and summaries are a strong API/integration surface; BLE activity classification is incomplete."
+    },
+    {
+      "taxonomyId": "workout.route-elevation",
+      "providerNames": ["Distance", "Altitude Gain", "Activity Route"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "P",
+        "integrations": "P",
+        "open-source-api": "P",
+        "direct-ble": "N"
+      },
+      "notes": "The API exposes distance and altitude summaries, not a documented GPS track series."
+    },
+    {
+      "taxonomyId": "workout.sport-dynamics",
+      "providerNames": ["Heart Rate Zones", "Strength Trainer"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "P",
+        "integrations": "P",
+        "open-source-api": "P",
+        "direct-ble": "U"
+      },
+      "notes": "HR-zone durations and selected workout summaries are available; detailed set, power, cadence and motion series are not documented."
+    },
+    {
+      "taxonomyId": "workout.plans-courses",
+      "providerNames": ["Strength Trainer", "Planned Workouts"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external", "derived"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "P",
+        "integrations": "P",
+        "open-source-api": "P",
+        "direct-ble": "N"
+      },
+      "notes": "Strength Trainer is represented as a workout type, but complete exercise/set plans and inbound partner behavior are not established."
+    },
+    {
+      "taxonomyId": "mobility.gait-function",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "csv-export": "U",
+        "developer-api": "N",
+        "integrations": "U",
+        "open-source-api": "N",
+        "direct-ble": "U"
+      },
+      "notes": "No normalized gait or clinical mobility family was established; motion sensing alone is not evidence of a gait output."
+    },
+    {
+      "taxonomyId": "reproductive.cycle-pregnancy",
+      "providerNames": ["Journal Hormonal Health", "Menstrual Cycle Context"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "derived"],
+      "routeCoverage": {
+        "csv-export": "A",
+        "developer-api": "N",
+        "integrations": "U",
+        "open-source-api": "N",
+        "direct-ble": "N"
+      },
+      "notes": "Journal entries are exportable; the public API has no Journal or reproductive-health endpoint."
+    },
+    {
+      "taxonomyId": "nutrition.hydration",
+      "providerNames": ["Journal Nutrition", "Integrated Nutrition"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "N",
+        "integrations": "P",
+        "open-source-api": "N",
+        "direct-ble": "N"
+      },
+      "notes": "Nutrition behaviors can be journaled and partner data may be imported, but no complete first-party nutrition schema was established."
+    },
+    {
+      "taxonomyId": "clinical.records-medications",
+      "providerNames": ["Advanced Labs", "Biomarkers", "Medications", "Health Conditions"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external", "derived"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "N",
+        "integrations": "U",
+        "open-source-api": "N",
+        "direct-ble": "N"
+      },
+      "notes": "WHOOP privacy materials describe labs, biomarkers, medications and conditions; the public member API has no clinical-record route."
+    },
+    {
+      "taxonomyId": "wellbeing.mindfulness-mood",
+      "providerNames": ["WHOOP Journal", "Mood", "Symptoms", "Meditation"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "derived"],
+      "routeCoverage": {
+        "csv-export": "A",
+        "developer-api": "N",
+        "integrations": "U",
+        "open-source-api": "N",
+        "direct-ble": "N"
+      },
+      "notes": "Individual Journal entries are in the documented export; Journal Impacts, Trends and AI patterns are not listed."
+    },
+    {
+      "taxonomyId": "hearing.audio-audiogram",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "csv-export": "U",
+        "developer-api": "N",
+        "integrations": "U",
+        "open-source-api": "N",
+        "direct-ble": "N"
+      },
+      "notes": "No WHOOP hearing-health or audiogram family was established."
+    },
+    {
+      "taxonomyId": "insights.trends-alerts-awards",
+      "providerNames": ["Journal Impacts", "Journal Trends", "WHOOP Coach", "Health Monitor", "WHOOP Age"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "N",
+        "integrations": "U",
+        "open-source-api": "N",
+        "direct-ble": "N"
+      },
+      "notes": "The app provides multiple narratives and trends; input metrics or Journal entries do not prove portability of these derived outputs."
+    },
+    {
+      "taxonomyId": "device.raw-sensors",
+      "providerNames": ["PPG", "Accelerometer", "Motion", "Device Temperature"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured"],
+      "routeCoverage": {
+        "csv-export": "N",
+        "developer-api": "N",
+        "integrations": "N",
+        "open-source-api": "N",
+        "direct-ble": "P"
+      },
+      "notes": "No official raw stream is documented; direct BLE projects expose subsets with model/firmware-dependent and partly empirical decoding."
+    },
+    {
+      "taxonomyId": "provenance.metadata",
+      "providerNames": ["Record ID", "Created At", "Updated At", "Timezone Offset", "Score State"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {
+        "csv-export": "P",
+        "developer-api": "A",
+        "integrations": "P",
+        "open-source-api": "A",
+        "direct-ble": "A"
+      },
+      "notes": "API record provenance is strong; device/firmware/source attribution and deletion markers are not consistently documented across routes."
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "provider": "WHOOP",
+  "evidenceDate": "2026-08-20",
+  "claims": [
+    {
+      "id": "developer-registration-requires-membership",
+      "claim": "A WHOOP membership is required to create and operate an app on the WHOOP Developer Platform.",
+      "sourceUrl": "https://developer.whoop.com/docs/developing/overview",
+      "evidence": "The official overview says a developer must have a WHOOP membership and uses the WHOOP account as the developer login.",
+      "confidence": "high"
+    },
+    {
+      "id": "personal-development-is-self-service",
+      "claim": "A developer can create an app and use it immediately with up to ten WHOOP members before wider launch approval is required.",
+      "sourceUrl": "https://developer.whoop.com/docs/developing/app-approval",
+      "evidence": "The App Approval page explicitly permits immediate development with ten members and requires approval only to launch to all members.",
+      "confidence": "high"
+    },
+    {
+      "id": "oauth-supports-recurring-consented-access",
+      "claim": "WHOOP uses OAuth 2.0 authorization-code consent and supplies a rotating refresh token when the offline scope is requested.",
+      "sourceUrl": "https://developer.whoop.com/docs/developing/oauth/",
+      "evidence": "The OAuth guide documents consent, bearer access tokens, the offline scope, refresh-token rotation and revocation.",
+      "confidence": "high"
+    },
+    {
+      "id": "v2-api-exposes-core-whoop-scores",
+      "claim": "The current public v2 API exposes cycle and workout Strain, Recovery score and inputs, and detailed Sleep sessions, stages and scores.",
+      "sourceUrl": "https://api.prod.whoop.com/developer/doc/openapi.json",
+      "evidence": "The current OpenAPI schemas define CycleScore.strain, WorkoutScore.strain, RecoveryScore.recovery_score and SleepScore with stage, need, performance, consistency and efficiency fields.",
+      "confidence": "high"
+    },
+    {
+      "id": "public-v2-has-no-stress-or-journal-route",
+      "claim": "The current public v2 OpenAPI contains no endpoint or OAuth scope for Stress Monitor, Journal entries, Journal Impacts or Journal Trends.",
+      "sourceUrl": "https://api.prod.whoop.com/developer/doc/openapi.json",
+      "evidence": "The published paths and schemas cover profile, body measurements, cycles, Recovery, Sleep, workouts, revocation and separate trusted-partner lab operations; no Stress or Journal path/schema is present.",
+      "confidence": "high"
+    },
+    {
+      "id": "csv-supports-entire-account-history",
+      "claim": "WHOOP's first-party data export lets a member select a date range or their entire account history and emails a CSV.",
+      "sourceUrl": "https://www.whoop.com/thelocker/access-your-whoop-data-with-new-integrations-data-export-options/",
+      "evidence": "The current export article gives app/web steps, names CSV as the format and explicitly says the entire account history can be selected.",
+      "confidence": "high"
+    },
+    {
+      "id": "csv-includes-core-scores-and-journal-entries",
+      "claim": "The documented CSV includes daily Sleep, Recovery and Strain scores, selected physiological metrics, sleep architecture and individual Journal entries.",
+      "sourceUrl": "https://www.whoop.com/thelocker/access-your-whoop-data-with-new-integrations-data-export-options/",
+      "evidence": "The export article names the three daily scores, RHR, HRV, respiratory rate, sleep architecture and individual Journal entries.",
+      "confidence": "high"
+    },
+    {
+      "id": "journal-derived-insights-are-distinct-outputs",
+      "claim": "WHOOP derives Journal Impacts, Trends and AI-identified patterns from logged behaviors rather than treating the Journal as only a raw response list.",
+      "sourceUrl": "https://www.whoop.com/gb/en/thelocker/the-whoop-journal/",
+      "evidence": "The first-party Journal article describes Impacts after a 5 yes/5 no threshold within 90 days, calendar Trends and automatically surfaced WHOOP AI patterns.",
+      "confidence": "high"
+    },
+    {
+      "id": "newer-app-outputs-are-tier-dependent",
+      "claim": "WHOOP's current product includes tier- and region-dependent ECG, Blood Pressure Insights, WHOOP Age, Pace of Aging and Hormonal Insights.",
+      "sourceUrl": "https://www.whoop.com/gb/en/thelocker/introducing-whoop-5-0-and-whoop-mg/",
+      "evidence": "WHOOP's 5.0/MG announcement names each output and qualifies ECG by device/region, Blood Pressure Insights as beta, and Healthspan/Hormonal Insights by eligibility.",
+      "confidence": "high"
+    },
+    {
+      "id": "api-history-has-no-universal-guarantee",
+      "claim": "The API supports start/end filters and pagination but publishes no universal retention or app-parity guarantee.",
+      "sourceUrl": "https://api.prod.whoop.com/developer/doc/openapi.json",
+      "evidence": "Collection operations define start, end, limit and nextToken parameters; the schema contains no fixed retention period or full-account completeness statement.",
+      "confidence": "high"
+    },
+    {
+      "id": "default-client-rate-limits",
+      "claim": "WHOOP's default API client limits are 100 requests per minute and 10,000 requests per day.",
+      "sourceUrl": "https://developer.whoop.com/docs/developing/rate-limiting",
+      "evidence": "The rate-limit page states both defaults, documents headers and provides a dashboard request route for increases.",
+      "confidence": "high"
+    },
+    {
+      "id": "webhooks-cover-three-record-families",
+      "claim": "WHOOP webhooks publish update/delete events for workout, Sleep and Recovery records and require a follow-up API read.",
+      "sourceUrl": "https://developer.whoop.com/docs/developing/webhooks/",
+      "evidence": "The webhook event table lists workout, sleep and recovery updated/deleted events and examples retrieve the identified record through v2.",
+      "confidence": "high"
+    },
+    {
+      "id": "api-currently-free",
+      "claim": "WHOOP currently provides API access without charge while reserving the right to introduce pricing or additional limits.",
+      "sourceUrl": "https://developer.whoop.com/api-terms-of-use/",
+      "evidence": "Section 1.12 says API access and use are currently provided at no charge and commits to prior notice if charging begins.",
+      "confidence": "high"
+    },
+    {
+      "id": "supported-integration-catalogue",
+      "claim": "WHOOP's current first-party export/integration article names Apple Health, Strava and TrainingPeaks as supported third-party integrations.",
+      "sourceUrl": "https://www.whoop.com/thelocker/access-your-whoop-data-with-new-integrations-data-export-options/",
+      "evidence": "The article links all three destinations from its Improved integrations and insights section.",
+      "confidence": "high"
+    },
+    {
+      "id": "direct-ble-does-not-prove-score-portability",
+      "claim": "Community BLE tools can expose selected device-side signals but do not reproduce WHOOP's cloud-derived Stress, Recovery, Sleep or Journal outputs.",
+      "sourceUrl": "https://github.com/Sophonbot0/whoop-vault",
+      "evidence": "The project documents local HR, temperature, motion and history decoding while explicitly stating sleep phases are computed only in the WHOOP cloud.",
+      "confidence": "medium"
+    }
+  ],
+  "projects": [
+    {
+      "name": "hedgertronic/whoop",
+      "repositoryUrl": "https://github.com/hedgertronic/whoop",
+      "license": "MIT"
+    },
+    {
+      "name": "prankstr/hassio-whoop",
+      "repositoryUrl": "https://github.com/prankstr/hassio-whoop",
+      "license": "MIT"
+    },
+    {
+      "name": "kryoseu/whoops",
+      "repositoryUrl": "https://github.com/kryoseu/whoops",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "christianmeurer/whoop-reader",
+      "repositoryUrl": "https://github.com/christianmeurer/whoop-reader",
+      "license": "MIT"
+    },
+    {
+      "name": "Sophonbot0/whoop-vault",
+      "repositoryUrl": "https://github.com/Sophonbot0/whoop-vault",
+      "license": "MIT"
+    }
+  ]
+}
