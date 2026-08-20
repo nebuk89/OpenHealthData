@@ -17,7 +17,7 @@ manifest.
 | 7 | Zepp Health / Amazfit | Pending | Pending | Pending | Pending |
 | 8 | WHOOP | Pending | Pending | Pending | Pending |
 | 9 | Oura | Pending | Pending | Pending | Pending |
-| 10 | Polar | Pending | Pending | Pending | Pending |
+| 10 | [Polar](./polar/README.md) | Partial | Verified | [Coverage](./polar/coverage.json) | [Resources](./polar/resources.md) |
 | 11 | Suunto | Pending | Pending | Pending | Pending |
 | 12 | COROS | Pending | Pending | Pending | Pending |
 | 13 | Withings | Pending | Pending | Pending | Pending |

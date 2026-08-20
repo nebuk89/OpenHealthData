@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "provider": "Polar",
+  "checkedAt": "2026-08-20T11:47:49.787Z",
+  "result": "passed",
+  "failures": [],
+  "warnings": [],
+  "links": [
+    {
+      "url": "https://www.polar.com/accesslink-api/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.polar.com/accesslink-api/"
+    },
+    {
+      "url": "https://www.polar.com/en/legal/polar-api-agreement",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.polar.com/en/legal/polar-api-agreement"
+    },
+    {
+      "url": "https://www.polar.com/en/legal/privacy-notice",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.polar.com/en/legal/privacy-notice"
+    },
+    {
+      "url": "https://www.polar.com/en/smart-coaching/sleepwise",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.polar.com/en/smart-coaching/sleepwise"
+    },
+    {
+      "url": "https://www.polar.com/en/explore/elixir",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.polar.com/en/explore/elixir"
+    },
+    {
+      "url": "https://github.com/polarofficial/polar-ble-sdk",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/polarofficial/polar-ble-sdk"
+    },
+    {
+      "url": "https://github.com/polarofficial/accesslink-example-python",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/polarofficial/accesslink-example-python"
+    },
+    {
+      "url": "https://github.com/fsmeraldi/bleakheart",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/fsmeraldi/bleakheart"
+    },
+    {
+      "url": "https://support.polar.com/en/how-to-download-all-your-data-from-polar-flow",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.polar.com/en/how-to-download-all-your-data-from-polar-flow"
+    },
+    {
+      "url": "https://support.polar.com/en/export-training-sessions-flow",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.polar.com/en/export-training-sessions-flow"
+    },
+    {
+      "url": "https://support.polar.com/en/support/connecting_polar_flow_with_apple_health",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.polar.com/en/support/connecting_polar_flow_with_apple_health"
+    },
+    {
+      "url": "https://support.polar.com/en/flow-app-health-connect",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.polar.com/en/flow-app-health-connect"
+    },
+    {
+      "url": "https://support.polar.com/en/support/how_can_i_automatically_sync_my_data_from_polar_flow_to_strava",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.polar.com/en/support/how_can_i_automatically_sync_my_data_from_polar_flow_to_strava"
+    },
+    {
+      "url": "https://support.polar.com/en/support/how_can_i_automatically_sync_my_data_from_polar_flow_to_trainingpeaks",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.polar.com/en/support/how_can_i_automatically_sync_my_data_from_polar_flow_to_trainingpeaks"
+    },
+    {
+      "url": "https://support.polar.com/en/komoot",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.polar.com/en/komoot"
+    },
+    {
+      "url": "https://support.polar.com/en/updates/polar-flow-update-komoot-two-way-sync",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.polar.com/en/updates/polar-flow-update-komoot-two-way-sync"
+    },
+    {
+      "url": "https://admin.polaraccesslink.com/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://admin.polaraccesslink.com/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "polarofficial/polar-ble-sdk",
+      "repositoryUrl": "https://github.com/polarofficial/polar-ble-sdk",
+      "declaredLicense": "NOASSERTION",
+      "detectedLicense": "NOASSERTION",
+      "status": "ok"
+    },
+    {
+      "name": "polarofficial/accesslink-example-python",
+      "repositoryUrl": "https://github.com/polarofficial/accesslink-example-python",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "fsmeraldi/bleakheart",
+      "repositoryUrl": "https://github.com/fsmeraldi/bleakheart",
+      "declaredLicense": "MPL-2.0",
+      "detectedLicense": "MPL-2.0",
+      "status": "ok"
+    }
+  ]
+}
