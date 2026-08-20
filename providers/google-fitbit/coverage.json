@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": "1.0.0",
+  "provider": "Google / Fitbit",
+  "evidenceDate": "2026-08-20",
+  "routes": [
+    {
+      "id": "google-health-api",
+      "label": "Google Health API",
+      "kind": "official-api",
+      "access": "self-service"
+    },
+    {
+      "id": "google-health-webhooks",
+      "label": "Google Health webhooks",
+      "kind": "official-api",
+      "access": "self-service"
+    },
+    {
+      "id": "health-connect",
+      "label": "Google Health / Health Connect sync",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "google-takeout",
+      "label": "Google Takeout for migrated accounts",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "fitbit-complete-archive",
+      "label": "Original Fitbit-login complete archive",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "fitbit-selectable-export",
+      "label": "Original Fitbit-login selectable export",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "workout-tcx",
+      "label": "Per-workout TCX export",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "fitbit-personal-api",
+      "label": "Legacy Fitbit Personal Web API",
+      "kind": "official-api",
+      "access": "self-service"
+    },
+    {
+      "id": "fitbit-third-party-intraday",
+      "label": "Legacy third-party intraday API",
+      "kind": "official-api",
+      "access": "partner-gated"
+    },
+    {
+      "id": "fitbit-subscriptions",
+      "label": "Legacy Fitbit subscriptions",
+      "kind": "official-api",
+      "access": "self-service"
+    },
+    {
+      "id": "open-source",
+      "label": "Open-source API clients and local sync",
+      "kind": "open-source",
+      "access": "self-service"
+    }
+  ],
+  "coverage": [
+    {
+      "taxonomyId": "body.composition",
+      "providerNames": ["Weight", "Height", "Body Fat", "BMI"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "user-entered", "normalized"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"P","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"A","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"P","open-source":"A"},
+      "notes": "Current API lists weight, height and body-fat samples; Health Connect writes weight and body fat but not height or BMI."
+    },
+    {
+      "taxonomyId": "activity.daily",
+      "providerNames": ["Steps", "Distance", "Floors", "Activity Level", "Sedentary Period"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"P","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"A","fitbit-third-party-intraday":"P","fitbit-subscriptions":"P","open-source":"A"},
+      "notes": "Current API exposes interval records, reconciliation and rollups; third-party legacy detail requires approval."
+    },
+    {
+      "taxonomyId": "activity.energy",
+      "providerNames": ["Active Energy", "Total Calories", "Active Zone Minutes", "Time in Heart Rate Zone"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["normalized", "derived"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"P","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"U","fitbit-personal-api":"A","fitbit-third-party-intraday":"P","fitbit-subscriptions":"P","open-source":"A"},
+      "notes": "Energy and zone-derived values are documented; the current TCX help page does not enumerate preserved energy fields."
+    },
+    {
+      "taxonomyId": "cardio.heart-rate",
+      "providerNames": ["Heart Rate", "Resting Heart Rate", "Heart Rate Zones"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"P","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"U","fitbit-personal-api":"A","fitbit-third-party-intraday":"P","fitbit-subscriptions":"N","open-source":"A"},
+      "notes": "Samples, daily resting heart rate and zone records are documented; the current TCX help page does not enumerate heart-rate fields."
+    },
+    {
+      "taxonomyId": "cardio.hrv",
+      "providerNames": ["Heart Rate Variability", "Daily HRV"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"A","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"A","fitbit-third-party-intraday":"P","fitbit-subscriptions":"N","open-source":"A"},
+      "notes": "Current API lists HRV samples and a daily summary; export-file coverage is not enumerated."
+    },
+    {
+      "taxonomyId": "cardio.blood-pressure",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"google-health-api":"U","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"U","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"U","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"U"},
+      "notes": "Blood glucose is documented, but no current blood-pressure data type or first-party app record was established."
+    },
+    {
+      "taxonomyId": "cardio.ecg-rhythm",
+      "providerNames": ["Electrocardiogram", "Irregular Rhythm Notification"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"P","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"A"},
+      "notes": "Dedicated read-only scopes exist; feature and device availability is region-dependent."
+    },
+    {
+      "taxonomyId": "cardio.vo2max",
+      "providerNames": ["VO2 Max", "Run VO2 Max", "Daily VO2 Max"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"A","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"U","fitbit-personal-api":"A","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"A"},
+      "notes": "Current catalogue lists three VO2-max representations; the official TCX help page does not document VO2-max preservation."
+    },
+    {
+      "taxonomyId": "respiratory.rate-oxygen",
+      "providerNames": ["Oxygen Saturation", "Daily SpO2", "Respiratory Rate", "Respiratory Rate Sleep Summary"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"P","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"A","fitbit-third-party-intraday":"P","fitbit-subscriptions":"N","open-source":"A"},
+      "notes": "Samples and daily/sleep summaries are documented for compatible devices."
+    },
+    {
+      "taxonomyId": "temperature.body-skin",
+      "providerNames": ["Core Body Temperature", "Daily Sleep Temperature Derivations"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"A","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"A","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"A"},
+      "notes": "Current API separates core samples from sleep-derived daily temperature values."
+    },
+    {
+      "taxonomyId": "sleep.sessions-stages",
+      "providerNames": ["Sleep", "Sleep Stages", "Sleep Summary"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"A","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"A","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"P","open-source":"A"},
+      "notes": "Session records include stages and summary fields; Google Takeout and selectable-export schemas are not enumerated."
+    },
+    {
+      "taxonomyId": "sleep.insights-score",
+      "providerNames": ["Sleep Score", "Sleep Insights"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"google-health-api":"U","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"U","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"U","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"U"},
+      "notes": "Sleep inputs and summaries are documented, but no portable score or coaching record was found."
+    },
+    {
+      "taxonomyId": "recovery.stress",
+      "providerNames": ["Stress Management Score"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"google-health-api":"U","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"U","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"U","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"U"},
+      "notes": "No current API data type for the app-visible proprietary stress score was found."
+    },
+    {
+      "taxonomyId": "recovery.energy-readiness",
+      "providerNames": ["Daily Readiness Score"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"google-health-api":"U","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"U","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"U","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"U"},
+      "notes": "No current API data type for the proprietary readiness score was found."
+    },
+    {
+      "taxonomyId": "training.load-status",
+      "providerNames": ["Cardio Load", "Target Load"],
+      "presence": "unknown",
+      "appVisible": "partial",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"google-health-api":"U","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"U","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"U","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"U"},
+      "notes": "Exercise and zone inputs are available, but a portable first-party load/status record was not established."
+    },
+    {
+      "taxonomyId": "training.performance-predictions",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"google-health-api":"U","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"U","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"U","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"U"},
+      "notes": "No documented first-party race-prediction or equivalent portable record was established."
+    },
+    {
+      "taxonomyId": "workout.sessions",
+      "providerNames": ["Exercise", "Activity Log"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "user-entered"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"A","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"A","fitbit-personal-api":"A","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"P","open-source":"A"},
+      "notes": "Current API exposes exercise sessions; the app provides per-workout TCX for GPS exercises."
+    },
+    {
+      "taxonomyId": "workout.route-elevation",
+      "providerNames": ["GPS Location", "Altitude", "Elevation Gain"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"google-health-api":"P","google-health-webhooks":"P","health-connect":"A","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"P","fitbit-personal-api":"P","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"P","open-source":"P"},
+      "notes": "Location has a read-only scope and altitude is a data type; availability remains exercise/device-dependent."
+    },
+    {
+      "taxonomyId": "workout.sport-dynamics",
+      "providerNames": ["Swim Lengths", "Stroke Count", "Exercise Details"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"google-health-api":"P","google-health-webhooks":"P","health-connect":"P","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"U","fitbit-personal-api":"P","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"P","open-source":"P"},
+      "notes": "Swim lengths and selected exercise details are documented; no complete cross-sport dynamics matrix exists."
+    },
+    {
+      "taxonomyId": "workout.plans-courses",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"google-health-api":"U","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"U","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"U","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"U"},
+      "notes": "No current complete plan, coached-workout or course history route was established."
+    },
+    {
+      "taxonomyId": "mobility.gait-function",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"google-health-api":"U","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"U","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"U","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"U"},
+      "notes": "No current gait or clinical functional-mobility data type was found."
+    },
+    {
+      "taxonomyId": "reproductive.cycle-pregnancy",
+      "providerNames": ["Menstrual Period", "Ovulation Test"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["user-entered", "derived"],
+      "routeCoverage": {"google-health-api":"N","google-health-webhooks":"N","health-connect":"P","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"P","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"N"},
+      "notes": "The API is write-only; Google Health writes periods, flow and intermenstrual bleeding to Health Connect, but not all cycle types that it reads."
+    },
+    {
+      "taxonomyId": "nutrition.hydration",
+      "providerNames": ["Food", "Nutrition Log", "Hydration Log"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external", "normalized"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"A","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"A","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"P","open-source":"A"},
+      "notes": "Current API has food catalogue plus personal nutrition and hydration logs."
+    },
+    {
+      "taxonomyId": "clinical.records-medications",
+      "providerNames": ["Medical Records", "Medications"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external", "normalized"],
+      "routeCoverage": {"google-health-api":"U","google-health-webhooks":"N","health-connect":"A","google-takeout":"U","fitbit-complete-archive":"U","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"U","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"U"},
+      "notes": "The Google Health app writes its documented medical-record categories, including medications, to Health Connect; the Google Health API does not document them."
+    },
+    {
+      "taxonomyId": "wellbeing.mindfulness-mood",
+      "providerNames": ["Moods", "Mindfulness", "Symptoms"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["user-entered"],
+      "routeCoverage": {"google-health-api":"N","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"P","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"N"},
+      "notes": "Current scopes permit writes for these records but publish no read-only scope or list operation."
+    },
+    {
+      "taxonomyId": "hearing.audio-audiogram",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"google-health-api":"U","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"U","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"U","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"U"},
+      "notes": "No Google/Fitbit hearing-health, audiogram or sound-exposure family was established."
+    },
+    {
+      "taxonomyId": "insights.trends-alerts-awards",
+      "providerNames": ["Badges", "Trends", "Coaching", "Insights"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"google-health-api":"U","google-health-webhooks":"N","health-connect":"N","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"NA","fitbit-personal-api":"U","fitbit-third-party-intraday":"NA","fitbit-subscriptions":"N","open-source":"U"},
+      "notes": "No current portable record family for the first-party presentation layer was found."
+    },
+    {
+      "taxonomyId": "device.raw-sensors",
+      "providerNames": ["Intraday Data", "Wearable Source Family"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"google-health-api":"P","google-health-webhooks":"P","health-connect":"P","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"U","fitbit-personal-api":"P","fitbit-third-party-intraday":"P","fitbit-subscriptions":"N","open-source":"P"},
+      "notes": "Interval/sample data is available, but no direct accelerometer, gyroscope or device-protocol stream is documented."
+    },
+    {
+      "taxonomyId": "provenance.metadata",
+      "providerNames": ["Data Source", "Recording Method", "Device", "Platform", "Application"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"google-health-api":"A","google-health-webhooks":"P","health-connect":"P","google-takeout":"U","fitbit-complete-archive":"P","fitbit-selectable-export":"U","workout-tcx":"U","fitbit-personal-api":"P","fitbit-third-party-intraday":"U","fitbit-subscriptions":"P","open-source":"A"},
+      "notes": "Current API explicitly carries source-family, device, platform, application, recording-method and timestamp metadata."
+    }
+  ]
+}
