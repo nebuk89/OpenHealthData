@@ -9,7 +9,7 @@
     {"id":"zepp-os","label":"Zepp OS device APIs","kind":"official-sdk","access":"self-service"},
     {"id":"integrations","label":"Supported integrations","kind":"integration","access":"self-service"},
     {"id":"gadgetbridge","label":"Gadgetbridge direct device sync","kind":"open-source","access":"unsupported"},
-    {"id":"private-cloud","label":"Unofficial Huami/Zepp clients","kind":"unofficial","access":"unsupported"}
+    {"id":"private-cloud","label":"Legacy Mi Fit/Zepp Life private clients","kind":"unofficial","access":"unknown"}
   ],
   "coverage": [
     {
@@ -27,17 +27,17 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized", "derived"],
-      "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"A","integrations":"P","gadgetbridge":"A","private-cloud":"P"},
-      "notes": "Zepp OS exposes daily steps; integrations and direct-device support are selective."
+      "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"A","integrations":"U","gadgetbridge":"A","private-cloud":"U"},
+      "notes": "Zepp OS exposes daily steps; current integration and private-cloud coverage are not documented."
     },
     {
       "taxonomyId": "activity.energy",
-      "providerNames": ["Calories Burned", "Activity Goals"],
+      "providerNames": ["Calories Burned", "Activity Goals", "HybridCharge Energy Intelligence"],
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["normalized", "derived"],
-      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"A","integrations":"P","gadgetbridge":"A","private-cloud":"P"},
-      "notes": "Daily and workout calories are documented, but parity across routes is not."
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"A","integrations":"U","gadgetbridge":"A","private-cloud":"U"},
+      "notes": "Daily and workout calories are documented; HybridCharge is app-visible but no extraction route is established."
     },
     {
       "taxonomyId": "cardio.heart-rate",
@@ -45,7 +45,7 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized", "derived"],
-      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"A","integrations":"P","gadgetbridge":"A","private-cloud":"P"},
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"A","integrations":"U","gadgetbridge":"A","private-cloud":"U"},
       "notes": "Zepp OS documents live and current-day values; complete account history remains unknown."
     },
     {
@@ -108,7 +108,7 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized", "derived"],
-      "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"A","integrations":"P","gadgetbridge":"A","private-cloud":"U"},
+      "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"A","integrations":"U","gadgetbridge":"A","private-cloud":"U"},
       "notes": "Zepp OS documents session and stage values; complete cloud history is unknown."
     },
     {
@@ -131,12 +131,12 @@
     },
     {
       "taxonomyId": "recovery.energy-readiness",
-      "providerNames": ["PAI", "Readiness", "Physical Recovery", "Mental Recovery"],
+      "providerNames": ["PAI", "Readiness", "Physical Recovery", "Mental Recovery", "HybridCharge Energy Intelligence"],
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["derived"],
       "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"P","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
-      "notes": "Zepp OS exposes PAI; the policy documents Readiness inputs and score, but complete portability is unknown."
+      "notes": "Zepp OS exposes PAI; Readiness and HybridCharge are app-visible derived outputs with unknown extraction coverage."
     },
     {
       "taxonomyId": "training.load-status",
@@ -144,7 +144,7 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["derived"],
-      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"U","integrations":"U","gadgetbridge":"P","private-cloud":"P"},
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"U","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
       "notes": "Derived training values are documented in the app/policy but no complete route mapping exists."
     },
     {
@@ -162,8 +162,8 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized", "derived"],
-      "routeCoverage": {"privacy-export":"U","workout-export":"A","zepp-os":"P","integrations":"A","gadgetbridge":"A","private-cloud":"A"},
-      "notes": "The app and community tools provide workout routes; exact stream fidelity varies."
+      "routeCoverage": {"privacy-export":"U","workout-export":"A","zepp-os":"P","integrations":"P","gadgetbridge":"A","private-cloud":"U"},
+      "notes": "Strava establishes selective activity sync; current-Zepp private-cloud workout coverage is unknown."
     },
     {
       "taxonomyId": "workout.route-elevation",
@@ -171,8 +171,8 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized"],
-      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"P","integrations":"P","gadgetbridge":"A","private-cloud":"A"},
-      "notes": "Routes and altitude are documented, but official workout export format and precision need validation."
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"P","integrations":"U","gadgetbridge":"A","private-cloud":"U"},
+      "notes": "Routes and altitude are documented, but integration preservation and current-Zepp private-cloud access are unknown."
     },
     {
       "taxonomyId": "workout.sport-dynamics",
@@ -180,7 +180,7 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized", "derived"],
-      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"U","integrations":"P","gadgetbridge":"P","private-cloud":"P"},
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"U","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
       "notes": "Policy and app listing document these values; route-by-route field parity is unknown."
     },
     {
@@ -189,8 +189,8 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["derived", "user-entered", "external"],
-      "routeCoverage": {"privacy-export":"U","workout-export":"U","zepp-os":"U","integrations":"P","gadgetbridge":"U","private-cloud":"U"},
-      "notes": "Plans and route import exist, but extraction of complete authored content is unknown."
+      "routeCoverage": {"privacy-export":"U","workout-export":"U","zepp-os":"U","integrations":"U","gadgetbridge":"U","private-cloud":"U"},
+      "notes": "The current Zepp page names training platforms, but direction, plan transfer and extraction are unknown."
     },
     {
       "taxonomyId": "mobility.gait-function",
@@ -221,12 +221,12 @@
     },
     {
       "taxonomyId": "clinical.records-medications",
-      "providerNames": ["Blood Glucose"],
-      "presence": "present",
-      "appVisible": "partial",
-      "productionLayers": ["user-entered", "external"],
-      "routeCoverage": {"privacy-export":"U","workout-export":"NA","zepp-os":"U","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
-      "notes": "The app listing describes manually added glucose readings; general clinical records and medications are unknown."
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"privacy-export":"U","workout-export":"NA","zepp-os":"U","integrations":"U","gadgetbridge":"U","private-cloud":"U"},
+      "notes": "Manual glucose readings are not evidence of clinical-record or medication functionality; this canonical family remains unknown."
     },
     {
       "taxonomyId": "wellbeing.mindfulness-mood",
@@ -248,12 +248,12 @@
     },
     {
       "taxonomyId": "insights.trends-alerts-awards",
-      "providerNames": ["Goals", "Readiness", "Zepp Coach", "Zepp Aura", "Alerts"],
+      "providerNames": ["Goals", "Readiness", "HybridCharge Energy Intelligence", "LifeLoad", "Zepp Coach", "Zepp Aura", "Alerts"],
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["derived"],
       "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"P","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
-      "notes": "App-visible insights and coaching do not have a published portability contract."
+      "notes": "HybridCharge and other app-visible insights do not have a published portability contract."
     },
     {
       "taxonomyId": "device.raw-sensors",
@@ -261,7 +261,7 @@
       "presence": "present",
       "appVisible": "partial",
       "productionLayers": ["captured"],
-      "routeCoverage": {"privacy-export":"NA","workout-export":"N","zepp-os":"A","integrations":"N","gadgetbridge":"P","private-cloud":"U"},
+      "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"A","integrations":"N","gadgetbridge":"P","private-cloud":"U"},
       "notes": "Zepp OS exposes live accelerometer and selected sensor interfaces; raw historical PPG export is not established."
     },
     {
@@ -270,8 +270,8 @@
       "presence": "present",
       "appVisible": "partial",
       "productionLayers": ["captured", "normalized"],
-      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"P","integrations":"P","gadgetbridge":"A","private-cloud":"P"},
-      "notes": "The policy documents device metadata; preservation through export and integrations is unknown."
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"P","integrations":"U","gadgetbridge":"A","private-cloud":"U"},
+      "notes": "The policy documents device metadata; preservation through export, integrations and current-Zepp private cloud is unknown."
     }
   ]
 }

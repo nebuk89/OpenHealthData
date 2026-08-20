@@ -14,7 +14,7 @@ manifest.
 | 4 | [Samsung](./samsung/README.md) | Partial | Verified | [Coverage](./samsung/coverage.json) | [Resources](./samsung/resources.md) |
 | 5 | Huawei | Pending | Pending | Pending | Pending |
 | 6 | Xiaomi | Pending | Pending | Pending | Pending |
-| 7 | [Zepp Health / Amazfit](./zepp-health-amazfit/README.md) | Restricted | Reviewed | [Coverage](./zepp-health-amazfit/coverage.json) | [Resources](./zepp-health-amazfit/resources.md) |
+| 7 | [Zepp Health / Amazfit](./zepp-health-amazfit/README.md) | Restricted | Verified | [Coverage](./zepp-health-amazfit/coverage.json) | [Resources](./zepp-health-amazfit/resources.md) |
 | 8 | WHOOP | Pending | Pending | Pending | Pending |
 | 9 | [Oura](./oura/README.md) | Mostly open | Verified | [Coverage](./oura/coverage.json) | [Resources](./oura/resources.md) |
 | 10 | Polar | Pending | Pending | Pending | Pending |

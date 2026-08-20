@@ -45,16 +45,13 @@ and is deliberately excluded.
 
 ## Integration documentation
 
+- [Zepp app](https://us.amazfit.com/pages/zepp-app) — **Amazfit / Zepp Health**; current first-party
+  page naming Strava, TrainingPeaks, komoot, Runna and adidas Running, and describing HybridCharge
+  Energy Intelligence. It does not specify integration direction or field mappings.
 - [Amazfit and Strava](https://support.strava.com/en-us/articles/15402010-amazfit-and-strava) —
   **Strava**; current reciprocal support page for automatic Amazfit activity synchronization.
 - [Amazfit partner page](https://www.trainingpeaks.com/partners/amazfit/) — **TrainingPeaks**;
   current partnership and product integration context; field mapping and history are not specified.
-- [Manage Health data from multiple sources](https://support.apple.com/en-us/108779) — **Apple**;
-  Health per-app permissions, source attribution and priority model.
-- [Health Connect](https://support.google.com/android/answer/12201227) — **Google**; Android
-  permissioned health-store model used to interpret, but not independently prove, Zepp coverage.
-- [Connect apps with Google Fit](https://support.google.com/fit/answer/6098255) — **Google**;
-  Google Fit third-party authorization model.
 
 ## Open-source projects
 
@@ -64,8 +61,8 @@ and is deliberately excluded.
 - [`huami-token`](https://github.com/argrento/huami-token) — **MIT; Python**; Zepp- and
   Mi-Fitness-specific login modes for device keys and tokens; not a health-history exporter.
 - [Mi Fit and Zepp workout exporter](https://github.com/rolandsz/Mi-Fit-and-Zepp-workout-exporter)
-  — **MIT; Python**; selected workout retrieval through undocumented Huami/Zepp services and
-  multiple local output formats.
+  — **MIT; Python**; selected workout retrieval for the legacy `com.xiaomi.hm.health` Mi Fit/Zepp
+  Life package, not evidence of current Zepp app private-cloud access.
 
 ## Secondary context
 

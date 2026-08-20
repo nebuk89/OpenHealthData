@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Zepp Health / Amazfit",
-  "checkedAt": "2026-08-20T11:37:06.910Z",
+  "checkedAt": "2026-08-20T11:55:39.616Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -115,16 +115,16 @@
       "finalUrl": "https://apps.apple.com/us/app/zepp/id1127269366"
     },
     {
+      "url": "https://us.amazfit.com/pages/zepp-app",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://us.amazfit.com/pages/zepp-app"
+    },
+    {
       "url": "https://support.strava.com/en-us/articles/15402010-amazfit-and-strava",
       "status": "ok",
       "httpStatus": 200,
       "finalUrl": "https://support.strava.com/en-us/articles/15402010-amazfit-and-strava"
-    },
-    {
-      "url": "https://www.trainingpeaks.com/partners/amazfit/",
-      "status": "ok",
-      "httpStatus": 200,
-      "finalUrl": "https://www.trainingpeaks.com/partners/amazfit/"
     },
     {
       "url": "https://developer.zepp.com/",
@@ -139,22 +139,10 @@
       "finalUrl": "https://www.zepp.com/privacy-support"
     },
     {
-      "url": "https://support.apple.com/en-us/108779",
+      "url": "https://www.trainingpeaks.com/partners/amazfit/",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://support.apple.com/en-us/108779"
-    },
-    {
-      "url": "https://support.google.com/android/answer/12201227",
-      "status": "ok",
-      "httpStatus": 200,
-      "finalUrl": "https://support.google.com/android/answer/12201227"
-    },
-    {
-      "url": "https://support.google.com/fit/answer/6098255",
-      "status": "ok",
-      "httpStatus": 200,
-      "finalUrl": "https://support.google.com/fit/answer/6098255"
+      "finalUrl": "https://www.trainingpeaks.com/partners/amazfit/"
     },
     {
       "url": "https://codeberg.org/Freeyourgadget/Gadgetbridge",

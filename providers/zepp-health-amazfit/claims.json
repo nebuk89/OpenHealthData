@@ -60,6 +60,20 @@
       "confidence": "high"
     },
     {
+      "id": "current-zepp-names-partner-platforms",
+      "claim": "Zepp Health's current Zepp app page names Strava, TrainingPeaks, komoot, Runna and adidas Running as connected platforms without documenting direction or field-level coverage.",
+      "sourceUrl": "https://us.amazfit.com/pages/zepp-app",
+      "evidence": "The first-party page names the five platforms together but provides no record schema, directionality table or historical-sync guarantee.",
+      "confidence": "high"
+    },
+    {
+      "id": "hybridcharge-is-derived-readiness",
+      "claim": "HybridCharge Energy Intelligence is a current Zepp-derived preparedness output that combines recent training load, recovery inputs and sleep.",
+      "sourceUrl": "https://us.amazfit.com/pages/zepp-app",
+      "evidence": "The first-party Zepp app page describes HybridCharge as estimating preparedness for additional effort from training load, recovery inputs and sleep; it does not establish extraction.",
+      "confidence": "high"
+    },
+    {
       "id": "gadgetbridge-is-local-device-route",
       "claim": "Gadgetbridge supports local, cloudless synchronization with Amazfit devices but only for supported models and device-retained records.",
       "sourceUrl": "https://github.com/Freeyourgadget/Gadgetbridge",
@@ -74,10 +88,10 @@
       "confidence": "high"
     },
     {
-      "id": "private-workout-export-is-narrow",
-      "claim": "The Mi Fit and Zepp workout exporter automates selected workouts through undocumented services but does not establish complete Zepp account coverage.",
+      "id": "legacy-workout-exporter-not-current-zepp",
+      "claim": "The Mi Fit and Zepp workout exporter targets the legacy com.xiaomi.hm.health Mi Fit/Zepp Life package and does not establish private-cloud workout access for the current Zepp app.",
       "sourceUrl": "https://github.com/rolandsz/Mi-Fit-and-Zepp-workout-exporter",
-      "evidence": "The repository describes token-based export of workouts to several local formats and explicitly centers its scope on workout data.",
+      "evidence": "The repository's token instructions use platform_app=com.xiaomi.hm.health; the current Zepp app uses com.huami.watch.hmwatchmanager.",
       "confidence": "high"
     },
     {

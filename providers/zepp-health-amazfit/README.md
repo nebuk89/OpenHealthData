@@ -20,8 +20,8 @@ or parity with every value visible in the Zepp app.
 For repeatable personal access, [Gadgetbridge](https://github.com/Freeyourgadget/Gadgetbridge)
 offers the strongest local-first route for supported Amazfit devices. It synchronizes directly over
 Bluetooth and therefore cannot recover complete cloud history or metrics no longer retained by the
-device. Private Huami/Zepp clients can automate selected account or workout operations but depend on
-undocumented services and broad credentials.
+device. Legacy Mi Fit/Zepp Life clients demonstrate older Huami service access but do not establish
+equivalent private-cloud coverage for the current Zepp app.
 
 This audit covers **Amazfit devices and the Zepp app**. Xiaomi's **Mi Fitness** application and
 backend are a separate provider. Legacy Huami and Mi Fit names in URLs or project titles do not
@@ -34,9 +34,9 @@ establish Mi Fitness compatibility and are not used to merge the two ecosystems.
 | Zepp app data-portability request | Authenticated Zepp account holder | No; request workflow | Personal-data package | Public schema, formats, history and regional parity are undocumented |
 | Zepp workout import/export | Zepp app user | No; app workflow | Workout records supported by the current app/device | Exact formats and field coverage require hands-on validation |
 | Zepp OS device APIs | Registered developer and compatible Zepp OS device owner | Yes, while an installed mini app runs | Selected live, daily and recent device metrics | On-device interface, not a cloud account-history API |
-| Supported integrations | Account holder with destination account | Yes after linking | Selective health or activity subsets | Direction, fields and backfill vary; no lossless mirror |
+| Supported integrations | Account holder with destination account | Route-dependent | Named partner connections; Strava activity sync is directly documented | Except for Strava, direction, fields and backfill are unknown from current evidence |
 | Gadgetbridge | Owner of a supported Amazfit device | Yes, locally | Device-retained activity, sleep, heart rate, workouts and model-specific metrics | Model/firmware specific; pairing keys may be required |
-| Private Huami/Zepp clients | Technically capable account holder | Yes | Selected device/account metadata and workouts | Unsupported endpoints, powerful tokens and breakage risk |
+| Legacy Mi Fit/Zepp Life private scripts | Technically capable legacy-app user | Yes when endpoints still work | Selected legacy workouts and account metadata | Current Zepp app applicability is unknown; unsupported endpoints and credentials are fragile |
 
 ## Openness comparison
 
@@ -59,43 +59,46 @@ processes a metric establishes app/account presence, not export availability.
 
 **Codes:** `A` available; `P` partial, conditional or lossy; `N` not available; `U` unknown from
 current evidence; `NA` not applicable. `Privacy export` remains `U` where no public archive schema
-exists. `Private cloud` refers only to unsupported, reverse-engineered services.
+exists. `Legacy private cloud` refers to reverse-engineered Mi Fit/Zepp Life evidence whose
+applicability to the current Zepp app is unknown.
 
-| Data family | Included metrics or app outputs | Captured or produced as | Privacy export | Workout export | Zepp OS | Integrations | Gadgetbridge | Private cloud |
+| Data family | Included metrics or app outputs | Captured or produced as | Privacy export | Workout export | Zepp OS | Integrations | Gadgetbridge | Legacy private cloud |
 |---|---|---|---|---|---|---|---|---|
 | Body measurements and composition | Weight, BMI, body fat, muscle, water, bone mass, body age | Scale, user-entered and derived values | U | NA | U | U | P | U |
-| Daily movement | Steps, stand events, distance and floors | Motion-derived samples and daily summaries | U | N | A | P | A | P |
-| Energy and active time | Calories, activity time and goals | Derived daily/workout summaries | U | P | A | P | A | P |
-| Heart rate | Current, continuous, resting, zones and daily maximum | Optical samples plus summaries | U | P | A | P | A | P |
+| Daily movement | Steps, stand events, distance and floors | Motion-derived samples and daily summaries | U | N | A | U | A | U |
+| Energy and active time | Calories, activity time, goals and HybridCharge Energy Intelligence | Derived daily/workout summaries and readiness estimate | U | P | A | U | A | U |
+| Heart rate | Current, continuous, resting, zones and daily maximum | Optical samples plus summaries | U | P | A | U | A | U |
 | HRV | Sleep HRV and app recovery inputs | Captured intervals plus derived summaries | U | U | U | U | P | U |
-| Blood pressure and glucose | Manually added external readings | User-entered/external records | U | NA | U | U | P | U |
+| Blood pressure | Manually added external readings | User-entered/external records | U | NA | U | U | P | U |
 | ECG and rhythm | ECG and atrial-fibrillation records where supported | Electrical samples plus classification | U | NA | P | U | P | U |
 | VO2 max | Exercise-capacity estimate | Workout-derived estimate | U | U | U | U | P | U |
 | Blood oxygen | Current and recent SpO2 | Optical readings and hourly summaries | U | U | A | U | P | U |
 | Temperature | Device-recorded temperature and readiness input | Sensor values plus baseline interpretation | U | U | P | U | P | U |
-| Sleep sessions and stages | Sleep duration, REM, light/deep stages and naps | Sensor-derived intervals | U | N | A | P | A | U |
+| Sleep sessions and stages | Sleep duration, REM, light/deep stages and naps | Sensor-derived intervals | U | N | A | U | A | U |
 | Sleep insights and score | Sleep score, breathing and recovery quality | Proprietary derived outputs | U | N | A | U | P | U |
 | Stress | Current, minute, hourly and seven-day stress values | Proprietary derived series | U | N | A | U | P | U |
-| PAI and Readiness | PAI; physical/mental recovery; Readiness score | Proprietary derived scores | U | N | P | U | P | U |
-| Training load and status | Training effect, load, recovery and status | Workout-derived outputs | U | P | U | U | P | P |
+| PAI, Readiness and HybridCharge | PAI; physical/mental recovery; Readiness; HybridCharge Energy Intelligence | Proprietary derived scores | U | N | P | U | P | U |
+| Training load and status | Training effect, load, recovery and status | Workout-derived outputs | U | P | U | U | P | U |
 | Performance predictions | Exercise capacity and Zepp Coach recommendations | Proprietary derived estimates | U | U | U | U | U | U |
-| Workout sessions | Sport, duration, distance, pace, speed, calories and laps | Recorded session plus summaries | U | A | P | A | A | A |
-| Route and elevation | GPS track, altitude, pressure and weather context | GNSS/barometer series | U | P | P | P | A | A |
-| Sport dynamics | Cadence, stride, strokes, SWOLF and strength logs | Sensor values and derived fields | U | P | U | P | P | P |
-| Plans and coaching | Zepp Coach plans, targets and recommendations | User preference plus proprietary coaching | U | U | U | P | U | U |
+| Workout sessions | Sport, duration, distance, pace, speed, calories and laps | Recorded session plus summaries | U | A | P | P | A | U |
+| Route and elevation | GPS track, altitude, pressure and weather context | GNSS/barometer series | U | P | P | U | A | U |
+| Sport dynamics | Cadence, stride, strokes, SWOLF and strength logs | Sensor values and derived fields | U | P | U | U | P | U |
+| Plans and coaching | Zepp Coach plans, targets and recommendations | User preference plus proprietary coaching | U | U | U | U | U | U |
 | Gait and functional mobility | One-legged standing test | Captured test plus derived result | U | NA | U | U | U | U |
 | Cycle and reproductive health | Cycle dates, symptoms, mood and predictions | User-entered records plus predictions | U | NA | U | U | U | U |
 | Nutrition and hydration | Food diary, calories and macronutrients | User-entered, photo-derived and external data | U | NA | U | U | U | U |
 | Mood and symptoms | Emotion records and guidance | User-entered records plus guidance | U | NA | U | U | U | U |
 | Hearing and audio exposure | Ambient sound and earphone volume | Captured and normalized values | U | NA | U | U | U | U |
-| Trends, alerts and awards | Goals, trends, alerts, readiness and coaching insights | Derived classifications and summaries | U | N | P | U | P | U |
-| Raw sensors | Accelerometer and other supported device sensor callbacks | Live device-local samples | NA | N | A | N | P | U |
-| Provenance and metadata | Device ID, model, firmware, timestamps and source context | Device/account/file metadata | U | P | P | P | A | P |
+| Trends, alerts and awards | Goals, HybridCharge, LifeLoad, readiness and coaching insights | Derived classifications and summaries | U | N | P | U | P | U |
+| Raw sensors | Accelerometer and other supported device sensor callbacks | Live device-local samples | U | N | A | N | P | U |
+| Provenance and metadata | Device ID, model, firmware, timestamps and source context | Device/account/file metadata | U | P | P | U | A | U |
 
 `Workout export` is not treated as proof of every listed format or stream: the current app-store
 listing confirms an import/export capability, while the exact app-version behavior still needs
 hands-on testing. Likewise, receiving an input such as heart rate does not imply that a destination
-receives Zepp's score derived from it.
+receives Zepp's score derived from it. Route codes for the three families containing HybridCharge
+also cover established calories, PAI or other insights; HybridCharge itself remains `U` on every
+route because no extraction path is documented.
 
 ## Official access routes
 
@@ -149,7 +152,10 @@ Zepp app parity.
 The privacy policy provides unusually broad evidence of what Zepp may collect or produce:
 heart-rate families, SpO2, stress, PAI, PPG, HRV, ECG, body composition, exercise dynamics, GPS
 tracks, temperature, sleep and REM, cycle records, mood, Readiness, Zepp Coach, food diary, device
-metadata and settings. It also distinguishes captured values from manually supplied and derived
+metadata and settings. The current [Zepp app page](https://us.amazfit.com/pages/zepp-app) also
+describes HybridCharge Energy Intelligence as a derived preparedness estimate that combines
+training load, recovery inputs and sleep. No reviewed source establishes HybridCharge extraction
+through any route. The policy distinguishes captured values from manually supplied and derived
 outputs.
 
 That breadth must not be mistaken for portability. The policy is a processing disclosure rather
@@ -160,12 +166,15 @@ samples to today or the previous seven days; it does not document complete accou
 
 | Destination | Direction | Confirmed scope | Material limits |
 |---|---|---|---|
-| Apple Health | Zepp to Apple Health documented by Zepp distribution material; reverse import unknown | Selected health, sleep and workout categories | Per-category iOS consent; exact types, history, scores and deletion propagation are undocumented |
-| Android Health Connect | Current Android integration indicated; read direction unknown | Selective activity, sleep or vital records | Exact read/write record list and regional availability require permission-screen validation |
-| Google Fit | Legacy Zepp-to-Google Fit route documented in first-party material; current regional availability varies | Selected steps, activity, heart-rate and sleep summaries | No complete-history or proprietary-score guarantee |
+| Apple Health | Unknown | Unknown | Generic Apple documentation does not establish current Zepp direction, record types, history or deletion propagation |
+| Android Health Connect | Unknown | Unknown | Generic Android documentation does not establish current Zepp read/write behavior or record types |
+| Google Fit | Unknown | Unknown | Generic Google documentation does not establish current Zepp direction, fields or regional availability |
 | [Strava](https://support.strava.com/en-us/articles/15402010-amazfit-and-strava) | Zepp/Amazfit to Strava | Newly synchronized eligible activities | Not daily health portability; payload and backfill vary |
-| [TrainingPeaks](https://www.trainingpeaks.com/partners/amazfit/) | Partner relationship confirmed; exact current directionality requires revalidation | Training and activity use cases | Current public partner page does not specify field mapping or history |
-| Relive and adidas Running | Zepp to destination reported in first-party app material | Eligible activities | Exact sport types, fields and backfill are undocumented |
+| [TrainingPeaks](https://us.amazfit.com/pages/zepp-app) | Unknown | Current Zepp page names the platform | Direction, record types, history and device behavior are unknown |
+| [komoot](https://us.amazfit.com/pages/zepp-app) | Unknown | Current Zepp page names the platform | Direction, routes, fields and backfill are unknown |
+| [Runna](https://us.amazfit.com/pages/zepp-app) | Unknown | Current Zepp page names the platform | Direction, workout-plan behavior, fields and history are unknown |
+| adidas Running | Unknown | Current Zepp page names the platform | Direction, fields and history are unknown |
+| Relive | Unknown | No current provider-specific primary evidence established in this pass | Current support, direction, fields and history are unknown |
 
 No reviewed integration establishes transfer of the complete account, raw PPG, every route,
 user-entered records, PAI, Readiness, Zepp Coach outputs, sleep/stress scores, corrections or
@@ -177,13 +186,13 @@ deletions. Undocumented behavior is recorded as unknown rather than absent.
 |---|---|---|---|
 | [Gadgetbridge](https://github.com/Freeyourgadget/Gadgetbridge) | Direct Bluetooth sync with supported Amazfit devices | Local database/backups and model-dependent activity, sleep, HR, workout and GPX records | Strongest local-first route; AGPL-3.0; GitHub mirror is archived because active development moved to Codeberg |
 | [`huami-token`](https://github.com/argrento/huami-token) | Unofficial Zepp or Xiaomi login selected explicitly | Device list, BLE authentication keys and account/session tokens | MIT; useful pairing helper, not a health-history exporter; Zepp and Mi Fitness modes remain distinct |
-| [Mi Fit and Zepp workout exporter](https://github.com/rolandsz/Mi-Fit-and-Zepp-workout-exporter) | Undocumented Huami/Zepp workout endpoints or manually supplied app token | Workout files in multiple geospatial/tabular formats | MIT; narrow workout route, credential-sensitive and endpoint-fragile |
+| [Mi Fit and Zepp workout exporter](https://github.com/rolandsz/Mi-Fit-and-Zepp-workout-exporter) | Undocumented legacy Mi Fit/Zepp Life (`com.xiaomi.hm.health`) endpoints or token | Workout files in multiple geospatial/tabular formats | MIT; does not evidence current Zepp app (`com.huami.watch.hmwatchmanager`) cloud access |
 
 Gadgetbridge recovers device-retained data, not the user's historical Zepp cloud account. Pairing
 can require keys and may disrupt the official-app relationship on some models. `huami-token`
-processes credentials and returns reusable secrets. The workout exporter documents the Zepp app
-privacy page as one token source, but it does not establish sleep, daily health or derived-score
-coverage.
+processes credentials and returns reusable secrets. The workout exporter uses the legacy
+`com.xiaomi.hm.health` package identifier associated with Mi Fit/Zepp Life; it is not evidence of
+workout, route, sleep, daily-health or derived-score access for the current Zepp app.
 
 ## Material barriers and risks
 
@@ -248,10 +257,10 @@ device-bounded or unofficial.
    exact formats, streams, route precision and device metadata.
 4. Compare the export against the Zepp UI for sleep, HRV, PAI, Readiness, stress, Zepp Coach,
    nutrition, cycle records and edited/manual values.
-5. Capture Apple Health and Health Connect permission lists and test direction, backfill,
-   deduplication, correction and deletion propagation.
-6. Link clean Strava, TrainingPeaks, Relive and adidas Running accounts to establish direction,
-   eligible sports, payload fidelity and historical limits.
+5. Capture Apple Health, Health Connect and Google Fit connection screens before asserting current
+   Zepp support, direction, record types, backfill, correction or deletion behavior.
+6. Link clean Strava, TrainingPeaks, komoot, Runna and adidas Running accounts to establish
+   direction, eligible content, payload fidelity and historical limits; separately recheck Relive.
 7. Build a Zepp OS test mini app across multiple API levels and devices to confirm runtime
    permissions, retention windows, sampling behavior and store-review constraints.
 8. Test Gadgetbridge with recent Amazfit watches and Helio Ring while preserving the original Zepp
