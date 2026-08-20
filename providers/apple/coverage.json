@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": "1.0.0",
+  "provider": "Apple",
+  "evidenceDate": "2026-08-20",
+  "routes": [
+    {
+      "id": "healthkit",
+      "label": "HealthKit",
+      "kind": "official-sdk",
+      "access": "self-service"
+    },
+    {
+      "id": "health-export",
+      "label": "Health XML export",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "privacy-export",
+      "label": "Account privacy export",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "sensorkit",
+      "label": "SensorKit",
+      "kind": "official-sdk",
+      "access": "research-gated"
+    },
+    {
+      "id": "workoutkit",
+      "label": "WorkoutKit",
+      "kind": "official-sdk",
+      "access": "self-service"
+    },
+    {
+      "id": "integrations",
+      "label": "Supported integrations",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "open-source",
+      "label": "Open-source routes",
+      "kind": "open-source",
+      "access": "self-service"
+    }
+  ],
+  "coverage": [
+    {
+      "taxonomyId": "body.composition",
+      "providerNames": ["Body Measurements"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external", "normalized"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "HealthKit has timestamped body quantity types; bulk-export parity is not guaranteed."
+    },
+    {
+      "taxonomyId": "activity.daily",
+      "providerNames": ["Activity", "Activity Rings"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Samples are documented; export coverage of ring goals and every summary remains uncertain."
+    },
+    {
+      "taxonomyId": "activity.energy",
+      "providerNames": ["Move", "Exercise", "Stand", "Active Energy", "Basal Energy"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["normalized", "derived"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "HealthKit exposes energy and activity-summary records; downstream integrations are selective."
+    },
+    {
+      "taxonomyId": "cardio.heart-rate",
+      "providerNames": ["Heart Rate", "Resting Heart Rate", "Walking Average", "Cardio Recovery"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"A"},
+      "notes": "Heart-rate samples are broadly accessible; UI zone and recovery interpretations need separate confirmation."
+    },
+    {
+      "taxonomyId": "cardio.hrv",
+      "providerNames": ["Heart Rate Variability"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "SDNN is a documented HealthKit type; app trend labels are not established as portable fields."
+    },
+    {
+      "taxonomyId": "cardio.blood-pressure",
+      "providerNames": ["Blood Pressure"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external", "normalized"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Readings normally originate from a connected cuff or manual entry rather than Apple Watch."
+    },
+    {
+      "taxonomyId": "cardio.ecg-rhythm",
+      "providerNames": ["ECG", "Irregular Rhythm Notifications", "High and Low Heart Rate Notifications"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {"healthkit":"P","health-export":"P","privacy-export":"U","sensorkit":"NA","workoutkit":"NA","integrations":"U","open-source":"P"},
+      "notes": "Hardware and region dependent; full waveform and notification parity needs hands-on validation."
+    },
+    {
+      "taxonomyId": "cardio.vo2max",
+      "providerNames": ["Cardio Fitness", "VO2 Max"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"U","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "The estimate is a HealthKit quantity; fitness classification labels are not confirmed as separate records."
+    },
+    {
+      "taxonomyId": "respiratory.rate-oxygen",
+      "providerNames": ["Respiratory Rate", "Blood Oxygen"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Blood Oxygen availability varies by hardware, region and device sale date."
+    },
+    {
+      "taxonomyId": "temperature.body-skin",
+      "providerNames": ["Wrist Temperature", "Body Temperature"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"healthkit":"P","health-export":"P","privacy-export":"U","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Samples are available, but Apple's baseline/deviation interpretations are not fully mapped."
+    },
+    {
+      "taxonomyId": "sleep.sessions-stages",
+      "providerNames": ["Sleep", "Core", "Deep", "REM"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "HealthKit exposes categorized sleep intervals; schedule configuration is not the same record family."
+    },
+    {
+      "taxonomyId": "sleep.insights-score",
+      "providerNames": ["Sleep Schedule", "Sleep Goal", "Sleep Trends"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "derived"],
+      "routeCoverage": {"healthkit":"U","health-export":"U","privacy-export":"U","sensorkit":"NA","workoutkit":"NA","integrations":"U","open-source":"U"},
+      "notes": "First-party UI outputs exist, but current evidence does not establish portable insight records."
+    },
+    {
+      "taxonomyId": "recovery.stress",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"healthkit":"U","health-export":"U","privacy-export":"U","sensorkit":"NA","workoutkit":"NA","integrations":"U","open-source":"U"},
+      "notes": "No documented first-party Apple all-day stress score was established."
+    },
+    {
+      "taxonomyId": "recovery.energy-readiness",
+      "providerNames": ["Vitals"],
+      "presence": "unknown",
+      "appVisible": "partial",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"healthkit":"U","health-export":"U","privacy-export":"U","sensorkit":"NA","workoutkit":"NA","integrations":"U","open-source":"U"},
+      "notes": "Vitals provides baselines and outlier context, but no discrete readiness/energy record was established."
+    },
+    {
+      "taxonomyId": "training.load-status",
+      "providerNames": ["Training Load", "Effort"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"healthkit":"U","health-export":"U","privacy-export":"U","sensorkit":"NA","workoutkit":"NA","integrations":"U","open-source":"U"},
+      "notes": "The Fitness UI calculates a 7-day versus 28-day load; extraction is not established."
+    },
+    {
+      "taxonomyId": "training.performance-predictions",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"healthkit":"U","health-export":"U","privacy-export":"U","sensorkit":"NA","workoutkit":"NA","integrations":"U","open-source":"U"},
+      "notes": "No general Apple race-prediction or equivalent performance family was established."
+    },
+    {
+      "taxonomyId": "workout.sessions",
+      "providerNames": ["Workouts", "Sessions"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Workout objects and linked samples are broadly exposed; partner coverage is sport-specific."
+    },
+    {
+      "taxonomyId": "workout.route-elevation",
+      "providerNames": ["Workout Route"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"U","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "HealthKit supports workout routes; bulk archives may package routes separately."
+    },
+    {
+      "taxonomyId": "workout.sport-dynamics",
+      "providerNames": ["Running Power", "Cadence", "Stride Length", "Swimming Metrics"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Availability depends on sport, hardware and the originating app or sensor."
+    },
+    {
+      "taxonomyId": "workout.plans-courses",
+      "providerNames": ["Custom Workouts", "WorkoutKit"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external"],
+      "routeCoverage": {"healthkit":"P","health-export":"U","privacy-export":"U","sensorkit":"NA","workoutkit":"A","integrations":"P","open-source":"P"},
+      "notes": "WorkoutKit is primarily a creation/scheduling route, not a complete history reader."
+    },
+    {
+      "taxonomyId": "mobility.gait-function",
+      "providerNames": ["Walking Steadiness", "Walking Speed", "Step Length", "Walking Asymmetry"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Underlying quantities are documented; risk classifications and narratives may remain UI-only."
+    },
+    {
+      "taxonomyId": "reproductive.cycle-pregnancy",
+      "providerNames": ["Cycle Tracking", "Pregnancy"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "derived"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Sensitive records and predictions need type-by-type export validation."
+    },
+    {
+      "taxonomyId": "nutrition.hydration",
+      "providerNames": ["Nutrition", "Water", "Caffeine"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Apple devices generally do not capture these directly; apps or users write the records."
+    },
+    {
+      "taxonomyId": "clinical.records-medications",
+      "providerNames": ["Health Records", "Medications"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external"],
+      "routeCoverage": {"healthkit":"P","health-export":"U","privacy-export":"U","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Clinical records depend on participating institutions and region; bulk-export coverage is unresolved."
+    },
+    {
+      "taxonomyId": "wellbeing.mindfulness-mood",
+      "providerNames": ["Mindful Minutes", "State of Mind", "Symptoms"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "derived"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Newer structured wellbeing records may not be supported by every exporter or parser."
+    },
+    {
+      "taxonomyId": "hearing.audio-audiogram",
+      "providerNames": ["Environmental Sound Levels", "Headphone Audio Levels", "Audiogram"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "external", "normalized"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"NA","workoutkit":"NA","integrations":"P","open-source":"P"},
+      "notes": "Coverage varies between device-captured exposure and externally supplied audiograms."
+    },
+    {
+      "taxonomyId": "insights.trends-alerts-awards",
+      "providerNames": ["Trends", "Awards", "Vitals Notifications", "Walking Steadiness Notifications"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"healthkit":"U","health-export":"U","privacy-export":"U","sensorkit":"NA","workoutkit":"NA","integrations":"U","open-source":"U"},
+      "notes": "The UI outputs exist, but no complete queryable record family is documented."
+    },
+    {
+      "taxonomyId": "device.raw-sensors",
+      "providerNames": ["SensorKit"],
+      "presence": "present",
+      "appVisible": "no",
+      "productionLayers": ["captured"],
+      "routeCoverage": {"healthkit":"N","health-export":"N","privacy-export":"N","sensorkit":"A","workoutkit":"NA","integrations":"N","open-source":"U"},
+      "notes": "Research-only signals require Apple entitlement and prospective study consent."
+    },
+    {
+      "taxonomyId": "provenance.metadata",
+      "providerNames": ["Source Revision", "Device", "Metadata"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"healthkit":"A","health-export":"P","privacy-export":"P","sensorkit":"P","workoutkit":"P","integrations":"P","open-source":"P"},
+      "notes": "HealthKit retains strong source metadata, but downstream routes may normalize or discard it."
+    }
+  ]
+}

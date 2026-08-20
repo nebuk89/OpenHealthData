@@ -2,6 +2,8 @@
 
 **Evidence date:** 2026-08-20
 
+**Canonical coverage:** [Garmin taxonomy mapping](./coverage.json)
+
 ## Bottom line
 
 Garmin gives an account holder a signed-in

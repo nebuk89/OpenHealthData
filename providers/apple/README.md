@@ -5,6 +5,8 @@
 frameworks  
 **Resource index:** [Apple resources](./resources.md)
 
+**Canonical coverage:** [Apple taxonomy mapping](./coverage.json)
+
 ## Bottom line
 
 Apple provides broad, record-level access to a person's retained health and fitness data through

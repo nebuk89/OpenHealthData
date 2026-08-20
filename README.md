@@ -6,6 +6,8 @@ Our goal is to audit how open different health data trackers (Garmin, Apple, Fit
 - [Fitness data provider landscape](fitness-data-providers.md) - the initial 20-provider audit list
 - [Provider audits](providers/README.md) - completed provider write-ups and resource indexes
 - [Provider audit rubric](audit-rubric.md) - normalized evidence dimensions and publication states
+- [Canonical data taxonomy](data-taxonomy.md) - stable cross-provider metric families and mapping
+  rules
 
 ### Copilot research agents
 
@@ -30,6 +32,8 @@ workstreams concurrently, and synthesizes:
 - `providers/<provider>/README.md` - the canonical provider audit;
 - `providers/<provider>/resources.md` - a deduplicated evidence and project index;
 - `providers/<provider>/claims.json` - decision-relevant claims with evidence and confidence;
+- `providers/<provider>/coverage.json` - complete machine-readable mapping to the canonical data
+  taxonomy;
 - `providers/<provider>/verification.json` and `manifest.json` - automated evidence checks and
   publication state; and
 - `research/runs/<timestamp>/<provider>/` - ignored raw specialist reports for debugging.

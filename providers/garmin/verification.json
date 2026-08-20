@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Garmin",
-  "checkedAt": "2026-08-20T08:45:53.538Z",
+  "checkedAt": "2026-08-20T11:21:23.268Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -190,7 +190,7 @@
       "url": "https://developer.android.com/health-and-fitness/health-connect",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect?hl=tr"
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect"
     }
   ],
   "projects": [

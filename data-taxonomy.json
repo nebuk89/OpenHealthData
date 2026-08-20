@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": "1.0.0",
+  "presenceValues": [
+    "present",
+    "absent",
+    "not-applicable",
+    "unknown"
+  ],
+  "appVisibilityValues": [
+    "yes",
+    "partial",
+    "no",
+    "unknown"
+  ],
+  "productionLayers": [
+    "captured",
+    "normalized",
+    "derived",
+    "user-entered",
+    "external"
+  ],
+  "routeCoverageCodes": [
+    "A",
+    "P",
+    "N",
+    "U",
+    "NA"
+  ],
+  "routeKindValues": [
+    "consumer-export",
+    "official-api",
+    "official-sdk",
+    "integration",
+    "open-source",
+    "unofficial"
+  ],
+  "routeAccessValues": [
+    "self-service",
+    "partner-gated",
+    "research-gated",
+    "unsupported"
+  ],
+  "families": [
+    {
+      "id": "body.composition",
+      "domain": "body",
+      "name": "Body measurements and composition"
+    },
+    {
+      "id": "activity.daily",
+      "domain": "activity",
+      "name": "Daily movement"
+    },
+    {
+      "id": "activity.energy",
+      "domain": "activity",
+      "name": "Energy and active time"
+    },
+    {
+      "id": "cardio.heart-rate",
+      "domain": "cardio",
+      "name": "Heart rate"
+    },
+    {
+      "id": "cardio.hrv",
+      "domain": "cardio",
+      "name": "Heart-rate variability"
+    },
+    {
+      "id": "cardio.blood-pressure",
+      "domain": "cardio",
+      "name": "Blood pressure"
+    },
+    {
+      "id": "cardio.ecg-rhythm",
+      "domain": "cardio",
+      "name": "ECG and rhythm"
+    },
+    {
+      "id": "cardio.vo2max",
+      "domain": "cardio",
+      "name": "Cardio fitness and VO2 max"
+    },
+    {
+      "id": "respiratory.rate-oxygen",
+      "domain": "respiratory",
+      "name": "Respiration and oxygen saturation"
+    },
+    {
+      "id": "temperature.body-skin",
+      "domain": "vitals",
+      "name": "Body and skin temperature"
+    },
+    {
+      "id": "sleep.sessions-stages",
+      "domain": "sleep",
+      "name": "Sleep sessions and stages"
+    },
+    {
+      "id": "sleep.insights-score",
+      "domain": "sleep",
+      "name": "Sleep insights and score"
+    },
+    {
+      "id": "recovery.stress",
+      "domain": "recovery",
+      "name": "Stress"
+    },
+    {
+      "id": "recovery.energy-readiness",
+      "domain": "recovery",
+      "name": "Energy and readiness"
+    },
+    {
+      "id": "training.load-status",
+      "domain": "training",
+      "name": "Training load and status"
+    },
+    {
+      "id": "training.performance-predictions",
+      "domain": "training",
+      "name": "Performance predictions"
+    },
+    {
+      "id": "workout.sessions",
+      "domain": "workout",
+      "name": "Workout sessions"
+    },
+    {
+      "id": "workout.route-elevation",
+      "domain": "workout",
+      "name": "Route and elevation"
+    },
+    {
+      "id": "workout.sport-dynamics",
+      "domain": "workout",
+      "name": "Sport dynamics"
+    },
+    {
+      "id": "workout.plans-courses",
+      "domain": "workout",
+      "name": "Plans, workouts and courses"
+    },
+    {
+      "id": "mobility.gait-function",
+      "domain": "mobility",
+      "name": "Gait and functional mobility"
+    },
+    {
+      "id": "reproductive.cycle-pregnancy",
+      "domain": "reproductive",
+      "name": "Cycle and pregnancy"
+    },
+    {
+      "id": "nutrition.hydration",
+      "domain": "nutrition",
+      "name": "Nutrition and hydration"
+    },
+    {
+      "id": "clinical.records-medications",
+      "domain": "clinical",
+      "name": "Clinical records and medications"
+    },
+    {
+      "id": "wellbeing.mindfulness-mood",
+      "domain": "wellbeing",
+      "name": "Mindfulness, mood and symptoms"
+    },
+    {
+      "id": "hearing.audio-audiogram",
+      "domain": "hearing",
+      "name": "Hearing and audio exposure"
+    },
+    {
+      "id": "insights.trends-alerts-awards",
+      "domain": "insights",
+      "name": "Trends, alerts and awards"
+    },
+    {
+      "id": "device.raw-sensors",
+      "domain": "device",
+      "name": "Raw and live sensor streams"
+    },
+    {
+      "id": "provenance.metadata",
+      "domain": "provenance",
+      "name": "Source and record metadata"
+    }
+  ]
+}

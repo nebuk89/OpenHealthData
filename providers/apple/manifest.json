@@ -4,12 +4,13 @@
   "priority": 1,
   "status": "verified",
   "generatedAt": "2026-08-18T15:15:23.150Z",
-  "verifiedAt": "2026-08-20T08:45:25.278Z",
+  "verifiedAt": "2026-08-20T11:21:16.594Z",
   "reviewedAt": null,
   "files": {
     "audit": "README.md",
     "resources": "resources.md",
     "claims": "claims.json",
+    "coverage": "coverage.json",
     "verification": "verification.json"
   }
 }

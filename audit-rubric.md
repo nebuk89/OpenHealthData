@@ -54,6 +54,11 @@ Every provider audit must include a `## Data inventory and route coverage` secti
 from what compatible devices capture and what first-party apps calculate or display, then map those
 data families to the provider's distinct access routes.
 
+The normalized checklist is the repository's
+[canonical data taxonomy](./data-taxonomy.md). Every published provider must also include a
+`coverage.json` entry for every canonical stable ID. The Markdown table may group rows for
+readability, but the JSON mapping may not omit an ID.
+
 The inventory is exhaustive at the documented **metric-family** level, not a claim that every
 device model, firmware version, region or internal field has been discovered. Keep raw or
 device-captured values separate from normalized, user-entered and proprietary derived outputs.

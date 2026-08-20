@@ -40,6 +40,9 @@ const resourcesStartMarker = "<!-- OPENHEALTHDATA_RESOURCES_START -->";
 const resourcesEndMarker = "<!-- OPENHEALTHDATA_RESOURCES_END -->";
 const claimsStartMarker = "<!-- OPENHEALTHDATA_CLAIMS_START -->";
 const claimsEndMarker = "<!-- OPENHEALTHDATA_CLAIMS_END -->";
+const coverageStartMarker = "<!-- OPENHEALTHDATA_COVERAGE_START -->";
+const coverageEndMarker = "<!-- OPENHEALTHDATA_COVERAGE_END -->";
+const taxonomyPath = path.join(repositoryRoot, "data-taxonomy.json");
 
 const mainRequiredSections = [
   "## Bottom line",
@@ -79,6 +82,29 @@ type OpennessRating = (typeof opennessRatings)[number];
 const opennessTestResults = ["Yes", "Partial", "No", "Unknown"] as const;
 
 const dataCoverageCodes = ["A", "P", "N", "U", "NA"] as const;
+const presenceValues = ["present", "absent", "not-applicable", "unknown"] as const;
+const appVisibilityValues = ["yes", "partial", "no", "unknown"] as const;
+const productionLayers = [
+  "captured",
+  "normalized",
+  "derived",
+  "user-entered",
+  "external",
+] as const;
+const routeKinds = [
+  "consumer-export",
+  "official-api",
+  "official-sdk",
+  "integration",
+  "open-source",
+  "unofficial",
+] as const;
+const routeAccessValues = [
+  "self-service",
+  "partner-gated",
+  "research-gated",
+  "unsupported",
+] as const;
 
 const resourceRequiredSections = [
   "## Official developer documentation",
@@ -89,6 +115,12 @@ const resourceRequiredSections = [
 
 type PublicationStatus = "generated" | "verified" | "reviewed";
 type Confidence = "high" | "medium" | "low";
+type DataCoverageCode = (typeof dataCoverageCodes)[number];
+type Presence = (typeof presenceValues)[number];
+type AppVisibility = (typeof appVisibilityValues)[number];
+type ProductionLayer = (typeof productionLayers)[number];
+type RouteKind = (typeof routeKinds)[number];
+type RouteAccess = (typeof routeAccessValues)[number];
 
 interface LoadedAgent {
   config: CustomAgentConfig;
@@ -138,6 +170,50 @@ interface ClaimLedger {
   projects: ProjectEvidence[];
 }
 
+interface TaxonomyFamily {
+  id: string;
+  domain: string;
+  name: string;
+}
+
+interface DataTaxonomy {
+  schemaVersion: 1;
+  taxonomyVersion: string;
+  presenceValues: Presence[];
+  appVisibilityValues: AppVisibility[];
+  productionLayers: ProductionLayer[];
+  routeCoverageCodes: DataCoverageCode[];
+  routeKindValues: RouteKind[];
+  routeAccessValues: RouteAccess[];
+  families: TaxonomyFamily[];
+}
+
+interface CoverageRoute {
+  id: string;
+  label: string;
+  kind: RouteKind;
+  access: RouteAccess;
+}
+
+interface ProviderCoverageEntry {
+  taxonomyId: string;
+  providerNames: string[];
+  presence: Presence;
+  appVisible: AppVisibility;
+  productionLayers: ProductionLayer[];
+  routeCoverage: Record<string, DataCoverageCode>;
+  notes: string;
+}
+
+interface ProviderCoverage {
+  schemaVersion: 1;
+  taxonomyVersion: string;
+  provider: string;
+  evidenceDate: string;
+  routes: CoverageRoute[];
+  coverage: ProviderCoverageEntry[];
+}
+
 interface LinkCheck {
   url: string;
   status: "ok" | "restricted" | "failed";
@@ -178,6 +254,7 @@ interface PublicationManifest {
     audit: "README.md";
     resources: "resources.md";
     claims: "claims.json";
+    coverage: "coverage.json";
     verification: "verification.json";
   };
 }
@@ -186,6 +263,7 @@ interface Synthesis {
   main: string;
   resources: string;
   claims: ClaimLedger;
+  coverage: ProviderCoverage;
 }
 
 function parseArguments(arguments_: string[]): HarnessOptions {
@@ -529,11 +607,179 @@ function validateClaimLedger(value: unknown, provider: Provider): ClaimLedger {
   return ledger as ClaimLedger;
 }
 
+function validateDataTaxonomy(value: unknown): DataTaxonomy {
+  if (!value || typeof value !== "object") {
+    throw new Error("Data taxonomy must be a JSON object");
+  }
+
+  const taxonomy = value as Partial<DataTaxonomy>;
+  if (taxonomy.schemaVersion !== 1) {
+    throw new Error("Data taxonomy schemaVersion must be 1");
+  }
+  if (
+    typeof taxonomy.taxonomyVersion !== "string" ||
+    !/^\d+\.\d+\.\d+$/.test(taxonomy.taxonomyVersion)
+  ) {
+    throw new Error("Data taxonomy taxonomyVersion must use semantic versioning");
+  }
+
+  const exactVocabulary = (
+    label: string,
+    actual: readonly string[] | undefined,
+    expected: readonly string[],
+  ): void => {
+    if (!actual || JSON.stringify(actual) !== JSON.stringify(expected)) {
+      throw new Error(`Data taxonomy ${label} must be: ${expected.join(", ")}`);
+    }
+  };
+  exactVocabulary("presenceValues", taxonomy.presenceValues, presenceValues);
+  exactVocabulary("appVisibilityValues", taxonomy.appVisibilityValues, appVisibilityValues);
+  exactVocabulary("productionLayers", taxonomy.productionLayers, productionLayers);
+  exactVocabulary("routeCoverageCodes", taxonomy.routeCoverageCodes, dataCoverageCodes);
+  exactVocabulary("routeKindValues", taxonomy.routeKindValues, routeKinds);
+  exactVocabulary("routeAccessValues", taxonomy.routeAccessValues, routeAccessValues);
+
+  if (!Array.isArray(taxonomy.families) || taxonomy.families.length < 20) {
+    throw new Error("Data taxonomy must contain at least twenty canonical families");
+  }
+
+  const ids = new Set<string>();
+  for (const family of taxonomy.families) {
+    requireString(family.id, "family.id", "data-taxonomy.json");
+    requireString(family.domain, "family.domain", "data-taxonomy.json");
+    requireString(family.name, "family.name", "data-taxonomy.json");
+    if (!/^[a-z][a-z0-9-]*(\.[a-z][a-z0-9-]*)+$/.test(family.id)) {
+      throw new Error(`Invalid canonical taxonomy id: ${family.id}`);
+    }
+    if (ids.has(family.id)) {
+      throw new Error(`Duplicate canonical taxonomy id: ${family.id}`);
+    }
+    ids.add(family.id);
+  }
+
+  return taxonomy as DataTaxonomy;
+}
+
+async function loadDataTaxonomy(): Promise<DataTaxonomy> {
+  return validateDataTaxonomy(await readJson<unknown>(taxonomyPath));
+}
+
+function validateProviderCoverage(
+  value: unknown,
+  provider: Provider,
+  taxonomy: DataTaxonomy,
+): ProviderCoverage {
+  if (!value || typeof value !== "object") {
+    throw new Error("Provider coverage must be a JSON object");
+  }
+
+  const document = value as Partial<ProviderCoverage>;
+  if (
+    document.schemaVersion !== 1 ||
+    document.provider !== provider.name ||
+    document.taxonomyVersion !== taxonomy.taxonomyVersion
+  ) {
+    throw new Error("coverage.json schemaVersion, provider, or taxonomyVersion does not match");
+  }
+  if (
+    typeof document.evidenceDate !== "string" ||
+    !/^\d{4}-\d{2}-\d{2}$/.test(document.evidenceDate)
+  ) {
+    throw new Error("coverage.json evidenceDate must use YYYY-MM-DD");
+  }
+  if (!Array.isArray(document.routes) || document.routes.length < 4) {
+    throw new Error("coverage.json must define at least four provider access routes");
+  }
+
+  const routeIds = new Set<string>();
+  for (const route of document.routes) {
+    requireString(route.id, "route.id", "coverage.json");
+    requireString(route.label, "route.label", "coverage.json");
+    if (!/^[a-z][a-z0-9-]*$/.test(route.id)) {
+      throw new Error(`Invalid coverage route id: ${route.id}`);
+    }
+    if (!routeKinds.includes(route.kind)) {
+      throw new Error(`Route ${route.id} has invalid kind`);
+    }
+    if (!routeAccessValues.includes(route.access)) {
+      throw new Error(`Route ${route.id} has invalid access`);
+    }
+    if (routeIds.has(route.id)) {
+      throw new Error(`Duplicate coverage route id: ${route.id}`);
+    }
+    routeIds.add(route.id);
+  }
+
+  if (!Array.isArray(document.coverage)) {
+    throw new Error("coverage.json coverage must be an array");
+  }
+  const expectedIds = new Set(taxonomy.families.map((family) => family.id));
+  const coverageIds = new Set<string>();
+  for (const entry of document.coverage) {
+    requireString(entry.taxonomyId, "coverage.taxonomyId", "coverage.json");
+    requireString(entry.notes, "coverage.notes", "coverage.json");
+    if (!expectedIds.has(entry.taxonomyId)) {
+      throw new Error(`Unknown taxonomy id in coverage.json: ${entry.taxonomyId}`);
+    }
+    if (coverageIds.has(entry.taxonomyId)) {
+      throw new Error(`Duplicate taxonomy id in coverage.json: ${entry.taxonomyId}`);
+    }
+    coverageIds.add(entry.taxonomyId);
+
+    if (!Array.isArray(entry.providerNames)) {
+      throw new Error(`Coverage ${entry.taxonomyId} providerNames must be an array`);
+    }
+    entry.providerNames.forEach((name) =>
+      requireString(name, "coverage.providerNames[]", "coverage.json"),
+    );
+    if (!presenceValues.includes(entry.presence)) {
+      throw new Error(`Coverage ${entry.taxonomyId} has invalid presence`);
+    }
+    if (!appVisibilityValues.includes(entry.appVisible)) {
+      throw new Error(`Coverage ${entry.taxonomyId} has invalid appVisible`);
+    }
+    if (!Array.isArray(entry.productionLayers)) {
+      throw new Error(`Coverage ${entry.taxonomyId} productionLayers must be an array`);
+    }
+    for (const layer of entry.productionLayers) {
+      if (!productionLayers.includes(layer)) {
+        throw new Error(`Coverage ${entry.taxonomyId} has invalid production layer`);
+      }
+    }
+    if (entry.presence === "present" && entry.productionLayers.length === 0) {
+      throw new Error(`Coverage ${entry.taxonomyId} is present but has no production layer`);
+    }
+    if (!entry.routeCoverage || typeof entry.routeCoverage !== "object") {
+      throw new Error(`Coverage ${entry.taxonomyId} routeCoverage must be an object`);
+    }
+    const actualRouteIds = Object.keys(entry.routeCoverage);
+    if (
+      actualRouteIds.length !== routeIds.size ||
+      actualRouteIds.some((routeId) => !routeIds.has(routeId))
+    ) {
+      throw new Error(`Coverage ${entry.taxonomyId} must map every declared route exactly once`);
+    }
+    for (const [routeId, code] of Object.entries(entry.routeCoverage)) {
+      if (!dataCoverageCodes.includes(code)) {
+        throw new Error(`Coverage ${entry.taxonomyId}/${routeId} has invalid route code`);
+      }
+    }
+  }
+
+  const missingIds = [...expectedIds].filter((id) => !coverageIds.has(id));
+  if (missingIds.length > 0) {
+    throw new Error(`coverage.json is missing canonical families: ${missingIds.join(", ")}`);
+  }
+
+  return document as ProviderCoverage;
+}
+
 async function synthesizeProvider(
   client: CopilotClient,
   provider: Provider,
   rawReports: Array<{ path: string; displayName: string }>,
 ): Promise<Synthesis> {
+  const taxonomy = await loadDataTaxonomy();
   const synthesizer: CustomAgentConfig = {
     name: "open-health-synthesizer",
     displayName: "Open Health Synthesizer",
@@ -562,8 +808,8 @@ async function synthesizeProvider(
         prompt: [
           `Synthesize the attached research for ${provider.name}.`,
           "",
-          "Return exactly two Markdown documents and one JSON claim ledger using these markers,",
-          "with no code fences:",
+          "Return exactly two Markdown documents, one JSON claim ledger and one JSON canonical",
+          "coverage document using these markers, with no code fences:",
           mainStartMarker,
           `# ${provider.name}`,
           "",
@@ -628,17 +874,61 @@ async function synthesizeProvider(
             2,
           ),
           claimsEndMarker,
+          coverageStartMarker,
+          JSON.stringify(
+            {
+              schemaVersion: 1,
+              taxonomyVersion: taxonomy.taxonomyVersion,
+              provider: provider.name,
+              evidenceDate,
+              routes: [
+                {
+                  id: "provider-specific-route-id",
+                  label: "Provider-specific route label",
+                  kind: "consumer-export",
+                  access: "self-service",
+                },
+              ],
+              coverage: taxonomy.families.map((family) => ({
+                taxonomyId: family.id,
+                providerNames: [],
+                presence: "unknown",
+                appVisible: "unknown",
+                productionLayers: [],
+                routeCoverage: {
+                  "provider-specific-route-id": "U",
+                },
+                notes: "Evidence-based provider mapping or explicit remaining uncertainty.",
+              })),
+            },
+            null,
+            2,
+          ),
+          coverageEndMarker,
           "",
           "Include at least eight decision-relevant claims. Every claim source and project must",
           "appear in the resource index. Every non-obvious factual claim in the main audit must have",
           "a clickable citation. Qualify negative findings as 'no documented route found' unless a",
           "primary source explicitly confirms absence.",
+          "",
+          "For coverage.json, use every canonical family from the attached data-taxonomy.json",
+          "exactly once. Define at least four provider-specific routes and map every family to every",
+          "declared route. Use only the taxonomy vocabularies. Use unknown rather than absent when",
+          "evidence is missing, preserve proprietary provider names as aliases, and do not equate",
+          "similar scores across providers.",
         ].join("\n"),
-        attachments: rawReports.map((report) => ({
-          type: "file" as const,
-          path: report.path,
-          displayName: report.displayName,
-        })),
+        attachments: [
+          ...rawReports.map((report) => ({
+            type: "file" as const,
+            path: report.path,
+            displayName: report.displayName,
+          })),
+          {
+            type: "file" as const,
+            path: taxonomyPath,
+            displayName: "data-taxonomy.json",
+          },
+        ],
       },
       Number.parseInt(process.env.COPILOT_TIMEOUT_MS ?? "1800000", 10),
     );
@@ -649,10 +939,16 @@ async function synthesizeProvider(
     }
 
     const claimsText = extractSection(content, claimsStartMarker, claimsEndMarker);
+    const coverageText = extractSection(content, coverageStartMarker, coverageEndMarker);
     return {
       main: extractSection(content, mainStartMarker, mainEndMarker),
       resources: extractSection(content, resourcesStartMarker, resourcesEndMarker),
       claims: validateClaimLedger(JSON.parse(claimsText) as unknown, provider),
+      coverage: validateProviderCoverage(
+        JSON.parse(coverageText) as unknown,
+        provider,
+        taxonomy,
+      ),
     };
   } finally {
     await session.disconnect();
@@ -977,7 +1273,10 @@ async function runQualityGate(
   main: string,
   resources: string,
   claims: ClaimLedger,
+  coverage: ProviderCoverage,
+  taxonomy: DataTaxonomy,
 ): Promise<VerificationReport> {
+  validateProviderCoverage(coverage, provider, taxonomy);
   const failures = [
     ...checkRequiredSections(main, mainRequiredSections, "README.md"),
     ...checkOpennessComparison(main),
@@ -985,6 +1284,12 @@ async function runQualityGate(
     ...checkRequiredSections(resources, resourceRequiredSections, "resources.md"),
   ];
   const warnings: string[] = [];
+  if (claims.evidenceDate !== coverage.evidenceDate) {
+    failures.push("claims.json and coverage.json evidenceDate values must match");
+  }
+  if (!main.includes("./coverage.json")) {
+    failures.push("README.md must link to the provider's canonical coverage.json");
+  }
   const mainUrls = new Set(extractUrls(main));
   const resourceUrls = new Set(extractUrls(resources));
   const documentedUrls = new Set([...mainUrls, ...resourceUrls]);
@@ -1067,6 +1372,7 @@ function createManifest(
       audit: "README.md",
       resources: "resources.md",
       claims: "claims.json",
+      coverage: "coverage.json",
       verification: "verification.json",
     },
   };
@@ -1098,6 +1404,8 @@ async function stageAndPublish(
   synthesis: Synthesis,
   rawOutputDirectory: string,
 ): Promise<void> {
+  const taxonomy = await loadDataTaxonomy();
+  validateProviderCoverage(synthesis.coverage, provider, taxonomy);
   await mkdir(providerRoot, { recursive: true });
   const stagingDirectory = await mkdtemp(path.join(providerRoot, `.staging-${provider.slug}-`));
   const generatedAt = new Date().toISOString();
@@ -1106,6 +1414,7 @@ async function stageAndPublish(
     writeFile(path.join(stagingDirectory, "README.md"), `${synthesis.main}\n`, "utf8"),
     writeFile(path.join(stagingDirectory, "resources.md"), `${synthesis.resources}\n`, "utf8"),
     writeJson(path.join(stagingDirectory, "claims.json"), synthesis.claims),
+    writeJson(path.join(stagingDirectory, "coverage.json"), synthesis.coverage),
     writeJson(
       path.join(stagingDirectory, "manifest.json"),
       createManifest(provider, "generated", generatedAt, null),
@@ -1117,6 +1426,8 @@ async function stageAndPublish(
     synthesis.main,
     synthesis.resources,
     synthesis.claims,
+    synthesis.coverage,
+    taxonomy,
   );
   await writeJson(path.join(stagingDirectory, "verification.json"), verification);
 
@@ -1138,13 +1449,23 @@ async function stageAndPublish(
 
 async function verifyExistingProvider(provider: Provider): Promise<void> {
   const directory = providerDirectory(provider);
-  const [main, resources, claims] = await Promise.all([
+  const [main, resources, claims, coverage, taxonomy] = await Promise.all([
     readFile(path.join(directory, "README.md"), "utf8"),
     readFile(path.join(directory, "resources.md"), "utf8"),
     readJson<ClaimLedger>(path.join(directory, "claims.json")),
+    readJson<ProviderCoverage>(path.join(directory, "coverage.json")),
+    loadDataTaxonomy(),
   ]);
   const validatedClaims = validateClaimLedger(claims, provider);
-  const verification = await runQualityGate(provider, main, resources, validatedClaims);
+  const validatedCoverage = validateProviderCoverage(coverage, provider, taxonomy);
+  const verification = await runQualityGate(
+    provider,
+    main,
+    resources,
+    validatedClaims,
+    validatedCoverage,
+    taxonomy,
+  );
   await writeJson(path.join(directory, "verification.json"), verification);
 
   if (verification.result === "failed") {
@@ -1200,8 +1521,11 @@ async function writeProviderIndex(roster: Provider[]): Promise<void> {
       const resourcesCell = published
         ? `[Resources](./${provider.slug}/resources.md)`
         : "Pending";
+      const coverageCell = published
+        ? `[Coverage](./${provider.slug}/coverage.json)`
+        : "Pending";
 
-      return `| ${provider.priority} | ${providerCell} | ${openness} | ${status[0].toUpperCase()}${status.slice(1)} | ${resourcesCell} |`;
+      return `| ${provider.priority} | ${providerCell} | ${openness} | ${status[0].toUpperCase()}${status.slice(1)} | ${coverageCell} | ${resourcesCell} |`;
     }),
   );
 
@@ -1211,10 +1535,11 @@ async function writeProviderIndex(roster: Provider[]): Promise<void> {
     "Provider research proceeds in priority order from",
     "[the fitness data provider landscape](../fitness-data-providers.md) and uses the",
     "[provider audit rubric](../audit-rubric.md). Each published provider has a canonical audit,",
-    "resource index, claim ledger, verification report and publication manifest.",
+    "resource index, canonical coverage map, claim ledger, verification report and publication",
+    "manifest.",
     "",
-    "| Priority | Provider | Personal-data openness | Status | Resource index |",
-    "|---:|---|---|---|---|",
+    "| Priority | Provider | Personal-data openness | Status | Canonical coverage | Resource index |",
+    "|---:|---|---|---|---|---|",
     ...rows,
     "",
   ].join("\n");
