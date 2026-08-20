@@ -17,21 +17,15 @@
       "access": "self-service"
     },
     {
-      "id": "developer-portal",
-      "label": "Xiaomi developer portal (no Mi Fitness API confirmed)",
-      "kind": "official-api",
-      "access": "unsupported"
-    },
-    {
       "id": "gadgetbridge",
       "label": "Gadgetbridge direct device sync",
       "kind": "open-source",
-      "access": "unsupported"
+      "access": "self-service"
     },
     {
       "id": "health-connect-reader",
       "label": "User-built Health Connect reader",
-      "kind": "open-source",
+      "kind": "official-sdk",
       "access": "self-service"
     }
   ],
@@ -42,8 +36,8 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["user-entered", "normalized"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"P","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"P"},
-      "notes": "Manual weight is app-visible; broader composition depends on connected hardware and no route-level parity is documented."
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "notes": "Manual weight is app-visible; Xiaomi publishes no Health Connect type map and model-specific Gadgetbridge body-composition evidence was not established."
     },
     {
       "taxonomyId": "activity.daily",
@@ -51,7 +45,7 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized", "derived"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"P","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"P"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"P","health-connect-reader":"U"},
       "notes": "Common on Xiaomi wearables, but exact Health Connect types and Gadgetbridge completeness vary."
     },
     {
@@ -60,7 +54,7 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["normalized", "derived"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"P","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"P"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"P","health-connect-reader":"U"},
       "notes": "Device estimates may be relayed or locally synchronized; Xiaomi publishes no field map."
     },
     {
@@ -69,7 +63,7 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized", "derived"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"P","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"P"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"P","health-connect-reader":"U"},
       "notes": "App visibility is confirmed; cadence, history and route completeness are not."
     },
     {
@@ -78,7 +72,7 @@
       "presence": "unknown",
       "appVisible": "unknown",
       "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
       "notes": "No current cross-device Mi Fitness HRV family was established."
     },
     {
@@ -87,7 +81,7 @@
       "presence": "unknown",
       "appVisible": "unknown",
       "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"NA","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"NA","health-connect-reader":"U"},
       "notes": "No retrievable current first-party source was sufficient to establish blood-pressure logging or measurement."
     },
     {
@@ -96,26 +90,26 @@
       "presence": "unknown",
       "appVisible": "unknown",
       "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
       "notes": "Model and region claims were not sufficient to establish a current ecosystem-wide family."
     },
     {
       "taxonomyId": "cardio.vo2max",
-      "providerNames": [],
-      "presence": "unknown",
-      "appVisible": "unknown",
-      "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"U","health-connect-reader":"U"},
-      "notes": "No current first-party route or app-family evidence was established."
+      "providerNames": ["VO2 Max"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "notes": "Xiaomi Smart Band 10 displays VO2 max; no extraction route is established."
     },
     {
       "taxonomyId": "respiratory.rate-oxygen",
-      "providerNames": ["Breathing Quality"],
+      "providerNames": ["Blood Oxygen (SpO2)", "Breathing Quality"],
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized", "derived"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"U"},
-      "notes": "Sleep breathing quality is app-visible; SpO2 and the exact relay map were not established from a retrievable current Xiaomi source."
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"P","health-connect-reader":"U"},
+      "notes": "Xiaomi Smart Band 10 documents all-day SpO2; Xiaomi publishes no Health Connect type map and Gadgetbridge support is model specific."
     },
     {
       "taxonomyId": "temperature.body-skin",
@@ -123,7 +117,7 @@
       "presence": "unknown",
       "appVisible": "unknown",
       "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
       "notes": "No current temperature family was verified."
     },
     {
@@ -132,17 +126,17 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized", "derived"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"P","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"P"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"P","health-connect-reader":"U"},
       "notes": "The app listing confirms stages; interval and route fidelity are undocumented."
     },
     {
       "taxonomyId": "sleep.insights-score",
-      "providerNames": ["Personalized Sleep Report"],
+      "providerNames": ["Sleep Score", "21-day Sleep Improvement Plan", "Personalized Sleep Report"],
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["derived"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"N","health-connect-reader":"U"},
-      "notes": "A personalized report is visible; no portable representation was established."
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "notes": "Xiaomi Smart Band 10 documents Sleep Score and a 21-day sleep plan; no portable representation was established."
     },
     {
       "taxonomyId": "recovery.stress",
@@ -150,26 +144,26 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["derived"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"P","health-connect-reader":"U"},
       "notes": "Stress is app-visible; local availability depends on the device and proprietary parity is unknown."
     },
     {
       "taxonomyId": "recovery.energy-readiness",
-      "providerNames": ["Energy"],
+      "providerNames": ["Energy", "Recovery Time"],
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["derived"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"U","health-connect-reader":"U"},
-      "notes": "Energy is app-visible, but its algorithm and extraction routes are undocumented."
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "notes": "Energy and Smart Band 10 Recovery Time are app-visible derived outputs; their algorithms and extraction routes are undocumented."
     },
     {
       "taxonomyId": "training.load-status",
-      "providerNames": [],
-      "presence": "unknown",
-      "appVisible": "unknown",
-      "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"U","health-connect-reader":"U"},
-      "notes": "No cross-device Xiaomi training-load/status family was established."
+      "providerNames": ["Training Load"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "notes": "Xiaomi Smart Band 10 displays Training Load; no extraction route is established."
     },
     {
       "taxonomyId": "training.performance-predictions",
@@ -177,7 +171,7 @@
       "presence": "unknown",
       "appVisible": "unknown",
       "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
       "notes": "No current performance-prediction family was established."
     },
     {
@@ -186,7 +180,7 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"P","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"P"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"P","health-connect-reader":"U"},
       "notes": "Workout tracking is confirmed; modes, fields and history differ by route."
     },
     {
@@ -195,26 +189,26 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["captured", "normalized"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"P","health-connect-reader":"U"},
       "notes": "The app listing confirms route tracking, not external point-series availability."
     },
     {
       "taxonomyId": "workout.sport-dynamics",
-      "providerNames": [],
-      "presence": "unknown",
-      "appVisible": "unknown",
-      "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"U"},
-      "notes": "Some devices may expose workout details locally; no canonical current feature set was verified."
+      "providerNames": ["Running Form Recognition", "Vertical Ratio", "Vertical Amplitude", "Ground Contact Time"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "notes": "Xiaomi Watch S4 documents these running-form outputs; no route-level availability is established."
     },
     {
       "taxonomyId": "workout.plans-courses",
-      "providerNames": [],
-      "presence": "unknown",
-      "appVisible": "unknown",
-      "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"NA","developer-portal":"U","gadgetbridge":"U","health-connect-reader":"NA"},
-      "notes": "No current Mi Fitness plans/courses history route was established."
+      "providerNames": ["On-wrist Running Courses"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["external"],
+      "routeCoverage": {"privacy-request":"U","health-connect":"NA","gadgetbridge":"U","health-connect-reader":"NA"},
+      "notes": "Xiaomi Smart Band 10 and Watch S4 document built-in on-wrist running courses; no account-history route is established."
     },
     {
       "taxonomyId": "mobility.gait-function",
@@ -222,7 +216,7 @@
       "presence": "unknown",
       "appVisible": "unknown",
       "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
       "notes": "No clinical gait or functional-mobility family was established."
     },
     {
@@ -231,7 +225,7 @@
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["user-entered"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"NA","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"NA","health-connect-reader":"U"},
       "notes": "Manual women's-health records are app-visible; exact record types and portability are unknown."
     },
     {
@@ -240,7 +234,7 @@
       "presence": "unknown",
       "appVisible": "unknown",
       "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"NA","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"NA","health-connect-reader":"U"},
       "notes": "No current first-party nutrition or hydration history was established."
     },
     {
@@ -249,7 +243,7 @@
       "presence": "unknown",
       "appVisible": "unknown",
       "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"NA","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"NA","health-connect-reader":"U"},
       "notes": "Mi Fitness is not documented as a clinical-record or medication platform."
     },
     {
@@ -258,7 +252,7 @@
       "presence": "unknown",
       "appVisible": "unknown",
       "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
       "notes": "Stress is mapped separately; no mood, mindfulness or symptom-log family was verified."
     },
     {
@@ -267,17 +261,17 @@
       "presence": "unknown",
       "appVisible": "unknown",
       "productionLayers": [],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"NA","health-connect-reader":"U"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"NA","health-connect-reader":"U"},
       "notes": "No Xiaomi hearing-health or audiogram family was established."
     },
     {
       "taxonomyId": "insights.trends-alerts-awards",
-      "providerNames": ["Risk Warnings", "Personalized Reports"],
+      "providerNames": ["Risk Warnings", "Personalized Reports", "Vitality Score"],
       "presence": "present",
       "appVisible": "yes",
       "productionLayers": ["derived"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"U","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"U"},
-      "notes": "App insights are confirmed, but no route preserves complete Xiaomi-specific interpretations."
+      "routeCoverage": {"privacy-request":"U","health-connect":"U","gadgetbridge":"U","health-connect-reader":"U"},
+      "notes": "App insights and Smart Band 10 Vitality Score are confirmed, but no route preserves complete Xiaomi-specific interpretations."
     },
     {
       "taxonomyId": "device.raw-sensors",
@@ -285,8 +279,8 @@
       "presence": "unknown",
       "appVisible": "no",
       "productionLayers": ["captured"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"N","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"N"},
-      "notes": "Wearables necessarily capture signals, but no Xiaomi raw archive is documented; Gadgetbridge access is protocol/model specific."
+      "routeCoverage": {"privacy-request":"U","health-connect":"N","gadgetbridge":"U","health-connect-reader":"N"},
+      "notes": "Wearables necessarily capture signals, but no Xiaomi raw archive or model-specific Gadgetbridge raw-sensor route is documented."
     },
     {
       "taxonomyId": "provenance.metadata",
@@ -294,7 +288,7 @@
       "presence": "present",
       "appVisible": "partial",
       "productionLayers": ["captured", "normalized"],
-      "routeCoverage": {"privacy-request":"U","health-connect":"P","developer-portal":"U","gadgetbridge":"P","health-connect-reader":"P"},
+      "routeCoverage": {"privacy-request":"U","health-connect":"P","gadgetbridge":"P","health-connect-reader":"P"},
       "notes": "Health Connect and local databases can retain origin metadata, but Xiaomi-to-route fidelity is undocumented."
     }
   ]

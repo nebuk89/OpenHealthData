@@ -13,7 +13,7 @@ manifest.
 | 3 | Google / Fitbit | Pending | Pending | Pending | Pending |
 | 4 | [Samsung](./samsung/README.md) | Partial | Verified | [Coverage](./samsung/coverage.json) | [Resources](./samsung/resources.md) |
 | 5 | Huawei | Pending | Pending | Pending | Pending |
-| 6 | [Xiaomi](./xiaomi/README.md) | Restricted | Verified | [Coverage](./xiaomi/coverage.json) | [Resources](./xiaomi/resources.md) |
+| 6 | [Xiaomi](./xiaomi/README.md) | Unknown | Verified | [Coverage](./xiaomi/coverage.json) | [Resources](./xiaomi/resources.md) |
 | 7 | Zepp Health / Amazfit | Pending | Pending | Pending | Pending |
 | 8 | WHOOP | Pending | Pending | Pending | Pending |
 | 9 | [Oura](./oura/README.md) | Mostly open | Verified | [Coverage](./oura/coverage.json) | [Resources](./oura/resources.md) |

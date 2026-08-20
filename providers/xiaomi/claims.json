@@ -39,6 +39,27 @@
       "confidence": "high"
     },
     {
+      "id": "smart-band-10-training-and-recovery",
+      "claim": "Xiaomi Smart Band 10 displays SpO2, VO2 max, Training Load and Recovery Time and provides on-wrist running courses.",
+      "sourceUrl": "https://www.mi.com/global/product/xiaomi-smart-band-10/",
+      "evidence": "The product page names all-day SpO2, VO2 max, training load, recovery time and ten built-in on-wrist running courses.",
+      "confidence": "high"
+    },
+    {
+      "id": "smart-band-10-sleep-and-vitality",
+      "claim": "Xiaomi Smart Band 10 provides Sleep Score, a 21-day sleep-improvement plan and Vitality Score.",
+      "sourceUrl": "https://www.mi.com/global/product/xiaomi-smart-band-10/",
+      "evidence": "The product page names Sleep Score and Vitality Score and says the band offers a 21-day plan based on prior sleep data.",
+      "confidence": "high"
+    },
+    {
+      "id": "watch-s4-running-dynamics",
+      "claim": "Xiaomi Watch S4 provides on-wrist running courses and Running Form Recognition for vertical ratio, vertical amplitude and ground contact time.",
+      "sourceUrl": "https://www.mi.com/global/product/xiaomi-watch-s4/",
+      "evidence": "The product page explicitly names on-wrist running courses, Running Form Recognition and the three posture metrics.",
+      "confidence": "high"
+    },
+    {
       "id": "mi-fitness-writes-health-connect",
       "claim": "The current Android Mi Fitness listing says the app synchronizes fitness and health data to Google Health Connect.",
       "sourceUrl": "https://play.google.com/store/apps/details?id=com.xiaomi.wearable&hl=en_US",
@@ -60,13 +81,6 @@
       "confidence": "high"
     },
     {
-      "id": "public-mi-fitness-api-not-established",
-      "claim": "No public documentation was found for a self-service Mi Fitness personal-history API, OAuth scopes, endpoint catalogue or backfill policy.",
-      "sourceUrl": "https://dev.mi.com/console/",
-      "evidence": "The current developer console resolves to the generic HyperOS platform; the audited public materials did not identify a Mi Fitness account-history product. This is an evidence-gap finding, not proof that no private partner interface exists.",
-      "confidence": "medium"
-    },
-    {
       "id": "gadgetbridge-local-vendor-free-route",
       "claim": "Gadgetbridge can operate supported wearables locally without the vendor application or a vendor account.",
       "sourceUrl": "https://codeberg.org/Freeyourgadget/Gadgetbridge",
@@ -78,6 +92,13 @@
       "claim": "Gadgetbridge is a direct device-management route and does not establish retrieval of prior Mi Fitness cloud history.",
       "sourceUrl": "https://gadgetbridge.org/",
       "evidence": "The project describes pairing and managing gadgets locally instead of relying on the proprietary app; it does not claim to be a Xiaomi account-history client.",
+      "confidence": "high"
+    },
+    {
+      "id": "gadgetbridge-xiaomi-support-is-model-specific",
+      "claim": "Gadgetbridge Xiaomi support is model specific; several current devices are experimental, and Smart Band 7 Pro can synchronize only the current day's activities.",
+      "sourceUrl": "https://gadgetbridge.org/gadgets/wearables/xiaomi/",
+      "evidence": "The Xiaomi catalogue marks multiple current devices experimental and warns that Smart Band 7 Pro cannot synchronize an earlier day's unsynced activity.",
       "confidence": "high"
     },
     {
@@ -101,4 +122,3 @@
     }
   ]
 }
-

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Xiaomi",
-  "checkedAt": "2026-08-20T11:37:25.851Z",
+  "checkedAt": "2026-08-20T12:04:57.767Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -31,12 +31,6 @@
       "finalUrl": "https://codeberg.org/Freeyourgadget/Gadgetbridge"
     },
     {
-      "url": "https://dev.mi.com/console/",
-      "status": "ok",
-      "httpStatus": 200,
-      "finalUrl": "https://dev.mi.com/xiaomihyperos"
-    },
-    {
       "url": "https://developer.android.com/health-and-fitness/health-connect/data-types",
       "status": "ok",
       "httpStatus": 200,
@@ -46,7 +40,7 @@
       "url": "https://developer.android.com/health-and-fitness/health-connect/read-data",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/read-data?hl=it"
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/read-data"
     },
     {
       "url": "https://developer.android.com/health-and-fitness/health-connect",
@@ -61,10 +55,22 @@
       "finalUrl": "https://apps.apple.com/us/app/mi-fitness-xiaomi-wear-lite/id1493500777"
     },
     {
-      "url": "https://gadgetbridge.org/gadgets/",
+      "url": "https://www.mi.com/global/product/xiaomi-smart-band-10/",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://gadgetbridge.org/gadgets/"
+      "finalUrl": "https://www.mi.com/global/product/xiaomi-smart-band-10/"
+    },
+    {
+      "url": "https://www.mi.com/global/product/xiaomi-watch-s4/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.mi.com/global/product/xiaomi-watch-s4/"
+    },
+    {
+      "url": "https://gadgetbridge.org/gadgets/wearables/xiaomi/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://gadgetbridge.org/gadgets/wearables/xiaomi/"
     },
     {
       "url": "https://gadgetbridge.org/basics/features/",

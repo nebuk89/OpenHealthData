@@ -7,9 +7,10 @@ unless a current Xiaomi source establishes continuity.
 
 ## Bottom line
 
-Xiaomi is **Restricted** for personal-data openness. Mi Fitness displays a broad, device-dependent
-set of activity, workout, heart-rate, sleep, stress, energy and manually entered health data, but
-Xiaomi publishes no complete export schema or ordinary-user Mi Fitness API. Xiaomi's current
+Xiaomi's overall personal-data openness is **Unknown**. Mi Fitness and current Xiaomi wearables
+display a broad, device-dependent set of activity, workout, heart-rate, blood-oxygen, sleep,
+training and derived wellness data, but Xiaomi publishes no complete export schema or Mi Fitness
+account API. Xiaomi's current
 privacy policy provides a request route for a copy of personal information and, where law applies,
 data portability in a structured, commonly used and machine-readable format; it does not promise
 that a response contains all Mi Fitness records, samples, routes or derived scores
@@ -28,21 +29,20 @@ directly over Bluetooth, but it cannot recover Mi Fitness cloud history
 | Route | Ordinary-user access | Automation | Established scope | Principal limitation |
 |---|---|---|---|---|
 | Xiaomi privacy request | Yes, subject to identity and applicable law | No | A copy of personal information; portability where applicable | No Mi Fitness archive schema, field list or history guarantee |
-| Health Connect | Yes, Android and permission dependent | Yes, through a user-authorized reader | Fitness and health data that Mi Fitness writes | Xiaomi publishes no exact record map, backfill promise or parity statement |
-| Xiaomi developer portal | Registration/console based | Unknown for Mi Fitness | Generic HyperOS developer platform | No current Mi Fitness personal-history API was established |
-| Gadgetbridge | Yes, supported devices only | Yes, local synchronization | Device-dependent activity, sleep, heart rate, workouts and metadata | Replaces or competes with Mi Fitness; no prior cloud history |
-| Health Connect reader | Developer-built, permission dependent | Yes | Standard Health Connect records attributed to Mi Fitness | Not turnkey and cannot restore Xiaomi-only fields |
+| Health Connect | Yes, Android and permission dependent | Yes, through a user-authorized reader | Mi Fitness to Health Connect direction only | Xiaomi publishes no type map, backfill promise or category-level coverage |
+| Gadgetbridge | Self-service, supported devices only | Yes, local synchronization | Model-specific activity, sleep, heart rate and workouts | Vendor-unsupported; experimental models and severe history limits exist |
+| Health Connect reader | Self-service development, permission dependent | Yes | Official Android SDK for records Mi Fitness writes | Not turnkey; Xiaomi category coverage is unknown |
 
 ## Openness comparison
 
 | Openness test | Result | Finding |
 |---|---|---|
-| App-to-interface parity | No | No official source maps every app-visible value or derived result to an export or interface |
-| Self-service developer access | No | No public Mi Fitness personal-data API, scopes or self-service registration path was established |
+| App-to-interface parity | Unknown | No official source maps app-visible values to interface records, so parity cannot be measured |
+| Self-service developer access | Partial | Ordinary users can build official Health Connect readers for relayed records, but no Mi Fitness account API is documented |
 | Official automation | Partial | Health Connect can support recurring reads, but only for records Mi Fitness elects to write |
 | Complete history | Unknown | Xiaomi publishes no Mi Fitness export retention, backfill or all-history commitment |
-| Raw and derived data coverage | No | No route is documented to include raw sensor history and all proprietary scores |
-| **Overall personal-data openness** | **Restricted** | A privacy-copy route and partial Android relay exist, but complete programmable access is unsupported or undocumented |
+| Raw and derived data coverage | Unknown | Xiaomi publishes no type map or archive schema from which coverage can be measured |
+| **Overall personal-data openness** | **Unknown** | Useful routes exist, but their Xiaomi data scope and completeness are not documented well enough for a categorical rating |
 
 ## Data inventory and route coverage
 
@@ -50,22 +50,26 @@ Codes: **A** available, **P** partial/conditional, **N** not available by route 
 **NA** not applicable. The complete 29-family mapping is in
 [`coverage.json`](./coverage.json).
 
-| Data family | Included metrics or app outputs | Captured or produced as | Privacy request | Health Connect | Developer portal | Gadgetbridge | HC reader |
-|---|---|---|---|---|---|---|---|
-| Body measurements | Weight and other manually managed health data | User-entered / normalized | U - archive contents undocumented | P - compatible standard records possible | U - no Mi Fitness API established | P - scale/device dependent | P - only records written to Health Connect |
-| Daily activity | Steps, distance and daily activity | Captured / normalized / derived | U - archive contents undocumented | P - app only promises general synchronization | U - no Mi Fitness API established | P - device/model dependent | P - standard records only |
-| Energy and active time | Calories, activity progress and energy | Normalized / derived | U - archive contents undocumented | P - exact categories unpublished | U - no Mi Fitness API established | P - device estimates on supported models | P - standard records only |
-| Heart rate | Wearable heart rate and trends | Captured / normalized / derived | U - cadence and history undocumented | P - exact mapping unpublished | U - no Mi Fitness API established | P - supported-device samples | P - if Mi Fitness writes HeartRateRecord |
-| Sleep respiration | Breathing quality and related sleep analysis | Captured / derived | U - cadence and history undocumented | U - exact mapping unpublished | U - no Mi Fitness API established | P - supported-device measurements | U - no current Xiaomi type map |
-| Sleep sessions and stages | Sleep duration, deep/light/REM, sleep heart rate, breathing quality | Captured / normalized / derived | U - stage intervals undocumented | P - exact mapping unpublished | U - no Mi Fitness API established | P - model-dependent sessions/stages | P - standard sleep records only |
-| Sleep insights | Personalized sleep report and guidance | Derived | U - derived fields undocumented | U - proprietary report has no published mapping | U - no Mi Fitness API established | N - cloud/app report is outside device retrieval | U - no standard parity established |
-| Stress and energy | Stress, energy and related warnings | Derived | U - fields and history undocumented | U - no current Xiaomi mapping published | U - no Mi Fitness API established | P - some device metrics, not guaranteed scores | U - proprietary fields not established |
-| Workout sessions | Walking, running, cycling and other sessions | Captured / normalized | U - session files and history undocumented | P - exercise records possible | U - no Mi Fitness API established | P - supported modes and fields vary | P - standard exercise records only |
-| Route and elevation | Workout route, distance and progress | Captured / normalized | U - point series and formats undocumented | U - route mapping unpublished | U - no Mi Fitness API established | P - some devices/workouts | U - standard session may omit Xiaomi route detail |
-| Reproductive health | Women's health records | User-entered | U - record inclusion undocumented | U - no current Xiaomi mapping published | U - no Mi Fitness API established | NA - not a wearable BLE history | U - only if Mi Fitness writes standard cycle records |
-| Alerts and insights | Risk warnings, trends and reports | Derived | U - archive contents undocumented | U - proprietary representation unpublished | U - no Mi Fitness API established | P - limited device alerts, not app insight parity | U - no standard parity established |
-| Raw sensor data | Accelerometer and other internal streams | Captured | U - no raw archive promise | N - Health Connect stores normalized record types | U - no Mi Fitness API established | P - live/device-specific access only | N - relay cannot recreate unexported raw streams |
-| Provenance | Timestamps, source app/device, firmware and identifiers | Captured / normalized | U - schema undocumented | P - standard metadata and data origin | U - no Mi Fitness API established | P - local device and app metadata | P - Health Connect metadata, not Xiaomi cloud provenance |
+| Data family | Included metrics or app outputs | Captured or produced as | Privacy request | Health Connect | Gadgetbridge | HC reader |
+|---|---|---|---|---|---|---|
+| Body measurements | Weight and other manually managed health data | User-entered / normalized | U - archive contents undocumented | U - Xiaomi type map unpublished | U - no model-specific evidence | U - depends on unknown Mi Fitness writes |
+| Daily activity | Steps, distance and daily activity | Captured / normalized / derived | U - archive contents undocumented | U - Xiaomi type map unpublished | P - exact device/model dependent | U - depends on unknown Mi Fitness writes |
+| Energy and active time | Calories, activity progress and energy | Normalized / derived | U - archive contents undocumented | U - Xiaomi type map unpublished | P - device estimates on supported models | U - depends on unknown Mi Fitness writes |
+| Heart rate | Wearable heart rate and trends | Captured / normalized / derived | U - cadence and history undocumented | U - Xiaomi type map unpublished | P - supported-device samples | U - depends on unknown Mi Fitness writes |
+| Oxygen and respiration | SpO2 and sleep breathing quality | Captured / normalized / derived | U - cadence and history undocumented | U - Xiaomi type map unpublished | P - explicitly supported on some models | U - depends on unknown Mi Fitness writes |
+| Cardio fitness | VO2 max | Derived | U - archive contents undocumented | U - Xiaomi type map unpublished | U - no model-specific extraction evidence | U - depends on unknown Mi Fitness writes |
+| Sleep sessions and stages | Duration, deep/light/REM, sleep heart rate, breathing quality | Captured / normalized / derived | U - stage intervals undocumented | U - Xiaomi type map unpublished | P - model-dependent sessions/stages | U - depends on unknown Mi Fitness writes |
+| Sleep insights | Sleep Score, personalized report and 21-day sleep plan | Derived | U - derived fields undocumented | U - proprietary mapping unpublished | U - no model-specific evidence | U - no standard parity established |
+| Stress and recovery | Stress, energy and Recovery Time | Derived | U - fields and history undocumented | U - Xiaomi type map unpublished | U - score parity unverified | U - proprietary fields not established |
+| Training load | Training Load | Derived | U - archive contents undocumented | U - Xiaomi type map unpublished | U - no model-specific evidence | U - no standard parity established |
+| Workout sessions | Walking, running, cycling and other sessions | Captured / normalized | U - session files and history undocumented | U - Xiaomi type map unpublished | P - supported modes and fields vary | U - depends on unknown Mi Fitness writes |
+| Route and elevation | Workout route, distance and progress | Captured / normalized | U - point series and formats undocumented | U - route mapping unpublished | P - some devices/workouts | U - route representation unknown |
+| Sport dynamics | Running Form Recognition, vertical ratio/amplitude, ground contact time | Captured / normalized / derived | U - fields undocumented | U - Xiaomi type map unpublished | U - no model-specific evidence | U - no standard parity established |
+| Plans and courses | On-wrist running courses | External | U - account inclusion undocumented | NA - not a Health Connect history family | U - no model-specific evidence | NA - not a Health Connect history family |
+| Reproductive health | Women's health records | User-entered | U - record inclusion undocumented | U - Xiaomi type map unpublished | NA - not a wearable BLE history | U - depends on unknown Mi Fitness writes |
+| Alerts and insights | Risk warnings, reports and Vitality Score | Derived | U - archive contents undocumented | U - proprietary mapping unpublished | U - no model-specific evidence | U - no standard parity established |
+| Raw sensor data | Accelerometer and other internal streams | Captured | U - no raw archive promise | N - normalized records, not vendor raw streams | U - no model-specific evidence | N - cannot recreate unexported raw streams |
+| Provenance | Timestamps, source app/device, firmware and identifiers | Captured / normalized | U - schema undocumented | P - standard metadata and data origin | P - local device and app metadata | P - Health Connect metadata, not Xiaomi cloud provenance |
 
 The table starts with current first-party app outputs documented by Xiaomi's app listings. An
 app-visible metric is not treated as exportable merely because an input signal is available.
@@ -87,10 +91,11 @@ the research harness now redirects to the general policy, so it is not used as a
 
 ### Developer access
 
-The Xiaomi developer console currently resolves to the generic HyperOS developer platform
-([developer portal](https://dev.mi.com/console/)). No public documentation was found for a Mi
-Fitness history API, OAuth scopes, endpoint catalogue, quotas, backfill or user-consent flow.
-Developer-console availability is therefore not counted as fitness-data access.
+Google's official Health Connect SDK is self-service: an ordinary Android developer can request
+record permissions and build a reader. That access is partial at the Xiaomi layer because the Mi
+Fitness listing confirms only outbound synchronization and publishes no record-type map. No public
+Mi Fitness account-history API, OAuth scopes, endpoint catalogue, quotas or backfill policy were
+established.
 
 ### Health Connect
 
@@ -116,11 +121,20 @@ movement; personalized reports; and risk warnings
 ([App Store](https://apps.apple.com/us/app/mi-fitness-xiaomi-wear-lite/id1493500777)).
 Availability is device, firmware, app-version and region dependent.
 
-The listing establishes first-party visibility, not external granularity. Xiaomi does not document
+Current product pages materially extend that inventory. Xiaomi Smart Band 10 documents SpO2,
+VO2 max, Training Load, Recovery Time, on-wrist running courses, Vitality Score, Sleep Score and a
+21-day sleep-improvement plan
+([Smart Band 10](https://www.mi.com/global/product/xiaomi-smart-band-10/)). Xiaomi Watch S4 documents
+on-wrist running courses and Running Form Recognition with vertical ratio, vertical amplitude and
+ground contact time
+([Watch S4](https://www.mi.com/global/product/xiaomi-watch-s4/)). These pages prove product presence
+only; they do not establish that Mi Fitness exports any of those values.
+
+The product listings establish first-party visibility, not external granularity. Xiaomi does not document
 sample intervals, event schemas, units, record identifiers, edit/deletion markers, score inputs or
 whether calculations are performed on the wearable, phone or cloud. Consequently, the canonical
-coverage map uses `unknown` rather than `absent` for unconfirmed families such as HRV, ECG, VO2 max,
-temperature, training load and performance predictions.
+coverage map uses `unknown` rather than `absent` for unconfirmed families such as HRV, ECG,
+temperature and performance predictions, and `U` for every route lacking metric-level evidence.
 
 ## Ecosystem integrations
 
@@ -143,10 +157,12 @@ be an indirect, potentially lossy activity relay rather than Xiaomi portability.
 ### Gadgetbridge
 
 Gadgetbridge is the strongest current open-source route. Its active Codeberg project describes a
-local Android application that works without the vendor app or vendor account and links to a
-device-support catalogue ([upstream](https://codeberg.org/Freeyourgadget/Gadgetbridge);
-[device catalogue](https://gadgetbridge.org/gadgets/)). Xiaomi support remains exact-model and
-firmware dependent. It is a device route: it cannot download records that exist only in an existing
+local Android application that works without the vendor app or vendor account
+([upstream](https://codeberg.org/Freeyourgadget/Gadgetbridge)). Its Xiaomi catalogue shows why route
+coverage must remain model specific: several current devices are experimental or only partially
+supported, and Smart Band 7 Pro can synchronize only the current day's activities
+([Xiaomi devices](https://gadgetbridge.org/gadgets/wearables/xiaomi/)). It is a self-service but
+Xiaomi-vendor-unsupported device route and cannot download records that exist only in an existing
 Mi Fitness account.
 
 The GitHub mirror is archived but remains licence-verifiable as `AGPL-3.0`; the active canonical
@@ -190,25 +206,26 @@ service access.
 | Consumer effort | Privacy request is simple to initiate but untested; Health Connect setup is moderate; Gadgetbridge is technical |
 | Cost | No paid Xiaomi subscription identified; compatible hardware and platform are required |
 | Platform dependency | Mi Fitness requires supported mobile/device combinations; Health Connect is Android-only |
-| Data completeness | Unknown for privacy requests; partial for Health Connect and local BLE |
+| Data completeness | Unknown for privacy requests and Health Connect; partial and model-specific for local BLE |
 | Granularity | App granularity is visible; external sample/series coverage is undocumented or device dependent |
 | Historical depth | No Xiaomi guarantee; Health Connect history requires platform permission; BLE is prospective/device-limited |
 | Automation | Partial through Health Connect readers or Gadgetbridge; no Xiaomi account API established |
 | Formats | No Xiaomi archive schema; Health Connect is typed Android records; Gadgetbridge uses internal/export formats |
 | User authorization | Privacy identity verification and Android per-type permissions are documented at their respective layers |
-| Developer access | Generic Xiaomi portal exists; no self-service Mi Fitness history API established |
+| Developer access | Partial: self-service official Health Connect SDK, but no Mi Fitness account API established |
 | Integrations | Health Connect confirmed; Apple Health/Strava details remain an evidence gap |
 | Provenance | Health Connect exposes origin metadata, but Xiaomi-to-relay fidelity is undocumented |
 | Corrections and deletion | Propagation and tombstones are undocumented |
-| Portability | Useful partial routes, but no route reproduces the complete Mi Fitness account |
+| Portability | Useful routes exist, but their Xiaomi scope is too undocumented for a completeness rating |
 | Evidence quality | Current first-party app/policy pages and maintained project sources; no hands-on export sample |
 
 ## Provisional openness assessment
 
-**Restricted.** Xiaomi offers a legal/privacy route to request a copy and a current Android relay,
-but neither establishes complete app parity. The ordinary account holder has no documented,
-complete, self-service API. Gadgetbridge materially improves local ownership for supported devices
-but is an unsupported substitute for the vendor app, not an account-history export.
+**Unknown.** Xiaomi offers a legal/privacy route, outbound Health Connect synchronization and a
+self-service official SDK for reading relayed records, but none has a published Xiaomi type map or
+complete-history contract. Gadgetbridge materially improves local ownership for supported devices
+but is vendor-unsupported, model specific and not an account-history export. Current evidence does
+not support a more precise categorical rating.
 
 ## Evidence gaps
 
@@ -218,9 +235,7 @@ but is an unsupported substitute for the vendor app, not an account-history expo
    the records actually written, including pre-link history and duplicates.
 3. Verify Apple Health and Strava in current iOS/Android builds by region; record exact direction,
    categories and backfill before adding them as confirmed routes.
-4. Check the authenticated developer console for a restricted Mi Fitness product, without assuming
-   the generic HyperOS portal provides it.
-5. Test exact current Xiaomi/Redmi models against Gadgetbridge and document pairing, data families,
+4. Test exact current Xiaomi/Redmi models against Gadgetbridge and document pairing, data families,
    history depth and export formats.
-6. Determine whether app-visible HRV, ECG, VO2 max, temperature, training load or readiness outputs
-   exist on any current devices and whether any direct route carries them.
+5. Determine whether app-visible HRV, ECG, temperature or performance predictions exist on any
+   current devices and whether any direct route carries them.
