@@ -1,0 +1,650 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": "1.0.0",
+  "provider": "Oura",
+  "evidenceDate": "2026-08-20",
+  "routes": [
+    {
+      "id": "account-export",
+      "label": "Membership Hub and web export",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "api-v2",
+      "label": "Oura Cloud API v2",
+      "kind": "official-api",
+      "access": "self-service"
+    },
+    {
+      "id": "mcp-server",
+      "label": "Oura MCP Server",
+      "kind": "official-mcp",
+      "access": "unknown"
+    },
+    {
+      "id": "api-webhooks",
+      "label": "Oura API webhooks",
+      "kind": "official-api",
+      "access": "self-service"
+    },
+    {
+      "id": "apple-health",
+      "label": "Apple Health integration",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "health-connect",
+      "label": "Health Connect integration",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "strava",
+      "label": "Strava integration",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "natural-cycles",
+      "label": "Natural Cycles integration",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "api-clients",
+      "label": "Open-source API clients",
+      "kind": "open-source",
+      "access": "self-service"
+    },
+    {
+      "id": "local-ble",
+      "label": "Reverse-engineered local Bluetooth",
+      "kind": "unofficial",
+      "access": "unsupported"
+    }
+  ],
+  "coverage": [
+    {
+      "taxonomyId": "body.composition",
+      "providerNames": ["Height", "Weight", "Body Mass Index", "Body Fat Percentage", "Lean Body Mass"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external", "derived"],
+      "routeCoverage": {
+        "account-export": "P",
+        "api-v2": "P",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "P",
+        "health-connect": "P",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "P",
+        "local-ble": "N"
+      },
+      "notes": "Personal info exposes height and weight; Apple Health and Health Connect can import additional body measurements."
+    },
+    {
+      "taxonomyId": "activity.daily",
+      "providerNames": ["Steps", "Daily Movement", "Activity Goal", "Inactivity Alerts"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "account-export": "A",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "P",
+        "health-connect": "P",
+        "strava": "P",
+        "natural-cycles": "N",
+        "api-clients": "A",
+        "local-ble": "P"
+      },
+      "notes": "API v2 daily activity includes steps, activity classes, targets and inactivity measures; integrations carry narrower representations."
+    },
+    {
+      "taxonomyId": "activity.energy",
+      "providerNames": ["Active Calories", "Total Calories", "MET Minutes", "Activity Time"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["normalized", "derived"],
+      "routeCoverage": {
+        "account-export": "A",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "P",
+        "health-connect": "P",
+        "strava": "P",
+        "natural-cycles": "N",
+        "api-clients": "A",
+        "local-ble": "P"
+      },
+      "notes": "API v2 exposes energy, MET and time aggregates; platform integrations normalize selected activity energy."
+    },
+    {
+      "taxonomyId": "cardio.heart-rate",
+      "providerNames": ["Daytime Heart Rate", "Live Heart Rate", "Resting Heart Rate", "Activity Heart Rate"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {
+        "account-export": "A",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "P",
+        "health-connect": "P",
+        "strava": "P",
+        "natural-cycles": "N",
+        "api-clients": "A",
+        "local-ble": "A"
+      },
+      "notes": "API v2 provides timestamped BPM with source plus sleep HR series; Apple Health exports one-minute heart rate."
+    },
+    {
+      "taxonomyId": "cardio.hrv",
+      "providerNames": ["Average HRV", "Max HRV", "HRV Balance"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "account-export": "A",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "N",
+        "health-connect": "A",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "A",
+        "local-ble": "A"
+      },
+      "notes": "Sleep documents include five-minute HRV series and averages; Oura's current Apple Health export list omits HRV."
+    },
+    {
+      "taxonomyId": "cardio.blood-pressure",
+      "providerNames": ["Imported Blood Pressure"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["external"],
+      "routeCoverage": {
+        "account-export": "U",
+        "api-v2": "N",
+        "mcp-server": "U",
+        "api-webhooks": "N",
+        "apple-health": "P",
+        "health-connect": "P",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "N",
+        "local-ble": "N"
+      },
+      "notes": "Apple Health explicitly imports blood pressure into Oura; no Oura-captured or API v2 blood-pressure resource exists."
+    },
+    {
+      "taxonomyId": "cardio.ecg-rhythm",
+      "providerNames": [],
+      "presence": "absent",
+      "appVisible": "no",
+      "productionLayers": [],
+      "routeCoverage": {
+        "account-export": "N",
+        "api-v2": "N",
+        "mcp-server": "U",
+        "api-webhooks": "N",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "N",
+        "local-ble": "N"
+      },
+      "notes": "No current Oura ECG waveform or rhythm-classification feature was established."
+    },
+    {
+      "taxonomyId": "cardio.vo2max",
+      "providerNames": ["Cardio Capacity", "VO2 Max", "Cardio Capacity Level"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived", "user-entered", "external"],
+      "routeCoverage": {
+        "account-export": "P",
+        "api-v2": "P",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "P",
+        "health-connect": "P",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "P",
+        "local-ble": "N"
+      },
+      "notes": "API v2 exposes VO2 max values but not the app's age-adjusted category or Future Me projection."
+    },
+    {
+      "taxonomyId": "respiratory.rate-oxygen",
+      "providerNames": ["Respiratory Rate", "Average Blood Oxygen", "Breathing Disturbance Index"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "account-export": "A",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "P",
+        "health-connect": "P",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "A",
+        "local-ble": "A"
+      },
+      "notes": "Sleep records expose average respiration and daily SpO2 exposes aggregate percentage and BDI."
+    },
+    {
+      "taxonomyId": "temperature.body-skin",
+      "providerNames": ["Body Temperature", "Temperature Deviation", "Temperature Trend"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {
+        "account-export": "P",
+        "api-v2": "P",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "A",
+        "api-clients": "P",
+        "local-ble": "A"
+      },
+      "notes": "API v2 exposes deviations, not a raw temperature stream; Natural Cycles receives overnight temperature trend only."
+    },
+    {
+      "taxonomyId": "sleep.sessions-stages",
+      "providerNames": ["Sleep Periods", "Deep Sleep", "Light Sleep", "REM Sleep", "Naps"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "account-export": "A",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "A",
+        "health-connect": "A",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "A",
+        "local-ble": "A"
+      },
+      "notes": "API v2 provides detailed sleep periods, durations and stage classifications; platform integrations carry normalized sleep."
+    },
+    {
+      "taxonomyId": "sleep.insights-score",
+      "providerNames": ["Sleep Score", "Sleep Contributors", "Sleep Regularity", "Bedtime Guidance"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "account-export": "A",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "A",
+        "local-ble": "P"
+      },
+      "notes": "API v2 explicitly exposes score, contributors and sleep-time recommendation; integrations do not carry equivalent scores."
+    },
+    {
+      "taxonomyId": "recovery.stress",
+      "providerNames": ["Daytime Stress", "Cumulative Stress", "Stressed Time", "Restored Time"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "account-export": "P",
+        "api-v2": "P",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "P",
+        "local-ble": "P"
+      },
+      "notes": "API v2 exposes daily totals and summary but not the app's 15-minute four-zone graph or Cumulative Stress presentation."
+    },
+    {
+      "taxonomyId": "recovery.energy-readiness",
+      "providerNames": ["Readiness Score", "Readiness Contributors", "Restorative Time", "Rest Mode"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "account-export": "A",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "A",
+        "local-ble": "P"
+      },
+      "notes": "Readiness score/contributors and rest-mode periods are explicit API v2 resources; Restorative Time intervals are not exposed by API v2."
+    },
+    {
+      "taxonomyId": "training.load-status",
+      "providerNames": ["Activity Balance", "Training Frequency", "Training Volume", "Recovery Time", "Recovery Index"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "account-export": "A",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "A",
+        "local-ble": "P"
+      },
+      "notes": "Oura does not use a traditional training-status label, but its Activity and Readiness contributor resources expose load/recovery indicators."
+    },
+    {
+      "taxonomyId": "training.performance-predictions",
+      "providerNames": ["Future Me"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "account-export": "U",
+        "api-v2": "N",
+        "mcp-server": "U",
+        "api-webhooks": "N",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "N",
+        "local-ble": "N"
+      },
+      "notes": "The app projects future Cardio Capacity, while API v2 exposes only VO2 max documents."
+    },
+    {
+      "taxonomyId": "workout.sessions",
+      "providerNames": ["Workouts", "Automatic Activity Detection", "Manually Added Activities"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "user-entered", "external"],
+      "routeCoverage": {
+        "account-export": "A",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "A",
+        "health-connect": "A",
+        "strava": "A",
+        "natural-cycles": "N",
+        "api-clients": "A",
+        "local-ble": "P"
+      },
+      "notes": "API v2 and integrations expose workout summaries, with route-specific source and history limits."
+    },
+    {
+      "taxonomyId": "workout.route-elevation",
+      "providerNames": ["Workout Route", "Map", "Distance", "Pace", "Splits"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {
+        "account-export": "U",
+        "api-v2": "N",
+        "mcp-server": "U",
+        "api-webhooks": "N",
+        "apple-health": "A",
+        "health-connect": "P",
+        "strava": "P",
+        "natural-cycles": "N",
+        "api-clients": "N",
+        "local-ble": "N"
+      },
+      "notes": "The app displays phone-recorded routes, pace and splits, but the API v2 workout schema has no route or elevation field."
+    },
+    {
+      "taxonomyId": "workout.sport-dynamics",
+      "providerNames": ["Activity Heart Rate", "Heart Rate Zones", "Pace", "Splits", "Workout Intensity"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {
+        "account-export": "P",
+        "api-v2": "P",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "P",
+        "health-connect": "P",
+        "strava": "P",
+        "natural-cycles": "N",
+        "api-clients": "P",
+        "local-ble": "P"
+      },
+      "notes": "Workout summary plus generic HR samples are available, but API v2 lacks linked zone, split and pace records."
+    },
+    {
+      "taxonomyId": "workout.plans-courses",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "account-export": "U",
+        "api-v2": "U",
+        "mcp-server": "U",
+        "api-webhooks": "U",
+        "apple-health": "U",
+        "health-connect": "U",
+        "strava": "U",
+        "natural-cycles": "U",
+        "api-clients": "U",
+        "local-ble": "U"
+      },
+      "notes": "No structured training-plan, workout-plan or course data family was established from current evidence."
+    },
+    {
+      "taxonomyId": "mobility.gait-function",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {
+        "account-export": "U",
+        "api-v2": "U",
+        "mcp-server": "U",
+        "api-webhooks": "U",
+        "apple-health": "U",
+        "health-connect": "U",
+        "strava": "U",
+        "natural-cycles": "U",
+        "api-clients": "U",
+        "local-ble": "U"
+      },
+      "notes": "Steps and the Cardio Capacity walking test do not establish a general gait or clinical mobility record family."
+    },
+    {
+      "taxonomyId": "reproductive.cycle-pregnancy",
+      "providerNames": ["Cycle Insights", "Period Prediction", "Fertile Window", "Pregnancy Insights"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "user-entered", "derived"],
+      "routeCoverage": {
+        "account-export": "U",
+        "api-v2": "N",
+        "mcp-server": "U",
+        "api-webhooks": "N",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "P",
+        "api-clients": "N",
+        "local-ble": "P"
+      },
+      "notes": "No API v2 cycle resource exists; Natural Cycles receives temperature trend only, not Oura logs or predictions."
+    },
+    {
+      "taxonomyId": "nutrition.hydration",
+      "providerNames": ["Meals", "Meal Timing"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "derived"],
+      "routeCoverage": {
+        "account-export": "U",
+        "api-v2": "N",
+        "mcp-server": "U",
+        "api-webhooks": "N",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "N",
+        "local-ble": "N"
+      },
+      "notes": "Current app meal features are not represented in API v2; export coverage needs hands-on validation."
+    },
+    {
+      "taxonomyId": "clinical.records-medications",
+      "providerNames": ["Imported Health Records", "Health Panels"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["external", "user-entered"],
+      "routeCoverage": {
+        "account-export": "P",
+        "api-v2": "N",
+        "mcp-server": "U",
+        "api-webhooks": "N",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "N",
+        "local-ble": "N"
+      },
+      "notes": "Oura's privacy policy and reports describe imported health records and Health Panels, but API v2 has no clinical resource."
+    },
+    {
+      "taxonomyId": "wellbeing.mindfulness-mood",
+      "providerNames": ["Explore Sessions", "Mood", "Tags", "Symptoms"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "user-entered", "normalized"],
+      "routeCoverage": {
+        "account-export": "A",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "P",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "A",
+        "local-ble": "P"
+      },
+      "notes": "API v2 exposes sessions with mood/HR/HRV and enhanced tags; Apple Health receives Mindful Minutes."
+    },
+    {
+      "taxonomyId": "hearing.audio-audiogram",
+      "providerNames": [],
+      "presence": "absent",
+      "appVisible": "no",
+      "productionLayers": [],
+      "routeCoverage": {
+        "account-export": "N",
+        "api-v2": "N",
+        "mcp-server": "U",
+        "api-webhooks": "N",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "N",
+        "local-ble": "N"
+      },
+      "notes": "No current Oura hearing-health, audio-exposure or audiogram family was established."
+    },
+    {
+      "taxonomyId": "insights.trends-alerts-awards",
+      "providerNames": ["Trends", "Crowns", "Reports", "Spotlight", "Symptom Radar", "Oura Advisor"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {
+        "account-export": "P",
+        "api-v2": "P",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "P",
+        "local-ble": "P"
+      },
+      "notes": "Underlying API v2 scores and time series support custom trends, but first-party narratives, reports, alerts, awards and Advisor content are not API v2 resources; MCP coverage is unknown."
+    },
+    {
+      "taxonomyId": "device.raw-sensors",
+      "providerNames": ["Raw PPG", "IBI", "Accelerometer", "Raw Temperature", "Raw SpO2"],
+      "presence": "present",
+      "appVisible": "no",
+      "productionLayers": ["captured"],
+      "routeCoverage": {
+        "account-export": "U",
+        "api-v2": "N",
+        "mcp-server": "U",
+        "api-webhooks": "N",
+        "apple-health": "N",
+        "health-connect": "N",
+        "strava": "N",
+        "natural-cycles": "N",
+        "api-clients": "N",
+        "local-ble": "A"
+      },
+      "notes": "Raw streams are required for Oura's calculations but are unavailable through supported interfaces; an unsupported BLE project reports local access."
+    },
+    {
+      "taxonomyId": "provenance.metadata",
+      "providerNames": ["Document ID", "Timestamp", "Source", "Ring ID", "Ring Configuration", "Algorithm Version"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {
+        "account-export": "P",
+        "api-v2": "A",
+        "mcp-server": "U",
+        "api-webhooks": "P",
+        "apple-health": "P",
+        "health-connect": "P",
+        "strava": "P",
+        "natural-cycles": "P",
+        "api-clients": "A",
+        "local-ble": "A"
+      },
+      "notes": "API v2 records retain strong identifiers and timing, with additional ring and algorithm metadata on selected resources."
+    }
+  ]
+}
