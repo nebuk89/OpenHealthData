@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Xiaomi",
-  "checkedAt": "2026-08-20T12:04:57.767Z",
+  "checkedAt": "2026-08-20T12:06:12.462Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -34,7 +34,7 @@
       "url": "https://developer.android.com/health-and-fitness/health-connect/data-types",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/data-types"
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/data-types?hl=tr"
     },
     {
       "url": "https://developer.android.com/health-and-fitness/health-connect/read-data",
