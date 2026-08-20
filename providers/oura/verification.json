@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 1,
+  "provider": "Oura",
+  "checkedAt": "2026-08-20T11:35:44.492Z",
+  "result": "passed",
+  "failures": [],
+  "warnings": [],
+  "links": [
+    {
+      "url": "https://cloud.ouraring.com/v2/static/json/openapi-1.37.json",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://cloud.ouraring.com/v2/static/json/openapi-1.37.json"
+    },
+    {
+      "url": "https://cloud.ouraring.com/legal/api-agreement",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://cloud.ouraring.com/legal/api-agreement"
+    },
+    {
+      "url": "https://cloud.ouraring.com/v2/docs",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://cloud.ouraring.com/v2/docs"
+    },
+    {
+      "url": "https://cloud.ouraring.com/docs",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://cloud.ouraring.com/docs"
+    },
+    {
+      "url": "https://cloud.ouraring.com/docs/authentication",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://cloud.ouraring.com/docs/authentication"
+    },
+    {
+      "url": "https://cloud.ouraring.com/oauth/applications",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://cloud.ouraring.com/user/sign-in?next=%2Foauth%2Fapplications"
+    },
+    {
+      "url": "https://cloud.ouraring.com/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://cloud.ouraring.com/user/sign-in?next=%2F"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/4409086524819-Oura-Membership",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/4409086524819-Oura-Membership"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/21205822135315-Daytime-Stress",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/21205822135315-Daytime-Stress"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/35593651188115-Symptom-Radar",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/35593651188115-Symptom-Radar"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/39512345699219-Oura-Advisor",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/39512345699219-Oura-Advisor"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360025441594-Export-Share-Your-Oura-Data",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360025441594-Export-Share-Your-Oura-Data"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360025438734-Apple-Health-Integration",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360025438734-Apple-Health-Integration"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/10786105824531-Health-Connect-by-Android-Integration",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/10786105824531-Health-Connect-by-Android-Integration"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/10766662499219-Strava-Integration",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/10766662499219-Strava-Integration"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/10785345623827-Natural-Cycles-Integration",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/10785345623827-Natural-Cycles-Integration"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360025589793-Readiness-Score",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360025589793-Readiness-Score"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360025445574-Sleep-Score",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360025445574-Sleep-Score"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360025577993-Activity-Score",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360025577993-Activity-Score"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/4410656562579-Heart-Rate-Graph",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/4410656562579-Heart-Rate-Graph"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360025441974-Heart-Rate-Variability",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360025441974-Heart-Rate-Variability"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/25358829055251-Resilience",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/25358829055251-Resilience"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/4410641295763-Restorative-Time",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/4410641295763-Restorative-Time"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/28451491040019-Cardiovascular-Age",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/28451491040019-Cardiovascular-Age"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/28336620578835-Cardio-Capacity-VO2-Max",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/28336620578835-Cardio-Capacity-VO2-Max"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/7328398760851-Blood-Oxygen-Sensing-SpO2",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/7328398760851-Blood-Oxygen-Sensing-SpO2"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360025587493-Body-Temperature",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360025587493-Body-Temperature"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/4410663885331-Cycle-Insights",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/4410663885331-Cycle-Insights"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360063022993-Automatic-Activity-Detection",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360063022993-Automatic-Activity-Detection"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/6321008135699-Activity-Heart-Rate",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/6321008135699-Activity-Heart-Rate"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360055983614-Using-Trends",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360055983614-Using-Trends"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360046061373-Oura-Reports",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360046061373-Oura-Reports"
+    },
+    {
+      "url": "https://support.ouraring.com/hc/en-us/articles/360038676993-Using-Tags",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.ouraring.com/hc/en-us/articles/360038676993-Using-Tags"
+    },
+    {
+      "url": "https://ouraring.com/privacy-policy",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://ouraring.com/privacy-policy"
+    },
+    {
+      "url": "https://github.com/hedgertronic/oura-ring",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/hedgertronic/oura-ring"
+    },
+    {
+      "url": "https://github.com/louispires/Oura-Home-Assistant-Integration",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/louispires/Oura-Home-Assistant-Integration"
+    },
+    {
+      "url": "https://github.com/turing-complet/python-ouraring",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/turing-complet/python-ouraring"
+    },
+    {
+      "url": "https://github.com/sam-roberts/oura-data-visualiser",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/sam-roberts/oura-data-visualiser"
+    },
+    {
+      "url": "https://github.com/Th0rgal/open_oura",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/Th0rgal/open_oura"
+    },
+    {
+      "url": "https://membership.ouraring.com/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://membership.ouraring.com/"
+    }
+  ],
+  "projects": [
+    {
+      "name": "hedgertronic/oura-ring",
+      "repositoryUrl": "https://github.com/hedgertronic/oura-ring",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "louispires/Oura-Home-Assistant-Integration",
+      "repositoryUrl": "https://github.com/louispires/Oura-Home-Assistant-Integration",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "turing-complet/python-ouraring",
+      "repositoryUrl": "https://github.com/turing-complet/python-ouraring",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "sam-roberts/oura-data-visualiser",
+      "repositoryUrl": "https://github.com/sam-roberts/oura-data-visualiser",
+      "declaredLicense": "GPL-3.0",
+      "detectedLicense": "GPL-3.0",
+      "status": "ok"
+    },
+    {
+      "name": "Th0rgal/open_oura",
+      "repositoryUrl": "https://github.com/Th0rgal/open_oura",
+      "declaredLicense": "NOASSERTION",
+      "detectedLicense": "NOASSERTION",
+      "status": "ok"
+    }
+  ]
+}
