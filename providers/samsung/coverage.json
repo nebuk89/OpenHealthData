@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": "1.0.0",
+  "provider": "Samsung",
+  "evidenceDate": "2026-08-20",
+  "routes": [
+    {
+      "id": "personal-export",
+      "label": "Samsung Health personal-data download",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "health-data-sdk",
+      "label": "Samsung Health Data SDK",
+      "kind": "official-sdk",
+      "access": "partner-gated"
+    },
+    {
+      "id": "health-connect",
+      "label": "Android Health Connect",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "sensor-sdk",
+      "label": "Samsung Health Sensor SDK",
+      "kind": "official-sdk",
+      "access": "partner-gated"
+    },
+    {
+      "id": "accessory-sdk",
+      "label": "Samsung Health Accessory SDK",
+      "kind": "official-sdk",
+      "access": "partner-gated"
+    },
+    {
+      "id": "legacy-sdk",
+      "label": "Deprecated Samsung Health SDK for Android",
+      "kind": "official-sdk",
+      "access": "unsupported"
+    },
+    {
+      "id": "strava",
+      "label": "Strava connected service",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "research-stack",
+      "label": "Samsung Health Research Stack study",
+      "kind": "open-source",
+      "access": "research-gated"
+    },
+    {
+      "id": "archive-parsers",
+      "label": "Open-source archive parsers",
+      "kind": "open-source",
+      "access": "self-service"
+    }
+  ],
+  "coverage": [
+    {
+      "taxonomyId": "body.composition",
+      "providerNames": ["Body composition", "Weight", "Body fat", "Skeletal muscle", "Body water", "BMR"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "user-entered", "external"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"A","health-connect":"P","sensor-sdk":"A","accessory-sdk":"A","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"A"},
+      "notes": "Data SDK supports body composition; Health Connect maps weight, body fat, BMR and height; Sensor SDK provides BIA on compatible watches."
+    },
+    {
+      "taxonomyId": "activity.daily",
+      "providerNames": ["Steps", "Floors climbed", "Activity summary", "Step goal"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"A","health-connect":"P","sensor-sdk":"N","accessory-sdk":"P","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"P"},
+      "notes": "Health Connect maps all steps, but Samsung explicitly excludes Samsung Health activity-tracker data from synchronization."
+    },
+    {
+      "taxonomyId": "activity.energy",
+      "providerNames": ["Active calories burned goal", "Active time goal", "Exercise calories"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["normalized", "derived"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"A","health-connect":"P","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"P","research-stack":"P","archive-parsers":"P"},
+      "notes": "Data SDK supports activity/goal records; Health Connect maps exercise calories rather than the full Samsung activity tracker."
+    },
+    {
+      "taxonomyId": "cardio.heart-rate",
+      "providerNames": ["Heart rate", "Exercise heart rate"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"A","health-connect":"A","sensor-sdk":"A","accessory-sdk":"A","legacy-sdk":"U","strava":"U","research-stack":"A","archive-parsers":"A"},
+      "notes": "Stored heart-rate records, Health Connect mapping and live Sensor SDK heart rate are separately documented."
+    },
+    {
+      "taxonomyId": "cardio.hrv",
+      "providerNames": ["Inter-beat interval", "HRV", "RMSSD"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"N","health-connect":"N","sensor-sdk":"P","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"A"},
+      "notes": "Sensor SDK provides inter-beat intervals; current Data SDK and Samsung's Health Connect map do not list HRV."
+    },
+    {
+      "taxonomyId": "cardio.blood-pressure",
+      "providerNames": ["Blood pressure"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "user-entered", "external"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"A","health-connect":"A","sensor-sdk":"N","accessory-sdk":"A","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"P"},
+      "notes": "Data SDK and Health Connect map pressure records; availability of Samsung's watch feature is model, calibration and region dependent."
+    },
+    {
+      "taxonomyId": "cardio.ecg-rhythm",
+      "providerNames": ["ECG", "Irregular heart rhythm notification"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"P","health-connect":"N","sensor-sdk":"P","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"P"},
+      "notes": "Data SDK lists IHRN but not ECG waveform; Sensor SDK supplies raw on-demand ECG without the Samsung Health Monitor interpretation."
+    },
+    {
+      "taxonomyId": "cardio.vo2max",
+      "providerNames": ["Exercise VO2max"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"N","health-connect":"A","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"U","research-stack":"P","archive-parsers":"P"},
+      "notes": "Samsung's Health Connect map includes exercise VO2max even though the current Data SDK read list does not."
+    },
+    {
+      "taxonomyId": "respiratory.rate-oxygen",
+      "providerNames": ["Blood oxygen", "Respiratory rate"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"P","health-connect":"P","sensor-sdk":"P","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"A"},
+      "notes": "Blood oxygen is documented across Data SDK, Health Connect and Sensor SDK; respiratory-rate portability is less explicit."
+    },
+    {
+      "taxonomyId": "temperature.body-skin",
+      "providerNames": ["Body temperature", "Skin temperature"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"A","health-connect":"N","sensor-sdk":"A","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"A"},
+      "notes": "Data SDK distinguishes body and skin temperature; Sensor SDK distinguishes skin from body temperature."
+    },
+    {
+      "taxonomyId": "sleep.sessions-stages",
+      "providerNames": ["Sleep", "Sleep stages", "Sleep apnea", "Blood oxygen during sleep"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"A","health-connect":"A","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"A","archive-parsers":"A"},
+      "notes": "Samsung demonstrates Galaxy Watch sleep processing into Samsung Health and synchronization of sessions/stages to Health Connect."
+    },
+    {
+      "taxonomyId": "sleep.insights-score",
+      "providerNames": ["Sleep score", "Sleep coaching", "Sleep goal"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived", "user-entered"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"P","health-connect":"N","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"P"},
+      "notes": "Data SDK lists sleep and sleep goal but does not establish parity for score/coaching; Health Connect carries sessions/stages."
+    },
+    {
+      "taxonomyId": "recovery.stress",
+      "providerNames": ["Stress"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"N","health-connect":"N","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"A"},
+      "notes": "Current export parsers document stress records, while current Data SDK and Samsung's Health Connect map omit stress."
+    },
+    {
+      "taxonomyId": "recovery.energy-readiness",
+      "providerNames": ["Energy Score", "Vitality score"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"A","health-connect":"N","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"A"},
+      "notes": "Energy Score is a current Data SDK read type; no Health Connect mapping is documented."
+    },
+    {
+      "taxonomyId": "training.load-status",
+      "providerNames": ["Running Coach", "Training guidance"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"personal-export":"U","health-data-sdk":"N","health-connect":"N","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"U"},
+      "notes": "Training guidance exists in Samsung products, but no current extraction mapping was established."
+    },
+    {
+      "taxonomyId": "training.performance-predictions",
+      "providerNames": ["Running analysis", "Fitness guidance"],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"personal-export":"U","health-data-sdk":"N","health-connect":"N","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"U","archive-parsers":"U"},
+      "notes": "No current evidence established a stable Samsung performance-prediction family comparable across devices."
+    },
+    {
+      "taxonomyId": "workout.sessions",
+      "providerNames": ["Exercise", "Auto Workout Detection"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"A","health-connect":"A","sensor-sdk":"P","accessory-sdk":"P","legacy-sdk":"U","strava":"A","research-stack":"A","archive-parsers":"A"},
+      "notes": "Exercise sessions are documented in Data SDK and Health Connect; Strava is activity-focused."
+    },
+    {
+      "taxonomyId": "workout.route-elevation",
+      "providerNames": ["Exercise location", "GPS route", "Speed"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"A","health-connect":"P","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"P","research-stack":"P","archive-parsers":"A"},
+      "notes": "Data SDK has exercise location; Samsung's Health Connect map names distance/speed but not location, so route preservation is unknown."
+    },
+    {
+      "taxonomyId": "workout.sport-dynamics",
+      "providerNames": ["Exercise power", "Speed", "Cycling cadence", "Sweat loss"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "normalized", "derived", "external"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"P","health-connect":"P","sensor-sdk":"P","accessory-sdk":"A","legacy-sdk":"U","strava":"U","research-stack":"P","archive-parsers":"A"},
+      "notes": "Health Connect maps exercise power/speed; Accessory SDK imports cycling power/cadence; Sensor SDK provides sweat loss."
+    },
+    {
+      "taxonomyId": "workout.plans-courses",
+      "providerNames": ["Training plans", "Running Coach"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external", "derived"],
+      "routeCoverage": {"personal-export":"U","health-data-sdk":"N","health-connect":"N","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"U"},
+      "notes": "No current general route for Samsung Health plans/courses was established; Research Stack can schedule study tasks, not account training plans."
+    },
+    {
+      "taxonomyId": "mobility.gait-function",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"personal-export":"U","health-data-sdk":"N","health-connect":"N","sensor-sdk":"P","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"U"},
+      "notes": "Raw accelerometer can support gait research, but no current Samsung Health normalized gait/function family was established."
+    },
+    {
+      "taxonomyId": "reproductive.cycle-pregnancy",
+      "providerNames": ["Cycle Tracking"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "derived"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"N","health-connect":"N","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"P"},
+      "notes": "Cycle Tracking is app-visible, but current Data SDK and Samsung's published Health Connect map omit it."
+    },
+    {
+      "taxonomyId": "nutrition.hydration",
+      "providerNames": ["Nutrition", "Nutrition goal", "Water intake", "Water intake goal"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"A","health-connect":"A","sensor-sdk":"N","accessory-sdk":"P","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"A"},
+      "notes": "Data SDK supports nutrition and water; Health Connect maps nutrition and Samsung demonstrates bidirectional nutrition sync."
+    },
+    {
+      "taxonomyId": "clinical.records-medications",
+      "providerNames": ["Medications", "Samsung Health Records"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external"],
+      "routeCoverage": {"personal-export":"U","health-data-sdk":"N","health-connect":"N","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"U"},
+      "notes": "App features are regional; no current Data SDK or Samsung Health-to-Health Connect mapping was established."
+    },
+    {
+      "taxonomyId": "wellbeing.mindfulness-mood",
+      "providerNames": ["Mindfulness", "Mental wellness"],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"personal-export":"U","health-data-sdk":"N","health-connect":"N","sensor-sdk":"P","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"P"},
+      "notes": "Sensor SDK EDA and Research Stack surveys can support wellbeing research, but no stable Samsung Health mood/mindfulness family was confirmed."
+    },
+    {
+      "taxonomyId": "hearing.audio-audiogram",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"personal-export":"U","health-data-sdk":"N","health-connect":"N","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"U","archive-parsers":"U"},
+      "notes": "No Samsung Health hearing exposure or audiogram family was established in current sources."
+    },
+    {
+      "taxonomyId": "insights.trends-alerts-awards",
+      "providerNames": ["Irregular heart rhythm notification", "Sleep apnea", "Goals", "Coaching", "Challenges"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived", "user-entered"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"P","health-connect":"N","sensor-sdk":"N","accessory-sdk":"N","legacy-sdk":"U","strava":"N","research-stack":"P","archive-parsers":"P"},
+      "notes": "Data SDK includes IHRN, sleep apnea and goals, but no route establishes parity for all narrative insights, coaching and awards."
+    },
+    {
+      "taxonomyId": "device.raw-sensors",
+      "providerNames": ["Accelerometer", "Raw ECG", "Raw PPG", "EDA"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured"],
+      "routeCoverage": {"personal-export":"U","health-data-sdk":"N","health-connect":"N","sensor-sdk":"A","accessory-sdk":"N","legacy-sdk":"N","strava":"N","research-stack":"A","archive-parsers":"U"},
+      "notes": "Sensor SDK supplies live raw signals to partner-gated watch apps; this is separate from Samsung Health stored history."
+    },
+    {
+      "taxonomyId": "provenance.metadata",
+      "providerNames": ["Record metadata", "Device/source metadata", "Time offset", "Attachments"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"personal-export":"P","health-data-sdk":"P","health-connect":"P","sensor-sdk":"P","accessory-sdk":"P","legacy-sdk":"U","strava":"P","research-stack":"A","archive-parsers":"P"},
+      "notes": "Metadata exists across routes, but source/device preservation, edit markers and deduplication behavior need hands-on comparison."
+    }
+  ]
+}

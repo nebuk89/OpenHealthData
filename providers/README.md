@@ -11,13 +11,13 @@ manifest.
 | 1 | [Apple](./apple/README.md) | Partial | Verified | [Coverage](./apple/coverage.json) | [Resources](./apple/resources.md) |
 | 2 | [Garmin](./garmin/README.md) | Restricted | Verified | [Coverage](./garmin/coverage.json) | [Resources](./garmin/resources.md) |
 | 3 | Google / Fitbit | Pending | Pending | Pending | Pending |
-| 4 | Samsung | Pending | Pending | Pending | Pending |
+| 4 | [Samsung](./samsung/README.md) | Partial | Verified | [Coverage](./samsung/coverage.json) | [Resources](./samsung/resources.md) |
 | 5 | Huawei | Pending | Pending | Pending | Pending |
 | 6 | Xiaomi | Pending | Pending | Pending | Pending |
 | 7 | Zepp Health / Amazfit | Pending | Pending | Pending | Pending |
 | 8 | [WHOOP](./whoop/README.md) | Partial | Verified | [Coverage](./whoop/coverage.json) | [Resources](./whoop/resources.md) |
-| 9 | Oura | Pending | Pending | Pending | Pending |
-| 10 | Polar | Pending | Pending | Pending | Pending |
+| 9 | [Oura](./oura/README.md) | Mostly open | Verified | [Coverage](./oura/coverage.json) | [Resources](./oura/resources.md) |
+| 10 | [Polar](./polar/README.md) | Partial | Verified | [Coverage](./polar/coverage.json) | [Resources](./polar/resources.md) |
 | 11 | Suunto | Pending | Pending | Pending | Pending |
 | 12 | COROS | Pending | Pending | Pending | Pending |
 | 13 | Withings | Pending | Pending | Pending | Pending |

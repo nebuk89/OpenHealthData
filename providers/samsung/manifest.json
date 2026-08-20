@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "provider": "Garmin",
-  "priority": 2,
+  "provider": "Samsung",
+  "priority": 4,
   "status": "verified",
-  "generatedAt": "2026-08-19T08:44:41.532Z",
-  "verifiedAt": "2026-08-20T11:41:45.557Z",
+  "generatedAt": "2026-08-20T11:36:11.151Z",
+  "verifiedAt": "2026-08-20T11:36:11.147Z",
   "reviewedAt": null,
   "files": {
     "audit": "README.md",
