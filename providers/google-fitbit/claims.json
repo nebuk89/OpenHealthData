@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "provider": "Google / Fitbit",
+  "evidenceDate": "2026-08-20",
+  "claims": [
+    {
+      "id": "google-health-succeeds-fitbit-web-api",
+      "claim": "Google documents the Google Health API as the modern successor to the Fitbit Web API rather than a separate generic health-record product.",
+      "sourceUrl": "https://developers.google.com/health",
+      "evidence": "The current landing page calls the Google Health API the Fitbit Web API evolved onto a more stable, consistent and scalable foundation.",
+      "confidence": "high"
+    },
+    {
+      "id": "personal-setup-is-self-service",
+      "claim": "An ordinary user can enable Google Health API in a Cloud project, create an OAuth client and authorize their own account as a test user.",
+      "sourceUrl": "https://developers.google.com/health/setup",
+      "evidence": "The setup guide provides direct Cloud project, API enablement, OAuth client, test-user and scope steps without requiring partner approval.",
+      "confidence": "high"
+    },
+    {
+      "id": "scale-requires-security-review",
+      "claim": "Google Health API projects are capped at 100 users while unverified, and supporting more than 100 users requires a third-party security review.",
+      "sourceUrl": "https://developers.google.com/health/setup",
+      "evidence": "The setup guide states that newly created OAuth clients have a 100-user cap in testing and production and that more than 100 users requires third-party security review.",
+      "confidence": "high"
+    },
+    {
+      "id": "testing-refresh-token-expiry",
+      "claim": "OAuth refresh tokens issued while a project remains in Testing mode expire after seven days.",
+      "sourceUrl": "https://developers.google.com/health/setup",
+      "evidence": "The token behavior section states that Testing-mode refresh tokens are time-based and expire after seven days.",
+      "confidence": "high"
+    },
+    {
+      "id": "scopes-separate-readable-families",
+      "claim": "Google Health API requires user-consented scopes and provides read-only scopes for activity, health measurements, ECG, irregular-rhythm notifications, nutrition, profile, settings and sleep.",
+      "sourceUrl": "https://developers.google.com/health/scopes",
+      "evidence": "The scope table lists these read-only collections and requires applications to handle partial consent.",
+      "confidence": "high"
+    },
+    {
+      "id": "some-user-entered-types-write-only",
+      "claim": "The current Google Health API scope catalogue provides only write-only access for reproductive health, logged symptoms and mindfulness data.",
+      "sourceUrl": "https://developers.google.com/health/scopes",
+      "evidence": "The available-scope table lists reproductive_health, logged_symptoms and mindfulness only with writeonly suffixes.",
+      "confidence": "high"
+    },
+    {
+      "id": "documented-history-has-no-total-limit",
+      "claim": "For supported data types, Google documents queries as far back as the data has been recorded with no API restriction on the total historical amount consumed.",
+      "sourceUrl": "https://developers.google.com/health/data-types",
+      "evidence": "The historical-data section explicitly states that the API imposes no limitation on total history, while requiring pagination and bounded rollup windows.",
+      "confidence": "high"
+    },
+    {
+      "id": "catalogue-covers-major-health-types",
+      "claim": "The current Google Health API catalogue includes steps, energy, heart rate, HRV, sleep, oxygen saturation, respiratory rate, temperature, ECG, irregular-rhythm notifications, VO2 max, exercise, nutrition, hydration and body measurements.",
+      "sourceUrl": "https://developers.google.com/health/data-types",
+      "evidence": "Each family appears as a named data type with its record shape, available operations and OAuth scope.",
+      "confidence": "high"
+    },
+    {
+      "id": "source-family-preserves-provenance",
+      "claim": "Google Health API can distinguish Google/Fitbit wearable records from wider Google and reconciled third-party sources.",
+      "sourceUrl": "https://developers.google.com/health/endpoints",
+      "evidence": "Endpoint examples document google-wearables and google-sources data source families and include recording method, device and platform metadata.",
+      "confidence": "high"
+    },
+    {
+      "id": "webhooks-support-recurring-sync",
+      "claim": "Google Health API supports HTTPS webhook notifications for a documented subset of activity, exercise, sleep, heart, oxygen, respiratory, nutrition and body data.",
+      "sourceUrl": "https://developers.google.com/health/webhooks",
+      "evidence": "The webhook guide lists the supported data types and explains subscriber and user-subscription configuration.",
+      "confidence": "high"
+    },
+    {
+      "id": "derived-score-parity-not-documented",
+      "claim": "No current Google Health API data type documents Fitbit Sleep Score, Daily Readiness, Stress Management Score, badges or coaching narratives as retrievable records.",
+      "sourceUrl": "https://developers.google.com/health/data-types",
+      "evidence": "The page presents itself as the full data-type list and contains underlying sleep, activity and vital records, but no named record for these app-visible derived outputs.",
+      "confidence": "medium"
+    },
+    {
+      "id": "devices-sync-through-fitbit-app",
+      "claim": "Fitbit devices do not communicate directly with third-party applications; data becomes available after device synchronization through the Fitbit app.",
+      "sourceUrl": "https://developers.google.com/health/data-types",
+      "evidence": "The third-party access section states that Fitbit devices sync exclusively with the Fitbit mobile app before third parties can access records through Google Health API.",
+      "confidence": "high"
+    },
+    {
+      "id": "export-is-user-controlled-but-unspecified",
+      "claim": "Google provides a signed-in Google Health data export with examples including activity, exercise, sleep and heart rate, but the public help page does not provide an exhaustive versioned schema.",
+      "sourceUrl": "https://support.google.com/googlehealth/answer/14236615?hl=en",
+      "evidence": "The official page title and description offer a copy of Google Health data and name those categories; it does not publish a field-by-field archive contract.",
+      "confidence": "high"
+    },
+    {
+      "id": "legacy-migration-requires-reconsent",
+      "claim": "Existing Fitbit Web API access and refresh tokens cannot be transferred to Google Health API, so users must re-consent.",
+      "sourceUrl": "https://developers.google.com/health/migration",
+      "evidence": "The migration guide describes different OAuth systems and explicitly says existing tokens cannot be transferred.",
+      "confidence": "high"
+    },
+    {
+      "id": "legacy-personal-intraday-self-service",
+      "claim": "A legacy Fitbit Personal application can access the developer's own public and intraday data without submitting an intraday-access request.",
+      "sourceUrl": "https://dev.fitbit.com/build/reference/web-api/developer-guide/application-design/",
+      "evidence": "The application-types section says Personal applications are limited to the developer account and include intraday data without the request form.",
+      "confidence": "high"
+    },
+    {
+      "id": "legacy-third-party-intraday-is-approved",
+      "claim": "Legacy Client and Server applications need case-by-case approval to retrieve other users' intraday data.",
+      "sourceUrl": "https://dev.fitbit.com/build/reference/web-api/intraday/",
+      "evidence": "The intraday guide says other-user access is granted case-by-case and only select applications receive it.",
+      "confidence": "high"
+    },
+    {
+      "id": "legacy-rate-limit",
+      "claim": "The legacy Fitbit Web API documents a limit of 150 requests per hour for each consenting user.",
+      "sourceUrl": "https://dev.fitbit.com/build/reference/web-api/developer-guide/application-design/",
+      "evidence": "The Rate Limits section gives 150 API requests per hour per user and documents the corresponding response headers.",
+      "confidence": "high"
+    },
+    {
+      "id": "legacy-exercise-tcx-export",
+      "claim": "The legacy activity-list response can include a TCX download link for an exercise.",
+      "sourceUrl": "https://dev.fitbit.com/build/reference/web-api/activity/get-activity-log-list/",
+      "evidence": "The endpoint schema includes activities.tcxLink and the example response supplies a Fitbit API TCX URL.",
+      "confidence": "high"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Google-Health-API/google-health-cli",
+      "repositoryUrl": "https://github.com/Google-Health-API/google-health-cli",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "wysie/google-health-local-sync",
+      "repositoryUrl": "https://github.com/wysie/google-health-local-sync",
+      "license": "MIT"
+    },
+    {
+      "name": "davidmosiah/google-health-mcp",
+      "repositoryUrl": "https://github.com/davidmosiah/google-health-mcp",
+      "license": "MIT"
+    },
+    {
+      "name": "mountainash-io/fitbit-export",
+      "repositoryUrl": "https://github.com/mountainash-io/fitbit-export",
+      "license": "MIT"
+    }
+  ]
+}

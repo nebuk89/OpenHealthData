@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "provider": "Google / Fitbit",
+  "checkedAt": "2026-08-20T11:38:03.146Z",
+  "result": "passed",
+  "failures": [],
+  "warnings": [],
+  "links": [
+    {
+      "url": "https://developers.google.com/health",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.google.com/health"
+    },
+    {
+      "url": "https://developers.google.com/health/data-types",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.google.com/health/data-types"
+    },
+    {
+      "url": "https://developers.google.com/health/endpoints",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.google.com/health/endpoints?hl=ru"
+    },
+    {
+      "url": "https://developers.google.com/health/get-started",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.google.com/health/get-started"
+    },
+    {
+      "url": "https://developers.google.com/health/setup",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.google.com/health/setup?hl=pt-br"
+    },
+    {
+      "url": "https://developers.google.com/health/scopes",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.google.com/health/scopes"
+    },
+    {
+      "url": "https://developers.google.com/health/rate-limits",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.google.com/health/rate-limits"
+    },
+    {
+      "url": "https://developers.google.com/health/webhooks",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.google.com/health/webhooks?hl=pt-br"
+    },
+    {
+      "url": "https://developers.google.com/health/migration",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.google.com/health/migration"
+    },
+    {
+      "url": "https://dev.fitbit.com/build/reference/web-api/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://dev.fitbit.com/build/reference/web-api/"
+    },
+    {
+      "url": "https://dev.fitbit.com/build/reference/web-api/developer-guide/application-design/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://dev.fitbit.com/build/reference/web-api/developer-guide/application-design/"
+    },
+    {
+      "url": "https://dev.fitbit.com/build/reference/web-api/intraday/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://dev.fitbit.com/build/reference/web-api/intraday/"
+    },
+    {
+      "url": "https://dev.fitbit.com/build/reference/web-api/developer-guide/using-subscriptions/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://dev.fitbit.com/build/reference/web-api/developer-guide/using-subscriptions/"
+    },
+    {
+      "url": "https://dev.fitbit.com/build/reference/web-api/electrocardiogram/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://dev.fitbit.com/build/reference/web-api/electrocardiogram/"
+    },
+    {
+      "url": "https://dev.fitbit.com/build/reference/web-api/activity/get-activity-log-list/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://dev.fitbit.com/build/reference/web-api/activity/get-activity-log-list/"
+    },
+    {
+      "url": "https://support.google.com/googlehealth/answer/14236615?hl=en",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.google.com/googlehealth/answer/14236615?hl=en"
+    },
+    {
+      "url": "https://support.google.com/accounts/answer/3024190?hl=en",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.google.com/accounts/answer/3024190?hl=en"
+    },
+    {
+      "url": "https://github.com/Google-Health-API/google-health-cli",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/Google-Health-API/google-health-cli"
+    },
+    {
+      "url": "https://github.com/wysie/google-health-local-sync",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/wysie/google-health-local-sync"
+    },
+    {
+      "url": "https://github.com/davidmosiah/google-health-mcp",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/davidmosiah/google-health-mcp"
+    },
+    {
+      "url": "https://github.com/mountainash-io/fitbit-export",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/mountainash-io/fitbit-export"
+    },
+    {
+      "url": "https://github.com/orcasgit/python-fitbit",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/orcasgit/python-fitbit"
+    },
+    {
+      "url": "https://developer.android.com/health-and-fitness/health-connect",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect"
+    },
+    {
+      "url": "https://www.strava.com/upload/select",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.strava.com/login"
+    },
+    {
+      "url": "https://help.trainingpeaks.com/hc/en-us/articles/204071914-How-to-manually-upload-a-workout-file",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://help.trainingpeaks.com/auth/v3/signin?brand_id=169234&locale=en-us&return_to=https%3A%2F%2Fhelp.trainingpeaks.com%2Fhc%2Fen-us%2Farticles%2F204071914-How-to-manually-upload-a-workout-file&role=end_user"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Google-Health-API/google-health-cli",
+      "repositoryUrl": "https://github.com/Google-Health-API/google-health-cli",
+      "declaredLicense": "Apache-2.0",
+      "detectedLicense": "Apache-2.0",
+      "status": "ok"
+    },
+    {
+      "name": "wysie/google-health-local-sync",
+      "repositoryUrl": "https://github.com/wysie/google-health-local-sync",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "davidmosiah/google-health-mcp",
+      "repositoryUrl": "https://github.com/davidmosiah/google-health-mcp",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "mountainash-io/fitbit-export",
+      "repositoryUrl": "https://github.com/mountainash-io/fitbit-export",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    }
+  ]
+}
