@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Google / Fitbit",
-  "checkedAt": "2026-08-20T12:00:53.755Z",
+  "checkedAt": "2026-08-20T12:08:30.804Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -10,7 +10,7 @@
       "url": "https://developers.google.com/health",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health?hl=zh-cn"
+      "finalUrl": "https://developers.google.com/health"
     },
     {
       "url": "https://developers.google.com/health/data-types",
@@ -22,31 +22,31 @@
       "url": "https://developers.google.com/health/endpoints",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/endpoints?hl=es-419"
+      "finalUrl": "https://developers.google.com/health/endpoints"
     },
     {
       "url": "https://developers.google.com/health/get-started",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/get-started?hl=bn"
+      "finalUrl": "https://developers.google.com/health/get-started?hl=it"
     },
     {
       "url": "https://developers.google.com/health/setup",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/setup?hl=th"
+      "finalUrl": "https://developers.google.com/health/setup"
     },
     {
       "url": "https://developers.google.com/health/scopes",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/scopes"
+      "finalUrl": "https://developers.google.com/health/scopes?hl=ja"
     },
     {
       "url": "https://developers.google.com/health/rate-limits",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/rate-limits?hl=he"
+      "finalUrl": "https://developers.google.com/health/rate-limits?hl=es-419"
     },
     {
       "url": "https://developers.google.com/health/webhooks",
@@ -148,7 +148,7 @@
       "url": "https://developer.android.com/health-and-fitness/health-connect",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect?hl=ar"
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect?hl=ko"
     },
     {
       "url": "https://www.strava.com/upload/select",
