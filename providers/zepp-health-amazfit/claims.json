@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "provider": "Zepp Health / Amazfit",
+  "evidenceDate": "2026-08-20",
+  "claims": [
+    {
+      "id": "privacy-policy-covers-zepp-app",
+      "claim": "Zepp Health's current app privacy policy applies to the Zepp app and bundled Amazfit devices and documents a broad set of captured, entered and derived health data.",
+      "sourceUrl": "https://upload-cdn.zepp.com/tposts/8192",
+      "evidence": "The policy names the Zepp app and Amazfit devices, then enumerates heart rate, SpO2, stress, PAI, PPG, HRV, ECG, body composition, exercise, sleep, cycle, mood, Readiness, Zepp Coach and food-diary data.",
+      "confidence": "high"
+    },
+    {
+      "id": "privacy-export-is-undocumented",
+      "claim": "Zepp provides an authenticated privacy/export surface but does not publish a stable archive schema, metric inventory or historical-depth guarantee.",
+      "sourceUrl": "https://user.huami.com/privacy2/index.html?loginPlatform=web&platform_app=com.huami.watch.hmwatchmanager",
+      "evidence": "The first-party portal exposes the Zepp app privacy workflow, while the public portal and policy provide no versioned archive file or field specification.",
+      "confidence": "high"
+    },
+    {
+      "id": "workout-import-export-exists",
+      "claim": "The current Zepp Android application describes storage access as supporting workout-data import and export.",
+      "sourceUrl": "https://play.google.com/store/apps/details?id=com.huami.watch.hmwatchmanager",
+      "evidence": "The official Google Play listing says storage is used to import or export workout data but does not enumerate formats or field coverage.",
+      "confidence": "high"
+    },
+    {
+      "id": "zepp-os-is-device-platform",
+      "claim": "Zepp's public developer platform is an on-device mini-program platform for Zepp OS wearables rather than a documented personal cloud-history API.",
+      "sourceUrl": "https://docs.zepp.com/docs/intro/",
+      "evidence": "The official introduction describes a lightweight application framework for mini programs and watch faces on devices running Zepp OS.",
+      "confidence": "high"
+    },
+    {
+      "id": "heart-rate-api-has-bounded-windows",
+      "claim": "Zepp OS exposes current, continuous, daily and resting heart-rate values on supported API levels, but the reference does not promise arbitrary cloud-history retrieval.",
+      "sourceUrl": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/HeartRate/",
+      "evidence": "The device API documents current/last readings, minute values for today, daily maximum, resting heart rate and callbacks.",
+      "confidence": "high"
+    },
+    {
+      "id": "sleep-api-includes-score-and-stages",
+      "claim": "Zepp OS exposes sleep duration, score, stages and naps through a permissioned device API.",
+      "sourceUrl": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/Sleep/",
+      "evidence": "The reference lists score, total/deep time, start/end, stage intervals, current sleep status and naps, with API-level requirements.",
+      "confidence": "high"
+    },
+    {
+      "id": "stress-api-recent-not-complete-history",
+      "claim": "The Zepp OS stress API exposes current, daily, hourly and seven-day windows rather than complete account history.",
+      "sourceUrl": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/Stress/",
+      "evidence": "The reference documents current stress, per-minute today data, hourly today data and past-seven-day averages.",
+      "confidence": "high"
+    },
+    {
+      "id": "strava-is-activity-integration",
+      "claim": "Amazfit can automatically synchronize eligible activities to Strava after account linking; this does not establish general Zepp health-history transfer.",
+      "sourceUrl": "https://support.strava.com/en-us/articles/15402010-amazfit-and-strava",
+      "evidence": "Strava maintains a current Amazfit support page for automatic activity synchronization, not a complete health-account mirror.",
+      "confidence": "high"
+    },
+    {
+      "id": "current-zepp-names-partner-platforms",
+      "claim": "Zepp Health's current Zepp app page names Strava, TrainingPeaks, komoot, Runna and adidas Running as connected platforms without documenting direction or field-level coverage.",
+      "sourceUrl": "https://us.amazfit.com/pages/zepp-app",
+      "evidence": "The first-party page names the five platforms together but provides no record schema, directionality table or historical-sync guarantee.",
+      "confidence": "high"
+    },
+    {
+      "id": "hybridcharge-is-derived-readiness",
+      "claim": "HybridCharge Energy Intelligence is a current Zepp-derived preparedness output that combines recent training load, recovery inputs and sleep.",
+      "sourceUrl": "https://us.amazfit.com/pages/zepp-app",
+      "evidence": "The first-party Zepp app page describes HybridCharge as estimating preparedness for additional effort from training load, recovery inputs and sleep; it does not establish extraction.",
+      "confidence": "high"
+    },
+    {
+      "id": "gadgetbridge-is-local-device-route",
+      "claim": "Gadgetbridge supports local, cloudless synchronization with Amazfit devices but only for supported models and device-retained records.",
+      "sourceUrl": "https://github.com/Freeyourgadget/Gadgetbridge",
+      "evidence": "The project describes itself as a cloudless replacement companion with Amazfit support and points to model-specific support information.",
+      "confidence": "high"
+    },
+    {
+      "id": "huami-token-is-pairing-helper",
+      "claim": "huami-token retrieves Zepp/Amazfit device authentication material and tokens but is not a broad health-history exporter.",
+      "sourceUrl": "https://github.com/argrento/huami-token",
+      "evidence": "The project documents separate Amazfit and Xiaomi modes and outputs device BLE keys, account tokens and assisted-GPS files.",
+      "confidence": "high"
+    },
+    {
+      "id": "legacy-workout-exporter-not-current-zepp",
+      "claim": "The Mi Fit and Zepp workout exporter targets the legacy com.xiaomi.hm.health Mi Fit/Zepp Life package and does not establish private-cloud workout access for the current Zepp app.",
+      "sourceUrl": "https://github.com/rolandsz/Mi-Fit-and-Zepp-workout-exporter",
+      "evidence": "The repository's token instructions use platform_app=com.xiaomi.hm.health; the current Zepp app uses com.huami.watch.hmwatchmanager.",
+      "confidence": "high"
+    },
+    {
+      "id": "mi-fitness-is-separate",
+      "claim": "Xiaomi Mi Fitness must be audited separately from the Zepp app even when legacy Huami names or Xiaomi-labelled devices appear in tooling.",
+      "sourceUrl": "https://play.google.com/store/apps/details?id=com.xiaomi.wearable",
+      "evidence": "Mi Fitness uses Xiaomi's distinct com.xiaomi.wearable application package, while the Zepp app uses com.huami.watch.hmwatchmanager.",
+      "confidence": "high"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Freeyourgadget/Gadgetbridge",
+      "repositoryUrl": "https://github.com/Freeyourgadget/Gadgetbridge",
+      "license": "AGPL-3.0"
+    },
+    {
+      "name": "argrento/huami-token",
+      "repositoryUrl": "https://github.com/argrento/huami-token",
+      "license": "MIT"
+    },
+    {
+      "name": "rolandsz/Mi-Fit-and-Zepp-workout-exporter",
+      "repositoryUrl": "https://github.com/rolandsz/Mi-Fit-and-Zepp-workout-exporter",
+      "license": "MIT"
+    }
+  ]
+}

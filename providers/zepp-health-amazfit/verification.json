@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "provider": "Zepp Health / Amazfit",
+  "checkedAt": "2026-08-20T11:55:39.616Z",
+  "result": "passed",
+  "failures": [],
+  "warnings": [],
+  "links": [
+    {
+      "url": "https://docs.zepp.com/docs/intro/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.zepp.com/docs/intro/"
+    },
+    {
+      "url": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/HeartRate/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/HeartRate/"
+    },
+    {
+      "url": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/Sleep/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/Sleep/"
+    },
+    {
+      "url": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/BloodOxygen/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/BloodOxygen/"
+    },
+    {
+      "url": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/Stress/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/Stress/"
+    },
+    {
+      "url": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/Pai/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/Pai/"
+    },
+    {
+      "url": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/Accelerometer/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.zepp.com/docs/reference/device-app-api/newAPI/sensor/Accelerometer/"
+    },
+    {
+      "url": "https://docs.zepp.com/docs/guides/quick-start/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.zepp.com/docs/guides/quick-start/"
+    },
+    {
+      "url": "https://docs.zepp.com/docs/reference/related-resources/device-list/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://docs.zepp.com/docs/reference/related-resources/device-list/"
+    },
+    {
+      "url": "https://github.com/Freeyourgadget/Gadgetbridge",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/Freeyourgadget/Gadgetbridge"
+    },
+    {
+      "url": "https://github.com/argrento/huami-token",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/argrento/huami-token"
+    },
+    {
+      "url": "https://github.com/rolandsz/Mi-Fit-and-Zepp-workout-exporter",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/rolandsz/Mi-Fit-and-Zepp-workout-exporter"
+    },
+    {
+      "url": "https://upload-cdn.zepp.com/tposts/8192",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://upload-cdn.zepp.com/tposts/8192"
+    },
+    {
+      "url": "https://user.huami.com/privacy2/index.html?loginPlatform=web&platform_app=com.huami.watch.hmwatchmanager",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://user.huami.com/privacy2/index.html?loginPlatform=web&platform_app=com.huami.watch.hmwatchmanager"
+    },
+    {
+      "url": "https://play.google.com/store/apps/details?id=com.huami.watch.hmwatchmanager",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://play.google.com/store/apps/details?id=com.huami.watch.hmwatchmanager"
+    },
+    {
+      "url": "https://play.google.com/store/apps/details?id=com.xiaomi.wearable",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://play.google.com/store/apps/details?id=com.xiaomi.wearable"
+    },
+    {
+      "url": "https://play.google.com/store/apps/details?id=com.xiaomi.hm.health",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://play.google.com/store/apps/details?id=com.xiaomi.hm.health"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/zepp/id1127269366",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://apps.apple.com/us/app/zepp/id1127269366"
+    },
+    {
+      "url": "https://us.amazfit.com/pages/zepp-app",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://us.amazfit.com/pages/zepp-app"
+    },
+    {
+      "url": "https://support.strava.com/en-us/articles/15402010-amazfit-and-strava",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.strava.com/en-us/articles/15402010-amazfit-and-strava"
+    },
+    {
+      "url": "https://developer.zepp.com/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.zepp.com/"
+    },
+    {
+      "url": "https://www.zepp.com/privacy-support",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.zepp.com/privacy-support"
+    },
+    {
+      "url": "https://www.trainingpeaks.com/partners/amazfit/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.trainingpeaks.com/partners/amazfit/"
+    },
+    {
+      "url": "https://codeberg.org/Freeyourgadget/Gadgetbridge",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://codeberg.org/Freeyourgadget/Gadgetbridge"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Freeyourgadget/Gadgetbridge",
+      "repositoryUrl": "https://github.com/Freeyourgadget/Gadgetbridge",
+      "declaredLicense": "AGPL-3.0",
+      "detectedLicense": "AGPL-3.0",
+      "status": "ok"
+    },
+    {
+      "name": "argrento/huami-token",
+      "repositoryUrl": "https://github.com/argrento/huami-token",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "rolandsz/Mi-Fit-and-Zepp-workout-exporter",
+      "repositoryUrl": "https://github.com/rolandsz/Mi-Fit-and-Zepp-workout-exporter",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    }
+  ]
+}

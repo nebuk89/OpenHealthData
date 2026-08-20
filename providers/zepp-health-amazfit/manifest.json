@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "provider": "WHOOP",
-  "priority": 8,
+  "provider": "Zepp Health / Amazfit",
+  "priority": 7,
   "status": "verified",
-  "generatedAt": "2026-08-20T11:36:37.467Z",
-  "verifiedAt": "2026-08-20T12:00:53.705Z",
+  "generatedAt": "2026-08-20T11:29:08.000Z",
+  "verifiedAt": "2026-08-20T11:55:39.616Z",
   "reviewedAt": null,
   "files": {
     "audit": "README.md",
