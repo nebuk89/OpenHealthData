@@ -60,6 +60,13 @@
       "confidence": "high"
     },
     {
+      "id": "ble-sdk-custom-license",
+      "claim": "The Polar BLE SDK is source-available under a custom limited licence that permits use, copying, modification and private/commercial development with notices while restricting SDK distribution to qualifying object-code use and imposing additional conditions.",
+      "sourceUrl": "https://github.com/polarofficial/polar-ble-sdk/blob/master/Polar_SDK_License.txt",
+      "evidence": "The repository licence summary and sections 3 through 10 define the development permission, object-code distribution grant, compliance duties, no-support terms and termination conditions.",
+      "confidence": "high"
+    },
+    {
       "id": "accesslink-python-example",
       "claim": "Polar publishes a Python AccessLink example that demonstrates OAuth authorization, user registration and retrieval of exercises, activity, physical information, sleep and Nightly Recharge.",
       "sourceUrl": "https://github.com/polarofficial/accesslink-example-python",

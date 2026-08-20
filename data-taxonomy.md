@@ -19,6 +19,9 @@ Each provider maps every canonical ID and records:
   `external`.
 - **Route coverage:** `A` available, `P` partial/conditional/lossy, `N` not available, `U` unknown
   or `NA` not applicable.
+- **Route kind:** `consumer-export`, `official-api`, `official-mcp`, `official-sdk`, `integration`,
+  `open-source` or `unofficial`.
+- **Route access:** `self-service`, `partner-gated`, `research-gated`, `unsupported` or `unknown`.
 - **Provider names:** the provider's own labels, such as Garmin Body Battery or Apple Training
   Load. An alias does not imply that two providers calculate equivalent values.
 

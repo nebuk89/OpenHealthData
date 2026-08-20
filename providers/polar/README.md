@@ -165,9 +165,14 @@ supported offline recordings. This is the richest established route for direct s
 It requires a custom mobile app, Bluetooth permissions, physical access to a compatible device and
 device-specific feature support. It captures prospective or device-local data; it does not query a
 user's complete Flow archive, recover data never retained by the device or reproduce Flow's cloud
-derivations. GitHub's live repository API reports no detected SPDX licence, so the project is
-recorded conservatively as `NOASSERTION`, despite conflicting licence assertions in the persisted
-reports.
+derivations. GitHub reports SPDX `NOASSERTION`, but the repository contains an authoritative
+[Polar SDK Limited License](https://github.com/polarofficial/polar-ble-sdk/blob/master/Polar_SDK_License.txt).
+It permits use, copying and modification with the original copyright/licence notice, and private or
+commercial software development subject to its terms. Distribution is limited to object-code SDK
+components bundled with software that enables data transfer between Polar products and that
+software; the agreement also imposes data-protection, trademark, confidentiality, no-support,
+termination and other restrictions. It is therefore source-available under custom terms, not
+unlicensed or an SPDX-classified open-source project.
 
 ## Data available
 
@@ -207,7 +212,7 @@ present availability, direction and history are left unresolved rather than repe
 
 | Project | Route | Output | Assessment |
 |---|---|---|---|
-| [`polarofficial/polar-ble-sdk`](https://github.com/polarofficial/polar-ble-sdk) | Official direct BLE device SDK | Live/device-dependent offline sensor measurements | Active official project; GitHub SPDX `NOASSERTION`; not a Flow-cloud exporter |
+| [`polarofficial/polar-ble-sdk`](https://github.com/polarofficial/polar-ble-sdk) | Official direct BLE device SDK | Live/device-dependent offline sensor measurements | Active source-available project; custom Polar SDK Limited License permits private/commercial development but restricts distribution and reuse; GitHub SPDX `NOASSERTION` |
 | [`polarofficial/accesslink-example-python`](https://github.com/polarofficial/accesslink-example-python) | Official AccessLink OAuth example | User, exercise, activity, physical-information, sleep and Nightly Recharge JSON | MIT; useful reference, but stores example credentials/tokens in local YAML and is not a complete production exporter |
 | [`fsmeraldi/bleakheart`](https://github.com/fsmeraldi/bleakheart) | Unofficial direct BLE client | H10 HR/RR, ECG and accelerometer; Verity Sense PPG and accelerometer | MPL-2.0; narrow, maintained sensor logger with no Flow cloud history or offline recording support |
 
@@ -243,8 +248,10 @@ tool exists.
   Data when the agreement ends.
 - **Propagation uncertainty:** no reviewed source fully establishes how Flow edits, deletions,
   revoked consent or corrected sessions propagate across AccessLink, exports and destinations.
-- **Open-source licence uncertainty:** GitHub currently detects no SPDX licence for the BLE SDK, so
-  reuse rights must be reviewed from authoritative legal material before redistribution.
+- **Custom SDK licence:** the [Polar SDK Limited License](https://github.com/polarofficial/polar-ble-sdk/blob/master/Polar_SDK_License.txt)
+  permits use, copying, modification and private/commercial development with notices, but limits
+  SDK distribution to qualifying object-code use and adds data, trademark, confidentiality,
+  support, termination and liability conditions.
 
 ## Rubric snapshot
 
@@ -295,7 +302,5 @@ integrations are selective and lossy.
    infer parity between the two mobile platforms.
 8. Test Strava, TrainingPeaks and komoot with indoor, GPS, multisport, edited, deleted and old
    sessions, and document destination-side recalculation.
-9. Obtain authoritative licensing clarification for the BLE SDK because GitHub reports
-   `NOASSERTION` and the persisted research reports conflict.
-10. Search again for maintained unofficial clients/export parsers, then verify repository
+9. Search again for maintained unofficial clients/export parsers, then verify repository
     existence, current fixtures, security model and SPDX metadata before recommending any.

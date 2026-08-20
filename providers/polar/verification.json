@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Polar",
-  "checkedAt": "2026-08-20T11:47:49.787Z",
+  "checkedAt": "2026-08-20T11:53:56.849Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -41,6 +41,12 @@
       "status": "ok",
       "httpStatus": 200,
       "finalUrl": "https://github.com/polarofficial/polar-ble-sdk"
+    },
+    {
+      "url": "https://github.com/polarofficial/polar-ble-sdk/blob/master/Polar_SDK_License.txt",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/polarofficial/polar-ble-sdk/blob/master/Polar_SDK_License.txt"
     },
     {
       "url": "https://github.com/polarofficial/accesslink-example-python",

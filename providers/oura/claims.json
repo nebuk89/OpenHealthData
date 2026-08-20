@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "provider": "Oura",
+  "evidenceDate": "2026-08-20",
+  "claims": [
+    {
+      "id": "api-v2-only-publicly-documented-data-api",
+      "claim": "Oura API v2 is the only currently supported publicly documented programmable data API for Oura data.",
+      "sourceUrl": "https://cloud.ouraring.com/v2/static/json/openapi-1.37.json",
+      "evidence": "Within the public API documentation, the OpenAPI overview says v2 is the only available integration point and API v1 has been sunset; the separate Oura MCP Server has no located public technical documentation.",
+      "confidence": "high"
+    },
+    {
+      "id": "mcp-server-established-by-agreement",
+      "claim": "Oura's June 2026 agreement establishes an Oura-operated MCP Server that exposes User Data through defined endpoints.",
+      "sourceUrl": "https://cloud.ouraring.com/legal/api-agreement",
+      "evidence": "The agreement defines the MCP Server as Oura-operated technical infrastructure and section 3(a) says it exposes User Data through defined endpoints subject to authentication, authorization and consent verification.",
+      "confidence": "high"
+    },
+    {
+      "id": "personal-access-tokens-deprecated",
+      "claim": "Oura deprecated personal access tokens in December 2025 and new integrations must use OAuth 2.0.",
+      "sourceUrl": "https://cloud.ouraring.com/v2/static/json/openapi-1.37.json",
+      "evidence": "The authentication section explicitly states that personal access tokens were deprecated in December 2025 and are no longer available for use.",
+      "confidence": "high"
+    },
+    {
+      "id": "applications-self-service-to-ten-users",
+      "claim": "A registered Oura OAuth application can connect up to ten users before Oura approval is required.",
+      "sourceUrl": "https://cloud.ouraring.com/v2/static/json/openapi-1.37.json",
+      "evidence": "The Data Access section states that API applications are limited to 10 users before approval and have no user limit once approved.",
+      "confidence": "high"
+    },
+    {
+      "id": "api-requires-active-membership",
+      "claim": "Gen3-and-later users without an active Oura membership cannot access the Oura API.",
+      "sourceUrl": "https://support.ouraring.com/hc/en-us/articles/4409086524819-Oura-Membership",
+      "evidence": "The membership FAQ says non-members can see only basic app information and cannot access the Oura API.",
+      "confidence": "high"
+    },
+    {
+      "id": "membership-export-survives-cancellation",
+      "claim": "Oura retains account data after membership cancellation and allows account holders to request an export without an active membership.",
+      "sourceUrl": "https://support.ouraring.com/hc/en-us/articles/4409086524819-Oura-Membership",
+      "evidence": "The FAQ says cancelled members do not lose their data and can export all Oura data in CSV through Membership Hub.",
+      "confidence": "high"
+    },
+    {
+      "id": "membership-hub-export-delay",
+      "claim": "The Membership Hub account export is available to all users and can take up to ten days to prepare.",
+      "sourceUrl": "https://support.ouraring.com/hc/en-us/articles/360025441594-Export-Share-Your-Oura-Data",
+      "evidence": "The export guide marks the route available with or without active membership and gives an up-to-ten-day preparation window.",
+      "confidence": "high"
+    },
+    {
+      "id": "api-exposes-major-daily-scores",
+      "claim": "API v2 exposes Activity, Readiness and Sleep scores and their contributors as explicit daily resources.",
+      "sourceUrl": "https://cloud.ouraring.com/v2/static/json/openapi-1.37.json",
+      "evidence": "PublicDailyActivity, PublicDailyReadiness and PublicDailySleep schemas each define a score and contributor object.",
+      "confidence": "high"
+    },
+    {
+      "id": "api-exposes-newer-derived-metrics",
+      "claim": "API v2 exposes daily Stress summaries, Resilience, Cardiovascular Age and VO2 max through dedicated resources.",
+      "sourceUrl": "https://cloud.ouraring.com/v2/static/json/openapi-1.37.json",
+      "evidence": "The current paths include daily_stress, daily_resilience, daily_cardiovascular_age and vO2_max, with matching public schemas.",
+      "confidence": "high"
+    },
+    {
+      "id": "stress-api-is-daily-summary",
+      "claim": "The Daytime Stress app graph is more granular than the public API stress resource.",
+      "sourceUrl": "https://support.ouraring.com/hc/en-us/articles/21205822135315-Daytime-Stress",
+      "evidence": "The support page says the graph updates every 15 minutes and shows four zones, while the OpenAPI daily stress schema contains only day summary and high-stress/high-recovery seconds.",
+      "confidence": "high"
+    },
+    {
+      "id": "cardiovascular-age-api-fields",
+      "claim": "The Cardiovascular Age API resource includes predicted vascular age and pulse-wave velocity.",
+      "sourceUrl": "https://cloud.ouraring.com/v2/static/json/openapi-1.37.json",
+      "evidence": "PublicDailyCardiovascularAge defines vascular_age and pulse_wave_velocity fields.",
+      "confidence": "high"
+    },
+    {
+      "id": "apple-health-selected-categories",
+      "claim": "Oura's Apple Health integration moves selected normalized records in both directions but does not export Oura scores.",
+      "sourceUrl": "https://support.ouraring.com/hc/en-us/articles/360025438734-Apple-Health-Integration",
+      "evidence": "The official category lists include Oura-to-Health energy, HR, respiratory rate, sleep/stages, steps, routes and workouts, but omit Readiness, Sleep and Activity scores.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-connect-selected-categories",
+      "claim": "Oura's Health Connect integration exports selected activity, body, sleep, heart-rate and HRV records rather than proprietary scores.",
+      "sourceUrl": "https://support.ouraring.com/hc/en-us/articles/10786105824531-Health-Connect-by-Android-Integration",
+      "evidence": "The official export list names activity, body measurement, sleep, heart rate and HRV and does not list Oura scores, Stress, Resilience or Cardiovascular Age.",
+      "confidence": "high"
+    },
+    {
+      "id": "strava-current-day-and-workout-limits",
+      "claim": "Oura's Strava route is workout-focused, imports only current-day Strava activities, and does not export automatically detected or manually added Oura activities.",
+      "sourceUrl": "https://support.ouraring.com/hc/en-us/articles/10766662499219-Strava-Integration",
+      "evidence": "The Strava support page states the current-day-only import limit and explicitly excludes AAD and manually added activities from export.",
+      "confidence": "high"
+    },
+    {
+      "id": "natural-cycles-temperature-only",
+      "claim": "The Natural Cycles integration transfers only Oura overnight temperature trend and requires a Natural Cycles subscription.",
+      "sourceUrl": "https://support.ouraring.com/hc/en-us/articles/10785345623827-Natural-Cycles-Integration",
+      "evidence": "The official guide says only temperature trend is shared, no period data or other Oura metrics transfer, and a Natural Cycles subscription is required.",
+      "confidence": "high"
+    },
+    {
+      "id": "api-agreement-current-restrictions",
+      "claim": "Oura's June 2026 API and MCP agreement restricts competing or replicating products, imposes additional aggregator obligations, generally prohibits caching MCP data without separate authorization, and reserves future fees.",
+      "sourceUrl": "https://cloud.ouraring.com/legal/api-agreement",
+      "evidence": "The effective 8 June 2026 agreement governs both interfaces, states these restrictions, limits MCP caching in section 3(m), and says Oura may charge for API or MCP access in the future.",
+      "confidence": "high"
+    },
+    {
+      "id": "raw-sensors-not-exposed-by-api-v2",
+      "claim": "The publicly documented API v2 surface does not expose raw PPG, accelerometer or raw temperature streams; MCP coverage is unknown.",
+      "sourceUrl": "https://cloud.ouraring.com/v2/static/json/openapi-1.37.json",
+      "evidence": "The complete current API v2 route catalogue exposes normalized documents and time series but has no raw PPG, accelerometer or raw temperature endpoint; this source does not document the MCP Server.",
+      "confidence": "high"
+    },
+    {
+      "id": "open-oura-unsupported-local-route",
+      "claim": "open_oura is an unsupported local Bluetooth route that reports raw Ring 3/4/5 signals, but it has no detected repository licence.",
+      "sourceUrl": "https://github.com/Th0rgal/open_oura",
+      "evidence": "The repository documents direct BLE retrieval of raw PPG, IBI, temperature, motion and SpO2; GitHub exposes no licence file or SPDX licence.",
+      "confidence": "high"
+    }
+  ],
+  "projects": [
+    {
+      "name": "hedgertronic/oura-ring",
+      "repositoryUrl": "https://github.com/hedgertronic/oura-ring",
+      "license": "MIT"
+    },
+    {
+      "name": "louispires/Oura-Home-Assistant-Integration",
+      "repositoryUrl": "https://github.com/louispires/Oura-Home-Assistant-Integration",
+      "license": "MIT"
+    },
+    {
+      "name": "turing-complet/python-ouraring",
+      "repositoryUrl": "https://github.com/turing-complet/python-ouraring",
+      "license": "MIT"
+    },
+    {
+      "name": "sam-roberts/oura-data-visualiser",
+      "repositoryUrl": "https://github.com/sam-roberts/oura-data-visualiser",
+      "license": "GPL-3.0"
+    },
+    {
+      "name": "Th0rgal/open_oura",
+      "repositoryUrl": "https://github.com/Th0rgal/open_oura",
+      "license": "NOASSERTION"
+    }
+  ]
+}

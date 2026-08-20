@@ -18,6 +18,10 @@ app/export parity.
 - [`polarofficial/polar-ble-sdk`](https://github.com/polarofficial/polar-ble-sdk) — **Polar**;
   official Android/iOS BLE SDK, device support, online streaming, offline recording and examples.
   GitHub reports SPDX `NOASSERTION` as of 2026-08-20.
+- [Polar SDK Limited License](https://github.com/polarofficial/polar-ble-sdk/blob/master/Polar_SDK_License.txt)
+  — **Polar**; authoritative custom licence permitting use, copying, modification and
+  private/commercial development with notices, while limiting object-code distribution and imposing
+  data, trademark, confidentiality, support, termination and liability conditions.
 
 ## Official support
 
@@ -55,9 +59,9 @@ current payload or backfill behavior.
 ## Open-source projects
 
 - [`polarofficial/polar-ble-sdk`](https://github.com/polarofficial/polar-ble-sdk) —
-  **NOASSERTION; Kotlin/Swift**; official, active direct-device SDK. GitHub's repository API
-  confirmed the URL, default branch `master`, non-archived state and no detected SPDX licence on
-  2026-08-20.
+  **Custom Polar SDK Limited License; GitHub SPDX NOASSERTION; Kotlin/Swift**; official, active
+  source-available direct-device SDK. The custom licence permits private and commercial development
+  but limits redistribution and imposes additional conditions.
 - [`polarofficial/accesslink-example-python`](https://github.com/polarofficial/accesslink-example-python)
   — **MIT; Python**; official OAuth, user-registration and AccessLink retrieval examples. The
   repository is a reference implementation rather than a complete production exporter.

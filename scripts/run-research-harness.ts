@@ -94,6 +94,7 @@ const productionLayers = [
 const routeKinds = [
   "consumer-export",
   "official-api",
+  "official-mcp",
   "official-sdk",
   "integration",
   "open-source",
@@ -104,6 +105,7 @@ const routeAccessValues = [
   "partner-gated",
   "research-gated",
   "unsupported",
+  "unknown",
 ] as const;
 
 const resourceRequiredSections = [

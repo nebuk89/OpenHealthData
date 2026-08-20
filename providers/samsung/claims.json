@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "provider": "Samsung",
+  "evidenceDate": "2026-08-20",
+  "claims": [
+    {
+      "id": "data-sdk-selected-local-records",
+      "claim": "Samsung Health Data SDK is an Android interface to selected records in the Samsung Health app data store, including Energy Score and specified health record types.",
+      "sourceUrl": "https://developer.samsung.com/health/data/overview.html",
+      "evidence": "Samsung lists the SDK's exact read and write data types, requires Samsung Health 6.30.2 or later and describes access to selected app data rather than a cloud account API.",
+      "confidence": "high"
+    },
+    {
+      "id": "data-sdk-production-partner-gated",
+      "claim": "A distributed Samsung Health Data SDK application requires Samsung partnership approval and production registration.",
+      "sourceUrl": "https://developer.samsung.com/health/data/process.html",
+      "evidence": "Samsung says unapproved applications work only with developer mode enabled and requires a partnership request before distribution.",
+      "confidence": "high"
+    },
+    {
+      "id": "data-sdk-developer-mode-test-only",
+      "claim": "Samsung Health Data SDK developer mode is for testing or debugging and is not an ordinary end-user deployment route.",
+      "sourceUrl": "https://developer.samsung.com/health/data/guide/developer-mode.html",
+      "evidence": "The guide says developer mode is ONLY for testing/debugging, while registered partner apps are matched by package name, release signature and allowed data scopes.",
+      "confidence": "high"
+    },
+    {
+      "id": "legacy-sdk-deprecated",
+      "claim": "Samsung Health SDK for Android was deprecated on 31 July 2025 and Samsung directs developers to Samsung Health Data SDK.",
+      "sourceUrl": "https://developer.samsung.com/health/android/overview.html",
+      "evidence": "The current legacy overview contains the dated deprecation notice and replacement link.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-connect-bidirectional-selected-types",
+      "claim": "Samsung Health synchronizes selected record types with Health Connect in both directions after user authorization.",
+      "sourceUrl": "https://developer.samsung.com/health/blog/en/accessing-samsung-health-data-through-health-connect",
+      "evidence": "Samsung documents writes from Samsung Health to Health Connect, reads back into Samsung Health, separate permissions and an explicit type mapping.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-connect-excludes-activity-tracker",
+      "claim": "Samsung Health activity-tracker data are not synchronized with Health Connect under Samsung's published mapping.",
+      "sourceUrl": "https://developer.samsung.com/health/blog/en/accessing-samsung-health-data-through-health-connect",
+      "evidence": "Samsung explicitly distinguishes exercise tracker mappings from the activity tracker and states that activity-tracker data are not synchronized.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-connect-history-permission",
+      "claim": "Health Connect requires an additional history permission for an app to read other apps' records older than the default 30-day window.",
+      "sourceUrl": "https://developer.android.com/health-and-fitness/health-connect/read-data",
+      "evidence": "Google's current read guide documents a default 30-day window and PERMISSION_READ_HEALTH_DATA_HISTORY for older records.",
+      "confidence": "high"
+    },
+    {
+      "id": "sensor-sdk-raw-and-processed-data",
+      "claim": "Samsung Health Sensor SDK exposes raw accelerometer, ECG and PPG plus selected processed Galaxy Watch measurements.",
+      "sourceUrl": "https://developer.samsung.com/health/sensor/overview.html",
+      "evidence": "The current SDK overview names raw accelerometer/ECG/PPG and processed heart rate, body composition, oxygen, skin temperature and other trackers.",
+      "confidence": "high"
+    },
+    {
+      "id": "sensor-sdk-production-partner-gated",
+      "claim": "A distributed Samsung Health Sensor SDK watch application requires Samsung partner approval and registration.",
+      "sourceUrl": "https://developer.samsung.com/health/sensor/process.html",
+      "evidence": "Samsung says an unregistered Sensor SDK app works only with developer mode and requires a partner request before distribution.",
+      "confidence": "high"
+    },
+    {
+      "id": "accessory-sdk-is-inbound",
+      "claim": "Samsung Health Accessory SDK is an approved inbound BLE-device integration rather than a consumer data extraction route.",
+      "sourceUrl": "https://developer.samsung.com/health/accessory/overview.html",
+      "evidence": "Samsung describes verified BLE devices synchronizing glucose, pressure, heart rate, weight, cycling and exercise data into Samsung Health.",
+      "confidence": "high"
+    },
+    {
+      "id": "research-stack-is-study-infrastructure",
+      "claim": "Samsung Health Research Stack is open-source study infrastructure for participant collection, surveys, portals and backend APIs, not a Samsung Health account API.",
+      "sourceUrl": "https://developer.samsung.com/health/research/overview.html",
+      "evidence": "Samsung describes participant onboarding/consent, surveys, a study portal and backend data engine built around Android and Wear OS study apps.",
+      "confidence": "high"
+    },
+    {
+      "id": "app-surface-exceeds-data-sdk-list",
+      "claim": "Samsung Health app/device features include outputs that are not present in the current Data SDK read-type list.",
+      "sourceUrl": "https://www.samsung.com/us/apps/samsung-health/",
+      "evidence": "The app page documents medications, cycle tracking, regional health records, AGEs and coaching, while the Data SDK's explicit read list omits several of those families.",
+      "confidence": "high"
+    },
+    {
+      "id": "personal-download-schema-unversioned",
+      "claim": "Current Samsung Health personal downloads are machine-readable, but no current first-party versioned archive schema or completeness guarantee was found.",
+      "sourceUrl": "https://www.samsung.com/us/support/owners/app/samsung-health",
+      "evidence": "Samsung's former export answer now redirects to this generic support page; current local parsers independently observe CSV, JSON and binary attachments, so exact archive parity remains a hands-on gap.",
+      "confidence": "medium"
+    },
+    {
+      "id": "strava-connection-current-details-unverified",
+      "claim": "Strava currently maintains a Samsung Health connection article, but exact transferred fields and historical behavior require rendered or hands-on revalidation.",
+      "sourceUrl": "https://support.strava.com/en-us/articles/15401747-samsung-health-and-strava",
+      "evidence": "The live Strava help-center article was modified in August 2026, but automated extraction exposes its title/metadata rather than a durable field-level payload table.",
+      "confidence": "medium"
+    },
+    {
+      "id": "no-general-consumer-cloud-api-found",
+      "claim": "Samsung's current developer catalogue does not document a general public cloud API for arbitrary Samsung Health consumer accounts.",
+      "sourceUrl": "https://developer.samsung.com/health/data/overview.html",
+      "evidence": "Current Samsung surfaces are on-device Data/Sensor/Accessory SDKs, Health Connect and study infrastructure; no consumer account REST or GraphQL endpoint is documented.",
+      "confidence": "medium"
+    },
+    {
+      "id": "current-export-parser-json",
+      "claim": "v-2841/samsung-health-export parses a downloaded Samsung Health folder into self-describing JSON with a per-datatype coverage manifest.",
+      "sourceUrl": "https://github.com/v-2841/samsung-health-export",
+      "evidence": "The repository documents the in-app download workflow, CSV/JSON input, zero-dependency Python output and MIT licence.",
+      "confidence": "high"
+    },
+    {
+      "id": "current-export-parser-dataframes",
+      "claim": "Devasy/samsung-health-sdk parses Samsung export CSV, JSON and attachment directories into data frames and reports.",
+      "sourceUrl": "https://github.com/Devasy/samsung-health-sdk",
+      "evidence": "The repository documents supported export structures, parsing APIs, current 2026 development and an MIT licence.",
+      "confidence": "high"
+    }
+  ],
+  "projects": [
+    {
+      "name": "v-2841/samsung-health-export",
+      "repositoryUrl": "https://github.com/v-2841/samsung-health-export",
+      "license": "MIT"
+    },
+    {
+      "name": "Devasy/samsung-health-sdk",
+      "repositoryUrl": "https://github.com/Devasy/samsung-health-sdk",
+      "license": "MIT"
+    },
+    {
+      "name": "S-HealthStack/app-sdk",
+      "repositoryUrl": "https://github.com/S-HealthStack/app-sdk",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "S-HealthStack/backend-system",
+      "repositoryUrl": "https://github.com/S-HealthStack/backend-system",
+      "license": "Apache-2.0"
+    }
+  ]
+}
