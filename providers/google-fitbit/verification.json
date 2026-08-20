@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Google / Fitbit",
-  "checkedAt": "2026-08-20T11:59:39.874Z",
+  "checkedAt": "2026-08-20T12:00:53.755Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -10,7 +10,7 @@
       "url": "https://developers.google.com/health",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health"
+      "finalUrl": "https://developers.google.com/health?hl=zh-cn"
     },
     {
       "url": "https://developers.google.com/health/data-types",
@@ -22,19 +22,19 @@
       "url": "https://developers.google.com/health/endpoints",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/endpoints"
+      "finalUrl": "https://developers.google.com/health/endpoints?hl=es-419"
     },
     {
       "url": "https://developers.google.com/health/get-started",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/get-started?hl=ko"
+      "finalUrl": "https://developers.google.com/health/get-started?hl=bn"
     },
     {
       "url": "https://developers.google.com/health/setup",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/setup?hl=fr"
+      "finalUrl": "https://developers.google.com/health/setup?hl=th"
     },
     {
       "url": "https://developers.google.com/health/scopes",
@@ -46,13 +46,13 @@
       "url": "https://developers.google.com/health/rate-limits",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/rate-limits"
+      "finalUrl": "https://developers.google.com/health/rate-limits?hl=he"
     },
     {
       "url": "https://developers.google.com/health/webhooks",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/webhooks?hl=pl"
+      "finalUrl": "https://developers.google.com/health/webhooks"
     },
     {
       "url": "https://developers.google.com/health/migration",
@@ -148,7 +148,7 @@
       "url": "https://developer.android.com/health-and-fitness/health-connect",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect?hl=es-419"
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect?hl=ar"
     },
     {
       "url": "https://www.strava.com/upload/select",
