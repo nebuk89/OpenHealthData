@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "provider": "Huawei",
+  "checkedAt": "2026-08-20T12:03:53.588Z",
+  "result": "passed",
+  "failures": [],
+  "warnings": [],
+  "links": [
+    {
+      "url": "https://github.com/CTHRU/Hitrava",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/CTHRU/Hitrava"
+    },
+    {
+      "url": "https://github.com/JordyThien/Huawei-Health-Importer",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/JordyThien/Huawei-Health-Importer"
+    },
+    {
+      "url": "https://github.com/christianeirich/huawei-health-to-health-connect",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/christianeirich/huawei-health-to-health-connect"
+    },
+    {
+      "url": "https://github.com/aricooperdavis/Huawei-TCX-Converter",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/aricooperdavis/Huawei-TCX-Converter"
+    },
+    {
+      "url": "https://github.com/RealityNet/kobackupdec",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/RealityNet/kobackupdec"
+    },
+    {
+      "url": "https://github.com/CTHRU/Hitrava/blob/master/LICENSE.md",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/CTHRU/Hitrava/blob/master/LICENSE.md"
+    },
+    {
+      "url": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-introduction-0000001050071662",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-introduction-0000001050071662"
+    },
+    {
+      "url": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-development-overview-0000001050071660",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-development-overview-0000001050071660"
+    },
+    {
+      "url": "https://developer.huawei.com/consumer/en/doc/app/agc-help-createaccount-0000001146718717",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.huawei.com/consumer/en/doc/app/agc-help-createaccount-0000001146718717"
+    },
+    {
+      "url": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-configuring-0000001050030937",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-configuring-0000001050030937"
+    },
+    {
+      "url": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-app-permission-0000001050069764",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-app-permission-0000001050069764"
+    },
+    {
+      "url": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-authorize-0000001050030936",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-authorize-0000001050030936"
+    },
+    {
+      "url": "https://developer.huawei.com/consumer/en/doc/hmscore-references/health-api-overview-0000001050030935",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.huawei.com/consumer/en/doc/hmscore-references/health-api-overview-0000001050030935"
+    },
+    {
+      "url": "https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/service-introduction-0000001050040062-V5",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/service-introduction-0000001050040062-V5"
+    },
+    {
+      "url": "https://consumer.huawei.com/en/wearables/watch-gt5-pro/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://consumer.huawei.com/en/wearables/watch-gt5-pro/"
+    },
+    {
+      "url": "https://consumer.huawei.com/en/privacy/privacy-policy/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://consumer.huawei.com/en/privacy/privacy-statement-huawei/"
+    },
+    {
+      "url": "https://consumer.huawei.com/en/privacy/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://consumer.huawei.com/en/privacy/"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/huawei-health/id1325481372",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://apps.apple.com/us/app/huawei-health/id1325481372"
+    },
+    {
+      "url": "https://healthsync.app/f-a-q/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://healthsync.app/f-a-q/"
+    },
+    {
+      "url": "https://developers.google.com/fit",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developers.google.com/fit?hl=fa"
+    },
+    {
+      "url": "https://support.apple.com/en-us/108779",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.apple.com/en-us/108779"
+    },
+    {
+      "url": "https://codeberg.org/Freeyourgadget/Gadgetbridge",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://codeberg.org/Freeyourgadget/Gadgetbridge"
+    },
+    {
+      "url": "https://play.google.com/store/apps/details?id=nl.appyhapps.healthsync",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://play.google.com/store/apps/details?id=nl.appyhapps.healthsync"
+    },
+    {
+      "url": "https://developer.android.com/health-and-fitness/health-connect/availability",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/availability?hl=he"
+    }
+  ],
+  "projects": [
+    {
+      "name": "JordyThien/Huawei-Health-Importer",
+      "repositoryUrl": "https://github.com/JordyThien/Huawei-Health-Importer",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "christianeirich/huawei-health-to-health-connect",
+      "repositoryUrl": "https://github.com/christianeirich/huawei-health-to-health-connect",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "CTHRU/Hitrava",
+      "repositoryUrl": "https://github.com/CTHRU/Hitrava",
+      "declaredLicense": "NOASSERTION",
+      "detectedLicense": "NOASSERTION",
+      "status": "ok"
+    },
+    {
+      "name": "aricooperdavis/Huawei-TCX-Converter",
+      "repositoryUrl": "https://github.com/aricooperdavis/Huawei-TCX-Converter",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "RealityNet/kobackupdec",
+      "repositoryUrl": "https://github.com/RealityNet/kobackupdec",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    }
+  ]
+}
