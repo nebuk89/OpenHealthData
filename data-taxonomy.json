@@ -30,6 +30,7 @@
   "routeKindValues": [
     "consumer-export",
     "official-api",
+    "official-mcp",
     "official-sdk",
     "integration",
     "open-source",
@@ -39,7 +40,8 @@
     "self-service",
     "partner-gated",
     "research-gated",
-    "unsupported"
+    "unsupported",
+    "unknown"
   ],
   "families": [
     {

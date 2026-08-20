@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "provider": "Polar",
+  "evidenceDate": "2026-08-20",
+  "claims": [
+    {
+      "id": "accesslink-self-service-registration",
+      "claim": "Any registered Polar Flow user can create an AccessLink API client by supplying application details.",
+      "sourceUrl": "https://www.polar.com/accesslink-api/",
+      "evidence": "The AccessLink v3 introduction explicitly says any registered Polar Flow user can create an API client and documents the admin-site registration steps.",
+      "confidence": "high"
+    },
+    {
+      "id": "accesslink-oauth-consent",
+      "claim": "AccessLink uses OAuth 2.0, requires client credentials and user authorization, and depends on the user's mandatory Polar consents.",
+      "sourceUrl": "https://www.polar.com/accesslink-api/",
+      "evidence": "The authentication and getting-started sections require an authorization code, access token, user registration and accepted mandatory consents.",
+      "confidence": "high"
+    },
+    {
+      "id": "accesslink-resource-scope",
+      "claim": "AccessLink documents exercise, daily activity, continuous heart rate, cardio load, SleepWise, Elixir biosensing, sleep, Nightly Recharge and physical-information resources.",
+      "sourceUrl": "https://www.polar.com/accesslink-api/",
+      "evidence": "The live API basics catalogue names each resource and describes its purpose; endpoint presence does not establish every Flow field or complete history.",
+      "confidence": "high"
+    },
+    {
+      "id": "accesslink-formats-webhooks-limits",
+      "claim": "AccessLink supports JSON and XML, webhooks and documented dynamic 15-minute and 24-hour rate limits.",
+      "sourceUrl": "https://www.polar.com/accesslink-api/",
+      "evidence": "The introduction names JSON/XML support, and the live reference documents signed webhooks and rate-limit formulas and headers.",
+      "confidence": "high"
+    },
+    {
+      "id": "accesslink-limited-license",
+      "claim": "AccessLink use is governed by a limited API licence that prohibits competing services and unauthorized scraping, excludes DMA gatekeepers, permits immediate termination, and requires deletion of API Data on termination.",
+      "sourceUrl": "https://www.polar.com/en/legal/polar-api-agreement",
+      "evidence": "Sections 2.2, 2.3, 5.1, 8.3 and 8.4 contain the competing-service, scraping, gatekeeper, immediate-termination and deletion conditions.",
+      "confidence": "high"
+    },
+    {
+      "id": "flow-account-download",
+      "claim": "Polar documents a user-initiated Flow account-data download containing supplied data and most device/app-produced data, but it excludes data derived with Polar algorithms.",
+      "sourceUrl": "https://support.polar.com/en/how-to-download-all-your-data-from-polar-flow",
+      "evidence": "The support article describes the signed-in ZIP request and explicitly says algorithm-derived data and deleted training or activity records are not included.",
+      "confidence": "high"
+    },
+    {
+      "id": "flow-session-export-formats",
+      "claim": "An account holder can export an individual Flow training session as GPX, TCX, CSV or FIT, optionally zipped.",
+      "sourceUrl": "https://support.polar.com/en/export-training-sessions-flow",
+      "evidence": "Polar's current support page lists all four formats, describes route versus training-data content and provides the Diary export steps.",
+      "confidence": "high"
+    },
+    {
+      "id": "ble-sdk-direct-streams",
+      "claim": "The official Polar BLE SDK supports compatible-device access including live heart rate, ECG, accelerometer, PPG and device-dependent online or offline measurements.",
+      "sourceUrl": "https://github.com/polarofficial/polar-ble-sdk",
+      "evidence": "The live official repository documents Android/iOS device connection, online streaming, offline recording and the named sensor families.",
+      "confidence": "high"
+    },
+    {
+      "id": "ble-sdk-custom-license",
+      "claim": "The Polar BLE SDK is source-available under a custom limited licence that permits use, copying, modification and private/commercial development with notices while restricting SDK distribution to qualifying object-code use and imposing additional conditions.",
+      "sourceUrl": "https://github.com/polarofficial/polar-ble-sdk/blob/master/Polar_SDK_License.txt",
+      "evidence": "The repository licence summary and sections 3 through 10 define the development permission, object-code distribution grant, compliance duties, no-support terms and termination conditions.",
+      "confidence": "high"
+    },
+    {
+      "id": "accesslink-python-example",
+      "claim": "Polar publishes a Python AccessLink example that demonstrates OAuth authorization, user registration and retrieval of exercises, activity, physical information, sleep and Nightly Recharge.",
+      "sourceUrl": "https://github.com/polarofficial/accesslink-example-python",
+      "evidence": "The official repository README documents the browser and console authorization flows and the transactional and non-transactional records demonstrated by the example.",
+      "confidence": "high"
+    },
+    {
+      "id": "bleakheart-direct-sensors",
+      "claim": "BleakHeart provides an independently maintained direct-BLE route for selected Polar H10 and Verity Sense sensor streams without retrieving Polar Flow cloud history.",
+      "sourceUrl": "https://github.com/fsmeraldi/bleakheart",
+      "evidence": "The project README documents H10 HR/RR, ECG and accelerometer plus Verity Sense PPG and accelerometer support, and states that H10 offline recording is unsupported.",
+      "confidence": "high"
+    },
+    {
+      "id": "apple-health-one-way",
+      "claim": "Polar Flow writes selected new records to Apple Health and does not read Apple Health records back into Flow.",
+      "sourceUrl": "https://support.polar.com/en/support/connecting_polar_flow_with_apple_health",
+      "evidence": "Polar explicitly documents the one-way direction and lists active/resting energy, workout heart rate, sleep timing, steps, weight and workouts.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-connect-new-data-only",
+      "claim": "Polar Flow writes selected new records to Health Connect, including exercise, routes, heart rate, sleep, SpO2, steps, VO2 max and body measurements.",
+      "sourceUrl": "https://support.polar.com/en/flow-app-health-connect",
+      "evidence": "Polar's current page lists the record types and says Health Connect receives new Flow data after the connection is enabled.",
+      "confidence": "high"
+    },
+    {
+      "id": "strava-lossy-session-sync",
+      "claim": "Polar Flow can automatically send training sessions to Strava, but destination calculations can differ and Polar calorie data is not transferred.",
+      "sourceUrl": "https://support.polar.com/en/support/how_can_i_automatically_sync_my_data_from_polar_flow_to_strava",
+      "evidence": "Polar's current support article describes calculation differences and explicitly states calorie data is not transferred.",
+      "confidence": "high"
+    },
+    {
+      "id": "trainingpeaks-two-way-selective",
+      "claim": "TrainingPeaks plans and targets can sync into Flow while eligible completed Flow sessions sync outward; older sessions require manual export.",
+      "sourceUrl": "https://support.polar.com/en/support/how_can_i_automatically_sync_my_data_from_polar_flow_to_trainingpeaks",
+      "evidence": "Polar documents both directions, sample-data eligibility, excluded session classes and manual handling of sessions that predate linking.",
+      "confidence": "high"
+    },
+    {
+      "id": "komoot-routes-only",
+      "claim": "The current Polar-komoot connection synchronizes planned komoot tours into Flow and Flow training routes back to komoot.",
+      "sourceUrl": "https://support.polar.com/en/komoot",
+      "evidence": "Polar's current page states both route directions; it does not describe a general health, sleep or completed-session exchange.",
+      "confidence": "high"
+    },
+    {
+      "id": "parity-history-undocumented",
+      "claim": "Polar publishes no statement that AccessLink or either Flow export is a complete mirror of all Flow-visible raw and derived data or all retained history.",
+      "sourceUrl": "https://www.polar.com/accesslink-api/",
+      "evidence": "The API documents named resources and incremental notifications but no account-wide parity contract, universal retrospective window or complete-export equivalence.",
+      "confidence": "medium"
+    }
+  ],
+  "projects": [
+    {
+      "name": "polarofficial/polar-ble-sdk",
+      "repositoryUrl": "https://github.com/polarofficial/polar-ble-sdk",
+      "license": "NOASSERTION"
+    },
+    {
+      "name": "polarofficial/accesslink-example-python",
+      "repositoryUrl": "https://github.com/polarofficial/accesslink-example-python",
+      "license": "MIT"
+    },
+    {
+      "name": "fsmeraldi/bleakheart",
+      "repositoryUrl": "https://github.com/fsmeraldi/bleakheart",
+      "license": "MPL-2.0"
+    }
+  ]
+}
