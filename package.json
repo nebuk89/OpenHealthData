@@ -6,7 +6,10 @@
   "scripts": {
     "research": "tsx scripts/run-research-harness.ts",
     "research:list": "tsx scripts/run-research-harness.ts --list",
+    "research:status": "tsx scripts/run-research-harness.ts --status",
     "research:smoke": "tsx scripts/run-research-harness.ts --smoke",
+    "research:verify": "tsx scripts/run-research-harness.ts --verify",
+    "research:review": "tsx scripts/run-research-harness.ts --mark-reviewed",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

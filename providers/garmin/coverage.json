@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": "1.0.0",
+  "provider": "Garmin",
+  "evidenceDate": "2026-08-20",
+  "routes": [
+    {"id":"archive","label":"Export Your Data archive","kind":"consumer-export","access":"self-service"},
+    {"id":"activity-files","label":"Activity FIT/GPX/TCX","kind":"consumer-export","access":"self-service"},
+    {"id":"health-api","label":"Health API","kind":"official-api","access":"partner-gated"},
+    {"id":"activity-api","label":"Activity API","kind":"official-api","access":"partner-gated"},
+    {"id":"womens-api","label":"Women's Health API","kind":"official-api","access":"partner-gated"},
+    {"id":"training-api","label":"Training/Courses APIs","kind":"official-api","access":"partner-gated"},
+    {"id":"health-sdk","label":"Garmin Health SDK","kind":"official-sdk","access":"partner-gated"},
+    {"id":"connect-iq","label":"Connect IQ","kind":"official-sdk","access":"self-service"},
+    {"id":"integrations","label":"Supported integrations","kind":"integration","access":"self-service"},
+    {"id":"unofficial","label":"Unofficial clients and parsers","kind":"unofficial","access":"unsupported"}
+  ],
+  "coverage": [
+    {
+      "taxonomyId": "body.composition",
+      "providerNames": ["Index Scale Biometrics", "Weight", "Body Fat"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["external", "user-entered", "normalized"],
+      "routeCoverage": {"archive":"U","activity-files":"NA","health-api":"A","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"P","connect-iq":"NA","integrations":"P","unofficial":"A"},
+      "notes": "Garmin does not publish the account-archive schema; scale metrics are documented in partner surfaces."
+    },
+    {
+      "taxonomyId": "activity.daily",
+      "providerNames": ["Steps", "Distance", "Floors", "Move IQ"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"archive":"U","activity-files":"P","health-api":"A","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"P","connect-iq":"P","integrations":"P","unofficial":"A"},
+      "notes": "All-day summaries differ from per-activity FIT data; Move IQ extraction is less certain."
+    },
+    {
+      "taxonomyId": "activity.energy",
+      "providerNames": ["Calories", "Intensity Minutes"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["normalized", "derived"],
+      "routeCoverage": {"archive":"U","activity-files":"P","health-api":"A","activity-api":"P","womens-api":"NA","training-api":"NA","health-sdk":"P","connect-iq":"P","integrations":"P","unofficial":"A"},
+      "notes": "Calorie summaries are documented; derived Intensity Minutes have less explicit endpoint mapping."
+    },
+    {
+      "taxonomyId": "cardio.heart-rate",
+      "providerNames": ["Heart Rate", "Resting Heart Rate", "Heart Rate Zones"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"archive":"U","activity-files":"A","health-api":"A","activity-api":"A","womens-api":"NA","training-api":"NA","health-sdk":"A","connect-iq":"P","integrations":"P","unofficial":"A"},
+      "notes": "Per-activity streams are portable in FIT; continuous history depends on a different route."
+    },
+    {
+      "taxonomyId": "cardio.hrv",
+      "providerNames": ["HRV Status"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"archive":"U","activity-files":"N","health-api":"U","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"U","unofficial":"P"},
+      "notes": "The app status exists, but baseline/classification portability is not documented."
+    },
+    {
+      "taxonomyId": "cardio.blood-pressure",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"archive":"U","activity-files":"U","health-api":"U","activity-api":"U","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"U","unofficial":"U"},
+      "notes": "No current first-party Garmin blood-pressure family was established in this audit."
+    },
+    {
+      "taxonomyId": "cardio.ecg-rhythm",
+      "providerNames": ["ECG"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {"archive":"U","activity-files":"U","health-api":"U","activity-api":"U","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"U","unofficial":"U"},
+      "notes": "Available only on supported models/regions; no extraction route was established."
+    },
+    {
+      "taxonomyId": "cardio.vo2max",
+      "providerNames": ["VO2 Max"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"archive":"U","activity-files":"U","health-api":"U","activity-api":"U","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"N","unofficial":"P"},
+      "notes": "The estimate is visible in Garmin products, but public endpoint mapping is not established."
+    },
+    {
+      "taxonomyId": "respiratory.rate-oxygen",
+      "providerNames": ["Respiration", "Pulse Ox"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"archive":"U","activity-files":"P","health-api":"A","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"P","connect-iq":"U","integrations":"P","unofficial":"A"},
+      "notes": "Health API names both families; downstream integration coverage is selective."
+    },
+    {
+      "taxonomyId": "temperature.body-skin",
+      "providerNames": ["Skin Temperature"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"archive":"U","activity-files":"U","health-api":"U","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"U","unofficial":"P"},
+      "notes": "Device and firmware dependent; public API mapping remains unknown."
+    },
+    {
+      "taxonomyId": "sleep.sessions-stages",
+      "providerNames": ["Sleep", "Sleep Stages", "Naps"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"archive":"U","activity-files":"N","health-api":"A","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"P","connect-iq":"U","integrations":"P","unofficial":"A"},
+      "notes": "Sleep is documented in Health API; the consumer archive remains unversioned."
+    },
+    {
+      "taxonomyId": "sleep.insights-score",
+      "providerNames": ["Sleep Score", "Sleep Coach"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"archive":"U","activity-files":"N","health-api":"P","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"P","connect-iq":"U","integrations":"U","unofficial":"A"},
+      "notes": "Sleep data is available, but score/coaching field parity is not guaranteed."
+    },
+    {
+      "taxonomyId": "recovery.stress",
+      "providerNames": ["All-day Stress"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"archive":"U","activity-files":"U","health-api":"A","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"P","connect-iq":"U","integrations":"U","unofficial":"A"},
+      "notes": "Stress is explicitly documented by Health API; ordinary-user automation remains unofficial."
+    },
+    {
+      "taxonomyId": "recovery.energy-readiness",
+      "providerNames": ["Body Battery", "Training Readiness"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"archive":"U","activity-files":"N","health-api":"U","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"P","connect-iq":"U","integrations":"N","unofficial":"A"},
+      "notes": "Proprietary scores are visible and retrievable through private clients; official cloud mapping is incomplete."
+    },
+    {
+      "taxonomyId": "training.load-status",
+      "providerNames": ["Training Status", "Training Load", "Training Effect", "Recovery Time"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"archive":"U","activity-files":"P","health-api":"U","activity-api":"U","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"N","unofficial":"P"},
+      "notes": "Some activity files contain derived fields, but full history and score parity are not established."
+    },
+    {
+      "taxonomyId": "training.performance-predictions",
+      "providerNames": ["Performance Predictions"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"archive":"U","activity-files":"P","health-api":"U","activity-api":"U","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"N","unofficial":"P"},
+      "notes": "The exact current feature list needs rendered confirmation and public API mapping is unknown."
+    },
+    {
+      "taxonomyId": "workout.sessions",
+      "providerNames": ["Activities"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"archive":"U","activity-files":"A","health-api":"NA","activity-api":"A","womens-api":"NA","training-api":"NA","health-sdk":"P","connect-iq":"P","integrations":"A","unofficial":"A"},
+      "notes": "FIT is the richest consumer-controlled activity representation."
+    },
+    {
+      "taxonomyId": "workout.route-elevation",
+      "providerNames": ["Courses", "Activity Route", "Elevation"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"archive":"U","activity-files":"A","health-api":"NA","activity-api":"A","womens-api":"NA","training-api":"P","health-sdk":"P","connect-iq":"P","integrations":"A","unofficial":"A"},
+      "notes": "Activity routes are extractable; Courses APIs are a write/push route."
+    },
+    {
+      "taxonomyId": "workout.sport-dynamics",
+      "providerNames": ["Running Dynamics", "Cycling Dynamics", "Swim Metrics"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"archive":"U","activity-files":"A","health-api":"NA","activity-api":"A","womens-api":"NA","training-api":"NA","health-sdk":"P","connect-iq":"P","integrations":"P","unofficial":"A"},
+      "notes": "Coverage depends on device and sensor support and whether fields were written to FIT."
+    },
+    {
+      "taxonomyId": "workout.plans-courses",
+      "providerNames": ["Garmin Coach", "Training Plans", "Workouts", "Courses"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external"],
+      "routeCoverage": {"archive":"U","activity-files":"P","health-api":"NA","activity-api":"NA","womens-api":"NA","training-api":"A","health-sdk":"P","connect-iq":"P","integrations":"A","unofficial":"P"},
+      "notes": "Training and Courses APIs push content inward and do not expose complete account history."
+    },
+    {
+      "taxonomyId": "mobility.gait-function",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"archive":"U","activity-files":"U","health-api":"U","activity-api":"U","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"U","unofficial":"U"},
+      "notes": "Sport dynamics are documented, but a general clinical gait/mobility family was not established."
+    },
+    {
+      "taxonomyId": "reproductive.cycle-pregnancy",
+      "providerNames": ["Women's Health", "Menstrual Cycle", "Pregnancy"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "derived"],
+      "routeCoverage": {"archive":"U","activity-files":"NA","health-api":"NA","activity-api":"NA","womens-api":"A","training-api":"NA","health-sdk":"U","connect-iq":"NA","integrations":"U","unofficial":"P"},
+      "notes": "Garmin provides a dedicated business-gated API; consumer archive coverage is unknown."
+    },
+    {
+      "taxonomyId": "nutrition.hydration",
+      "providerNames": ["Hydration", "Calories Consumed"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external"],
+      "routeCoverage": {"archive":"U","activity-files":"NA","health-api":"U","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"P","unofficial":"A"},
+      "notes": "MyFitnessPal supplies some nutrition data; Garmin's complete first-party field model is not documented."
+    },
+    {
+      "taxonomyId": "clinical.records-medications",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"archive":"U","activity-files":"NA","health-api":"U","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"NA","integrations":"U","unofficial":"U"},
+      "notes": "No general Garmin clinical-record or medication-history surface was established."
+    },
+    {
+      "taxonomyId": "wellbeing.mindfulness-mood",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"archive":"U","activity-files":"U","health-api":"U","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"U","unofficial":"U"},
+      "notes": "Breathwork may exist on devices, but a normalized mood/mindfulness data family was not verified."
+    },
+    {
+      "taxonomyId": "hearing.audio-audiogram",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"archive":"U","activity-files":"NA","health-api":"U","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"U","unofficial":"U"},
+      "notes": "No Garmin hearing-health or audiogram family was established."
+    },
+    {
+      "taxonomyId": "insights.trends-alerts-awards",
+      "providerNames": ["Insights", "Badges", "Health Alerts"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"archive":"U","activity-files":"U","health-api":"U","activity-api":"U","womens-api":"U","training-api":"NA","health-sdk":"U","connect-iq":"U","integrations":"U","unofficial":"P"},
+      "notes": "App-visible insights and achievements are not mapped to documented portable records."
+    },
+    {
+      "taxonomyId": "device.raw-sensors",
+      "providerNames": ["Real-time Sensor Streams", "Connect IQ Sensors"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured"],
+      "routeCoverage": {"archive":"NA","activity-files":"NA","health-api":"NA","activity-api":"NA","womens-api":"NA","training-api":"NA","health-sdk":"A","connect-iq":"P","integrations":"NA","unofficial":"P"},
+      "notes": "Direct streams require enterprise SDK access or an on-device Connect IQ app."
+    },
+    {
+      "taxonomyId": "provenance.metadata",
+      "providerNames": ["Device Information", "Sensor Information", "FIT Metadata"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"archive":"U","activity-files":"A","health-api":"P","activity-api":"A","womens-api":"NA","training-api":"NA","health-sdk":"P","connect-iq":"P","integrations":"P","unofficial":"A"},
+      "notes": "FIT can retain strong provenance; downstream services often normalize it."
+    }
+  ]
+}

@@ -4,6 +4,10 @@ Our goal is to audit how open different health data trackers (Garmin, Apple, Fit
 ## Research
 
 - [Fitness data provider landscape](fitness-data-providers.md) - the initial 20-provider audit list
+- [Provider audits](providers/README.md) - completed provider write-ups and resource indexes
+- [Provider audit rubric](audit-rubric.md) - normalized evidence dimensions and publication states
+- [Canonical data taxonomy](data-taxonomy.md) - stable cross-provider metric families and mapping
+  rules
 
 ### Copilot research agents
 
@@ -21,17 +25,33 @@ directly with:
 copilot --agent=open-health-api-docs --prompt "Research Apple and Garmin"
 ```
 
-The research harness loads the same profiles through the GitHub Copilot SDK and runs all three
-workstreams concurrently:
+The research harness works through the provider list from the top down. For each run it selects
+one provider, loads the same three profiles through the GitHub Copilot SDK, runs their research
+workstreams concurrently, and synthesizes:
+
+- `providers/<provider>/README.md` - the canonical provider audit;
+- `providers/<provider>/resources.md` - a deduplicated evidence and project index;
+- `providers/<provider>/claims.json` - decision-relevant claims with evidence and confidence;
+- `providers/<provider>/coverage.json` - complete machine-readable mapping to the canonical data
+  taxonomy;
+- `providers/<provider>/verification.json` and `manifest.json` - automated evidence checks and
+  publication state; and
+- `research/runs/<timestamp>/<provider>/` - ignored raw specialist reports for debugging.
 
 ```bash
 npm install
 npm run research:list
+npm run research:status
 npm run research:smoke
-npm run research -- --providers "Apple,Garmin"
 npm run research
+npm run research -- --provider Garmin
+npm run research:verify -- --provider Apple
+npm run research:review -- --provider Apple
 ```
 
-Full runs write separate Markdown reports to a timestamped directory under `research/runs/`.
-Set `COPILOT_MODEL` to override the default model or `COPILOT_TIMEOUT_MS` to change the
-per-agent timeout.
+With no `--provider`, the harness selects the first provider without a verified audit. An
+explicit provider reruns or targets that provider regardless of list position. Set
+`COPILOT_MODEL` to override the default model or `COPILOT_TIMEOUT_MS` to change the per-agent
+timeout. Generated packages are staged, checked for required sections, claim/source coverage,
+dead links, repository existence and GitHub licence mismatches, then atomically published as
+`verified`. `research:review` is the explicit human approval step.
