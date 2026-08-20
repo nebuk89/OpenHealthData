@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": "1.0.0",
+  "provider": "Polar",
+  "evidenceDate": "2026-08-20",
+  "routes": [
+    {
+      "id": "account-zip",
+      "label": "Flow account ZIP",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "session-export",
+      "label": "Individual Flow session exports",
+      "kind": "consumer-export",
+      "access": "self-service"
+    },
+    {
+      "id": "accesslink",
+      "label": "AccessLink API",
+      "kind": "official-api",
+      "access": "self-service"
+    },
+    {
+      "id": "ble-sdk",
+      "label": "Polar BLE SDK",
+      "kind": "official-sdk",
+      "access": "self-service"
+    },
+    {
+      "id": "integrations",
+      "label": "Supported integrations",
+      "kind": "integration",
+      "access": "self-service"
+    },
+    {
+      "id": "unofficial",
+      "label": "Open-source and unofficial routes",
+      "kind": "unofficial",
+      "access": "unsupported"
+    }
+  ],
+  "coverage": [
+    {
+      "taxonomyId": "body.composition",
+      "providerNames": ["Physical information", "Weight", "Height"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "normalized"],
+      "routeCoverage": {"account-zip":"P","session-export":"N","accesslink":"A","ble-sdk":"NA","integrations":"P","unofficial":"U"},
+      "notes": "The account download includes user-supplied data but has no public field inventory; AccessLink physical-information records and selected integrations cover measurements."
+    },
+    {
+      "taxonomyId": "activity.daily",
+      "providerNames": ["Daily activity", "Steps", "Distance"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"account-zip":"N","session-export":"N","accesslink":"A","ble-sdk":"U","integrations":"A","unofficial":"U"},
+      "notes": "Polar explicitly excludes algorithm-derived daily activity from the account download; AccessLink has current daily-activity resources."
+    },
+    {
+      "taxonomyId": "activity.energy",
+      "providerNames": ["Active calories", "Total calories", "Active time"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["normalized", "derived"],
+      "routeCoverage": {"account-zip":"P","session-export":"P","accesslink":"A","ble-sdk":"N","integrations":"P","unofficial":"U"},
+      "notes": "Session files can carry workout calories; integrations normalize or recalculate energy and are not lossless."
+    },
+    {
+      "taxonomyId": "cardio.heart-rate",
+      "providerNames": ["Heart rate", "Continuous heart rate", "Heart-rate zones"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"account-zip":"A","session-export":"A","accesslink":"A","ble-sdk":"A","integrations":"A","unofficial":"A"},
+      "notes": "Workout files, AccessLink and compatible BLE devices expose different scopes; BleakHeart verifies direct H10 and Verity Sense heart-rate access."
+    },
+    {
+      "taxonomyId": "cardio.hrv",
+      "providerNames": ["RR intervals", "HRV", "ANS charge"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {"account-zip":"P","session-export":"P","accesslink":"P","ble-sdk":"A","integrations":"U","unofficial":"P"},
+      "notes": "BleakHeart exposes RR intervals but not Flow HRV interpretations; complete Flow HRV history and downstream transfer are not documented."
+    },
+    {
+      "taxonomyId": "cardio.blood-pressure",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"account-zip":"U","session-export":"N","accesslink":"U","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "No current first-party Polar blood-pressure family was established; lack of evidence is not treated as absence."
+    },
+    {
+      "taxonomyId": "cardio.ecg-rhythm",
+      "providerNames": ["Wrist ECG test report", "ECG stream"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {"account-zip":"P","session-export":"N","accesslink":"A","ble-sdk":"A","integrations":"U","unofficial":"P"},
+      "notes": "AccessLink lists wrist-ECG reports; Polar BLE SDK and BleakHeart stream ECG on compatible devices, but BleakHeart does not provide rhythm classification."
+    },
+    {
+      "taxonomyId": "cardio.vo2max",
+      "providerNames": ["VO2 max", "Fitness Test", "Running Index"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"account-zip":"N","session-export":"P","accesslink":"P","ble-sdk":"U","integrations":"P","unofficial":"U"},
+      "notes": "Polar excludes algorithm-derived data from the account ZIP; Health Connect receives VO2 max, but complete test/prediction parity is not established."
+    },
+    {
+      "taxonomyId": "respiratory.rate-oxygen",
+      "providerNames": ["SpO2", "Breathing rate"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"account-zip":"P","session-export":"N","accesslink":"P","ble-sdk":"P","integrations":"P","unofficial":"U"},
+      "notes": "AccessLink Elixir includes SpO2 reports and Health Connect receives SpO2; full respiratory-rate routing is unclear."
+    },
+    {
+      "taxonomyId": "temperature.body-skin",
+      "providerNames": ["Body temperature", "Sleep skin temperature"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"account-zip":"P","session-export":"N","accesslink":"A","ble-sdk":"P","integrations":"U","unofficial":"U"},
+      "notes": "AccessLink explicitly lists body and sleep skin temperature in Elixir; device and model support is conditional."
+    },
+    {
+      "taxonomyId": "sleep.sessions-stages",
+      "providerNames": ["Sleep", "Sleep Plus Stages"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"account-zip":"N","session-export":"N","accesslink":"A","ble-sdk":"U","integrations":"P","unofficial":"U"},
+      "notes": "Polar explicitly excludes algorithm-derived sleep information from the account download; AccessLink documents sleep and stages."
+    },
+    {
+      "taxonomyId": "sleep.insights-score",
+      "providerNames": ["Sleep score", "SleepWise", "Sleep charge"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"account-zip":"N","session-export":"N","accesslink":"P","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "Polar excludes algorithm-derived scores from the account ZIP; AccessLink exposes selected SleepWise and Nightly Recharge fields."
+    },
+    {
+      "taxonomyId": "recovery.stress",
+      "providerNames": ["ANS charge", "Recovery Pro", "Orthostatic Test"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {"account-zip":"N","session-export":"N","accesslink":"P","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "Polar exposes autonomic/recovery outputs rather than a documented generic all-day stress feed; exact route mapping remains partial."
+    },
+    {
+      "taxonomyId": "recovery.energy-readiness",
+      "providerNames": ["Nightly Recharge", "Recovery status", "Alertness"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"account-zip":"N","session-export":"N","accesslink":"A","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "Nightly Recharge and SleepWise alertness are named AccessLink resources; broader app narratives and complete history remain unproven."
+    },
+    {
+      "taxonomyId": "training.load-status",
+      "providerNames": ["Cardio Load", "Training Load Pro", "Perceived load"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"account-zip":"N","session-export":"P","accesslink":"A","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "AccessLink explicitly documents Cardio Load; individual files may preserve selected session load fields but not the complete status history."
+    },
+    {
+      "taxonomyId": "training.performance-predictions",
+      "providerNames": ["Running Index", "Fitness Test", "Performance tests"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"account-zip":"N","session-export":"P","accesslink":"P","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "The reports establish selected tests and predictions, but no exhaustive current endpoint-to-Flow mapping."
+    },
+    {
+      "taxonomyId": "workout.sessions",
+      "providerNames": ["Training sessions", "Exercises"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"account-zip":"A","session-export":"A","accesslink":"A","ble-sdk":"P","integrations":"A","unofficial":"U"},
+      "notes": "This is Polar's strongest portable family, though eligibility, device support and destination normalization still differ."
+    },
+    {
+      "taxonomyId": "workout.route-elevation",
+      "providerNames": ["GPS route", "Altitude", "Speed", "Pace"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"account-zip":"A","session-export":"A","accesslink":"A","ble-sdk":"P","integrations":"A","unofficial":"U"},
+      "notes": "GPX/FIT and AccessLink can carry recorded routes; Health Connect, Strava and komoot support selected route flows."
+    },
+    {
+      "taxonomyId": "workout.sport-dynamics",
+      "providerNames": ["Cadence", "Power", "Laps", "Sport-specific samples"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"account-zip":"P","session-export":"P","accesslink":"P","ble-sdk":"P","integrations":"P","unofficial":"U"},
+      "notes": "Coverage depends on sport, device, sensor and file/endpoint representation; no route is established as universal."
+    },
+    {
+      "taxonomyId": "workout.plans-courses",
+      "providerNames": ["Training targets", "TrainingPeaks plans", "komoot routes"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external"],
+      "routeCoverage": {"account-zip":"U","session-export":"N","accesslink":"U","ble-sdk":"N","integrations":"A","unofficial":"U"},
+      "notes": "TrainingPeaks targets and komoot tours flow into Polar; these inward routes do not expose complete historical plans."
+    },
+    {
+      "taxonomyId": "mobility.gait-function",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"account-zip":"U","session-export":"N","accesslink":"U","ble-sdk":"U","integrations":"U","unofficial":"U"},
+      "notes": "Running dynamics do not establish a separate general gait or functional-mobility record family."
+    },
+    {
+      "taxonomyId": "reproductive.cycle-pregnancy",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"account-zip":"U","session-export":"N","accesslink":"U","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "No current first-party Polar cycle or pregnancy data surface was established in the persisted research."
+    },
+    {
+      "taxonomyId": "nutrition.hydration",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"account-zip":"U","session-export":"N","accesslink":"U","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "A legacy MyFitnessPal connection does not establish that Polar stores or exports nutrition and hydration records."
+    },
+    {
+      "taxonomyId": "clinical.records-medications",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"account-zip":"U","session-export":"N","accesslink":"U","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "No general clinical-record or medication-history family was established."
+    },
+    {
+      "taxonomyId": "wellbeing.mindfulness-mood",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"account-zip":"U","session-export":"N","accesslink":"U","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "Recovery and sleep coaching do not prove a portable mindfulness, mood or symptom record family."
+    },
+    {
+      "taxonomyId": "hearing.audio-audiogram",
+      "providerNames": [],
+      "presence": "unknown",
+      "appVisible": "unknown",
+      "productionLayers": [],
+      "routeCoverage": {"account-zip":"U","session-export":"N","accesslink":"U","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "No Polar hearing-health, audio-exposure or audiogram family was established."
+    },
+    {
+      "taxonomyId": "insights.trends-alerts-awards",
+      "providerNames": ["SleepWise alertness", "Training summaries", "Flow trends"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"account-zip":"N","session-export":"N","accesslink":"P","ble-sdk":"N","integrations":"U","unofficial":"U"},
+      "notes": "AccessLink exposes selected derived periods and statuses, not a complete portable representation of Flow insights."
+    },
+    {
+      "taxonomyId": "device.raw-sensors",
+      "providerNames": ["ECG", "Accelerometer", "PPG", "RR intervals", "Offline recordings"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured"],
+      "routeCoverage": {"account-zip":"U","session-export":"P","accesslink":"N","ble-sdk":"A","integrations":"N","unofficial":"P"},
+      "notes": "The BLE SDK is broadest; BleakHeart verifies selected H10/Verity Sense ECG, accelerometer and PPG streams but not offline recording."
+    },
+    {
+      "taxonomyId": "provenance.metadata",
+      "providerNames": ["Device ID", "Exercise ID", "Timestamps", "Sport", "Sensor metadata"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"account-zip":"P","session-export":"P","accesslink":"A","ble-sdk":"A","integrations":"P","unofficial":"P"},
+      "notes": "BleakHeart normalizes timestamps and tags measurement types; destination integrations may normalize or discard source detail."
+    }
+  ]
+}
