@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Samsung",
-  "checkedAt": "2026-08-20T11:36:11.147Z",
+  "checkedAt": "2026-08-20T12:08:45.241Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -154,7 +154,7 @@
       "url": "https://developer.android.com/health-and-fitness/health-connect/read-data",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/read-data?hl=pl"
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/read-data"
     }
   ],
   "projects": [

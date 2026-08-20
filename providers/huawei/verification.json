@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Huawei",
-  "checkedAt": "2026-08-20T12:03:53.588Z",
+  "checkedAt": "2026-08-20T12:08:51.909Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -124,7 +124,7 @@
       "url": "https://developers.google.com/fit",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/fit?hl=fa"
+      "finalUrl": "https://developers.google.com/fit"
     },
     {
       "url": "https://support.apple.com/en-us/108779",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Xiaomi",
-  "checkedAt": "2026-08-20T12:06:12.462Z",
+  "checkedAt": "2026-08-20T12:08:56.379Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -34,19 +34,19 @@
       "url": "https://developer.android.com/health-and-fitness/health-connect/data-types",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/data-types?hl=tr"
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/data-types"
     },
     {
       "url": "https://developer.android.com/health-and-fitness/health-connect/read-data",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/read-data"
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/read-data?hl=pt-br"
     },
     {
       "url": "https://developer.android.com/health-and-fitness/health-connect",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect"
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect?hl=zh-cn"
     },
     {
       "url": "https://apps.apple.com/us/app/mi-fitness-xiaomi-wear-lite/id1493500777",
