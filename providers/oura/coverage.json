@@ -17,6 +17,12 @@
       "access": "self-service"
     },
     {
+      "id": "mcp-server",
+      "label": "Oura MCP Server",
+      "kind": "official-mcp",
+      "access": "unknown"
+    },
+    {
       "id": "api-webhooks",
       "label": "Oura API webhooks",
       "kind": "official-api",
@@ -69,6 +75,7 @@
       "routeCoverage": {
         "account-export": "P",
         "api-v2": "P",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "P",
         "health-connect": "P",
@@ -88,6 +95,7 @@
       "routeCoverage": {
         "account-export": "A",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "P",
         "health-connect": "P",
@@ -96,7 +104,7 @@
         "api-clients": "A",
         "local-ble": "P"
       },
-      "notes": "API daily activity includes steps, activity classes, targets and inactivity measures; integrations carry narrower representations."
+      "notes": "API v2 daily activity includes steps, activity classes, targets and inactivity measures; integrations carry narrower representations."
     },
     {
       "taxonomyId": "activity.energy",
@@ -107,6 +115,7 @@
       "routeCoverage": {
         "account-export": "A",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "P",
         "health-connect": "P",
@@ -115,7 +124,7 @@
         "api-clients": "A",
         "local-ble": "P"
       },
-      "notes": "API exposes energy, MET and time aggregates; platform integrations normalize selected activity energy."
+      "notes": "API v2 exposes energy, MET and time aggregates; platform integrations normalize selected activity energy."
     },
     {
       "taxonomyId": "cardio.heart-rate",
@@ -126,6 +135,7 @@
       "routeCoverage": {
         "account-export": "A",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "P",
         "health-connect": "P",
@@ -134,7 +144,7 @@
         "api-clients": "A",
         "local-ble": "A"
       },
-      "notes": "API provides timestamped BPM with source plus sleep HR series; Apple Health exports one-minute heart rate."
+      "notes": "API v2 provides timestamped BPM with source plus sleep HR series; Apple Health exports one-minute heart rate."
     },
     {
       "taxonomyId": "cardio.hrv",
@@ -145,6 +155,7 @@
       "routeCoverage": {
         "account-export": "A",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "N",
         "health-connect": "A",
@@ -164,6 +175,7 @@
       "routeCoverage": {
         "account-export": "U",
         "api-v2": "N",
+        "mcp-server": "U",
         "api-webhooks": "N",
         "apple-health": "P",
         "health-connect": "P",
@@ -172,7 +184,7 @@
         "api-clients": "N",
         "local-ble": "N"
       },
-      "notes": "Apple Health explicitly imports blood pressure into Oura; no Oura-captured or API blood-pressure resource exists."
+      "notes": "Apple Health explicitly imports blood pressure into Oura; no Oura-captured or API v2 blood-pressure resource exists."
     },
     {
       "taxonomyId": "cardio.ecg-rhythm",
@@ -183,6 +195,7 @@
       "routeCoverage": {
         "account-export": "N",
         "api-v2": "N",
+        "mcp-server": "U",
         "api-webhooks": "N",
         "apple-health": "N",
         "health-connect": "N",
@@ -202,6 +215,7 @@
       "routeCoverage": {
         "account-export": "P",
         "api-v2": "P",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "P",
         "health-connect": "P",
@@ -210,7 +224,7 @@
         "api-clients": "P",
         "local-ble": "N"
       },
-      "notes": "API exposes VO2 max values but not the app's age-adjusted category or Future Me projection."
+      "notes": "API v2 exposes VO2 max values but not the app's age-adjusted category or Future Me projection."
     },
     {
       "taxonomyId": "respiratory.rate-oxygen",
@@ -221,6 +235,7 @@
       "routeCoverage": {
         "account-export": "A",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "P",
         "health-connect": "P",
@@ -240,6 +255,7 @@
       "routeCoverage": {
         "account-export": "P",
         "api-v2": "P",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "N",
         "health-connect": "N",
@@ -248,7 +264,7 @@
         "api-clients": "P",
         "local-ble": "A"
       },
-      "notes": "Official API exposes deviations, not a raw temperature stream; Natural Cycles receives overnight temperature trend only."
+      "notes": "API v2 exposes deviations, not a raw temperature stream; Natural Cycles receives overnight temperature trend only."
     },
     {
       "taxonomyId": "sleep.sessions-stages",
@@ -259,6 +275,7 @@
       "routeCoverage": {
         "account-export": "A",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "A",
         "health-connect": "A",
@@ -267,7 +284,7 @@
         "api-clients": "A",
         "local-ble": "A"
       },
-      "notes": "API provides detailed sleep periods, durations and stage classifications; platform integrations carry normalized sleep."
+      "notes": "API v2 provides detailed sleep periods, durations and stage classifications; platform integrations carry normalized sleep."
     },
     {
       "taxonomyId": "sleep.insights-score",
@@ -278,6 +295,7 @@
       "routeCoverage": {
         "account-export": "A",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "N",
         "health-connect": "N",
@@ -286,7 +304,7 @@
         "api-clients": "A",
         "local-ble": "P"
       },
-      "notes": "API explicitly exposes score, contributors and sleep-time recommendation; integrations do not carry equivalent scores."
+      "notes": "API v2 explicitly exposes score, contributors and sleep-time recommendation; integrations do not carry equivalent scores."
     },
     {
       "taxonomyId": "recovery.stress",
@@ -297,6 +315,7 @@
       "routeCoverage": {
         "account-export": "P",
         "api-v2": "P",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "N",
         "health-connect": "N",
@@ -305,7 +324,7 @@
         "api-clients": "P",
         "local-ble": "P"
       },
-      "notes": "API exposes daily totals and summary but not the app's 15-minute four-zone graph or Cumulative Stress presentation."
+      "notes": "API v2 exposes daily totals and summary but not the app's 15-minute four-zone graph or Cumulative Stress presentation."
     },
     {
       "taxonomyId": "recovery.energy-readiness",
@@ -316,6 +335,7 @@
       "routeCoverage": {
         "account-export": "A",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "N",
         "health-connect": "N",
@@ -324,7 +344,7 @@
         "api-clients": "A",
         "local-ble": "P"
       },
-      "notes": "Readiness score/contributors and rest-mode periods are explicit API resources; Restorative Time intervals are not."
+      "notes": "Readiness score/contributors and rest-mode periods are explicit API v2 resources; Restorative Time intervals are not exposed by API v2."
     },
     {
       "taxonomyId": "training.load-status",
@@ -335,6 +355,7 @@
       "routeCoverage": {
         "account-export": "A",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "N",
         "health-connect": "N",
@@ -354,6 +375,7 @@
       "routeCoverage": {
         "account-export": "U",
         "api-v2": "N",
+        "mcp-server": "U",
         "api-webhooks": "N",
         "apple-health": "N",
         "health-connect": "N",
@@ -373,6 +395,7 @@
       "routeCoverage": {
         "account-export": "A",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "A",
         "health-connect": "A",
@@ -381,7 +404,7 @@
         "api-clients": "A",
         "local-ble": "P"
       },
-      "notes": "API and integrations expose workout summaries, with route-specific source and history limits."
+      "notes": "API v2 and integrations expose workout summaries, with route-specific source and history limits."
     },
     {
       "taxonomyId": "workout.route-elevation",
@@ -392,6 +415,7 @@
       "routeCoverage": {
         "account-export": "U",
         "api-v2": "N",
+        "mcp-server": "U",
         "api-webhooks": "N",
         "apple-health": "A",
         "health-connect": "P",
@@ -400,7 +424,7 @@
         "api-clients": "N",
         "local-ble": "N"
       },
-      "notes": "The app displays phone-recorded routes, pace and splits, but the API workout schema has no route or elevation field."
+      "notes": "The app displays phone-recorded routes, pace and splits, but the API v2 workout schema has no route or elevation field."
     },
     {
       "taxonomyId": "workout.sport-dynamics",
@@ -411,6 +435,7 @@
       "routeCoverage": {
         "account-export": "P",
         "api-v2": "P",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "P",
         "health-connect": "P",
@@ -430,6 +455,7 @@
       "routeCoverage": {
         "account-export": "U",
         "api-v2": "U",
+        "mcp-server": "U",
         "api-webhooks": "U",
         "apple-health": "U",
         "health-connect": "U",
@@ -449,6 +475,7 @@
       "routeCoverage": {
         "account-export": "U",
         "api-v2": "U",
+        "mcp-server": "U",
         "api-webhooks": "U",
         "apple-health": "U",
         "health-connect": "U",
@@ -468,6 +495,7 @@
       "routeCoverage": {
         "account-export": "U",
         "api-v2": "N",
+        "mcp-server": "U",
         "api-webhooks": "N",
         "apple-health": "N",
         "health-connect": "N",
@@ -476,7 +504,7 @@
         "api-clients": "N",
         "local-ble": "P"
       },
-      "notes": "No API cycle resource exists; Natural Cycles receives temperature trend only, not Oura logs or predictions."
+      "notes": "No API v2 cycle resource exists; Natural Cycles receives temperature trend only, not Oura logs or predictions."
     },
     {
       "taxonomyId": "nutrition.hydration",
@@ -487,6 +515,7 @@
       "routeCoverage": {
         "account-export": "U",
         "api-v2": "N",
+        "mcp-server": "U",
         "api-webhooks": "N",
         "apple-health": "N",
         "health-connect": "N",
@@ -506,6 +535,7 @@
       "routeCoverage": {
         "account-export": "P",
         "api-v2": "N",
+        "mcp-server": "U",
         "api-webhooks": "N",
         "apple-health": "N",
         "health-connect": "N",
@@ -525,6 +555,7 @@
       "routeCoverage": {
         "account-export": "A",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "P",
         "health-connect": "N",
@@ -533,7 +564,7 @@
         "api-clients": "A",
         "local-ble": "P"
       },
-      "notes": "API exposes sessions with mood/HR/HRV and enhanced tags; Apple Health receives Mindful Minutes."
+      "notes": "API v2 exposes sessions with mood/HR/HRV and enhanced tags; Apple Health receives Mindful Minutes."
     },
     {
       "taxonomyId": "hearing.audio-audiogram",
@@ -544,6 +575,7 @@
       "routeCoverage": {
         "account-export": "N",
         "api-v2": "N",
+        "mcp-server": "U",
         "api-webhooks": "N",
         "apple-health": "N",
         "health-connect": "N",
@@ -563,6 +595,7 @@
       "routeCoverage": {
         "account-export": "P",
         "api-v2": "P",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "N",
         "health-connect": "N",
@@ -571,7 +604,7 @@
         "api-clients": "P",
         "local-ble": "P"
       },
-      "notes": "Underlying scores and time series support custom trends, but first-party narratives, reports, alerts, awards and Advisor content are not API resources."
+      "notes": "Underlying API v2 scores and time series support custom trends, but first-party narratives, reports, alerts, awards and Advisor content are not API v2 resources; MCP coverage is unknown."
     },
     {
       "taxonomyId": "device.raw-sensors",
@@ -582,6 +615,7 @@
       "routeCoverage": {
         "account-export": "U",
         "api-v2": "N",
+        "mcp-server": "U",
         "api-webhooks": "N",
         "apple-health": "N",
         "health-connect": "N",
@@ -601,6 +635,7 @@
       "routeCoverage": {
         "account-export": "P",
         "api-v2": "A",
+        "mcp-server": "U",
         "api-webhooks": "P",
         "apple-health": "P",
         "health-connect": "P",
@@ -609,7 +644,7 @@
         "api-clients": "A",
         "local-ble": "A"
       },
-      "notes": "API records retain strong identifiers and timing, with additional ring and algorithm metadata on selected resources."
+      "notes": "API v2 records retain strong identifiers and timing, with additional ring and algorithm metadata on selected resources."
     }
   ]
 }

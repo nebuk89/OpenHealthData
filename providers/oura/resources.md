@@ -19,7 +19,10 @@ Links are grouped by role and deduplicated. All were accessed on the evidence da
 - [API application registration](https://cloud.ouraring.com/oauth/applications) — **Oura**;
   signed-in application management.
 - [Oura API and MCP Agreement](https://cloud.ouraring.com/legal/api-agreement) — **Oura**;
-  effective 8 June 2026, permitted use, aggregator restrictions, change and future-fee terms.
+  effective 8 June 2026; the only located public first-party MCP evidence. It establishes an
+  Oura-operated server exposing User Data through defined endpoints and supplies use, caching,
+  aggregator, change and future-fee terms, but no public MCP setup, server URL, authentication
+  method, tool catalogue, schema, eligibility, membership, history or metric coverage.
 
 ## Official support and policy
 
