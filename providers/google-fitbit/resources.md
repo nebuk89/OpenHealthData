@@ -13,7 +13,8 @@ migration period and legacy tooling.
 - [Get started](https://developers.google.com/health/get-started) — **Google**; current developer
   path, protocols, codelab and migration resources.
 - [Cloud and OAuth setup](https://developers.google.com/health/setup) — **Google**; API enablement,
-  test users, 100-user unverified cap, third-party review and token behavior.
+  test users, the 100-user cap for newly created unverified OAuth clients, third-party review and
+  token behavior.
 - [OAuth scopes](https://developers.google.com/health/scopes) — **Google**; read-only and
   write-only data collections and partial-consent rules.
 - [Data types](https://developers.google.com/health/data-types) — **Google**; canonical current
@@ -42,17 +43,21 @@ migration period and legacy tooling.
 
 ## Official support
 
+- [Use Health Connect with Google Health](https://support.google.com/fitbit/answer/14506680?hl=en) —
+  **Google**; bidirectional integration, asymmetric read/write type lists, permissions and
+  synchronization behavior.
 - [Export Google Health data](https://support.google.com/googlehealth/answer/14236615?hl=en) —
-  **Google**; account-holder archive and documented activity, exercise, sleep and heart-rate
-  examples.
+  **Google**; migrated-account Takeout, original Fitbit-login complete archives and selectable
+  exports, and per-GPS-workout TCX.
 - [Download data with Google Takeout](https://support.google.com/accounts/answer/3024190?hl=en) —
-  **Google**; general archive creation, delivery and retention behavior.
+  **Google**; general archive creation, scheduling, delivery and retention behavior for
+  Google-account users.
 
 ## Integration documentation
 
 - [Health Connect overview](https://developer.android.com/health-and-fitness/health-connect) —
-  **Google/Android**; on-device shared store and record model. This is not, by itself, evidence that
-  Fitbit writes every corresponding record.
+  **Google/Android**; on-device shared store and record model; the Google Health support page above
+  supplies the provider-specific direction and type evidence.
 - [Upload and sync an activity](https://www.strava.com/upload/select) — **Strava**; signed-in
   manual file-upload entry point. Exact accepted Fitbit/Google Health fields still need testing.
 - [Manually upload a workout file](https://help.trainingpeaks.com/hc/en-us/articles/204071914-How-to-manually-upload-a-workout-file)

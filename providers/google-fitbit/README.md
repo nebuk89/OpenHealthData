@@ -13,13 +13,14 @@ retrieval with OAuth refresh tokens. The API exposes a broad set of Fitbit and P
 including interval heart rate and activity, sleep stages, HRV, oxygen saturation, ECG, irregular
 rhythm notifications, VO2 max, exercise, nutrition and source/device metadata.
 
-That is meaningful self-service access, but it is not complete app-to-interface parity. Google's
-published data-type catalogue does not document portable records for Fitbit Sleep Score,
-Readiness, Stress Management Score, badges, coaching narratives or every other app-visible
-insight. The official account export is useful for portability, but its public help page does not
-publish a stable field-by-field schema. The practical verdict for an ordinary user is therefore
-**Partial**: broad official automation exists, while proprietary derived outputs and some
-first-party application state remain unaccounted for.
+That is meaningful self-service access, but it is not complete app-to-interface parity. Google
+Health also documents bidirectional Health Connect synchronization, including an explicit,
+asymmetric read/write type list. Neither that route nor the API documents portable records for
+Fitbit Sleep Score, Readiness, Stress Management Score, badges or coaching narratives. Export
+coverage depends on account type: migrated Google-account users use Google Takeout, while users
+who still have an original Fitbit login can request a complete Fitbit account archive or a
+selectable recent export. No public field-by-field schema makes those routes interchangeable. The
+practical verdict for an ordinary user is therefore **Partial**.
 
 ## Access snapshot
 
@@ -27,10 +28,14 @@ first-party application state remain unaccounted for.
 |---|---|---:|---|---|
 | Google Health API | Google Health account holder with a Cloud project and OAuth client | Yes | Current documented health, activity, sleep, ECG, nutrition and profile types | Published catalogue does not cover every app-visible insight |
 | Google Health webhooks | API developer with an HTTPS subscriber | Yes | Change notifications for a documented subset of API data types | Notification triggers retrieval; it is not a second copy of the record |
-| Google Health data export | Signed-in account holder | Periodic full archives can be scheduled in Takeout | Documented examples include activity, exercise, sleep and heart rate | No public exhaustive schema or incremental-change feed |
+| Health Connect | Google Health app user on a supported Android device | Yes | Bidirectional sync with separate documented read and write lists | This audit counts only types Google Health writes outward; proprietary scores are absent |
+| Google Takeout | User who signs in to Google Health with a Google Account | Periodic archives can be scheduled | Google Health can be selected for download | No public exhaustive Google Health archive schema |
+| Original Fitbit-login complete archive | User who has not migrated and still signs in with the original Fitbit login | Manual request | Officially described as a complete archive of Fitbit account data | Applies only to the remaining original-login cohort; no public field schema |
+| Original Fitbit-login selectable export | Same original Fitbit-login cohort | Manual | User-selected time period, data and file format | Available categories and formats are not enumerated on the public help page |
+| Per-workout TCX | Google Health app user with a GPS exercise | Manual | One GPS exercise represented as an activity | Not a complete account route; preserved fields beyond GPS/workout are not enumerated |
 | Legacy Fitbit Web API personal app | Existing Fitbit developer during migration | Yes | Public and intraday endpoints for the developer's own account | Legacy surface is being replaced and requires separate Fitbit OAuth |
 | Legacy third-party intraday access | Approved client/server application | Yes | Other users' detailed activity, breathing, heart-rate, HRV and SpO2 series | Case-by-case approval; not required for a personal application |
-| Documented file interoperability | Account holder with a retrievable exercise TCX file | Manual | Individual workouts accepted by compatible destinations | Activity-only, lossy and not a native full-account sync |
+| Legacy Fitbit subscriptions | Existing Fitbit API client with a notification endpoint | Yes | Change notifications for activities, body, foods and sleep, plus access revocation | Notification payload omits the record; the client must retrieve it through the API |
 | Open-source clients | Technically capable account holder | Yes | Mirrors the selected official API and scopes | Adds local token/data handling and does not expand provider coverage |
 
 ## Openness comparison
@@ -40,7 +45,7 @@ first-party application state remain unaccounted for.
 | App-to-interface parity | Partial | The Google Health API catalogue is broad, but no documented route was found for several Fitbit scores, badges, coaching narratives and insights |
 | Self-service developer access | Yes | An ordinary user can create a Cloud project, enable the API and authorize their own test account without partner approval |
 | Official automation | Yes | OAuth refresh tokens, paginated queries and webhooks support recurring retrieval |
-| Complete history | Partial | Google documents queries as far back as a record has been retained for supported types, but app-only outputs and export completeness remain unknown |
+| Complete history | Partial | The API reaches retained history for supported types; only original Fitbit-login users get an explicit complete-archive promise, and app-only output coverage remains unknown |
 | Raw and derived data coverage | Partial | Interval/sample records and several derived measurements are exposed; raw accelerometer streams and many proprietary scores have no documented route |
 | **Overall personal-data openness** | **Partial** | Broad self-service automation exists, but it does not establish access to everything Google/Fitbit displays or derives |
 
@@ -48,52 +53,56 @@ first-party application state remain unaccounted for.
 
 The inventory uses Google's current
 [data-type catalogue](https://developers.google.com/health/data-types),
-[endpoint examples](https://developers.google.com/health/endpoints), legacy
-[Fitbit Web API reference](https://dev.fitbit.com/build/reference/web-api/) and the account-export
-help page. Device compatibility, region, enabled features and user consent still control whether a
-record exists.
+[endpoint examples](https://developers.google.com/health/endpoints), the current
+[Health Connect support page](https://support.google.com/fitbit/answer/14506680?hl=en), legacy
+[Fitbit Web API reference](https://dev.fitbit.com/build/reference/web-api/), subscription guide and
+export help page. Device compatibility, region, enabled features, account type and user consent
+still control whether a record exists.
 
 **Codes:** `A` available; `P` partial, conditional or notification-only; `N` not available by the
 documented route design; `U` no documented availability or absence found; `NA` not applicable.
-`GH API` and `Personal API` are ordinary self-service routes. `3P intraday` is the legacy
-case-by-case approval route for retrieving other users' detailed series. `Open source` uses the
-official APIs and does not bypass their scopes.
+`GH API`, `HC out`, the three exports, `TCX`, `Personal API`, `Subscriptions` and `Open
+source` are ordinary self-service routes for eligible accounts. `3P intraday` is the legacy
+case-by-case approval route for retrieving other users' detailed series. `HC out` represents only
+Google Health → Health Connect writes, not the broader inbound read list. `Subscriptions` is
+notification-only, so supported cells are `P`.
 
-| Data family | Included metrics or app outputs | Captured or produced as | GH API | Webhooks | Account export | Personal API | 3P intraday | File interoperability | Open source |
-|---|---|---|---|---|---|---|---|---|---|
-| Body measurements and composition | Weight, height, BMI/body fat | Scale, entered and normalized samples | A | P | P | A | NA | NA | A |
-| Daily movement | Steps, distance, floors, activity level, sedentary periods | Captured intervals and rollups | A | P | P | A | P | NA | A |
-| Energy and active time | Active energy, total calories, Active Zone Minutes, time in zones | Normalized and derived intervals/rollups | A | P | P | A | P | P | A |
-| Heart rate | Samples, resting HR, zones and exercise HR | Captured samples plus daily derivations | A | P | P | A | P | P | A |
-| Heart-rate variability | HRV samples and daily HRV | Sleep-associated samples and derived daily summary | A | P | U | A | P | NA | A |
-| Blood pressure | No current Google Health data type documented | Unknown | U | U | U | U | NA | NA | U |
-| ECG and rhythm | ECG waveform/classification and irregular-rhythm notifications | Captured session plus regulated derivation | A | U | U | P | NA | NA | A |
-| Cardio fitness and VO2 max | VO2 max, run VO2 max and daily VO2 max | Derived estimate | A | P | U | A | NA | P | A |
-| Respiration and oxygen saturation | Respiratory rate, sleep summary, SpO2 samples and daily summary | Captured/normalized samples and daily derivations | A | P | U | A | P | NA | A |
-| Body and skin temperature | Core body temperature and daily sleep-temperature derivations | Sample plus sleep-derived deviation | A | P | U | A | NA | NA | A |
-| Sleep sessions and stages | Sleep intervals, stages, duration and summary fields | Captured and derived session | A | P | P | A | NA | NA | A |
-| Sleep insights and score | Fitbit Sleep Score and coaching | Proprietary derivation | U | U | U | U | NA | NA | U |
-| Stress | Stress Management Score and stress insights | Proprietary derivation | U | U | U | U | NA | NA | U |
-| Energy and readiness | Daily Readiness and related guidance | Proprietary derivation | U | U | U | U | NA | NA | U |
-| Training load and status | Cardio load, target load and training status | Derived training model | U | U | U | U | NA | NA | U |
-| Performance predictions | Race/performance predictions | Derived estimate | U | U | U | U | NA | NA | U |
-| Workout sessions | Exercise type, time, duration, calories, HR and notes | Captured/entered session | A | P | P | A | NA | A | A |
-| Route and elevation | GPS location, altitude, distance and elevation | Captured series and session metadata | P | P | U | P | NA | P | P |
-| Sport dynamics | Swim lengths/strokes and selected exercise details | Captured and normalized sport fields | P | P | U | P | NA | P | P |
-| Plans, workouts and courses | Saved plans, coached workouts and routes | User-authored or provider-authored content | U | U | U | U | NA | U | U |
-| Gait and functional mobility | Walking-function and gait measures | Unknown | U | U | U | U | NA | NA | U |
-| Cycle and pregnancy | Menstrual periods, ovulation tests and symptoms | User-entered records | N | U | U | P | NA | NA | N |
-| Nutrition and hydration | Foods, nutrients, meal logs and water | User-entered records and reference catalogue | A | P | U | A | NA | NA | A |
-| Clinical records and medications | Health records and medication history | Unknown | U | U | U | U | NA | NA | U |
-| Mindfulness, mood and symptoms | Moods, mindfulness and logged symptoms | User-entered records | N | U | U | P | NA | NA | N |
-| Hearing and audio exposure | Audiograms and sound exposure | Unknown | U | U | U | U | NA | NA | U |
-| Trends, alerts and awards | Badges, trends, coaching and app alerts | Proprietary derivation | U | U | U | U | NA | NA | U |
-| Raw and live sensor streams | Interval health/activity samples; no accelerometer waveform route found | Captured/normalized series | P | P | U | P | P | P | P |
-| Provenance and metadata | Data source family, platform, device, recording method, timestamps and source app | Captured/normalized metadata | A | P | U | P | U | P | A |
+| Data family | Included metrics or app outputs | Captured or produced as | GH API | Webhooks | HC out | Takeout | Fitbit archive | Fitbit select | TCX | Personal API | 3P intraday | Subscriptions | Open source |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Body measurements and composition | Weight, height, BMI/body fat | Scale, entered and normalized samples | A | P | P | U | P | U | NA | A | NA | P | A |
+| Daily movement | Steps, distance, floors, activity level, sedentary periods | Captured intervals and rollups | A | P | P | U | P | U | NA | A | P | P | A |
+| Energy and active time | Active energy, total calories, Active Zone Minutes, time in zones | Normalized and derived intervals/rollups | A | P | P | U | P | U | U | A | P | P | A |
+| Heart rate | Samples, resting HR, zones and exercise HR | Captured samples plus daily derivations | A | P | P | U | P | U | U | A | P | N | A |
+| Heart-rate variability | HRV samples and daily HRV | Sleep-associated samples and derived daily summary | A | P | A | U | P | U | NA | A | P | N | A |
+| Blood pressure | No current Google Health data type documented | Unknown | U | N | N | U | U | U | NA | U | NA | N | U |
+| ECG and rhythm | ECG waveform/classification and irregular-rhythm notifications | Captured session plus regulated derivation | A | N | N | U | P | U | NA | P | NA | N | A |
+| Cardio fitness and VO2 max | VO2 max, run VO2 max and daily VO2 max | Derived estimate | A | P | A | U | P | U | U | A | NA | N | A |
+| Respiration and oxygen saturation | Respiratory rate, sleep summary, SpO2 samples and daily summary | Captured/normalized samples and daily derivations | A | P | P | U | P | U | NA | A | P | N | A |
+| Body and skin temperature | Core body temperature and daily sleep-temperature derivations | Sample plus sleep-derived deviation | A | P | A | U | P | U | NA | A | NA | N | A |
+| Sleep sessions and stages | Sleep intervals, stages, duration and summary fields | Captured and derived session | A | P | A | U | P | U | NA | A | NA | P | A |
+| Sleep insights and score | Fitbit Sleep Score and coaching | Proprietary derivation | U | N | N | U | U | U | NA | U | NA | N | U |
+| Stress | Stress Management Score and stress insights | Proprietary derivation | U | N | N | U | U | U | NA | U | NA | N | U |
+| Energy and readiness | Daily Readiness and related guidance | Proprietary derivation | U | N | N | U | U | U | NA | U | NA | N | U |
+| Training load and status | Cardio load, target load and training status | Derived training model | U | N | N | U | U | U | NA | U | NA | N | U |
+| Performance predictions | Race/performance predictions | Derived estimate | U | N | N | U | U | U | NA | U | NA | N | U |
+| Workout sessions | Exercise type, time, duration, calories, HR and notes | Captured/entered session | A | P | A | U | P | U | A | A | NA | P | A |
+| Route and elevation | GPS location, altitude, distance and elevation | Captured series and session metadata | P | P | A | U | P | U | P | P | NA | P | P |
+| Sport dynamics | Swim lengths/strokes and selected exercise details | Captured and normalized sport fields | P | P | P | U | P | U | U | P | NA | P | P |
+| Plans, workouts and courses | Saved plans, coached workouts and routes | User-authored or provider-authored content | U | N | N | U | U | U | NA | U | NA | N | U |
+| Gait and functional mobility | Walking-function and gait measures | Unknown | U | N | N | U | U | U | NA | U | NA | N | U |
+| Cycle and pregnancy | Menstrual periods, ovulation tests and symptoms | User-entered records | N | N | P | U | P | U | NA | P | NA | N | N |
+| Nutrition and hydration | Foods, nutrients, meal logs and water | User-entered records and reference catalogue | A | P | A | U | P | U | NA | A | NA | P | A |
+| Clinical records and medications | Allergies, conditions, labs, medications and related medical records | Entered/imported records | U | N | A | U | U | U | NA | U | NA | N | U |
+| Mindfulness, mood and symptoms | Moods, mindfulness and logged symptoms | User-entered records | N | N | N | U | P | U | NA | P | NA | N | N |
+| Hearing and audio exposure | Audiograms and sound exposure | Unknown | U | N | N | U | U | U | NA | U | NA | N | U |
+| Trends, alerts and awards | Badges, trends, coaching and app alerts | Proprietary derivation | U | N | N | U | P | U | NA | U | NA | N | U |
+| Raw and live sensor streams | Interval health/activity samples; no accelerometer waveform route found | Captured/normalized series | P | P | P | U | P | U | U | P | P | N | P |
+| Provenance and metadata | Data source family, platform, device, recording method, timestamps and source app | Captured/normalized metadata | A | P | P | U | P | U | U | P | U | P | A |
 
 The machine-readable [coverage map](./coverage.json) preserves the same 29 canonical IDs and maps
-every route separately. `N` is used only where the current API design explicitly lacks a read
-operation; otherwise an unsupported negative remains `U`.
+every route separately. `N` is used for families excluded from the finite webhook, Health Connect
+outbound and subscription lists; export families remain `U` when the public help page does not
+enumerate them.
 
 ## Official access routes
 
@@ -103,9 +112,10 @@ The current [getting-started guide](https://developers.google.com/health/get-sta
 Google Health API as the forward-looking surface and points existing Fitbit developers to a
 migration path. [Setup](https://developers.google.com/health/setup) is self-service: create or
 select a Google Cloud project, enable `health.googleapis.com`, configure an OAuth client, add test
-users and select scopes. An unverified project is capped at 100 users; supporting more than 100
-requires a third-party security review. For a personal integration, the account holder can remain
-a named test user.
+users and select scopes. Newly created unverified OAuth clients are capped at 100 users in both
+Testing and Production; supporting more than 100 users requires a third-party security review. This
+is a client verification gate, not a generic limit on Google Cloud projects. For a personal
+integration, the account holder can remain a named test user.
 
 Read access is grouped into
 [OAuth scopes](https://developers.google.com/health/scopes) for activity and fitness, health
@@ -131,15 +141,42 @@ HRV, oxygen saturation, respiratory rate, sleep, weight, nutrition and several d
 A webhook carries a notification, not the complete health record; the application then reads the
 authorized data through the API.
 
-### Account export
+### Health Connect
+
+The current [Google Health support page](https://support.google.com/fitbit/answer/14506680?hl=en)
+documents bidirectional synchronization with Health Connect and publishes asymmetric type lists.
+Google Health can read active calories and oxygen saturation, for example, but those types are not
+on its outbound write list. Outbound types include steps, speed, cadence, VO2 max, floors,
+distance, elevation gain, exercise and route, total calories, body and skin temperature, sleep
+sessions/stages, blood glucose, heart rate, HRV, respiratory and resting heart rate, weight/body
+fat, nutrition/hydration, selected cycle records and a broad medical-record list. The coverage
+matrix maps only that outbound list. Sleep Score, Readiness, Stress Management Score and other
+proprietary outputs are not on it and are `N`, not inferred from underlying inputs.
+
+### Consumer exports
 
 Google's [health-data export help](https://support.google.com/googlehealth/answer/14236615?hl=en)
-offers a signed-in archive and explicitly names activity, exercise, sleep and heart rate as
-examples. The help surface does not publish a complete, versioned file inventory, per-device
-schema, deletion representation or incremental-change option. General
-[Google Takeout guidance](https://support.google.com/accounts/answer/3024190?hl=en) allows a full
-archive every two months for one year. This audit therefore treats the archive as a broad periodic
-fallback, not proof of parity or a live synchronization contract.
+defines three distinct routes:
+
+1. Users who sign in with a migrated Google Account follow Google Takeout and select Google Health.
+   The page does not promise that this is a complete Fitbit account archive or enumerate its files.
+2. Users who have not migrated and still use an original Fitbit login can request what the page
+   calls a complete archive of Fitbit account data. That promise is limited to this account cohort.
+3. The same original-login cohort can export a selected time period and selected Fitbit data in a
+   chosen format; the public page does not enumerate those choices.
+
+General [Google Takeout guidance](https://support.google.com/accounts/answer/3024190?hl=en) permits
+scheduled exports every two months for one year. Because the Google Health archive and selectable
+Fitbit export lack public versioned schemas, their per-family coverage stays `U`. The original-login
+complete archive is `P` for established Fitbit families because it is cohort-limited and
+schema-unspecified, not a guarantee for migrated accounts.
+
+### Per-workout TCX
+
+The same export page documents a Google Health app action that exports one GPS exercise as a TCX
+activity. This establishes workout and conditional route portability. It does not publish a TCX
+schema or prove preservation of heart rate, energy, sport dynamics or VO2 max; those cells remain
+`U`.
 
 ### Legacy Fitbit Web API
 
@@ -156,12 +193,22 @@ without an intraday request. Client and Server applications need case-by-case ap
 other users' intraday activity, breathing-rate, heart-rate, HRV and SpO2 data. The same guide
 documents a 150-request-per-user-per-hour limit.
 
+The materially distinct
+[legacy subscriptions route](https://dev.fitbit.com/build/reference/web-api/developer-guide/using-subscriptions/)
+notifies clients about changes to `activities`, `body`, `foods` and `sleep`, plus
+`userRevokedAccess` and deleted-user events. The notification does not include the changed health
+record, so a client must retrieve it through the Web API. Corresponding data-family cells are `P`;
+families outside this finite collection list are `N`.
+
 ## Data available
 
 Google's current catalogue contains interval, sample, session, food and daily records. Strong
 portable families include steps, distance, altitude, energy, heart rate, HRV, sleep stages,
 respiratory rate, oxygen saturation, temperature, weight/body fat, ECG, irregular-rhythm
 notifications, VO2 max, exercise, swim lengths, nutrition and hydration.
+
+The separate Health Connect integration adds documented outbound cycle and medical-record types,
+including medications, but does not make those records available through the Google Health API.
 
 The [endpoint guide](https://developers.google.com/health/endpoints) shows source metadata such as
 recording method, device display name and platform, and supports source families that distinguish
@@ -178,16 +225,11 @@ Readiness, Stress Management Score, badges or coaching narratives.
 | Destination or bridge | Direction | Confirmed payload and history | Material limits |
 |---|---|---|---|
 | Google Health API | Fitbit/Pixel Watch via Fitbit app → authorized application | Documented current health, activity, sleep, ECG, nutrition and metadata types; history back to retained records | App-visible derived-score parity is not documented |
-| Health Connect | Health Connect → Google first-party source family is documented | Health Connect records may be reconciled with Google/Fitbit sources in API results | No live Fitbit-specific support page was found that proves a complete Fitbit → Health Connect export |
+| Health Connect | Google Health ↔ Health Connect | Explicit asymmetric read/write lists; the outbound list includes fitness, sleep, vitals, body measurements, nutrition, selected cycle data and medical records | Per-type permission and device/app support apply; proprietary scores are not listed |
 | Strava manual upload | Google/Fitbit exercise TCX → Strava | Individual exercise data accepted when the retrieved file is compatible | Manual and activity-only; no sleep, daily health or proprietary scores |
 | TrainingPeaks manual upload | Google/Fitbit exercise file → TrainingPeaks | Individual compatible workout files | Manual and activity-only; exact Fitbit field preservation needs testing |
 | Apple Health | Unknown | No current first-party Google/Fitbit route was documented in this pass | Third-party relay apps are outside this supported-route audit |
 | Samsung Health | Unknown | Health Connect may permit overlapping records, but no direct route was established | Direction, backfill and provenance need hands-on validation |
-
-The previous specialist draft cited a Fitbit Health Connect help URL that now returns `404`; that
-stale link was removed rather than used to support a current Fitbit-to-Health-Connect claim.
-Absence of a current page is recorded as **no documented route found**, not proof that a regional
-or app-version-specific feature does not exist.
 
 ## Open-source routes
 
@@ -212,8 +254,8 @@ the stale licence and maintenance claim into the audit.
 
 - **Cloud setup:** personal access is self-service but still requires a Cloud project, OAuth client,
   scope configuration and consent flow.
-- **Scale gate:** more than 100 users requires a third-party security review; this is distinct from
-  ordinary personal access.
+- **Scale gate:** a newly created unverified OAuth client is capped at 100 users; this is distinct
+  from a generic project limit and from ordinary personal access.
 - **Testing tokens:** refresh tokens for an OAuth client in Testing mode expire after seven days;
   production-mode setup is needed for durable unattended access.
 - **Derived-output gaps:** several important Fitbit scores and narratives have no documented
@@ -222,8 +264,8 @@ the stale licence and maintenance claim into the audit.
   other records depend on compatible hardware, feature availability and jurisdiction.
 - **Legacy transition:** Fitbit Web API clients require re-consent and migration to new identities,
   schemas and tokens.
-- **Export uncertainty:** the account archive has no public exhaustive schema or incremental
-  contract.
+- **Export uncertainty:** migrated Takeout, original-login complete archives and original-login
+  selectable exports have different guarantees; none publishes an exhaustive versioned schema.
 - **Local security:** open-source tools store OAuth credentials and highly sensitive health and
   location data under the user's control.
 
@@ -240,10 +282,10 @@ This snapshot follows the repository's [provider audit rubric](../../audit-rubri
 | Granularity | Samples, intervals, sessions, daily values, reconciled streams and rollups |
 | Historical depth | All retained history is queryable for supported types, with pagination and rollup windows |
 | Automation | Strong: refresh tokens, pagination, reconciliation and webhooks |
-| Formats | REST JSON, gRPC/protobuf, TCX for supported exercise retrieval and account archives |
+| Formats | REST JSON, gRPC/protobuf, Health Connect records, per-workout TCX and account archives |
 | User authorization | Google OAuth with selectable read-only scopes and partial-consent handling |
-| Developer access | Self-service for a personal/test app; security review beyond 100 users |
-| Integrations | Strong API integration; current first-party destination documentation is sparse |
+| Developer access | Self-service for a personal/test client; security review beyond 100 users for newly created unverified OAuth clients |
+| Integrations | Strong API integration plus documented bidirectional Health Connect synchronization |
 | Provenance | Explicit data source, platform, device, recording method and timestamp fields |
 | Corrections and deletion | Create/update/delete exists for selected writable types; propagation to exports and downstream services remains unverified |
 | Portability | Strong for documented API types; weaker for proprietary insights and export schema stability |
@@ -267,14 +309,15 @@ category.
 2. Compare every Google Health API data type with the Fitbit and Google Health app screens for the
    same account, especially Sleep Score, Readiness, Stress Management Score, cardio load, badges
    and coaching.
-3. Request a fresh Google Health export and inventory every directory, schema, metric, timestamp,
-   source identifier, deletion marker and date range.
+3. Compare a migrated-account Takeout archive with original-login complete and selectable exports;
+   inventory every directory, schema, metric, timestamp, source identifier, deletion marker and
+   date range.
 4. Measure initial full-history pagination, webhook latency, update/delete notifications and
    correction propagation.
 5. Test ECG waveform, irregular-rhythm, SpO2, temperature and route access across supported regions
    and devices.
-6. Validate Health Connect directionality, historical backfill, duplicate handling and provenance
-   in current Android and Fitbit/Google Health app versions.
+6. Validate the documented Health Connect read/write lists, historical backfill, duplicate handling
+   and provenance in current Android and Google Health app versions.
 7. Upload retrieved TCX exercises to Strava and TrainingPeaks and compare route, HR, elevation and
    sport fields.
 8. Recheck the legacy Fitbit Web API cutoff and migration notices before relying on any Fitbit

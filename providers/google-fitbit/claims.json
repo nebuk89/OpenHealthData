@@ -19,9 +19,9 @@
     },
     {
       "id": "scale-requires-security-review",
-      "claim": "Google Health API projects are capped at 100 users while unverified, and supporting more than 100 users requires a third-party security review.",
+      "claim": "Newly created unverified Google Health OAuth clients are capped at 100 users, and an unverified client that needs more than 100 users requires a third-party security review.",
       "sourceUrl": "https://developers.google.com/health/setup",
-      "evidence": "The setup guide states that newly created OAuth clients have a 100-user cap in testing and production and that more than 100 users requires third-party security review.",
+      "evidence": "The setup guide states that newly created OAuth clients have a 100-user cap in Testing and Production and describes the third-party review path for supporting more than 100 users.",
       "confidence": "high"
     },
     {
@@ -74,6 +74,13 @@
       "confidence": "high"
     },
     {
+      "id": "health-connect-is-bidirectional-and-asymmetric",
+      "claim": "Google Health supports bidirectional Health Connect synchronization, but its documented inbound read list is broader than its outbound write list.",
+      "sourceUrl": "https://support.google.com/fitbit/answer/14506680?hl=en",
+      "evidence": "The support table separately lists data types Google Health can read and write. Active calories and oxygen saturation are readable but not writable, while the outbound list includes fitness, sleep, vital, body, nutrition, selected cycle and medical-record types.",
+      "confidence": "high"
+    },
+    {
       "id": "derived-score-parity-not-documented",
       "claim": "No current Google Health API data type documents Fitbit Sleep Score, Daily Readiness, Stress Management Score, badges or coaching narratives as retrievable records.",
       "sourceUrl": "https://developers.google.com/health/data-types",
@@ -88,10 +95,24 @@
       "confidence": "high"
     },
     {
-      "id": "export-is-user-controlled-but-unspecified",
-      "claim": "Google provides a signed-in Google Health data export with examples including activity, exercise, sleep and heart rate, but the public help page does not provide an exhaustive versioned schema.",
+      "id": "migrated-accounts-use-takeout",
+      "claim": "A user who signs in to Google Health with a Google Account exports by downloading Google data and selecting Google Health.",
       "sourceUrl": "https://support.google.com/googlehealth/answer/14236615?hl=en",
-      "evidence": "The official page title and description offer a copy of Google Health data and name those categories; it does not publish a field-by-field archive contract.",
+      "evidence": "The export help page directs Google Account users to the Google data download workflow and tells them to select Google Health; it does not call that route a complete Fitbit account archive.",
+      "confidence": "high"
+    },
+    {
+      "id": "original-fitbit-login-has-two-export-routes",
+      "claim": "A user who has not migrated and still signs in with the original Fitbit login can request a complete Fitbit account archive or separately export a selected time period and selected data.",
+      "sourceUrl": "https://support.google.com/googlehealth/answer/14236615?hl=en",
+      "evidence": "The page gives separate original-login instructions for 'Export Your Account Archive' and 'Export a selection of your Fitbit data,' and limits those instructions to users who have not migrated.",
+      "confidence": "high"
+    },
+    {
+      "id": "google-health-workout-tcx",
+      "claim": "The Google Health app can export an individual GPS exercise as a TCX activity, but the help page does not enumerate preserved fields.",
+      "sourceUrl": "https://support.google.com/googlehealth/answer/14236615?hl=en",
+      "evidence": "The GPS and workout section instructs the user to open one activity and export it to a Training Center XML file; no TCX schema or VO2-max field guarantee is provided.",
       "confidence": "high"
     },
     {
@@ -120,6 +141,13 @@
       "claim": "The legacy Fitbit Web API documents a limit of 150 requests per hour for each consenting user.",
       "sourceUrl": "https://dev.fitbit.com/build/reference/web-api/developer-guide/application-design/",
       "evidence": "The Rate Limits section gives 150 API requests per hour per user and documents the corresponding response headers.",
+      "confidence": "high"
+    },
+    {
+      "id": "legacy-subscriptions-are-change-notifications",
+      "claim": "Legacy Fitbit subscriptions notify clients of changes to activities, body, foods and sleep, plus access revocation and deleted-user events, but require API retrieval of the changed record.",
+      "sourceUrl": "https://dev.fitbit.com/build/reference/web-api/developer-guide/using-subscriptions/",
+      "evidence": "The subscription guide's finite collection list names activities, body, foods and sleep, documents userRevokedAccess and deleted-user notifications, and instructs clients to fetch updated data after notification.",
       "confidence": "high"
     },
     {

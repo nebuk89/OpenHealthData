@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Google / Fitbit",
-  "checkedAt": "2026-08-20T11:38:03.146Z",
+  "checkedAt": "2026-08-20T11:58:50.614Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -10,7 +10,7 @@
       "url": "https://developers.google.com/health",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health"
+      "finalUrl": "https://developers.google.com/health?hl=fr"
     },
     {
       "url": "https://developers.google.com/health/data-types",
@@ -22,19 +22,19 @@
       "url": "https://developers.google.com/health/endpoints",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/endpoints?hl=ru"
+      "finalUrl": "https://developers.google.com/health/endpoints"
     },
     {
       "url": "https://developers.google.com/health/get-started",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/get-started"
+      "finalUrl": "https://developers.google.com/health/get-started?hl=de"
     },
     {
       "url": "https://developers.google.com/health/setup",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/setup?hl=pt-br"
+      "finalUrl": "https://developers.google.com/health/setup?hl=zh-cn"
     },
     {
       "url": "https://developers.google.com/health/scopes",
@@ -52,13 +52,31 @@
       "url": "https://developers.google.com/health/webhooks",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/webhooks?hl=pt-br"
+      "finalUrl": "https://developers.google.com/health/webhooks?hl=it"
     },
     {
       "url": "https://developers.google.com/health/migration",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/health/migration"
+      "finalUrl": "https://developers.google.com/health/migration?hl=it"
+    },
+    {
+      "url": "https://support.google.com/fitbit/answer/14506680?hl=en",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.google.com/googlehealth/answer/14506680?hl=en"
+    },
+    {
+      "url": "https://support.google.com/googlehealth/answer/14236615?hl=en",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.google.com/googlehealth/answer/14236615?hl=en"
+    },
+    {
+      "url": "https://support.google.com/accounts/answer/3024190?hl=en",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.google.com/accounts/answer/3024190?hl=en"
     },
     {
       "url": "https://dev.fitbit.com/build/reference/web-api/",
@@ -73,16 +91,16 @@
       "finalUrl": "https://dev.fitbit.com/build/reference/web-api/developer-guide/application-design/"
     },
     {
-      "url": "https://dev.fitbit.com/build/reference/web-api/intraday/",
-      "status": "ok",
-      "httpStatus": 200,
-      "finalUrl": "https://dev.fitbit.com/build/reference/web-api/intraday/"
-    },
-    {
       "url": "https://dev.fitbit.com/build/reference/web-api/developer-guide/using-subscriptions/",
       "status": "ok",
       "httpStatus": 200,
       "finalUrl": "https://dev.fitbit.com/build/reference/web-api/developer-guide/using-subscriptions/"
+    },
+    {
+      "url": "https://dev.fitbit.com/build/reference/web-api/intraday/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://dev.fitbit.com/build/reference/web-api/intraday/"
     },
     {
       "url": "https://dev.fitbit.com/build/reference/web-api/electrocardiogram/",
@@ -95,18 +113,6 @@
       "status": "ok",
       "httpStatus": 200,
       "finalUrl": "https://dev.fitbit.com/build/reference/web-api/activity/get-activity-log-list/"
-    },
-    {
-      "url": "https://support.google.com/googlehealth/answer/14236615?hl=en",
-      "status": "ok",
-      "httpStatus": 200,
-      "finalUrl": "https://support.google.com/googlehealth/answer/14236615?hl=en"
-    },
-    {
-      "url": "https://support.google.com/accounts/answer/3024190?hl=en",
-      "status": "ok",
-      "httpStatus": 200,
-      "finalUrl": "https://support.google.com/accounts/answer/3024190?hl=en"
     },
     {
       "url": "https://github.com/Google-Health-API/google-health-cli",
