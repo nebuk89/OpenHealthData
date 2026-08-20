@@ -1,6 +1,6 @@
 # Oura resources
 
-**Evidence date:** 2026-08-20  
+**Evidence date:** 2026-08-20
 **Audit:** [Oura](./README.md)
 
 Links are grouped by role and deduplicated. All were accessed on the evidence date.

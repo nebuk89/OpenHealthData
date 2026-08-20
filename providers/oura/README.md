@@ -5,7 +5,7 @@
 **Products in scope:** Oura Ring Gen3 and later, the Oura App, Oura on the Web, Membership Hub,
 Oura Cloud API v2, Oura's contractually documented MCP Server, and supported integrations
 
-**Resource index:** [Oura resources](./resources.md)  
+**Resource index:** [Oura resources](./resources.md)
 **Canonical coverage:** [Oura taxonomy mapping](./coverage.json)
 
 ## Bottom line
