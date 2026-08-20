@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Huawei",
-  "checkedAt": "2026-08-20T11:37:35.854Z",
+  "checkedAt": "2026-08-20T12:03:53.588Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -11,6 +11,18 @@
       "status": "ok",
       "httpStatus": 200,
       "finalUrl": "https://github.com/CTHRU/Hitrava"
+    },
+    {
+      "url": "https://github.com/JordyThien/Huawei-Health-Importer",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/JordyThien/Huawei-Health-Importer"
+    },
+    {
+      "url": "https://github.com/christianeirich/huawei-health-to-health-connect",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/christianeirich/huawei-health-to-health-connect"
     },
     {
       "url": "https://github.com/aricooperdavis/Huawei-TCX-Converter",
@@ -25,6 +37,12 @@
       "finalUrl": "https://github.com/RealityNet/kobackupdec"
     },
     {
+      "url": "https://github.com/CTHRU/Hitrava/blob/master/LICENSE.md",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/CTHRU/Hitrava/blob/master/LICENSE.md"
+    },
+    {
       "url": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-introduction-0000001050071662",
       "status": "ok",
       "httpStatus": 200,
@@ -37,10 +55,22 @@
       "finalUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-development-overview-0000001050071660"
     },
     {
+      "url": "https://developer.huawei.com/consumer/en/doc/app/agc-help-createaccount-0000001146718717",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.huawei.com/consumer/en/doc/app/agc-help-createaccount-0000001146718717"
+    },
+    {
       "url": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-configuring-0000001050030937",
       "status": "ok",
       "httpStatus": 200,
       "finalUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-configuring-0000001050030937"
+    },
+    {
+      "url": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-app-permission-0000001050069764",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-app-permission-0000001050069764"
     },
     {
       "url": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-authorize-0000001050030936",
@@ -94,7 +124,7 @@
       "url": "https://developers.google.com/fit",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developers.google.com/fit"
+      "finalUrl": "https://developers.google.com/fit?hl=fa"
     },
     {
       "url": "https://support.apple.com/en-us/108779",
@@ -118,10 +148,24 @@
       "url": "https://developer.android.com/health-and-fitness/health-connect/availability",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/availability?hl=id"
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/availability?hl=he"
     }
   ],
   "projects": [
+    {
+      "name": "JordyThien/Huawei-Health-Importer",
+      "repositoryUrl": "https://github.com/JordyThien/Huawei-Health-Importer",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "christianeirich/huawei-health-to-health-connect",
+      "repositoryUrl": "https://github.com/christianeirich/huawei-health-to-health-connect",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
     {
       "name": "CTHRU/Hitrava",
       "repositoryUrl": "https://github.com/CTHRU/Hitrava",

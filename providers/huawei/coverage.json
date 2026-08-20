@@ -14,13 +14,13 @@
       "id": "health-kit-sdk",
       "label": "Health Kit Android SDK",
       "kind": "official-sdk",
-      "access": "partner-gated"
+      "access": "unknown"
     },
     {
       "id": "health-kit-rest",
       "label": "Health Kit REST APIs",
       "kind": "official-api",
-      "access": "partner-gated"
+      "access": "unknown"
     },
     {
       "id": "apple-health",
@@ -42,13 +42,13 @@
     },
     {
       "id": "hitrava",
-      "label": "Hitrava privacy-export parser",
-      "kind": "open-source",
+      "label": "Hitrava source-available privacy-export parser",
+      "kind": "unofficial",
       "access": "self-service"
     },
     {
       "id": "hisuite-backup",
-      "label": "HiSuite backup and database tooling",
+      "label": "HiSuite backup tooling",
       "kind": "unofficial",
       "access": "unsupported"
     }
@@ -69,16 +69,16 @@
         "user-entered"
       ],
       "routeCoverage": {
-        "privacy-export": "U",
+        "privacy-export": "P",
         "health-kit-sdk": "A",
-        "health-kit-rest": "A",
+        "health-kit-rest": "U",
         "apple-health": "P",
         "health-sync": "U",
         "gadgetbridge": "U",
         "hitrava": "N",
         "hisuite-backup": "U"
       },
-      "notes": "Health Kit documents body measurements; Huawei's iOS listing explicitly names weight synchronization, not complete composition parity."
+      "notes": "Community parsers observe exported weight/body-composition JSON and CH100 local records separately; Huawei does not guarantee archive completeness."
     },
     {
       "taxonomyId": "activity.daily",
@@ -95,16 +95,16 @@
         "derived"
       ],
       "routeCoverage": {
-        "privacy-export": "U",
+        "privacy-export": "P",
         "health-kit-sdk": "A",
-        "health-kit-rest": "A",
+        "health-kit-rest": "U",
         "apple-health": "P",
         "health-sync": "U",
         "gadgetbridge": "P",
         "hitrava": "N",
         "hisuite-backup": "U"
       },
-      "notes": "Daily movement is a core Huawei Health/Health Kit family, but privacy-export contents outside workouts remain undocumented."
+      "notes": "Huawei Health Importer fixtures observe exported steps, distance and energy; REST endpoint/scope/query coverage remains unverified."
     },
     {
       "taxonomyId": "activity.energy",
@@ -119,9 +119,9 @@
         "derived"
       ],
       "routeCoverage": {
-        "privacy-export": "U",
+        "privacy-export": "P",
         "health-kit-sdk": "A",
-        "health-kit-rest": "A",
+        "health-kit-rest": "U",
         "apple-health": "P",
         "health-sync": "U",
         "gadgetbridge": "P",
@@ -145,16 +145,16 @@
         "derived"
       ],
       "routeCoverage": {
-        "privacy-export": "U",
+        "privacy-export": "P",
         "health-kit-sdk": "A",
-        "health-kit-rest": "A",
+        "health-kit-rest": "U",
         "apple-health": "U",
         "health-sync": "U",
         "gadgetbridge": "P",
         "hitrava": "P",
         "hisuite-backup": "U"
       },
-      "notes": "Health Kit exposes heart-rate records; Hitrava is limited to activity telemetry present in exported workouts."
+      "notes": "Huawei Health Importer observes dynamic/resting heart-rate export records; Hitrava is limited to activity telemetry."
     },
     {
       "taxonomyId": "cardio.hrv",
@@ -188,7 +188,7 @@
       "routeCoverage": {
         "privacy-export": "U",
         "health-kit-sdk": "P",
-        "health-kit-rest": "P",
+        "health-kit-rest": "U",
         "apple-health": "U",
         "health-sync": "U",
         "gadgetbridge": "U",
@@ -255,16 +255,16 @@
         "normalized"
       ],
       "routeCoverage": {
-        "privacy-export": "U",
+        "privacy-export": "P",
         "health-kit-sdk": "P",
-        "health-kit-rest": "P",
+        "health-kit-rest": "U",
         "apple-health": "U",
         "health-sync": "U",
         "gadgetbridge": "P",
         "hitrava": "U",
         "hisuite-backup": "U"
       },
-      "notes": "Record availability depends on device, firmware and data type; no integration parity matrix was verified."
+      "notes": "Huawei Health Importer observes BLOOD_OXYGEN_SATURATION export records; no complete provider or REST parity matrix was verified."
     },
     {
       "taxonomyId": "temperature.body-skin",
@@ -303,16 +303,16 @@
         "derived"
       ],
       "routeCoverage": {
-        "privacy-export": "U",
+        "privacy-export": "P",
         "health-kit-sdk": "A",
-        "health-kit-rest": "A",
+        "health-kit-rest": "U",
         "apple-health": "U",
         "health-sync": "U",
         "gadgetbridge": "P",
         "hitrava": "N",
         "hisuite-backup": "U"
       },
-      "notes": "Health Kit supports sleep records, but stage definitions, history and consumer archive coverage need hands-on comparison."
+      "notes": "Huawei Health Importer observes PROFESSIONAL_SLEEP stage records; definitions, history, REST access and completeness need comparison."
     },
     {
       "taxonomyId": "sleep.insights-score",
@@ -353,7 +353,7 @@
       "routeCoverage": {
         "privacy-export": "U",
         "health-kit-sdk": "P",
-        "health-kit-rest": "P",
+        "health-kit-rest": "U",
         "apple-health": "U",
         "health-sync": "U",
         "gadgetbridge": "U",
@@ -437,7 +437,7 @@
       "routeCoverage": {
         "privacy-export": "A",
         "health-kit-sdk": "A",
-        "health-kit-rest": "A",
+        "health-kit-rest": "U",
         "apple-health": "P",
         "health-sync": "U",
         "gadgetbridge": "P",
@@ -462,7 +462,7 @@
       "routeCoverage": {
         "privacy-export": "A",
         "health-kit-sdk": "P",
-        "health-kit-rest": "P",
+        "health-kit-rest": "U",
         "apple-health": "U",
         "health-sync": "U",
         "gadgetbridge": "P",
@@ -488,7 +488,7 @@
       "routeCoverage": {
         "privacy-export": "P",
         "health-kit-sdk": "P",
-        "health-kit-rest": "P",
+        "health-kit-rest": "U",
         "apple-health": "U",
         "health-sync": "U",
         "gadgetbridge": "P",
@@ -665,16 +665,16 @@
         "captured"
       ],
       "routeCoverage": {
-        "privacy-export": "P",
+        "privacy-export": "U",
         "health-kit-sdk": "U",
         "health-kit-rest": "U",
         "apple-health": "NA",
         "health-sync": "U",
-        "gadgetbridge": "P",
-        "hitrava": "P",
+        "gadgetbridge": "U",
+        "hitrava": "U",
         "hisuite-backup": "U"
       },
-      "notes": "Workout exports and local device protocols can retain selected samples; no route to complete raw sensor streams was verified."
+      "notes": "Workout GPS, heart rate, cadence and altitude belong to their metric families; no model-specific raw accelerometer or PPG stream proof was verified."
     },
     {
       "taxonomyId": "provenance.metadata",
@@ -693,7 +693,7 @@
       "routeCoverage": {
         "privacy-export": "P",
         "health-kit-sdk": "P",
-        "health-kit-rest": "P",
+        "health-kit-rest": "U",
         "apple-health": "P",
         "health-sync": "U",
         "gadgetbridge": "P",

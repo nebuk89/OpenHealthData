@@ -13,10 +13,14 @@ HTTP availability does not guarantee that every account or region exposes the do
   — **Huawei**; development surfaces and record-oriented capability areas.
 - [Health Kit API overview](https://developer.huawei.com/consumer/en/doc/hmscore-references/health-api-overview-0000001050030935)
   — **Huawei**; typed API/controller reference.
+- [Huawei developer registration](https://developer.huawei.com/consumer/en/doc/app/agc-help-createaccount-0000001146718717)
+  — **Huawei**; developer account registration and identity verification.
 - [Health Kit integration preparation](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-configuring-0000001050030937)
   — **Huawei**; developer project and application configuration.
+- [Health Kit app permission application](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-app-permission-0000001050069764)
+  — **Huawei**; app-level application for health-data permissions.
 - [Health Kit authorization](https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-authorize-0000001050030936)
-  — **Huawei**; user authorization and data-specific scopes.
+  — **Huawei**; separate end-user authorization and data-specific scopes.
 - [HMS Core service availability](https://developer.huawei.com/consumer/en/doc/development/HMSCore-Guides-V5/service-introduction-0000001050040062-V5)
   — **Huawei**; service and regional availability context.
 
@@ -41,7 +45,7 @@ HTTP availability does not guarantee that every account or region exposes the do
 - [Health Sync Google Play listing](https://play.google.com/store/apps/details?id=nl.appyhapps.healthsync)
   — **Health Sync/Google**; current Android app, supported services and licensing context.
 - [Health Connect availability](https://developer.android.com/health-and-fitness/health-connect/availability)
-  — **Google**; Android/platform requirements for a Health Connect destination.
+  — **Google**; Android 9+ and Google Play services requirements for a Health Connect destination.
 - [Google Fit developer documentation](https://developers.google.com/fit) — **Google**; Fit API
   deprecation and migration direction.
 
@@ -53,8 +57,16 @@ supported route.
 
 - [Gadgetbridge](https://codeberg.org/Freeyourgadget/Gadgetbridge) — **AGPLv3; Java/Kotlin**;
   maintained local Bluetooth client for supported wearables, hosted on Codeberg.
-- [`CTHRU/Hitrava`](https://github.com/CTHRU/Hitrava) — **NOASSERTION; Python**; converts Huawei
-  Health privacy ZIP/JSON/HiTrack workouts to TCX and documents the observed request workflow.
+- [`JordyThien/Huawei-Health-Importer`](https://github.com/JordyThien/Huawei-Health-Importer) —
+  **MIT; Swift**; parsers and fixtures for privacy-export HR, SpO2, body composition, sleep stages
+  and daily activity, plus a separate CH100/AH100 local-database workflow.
+- [`christianeirich/huawei-health-to-health-connect`](https://github.com/christianeirich/huawei-health-to-health-connect)
+  — **MIT; Python/Tasker**; parses exported weight/body-fat JSON for Health Connect import.
+- [`CTHRU/Hitrava`](https://github.com/CTHRU/Hitrava) — **custom NPOSL-3.0; GitHub SPDX
+  `NOASSERTION`; Python**; source-available unofficial parser for project-supported Huawei Health
+  ZIP/JSON/HiTrack workouts and generated TCX/JSON.
+- [Hitrava licence](https://github.com/CTHRU/Hitrava/blob/master/LICENSE.md) — **CTHRU**; custom
+  non-profit source licence; it is not classified here as OSI open source.
 - [`aricooperdavis/Huawei-TCX-Converter`](https://github.com/aricooperdavis/Huawei-TCX-Converter) —
   **MIT; Python**; archived converter for legacy HiTrack workout files.
 - [`RealityNet/kobackupdec`](https://github.com/RealityNet/kobackupdec) — **MIT; Python**; end-of-life
@@ -66,4 +78,3 @@ supported route.
   vocabulary used by `coverage.json`.
 - [Provider audit rubric](../../audit-rubric.md) — **OpenHealthData**; evidence and openness rules
   used by this audit.
-

@@ -11,10 +11,24 @@
       "confidence": "high"
     },
     {
+      "id": "developer-identity-is-separate-gate",
+      "claim": "Huawei developer registration and identity verification are a separate prerequisite from Health Kit app setup and user authorization.",
+      "sourceUrl": "https://developer.huawei.com/consumer/en/doc/app/agc-help-createaccount-0000001146718717",
+      "evidence": "Huawei's developer-account documentation describes registration and identity verification before application service configuration.",
+      "confidence": "high"
+    },
+    {
       "id": "health-kit-requires-app-configuration",
       "claim": "Health Kit access requires a configured Huawei developer application and service setup.",
       "sourceUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-configuring-0000001050030937",
       "evidence": "Huawei's integration preparation guide places Health Kit behind developer project, application and signing configuration.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-kit-requires-app-permission-application",
+      "claim": "Health Kit app-level health-data permissions require an application process separate from end-user authorization.",
+      "sourceUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-app-permission-0000001050069764",
+      "evidence": "Huawei documents app-level Health Kit permission application independently from the user authorization flow.",
       "confidence": "high"
     },
     {
@@ -33,16 +47,16 @@
     },
     {
       "id": "privacy-policy-is-not-export-schema",
-      "claim": "Huawei documents personal-data access and copy rights but does not publish a universal Huawei Health archive schema or completeness guarantee in its consumer privacy policy.",
+      "claim": "No public, versioned Huawei Health archive schema or completeness guarantee was located in Huawei's cited consumer privacy policy as of the evidence date.",
       "sourceUrl": "https://consumer.huawei.com/en/privacy/privacy-policy/",
       "evidence": "The policy provides rights and regional process context without a Huawei Health field inventory, format or retention contract.",
       "confidence": "high"
     },
     {
       "id": "hitrava-documents-health-export-workflow",
-      "claim": "Hitrava documents an in-app Huawei Health privacy workflow that produces a password-encrypted ZIP containing convertible workout data.",
+      "claim": "Hitrava documents an in-app Huawei Health privacy workflow and project-stated support for Huawei's 2025 password-encrypted ZIP layout.",
       "sourceUrl": "https://github.com/CTHRU/Hitrava",
-      "evidence": "The maintained project documents Privacy Center > Request Your Data > Health, an email download, encrypted ZIP input and support for Huawei's 2025 ZIP generation.",
+      "evidence": "The project documents Privacy Center > Request Your Data > Health, an email download, encrypted ZIP input and support for a 2025 ZIP layout; it does not guarantee arbitrary regional/current archives.",
       "confidence": "high"
     },
     {
@@ -50,6 +64,34 @@
       "claim": "Hitrava converts supplied Huawei workout data to HiTrack, JSON and TCX outputs but does not retrieve a user's complete Huawei Health account.",
       "sourceUrl": "https://github.com/CTHRU/Hitrava",
       "evidence": "The project operates on privacy ZIP, JSON or legacy files and lists workout conversion features rather than cloud authentication or whole-account parsing.",
+      "confidence": "high"
+    },
+    {
+      "id": "hitrava-custom-source-license",
+      "claim": "Hitrava is source-available under a custom NPOSL-3.0 licence while GitHub reports its SPDX licence as NOASSERTION.",
+      "sourceUrl": "https://github.com/CTHRU/Hitrava/blob/master/LICENSE.md",
+      "evidence": "The repository license file contains the custom non-profit source licence; GitHub repository metadata does not assign an SPDX identifier.",
+      "confidence": "high"
+    },
+    {
+      "id": "privacy-export-observed-health-families",
+      "claim": "Huawei Health Importer contains parsers and fixtures for privacy-export heart rate, SpO2, body composition, sleep stages and daily activity records.",
+      "sourceUrl": "https://github.com/JordyThien/Huawei-Health-Importer",
+      "evidence": "The MIT project maps named Huawei export folders and data-point types to Apple Health; this is community-observed archive evidence, not a provider completeness guarantee.",
+      "confidence": "high"
+    },
+    {
+      "id": "ch100-database-is-separate-local-silo",
+      "claim": "Huawei Health Importer's CH100/AH100 workflow recovers model-specific body-composition history from a separate local HW100.db database rather than Huawei Health cloud export.",
+      "sourceUrl": "https://github.com/JordyThien/Huawei-Health-Importer",
+      "evidence": "The project documents the separate Huawei Body Fat Scale companion app, iOS backup extraction, SQLCipher database and static-key reverse engineering.",
+      "confidence": "high"
+    },
+    {
+      "id": "exported-weight-json-to-health-connect",
+      "claim": "huawei-health-to-health-connect parses Huawei privacy-export weight and body-fat JSON into CSV for Tasker-based Health Connect import.",
+      "sourceUrl": "https://github.com/christianeirich/huawei-health-to-health-connect",
+      "evidence": "The MIT project documents the export folder, weight/body-fat fields, CSV output and TaskerHealthConnect insertion workflow.",
       "confidence": "high"
     },
     {
@@ -64,6 +106,13 @@
       "claim": "Health Sync is an independent Android bridge and does not establish a native Huawei Health connector to Health Connect, Samsung Health or Google Fit.",
       "sourceUrl": "https://healthsync.app/f-a-q/",
       "evidence": "Health Sync documents its own synchronization and file-generation behavior as a third-party application.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-connect-needs-google-services",
+      "claim": "Health Connect requires Android 9 or later and Google Play services, so many Huawei phones may require a separate Google-enabled Android environment for a bridge.",
+      "sourceUrl": "https://developer.android.com/health-and-fitness/health-connect/availability",
+      "evidence": "Google's availability page explicitly requires Android 9 (API 28) or higher with Google Play services installed.",
       "confidence": "high"
     },
     {
@@ -104,6 +153,16 @@
   ],
   "projects": [
     {
+      "name": "JordyThien/Huawei-Health-Importer",
+      "repositoryUrl": "https://github.com/JordyThien/Huawei-Health-Importer",
+      "license": "MIT"
+    },
+    {
+      "name": "christianeirich/huawei-health-to-health-connect",
+      "repositoryUrl": "https://github.com/christianeirich/huawei-health-to-health-connect",
+      "license": "MIT"
+    },
+    {
       "name": "CTHRU/Hitrava",
       "repositoryUrl": "https://github.com/CTHRU/Hitrava",
       "license": "NOASSERTION"
@@ -120,4 +179,3 @@
     }
   ]
 }
-
