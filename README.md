@@ -1,6 +1,24 @@
 # OpenHealthData
 Our goal is to audit how open different health data trackers (Garmin, Apple, Fitbit/Google. etc) are in regards to giving you API or 'easy' access to your own data vs having to do a GDPR requested export
 
+## Current openness ratings
+
+| Priority | Provider | Personal-data openness |
+|---:|---|---|
+| 1 | [Apple](providers/apple/README.md) | **Partial** |
+| 2 | [Garmin](providers/garmin/README.md) | **Restricted** |
+| 3 | [Google / Fitbit](providers/google-fitbit/README.md) | **Partial** |
+| 4 | [Samsung](providers/samsung/README.md) | **Partial** |
+| 5 | [Huawei](providers/huawei/README.md) | **Restricted** |
+| 6 | [Xiaomi](providers/xiaomi/README.md) | **Unknown** |
+| 7 | [Zepp Health / Amazfit](providers/zepp-health-amazfit/README.md) | **Restricted** |
+| 8 | [WHOOP](providers/whoop/README.md) | **Partial** |
+| 9 | [Oura](providers/oura/README.md) | **Mostly open** |
+| 10 | [Polar](providers/polar/README.md) | **Partial** |
+
+Ratings follow the [provider audit rubric](audit-rubric.md) and link to the evidence-backed audit for
+each provider.
+
 ## Research
 
 - [Fitness data provider landscape](fitness-data-providers.md) - the initial 20-provider audit list
