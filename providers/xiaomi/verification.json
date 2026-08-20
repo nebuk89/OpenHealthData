@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "provider": "Xiaomi",
+  "checkedAt": "2026-08-20T11:37:25.851Z",
+  "result": "passed",
+  "failures": [],
+  "warnings": [],
+  "links": [
+    {
+      "url": "https://privacy.mi.com/all/en_US/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://privacy.mi.com/all/en_US/"
+    },
+    {
+      "url": "https://privacy.mi.com/support/?locale=en",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://privacy.mi.com/support/?locale=en"
+    },
+    {
+      "url": "https://play.google.com/store/apps/details?id=com.xiaomi.wearable&hl=en_US",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://play.google.com/store/apps/details?id=com.xiaomi.wearable&hl=en_US"
+    },
+    {
+      "url": "https://codeberg.org/Freeyourgadget/Gadgetbridge",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://codeberg.org/Freeyourgadget/Gadgetbridge"
+    },
+    {
+      "url": "https://dev.mi.com/console/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://dev.mi.com/xiaomihyperos"
+    },
+    {
+      "url": "https://developer.android.com/health-and-fitness/health-connect/data-types",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/data-types"
+    },
+    {
+      "url": "https://developer.android.com/health-and-fitness/health-connect/read-data",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/read-data?hl=it"
+    },
+    {
+      "url": "https://developer.android.com/health-and-fitness/health-connect",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect"
+    },
+    {
+      "url": "https://apps.apple.com/us/app/mi-fitness-xiaomi-wear-lite/id1493500777",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://apps.apple.com/us/app/mi-fitness-xiaomi-wear-lite/id1493500777"
+    },
+    {
+      "url": "https://gadgetbridge.org/gadgets/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://gadgetbridge.org/gadgets/"
+    },
+    {
+      "url": "https://gadgetbridge.org/basics/features/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://gadgetbridge.org/basics/features/"
+    },
+    {
+      "url": "https://gadgetbridge.org/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://gadgetbridge.org/"
+    },
+    {
+      "url": "https://github.com/Freeyourgadget/Gadgetbridge",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/Freeyourgadget/Gadgetbridge"
+    },
+    {
+      "url": "https://github.com/android/health-samples",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/android/health-samples"
+    },
+    {
+      "url": "https://account.xiaomi.com/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://account.xiaomi.com/fe/service/login?_group=DEFAULT&sid=passport&qs=%253Fcallback%253Dhttps%25253A%25252F%25252Faccount.xiaomi.com%25252Fsts%25253Fsign%25253DZvAtJIzsDsFe60LdaPa76nNNP58%2525253D%252526followup%25253Dhttps%2525253A%2525252F%2525252Faccount.xiaomi.com%2525252Fpass%2525252Fauth%2525252Fsecurity%2525252Fhome%252526sid%25253Dpassport%2526sid%253Dpassport%2526_group%253DDEFAULT&callback=https%3A%2F%2Faccount.xiaomi.com%2Fsts%3Fsign%3DZvAtJIzsDsFe60LdaPa76nNNP58%253D%26followup%3Dhttps%253A%252F%252Faccount.xiaomi.com%252Fpass%252Fauth%252Fsecurity%252Fhome%26sid%3Dpassport&_sign=2%26V1_passport%26BUcblfwZ4tX84axhVUaw8t6yi2E%3D&serviceParam=%7B%22checkSafePhone%22%3Afalse%2C%22checkSafeAddress%22%3Afalse%2C%22lsrp_score%22%3A0.0%7D&showActiveX=false&theme=&needTheme=false&bizDeviceType="
+    }
+  ],
+  "projects": [
+    {
+      "name": "Freeyourgadget/Gadgetbridge",
+      "repositoryUrl": "https://github.com/Freeyourgadget/Gadgetbridge",
+      "declaredLicense": "AGPL-3.0",
+      "detectedLicense": "AGPL-3.0",
+      "status": "ok"
+    },
+    {
+      "name": "android/health-samples",
+      "repositoryUrl": "https://github.com/android/health-samples",
+      "declaredLicense": "Apache-2.0",
+      "detectedLicense": "Apache-2.0",
+      "status": "ok"
+    }
+  ]
+}

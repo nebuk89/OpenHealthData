@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "provider": "Xiaomi",
+  "evidenceDate": "2026-08-20",
+  "claims": [
+    {
+      "id": "privacy-policy-provides-copy-right",
+      "claim": "Xiaomi's general privacy policy says a user can request a free copy of personal information Xiaomi processes.",
+      "sourceUrl": "https://privacy.mi.com/all/en_US/",
+      "evidence": "Section 9 states that a copy of personal information processed by Xiaomi will be provided upon request free of charge, subject to stated limits.",
+      "confidence": "high"
+    },
+    {
+      "id": "privacy-policy-provides-conditional-portability",
+      "claim": "Where applicable law provides it, Xiaomi recognizes a right to receive personal information in a structured, commonly used and machine-readable format.",
+      "sourceUrl": "https://privacy.mi.com/all/en_US/",
+      "evidence": "The policy's Right to data portability names a structured, commonly used and machine-readable format and transmission to another controller.",
+      "confidence": "high"
+    },
+    {
+      "id": "privacy-requests-require-verification",
+      "claim": "Xiaomi can require enough information to verify the identity and authority of a person making a privacy request.",
+      "sourceUrl": "https://privacy.mi.com/support/?locale=en",
+      "evidence": "The linked support portal is Xiaomi's request channel; the policy says requests must provide sufficient information to verify identity and authority.",
+      "confidence": "high"
+    },
+    {
+      "id": "mi-fitness-current-device-families",
+      "claim": "The current Mi Fitness iOS listing supports Xiaomi Watch, Redmi Watch, Xiaomi Smart Band and Redmi Smart Band families.",
+      "sourceUrl": "https://apps.apple.com/us/app/mi-fitness-xiaomi-wear-lite/id1493500777",
+      "evidence": "The Xiaomi-controlled listing names all four product families.",
+      "confidence": "high"
+    },
+    {
+      "id": "mi-fitness-visible-health-outputs",
+      "claim": "Mi Fitness displays route-tracked workouts, heart rate, sleep, stress, energy, manual weight and women's-health data, sleep stages and personalized sleep reports on supported products.",
+      "sourceUrl": "https://apps.apple.com/us/app/mi-fitness-xiaomi-wear-lite/id1493500777",
+      "evidence": "The current listing describes workout routes; heart rate, sleep, stress and energy; manual weight and women's health; deep/light/REM stages; breathing quality and personalized reports.",
+      "confidence": "high"
+    },
+    {
+      "id": "mi-fitness-writes-health-connect",
+      "claim": "The current Android Mi Fitness listing says the app synchronizes fitness and health data to Google Health Connect.",
+      "sourceUrl": "https://play.google.com/store/apps/details?id=com.xiaomi.wearable&hl=en_US",
+      "evidence": "The listing's Health Connect permission purpose is: Synchronize your fitness and health data to Google Health Connect.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-connect-supports-typed-records",
+      "claim": "Health Connect stores typed activity, body, sleep, vitals and other health/fitness records with instant, interval or series structures.",
+      "sourceUrl": "https://developer.android.com/health-and-fitness/health-connect/data-types",
+      "evidence": "Google's data-type catalogue defines categories and record types and documents per-type permissions.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-connect-can-be-read-programmatically",
+      "claim": "A user-authorized Android application can read Health Connect records and can request additional background-read permission.",
+      "sourceUrl": "https://developer.android.com/health-and-fitness/health-connect/read-data",
+      "evidence": "Google documents ReadRecordsRequest and the READ_HEALTH_DATA_IN_BACKGROUND permission.",
+      "confidence": "high"
+    },
+    {
+      "id": "public-mi-fitness-api-not-established",
+      "claim": "No public documentation was found for a self-service Mi Fitness personal-history API, OAuth scopes, endpoint catalogue or backfill policy.",
+      "sourceUrl": "https://dev.mi.com/console/",
+      "evidence": "The current developer console resolves to the generic HyperOS platform; the audited public materials did not identify a Mi Fitness account-history product. This is an evidence-gap finding, not proof that no private partner interface exists.",
+      "confidence": "medium"
+    },
+    {
+      "id": "gadgetbridge-local-vendor-free-route",
+      "claim": "Gadgetbridge can operate supported wearables locally without the vendor application or a vendor account.",
+      "sourceUrl": "https://codeberg.org/Freeyourgadget/Gadgetbridge",
+      "evidence": "The canonical project describes using Bluetooth gadgets without the vendor's closed-source app and without creating an account or transmitting data to vendor servers.",
+      "confidence": "high"
+    },
+    {
+      "id": "gadgetbridge-is-device-not-cloud-route",
+      "claim": "Gadgetbridge is a direct device-management route and does not establish retrieval of prior Mi Fitness cloud history.",
+      "sourceUrl": "https://gadgetbridge.org/",
+      "evidence": "The project describes pairing and managing gadgets locally instead of relying on the proprietary app; it does not claim to be a Xiaomi account-history client.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-samples-is-developer-building-block",
+      "claim": "Android's health-samples repository is reference code for Health Connect applications rather than a complete Xiaomi exporter.",
+      "sourceUrl": "https://github.com/android/health-samples",
+      "evidence": "The repository describes individual Android Studio projects that help developers get started writing Android and Wear OS health applications.",
+      "confidence": "high"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Freeyourgadget/Gadgetbridge",
+      "repositoryUrl": "https://github.com/Freeyourgadget/Gadgetbridge",
+      "license": "AGPL-3.0"
+    },
+    {
+      "name": "android/health-samples",
+      "repositoryUrl": "https://github.com/android/health-samples",
+      "license": "Apache-2.0"
+    }
+  ]
+}
+
