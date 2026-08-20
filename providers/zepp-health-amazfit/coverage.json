@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "taxonomyVersion": "1.0.0",
+  "provider": "Zepp Health / Amazfit",
+  "evidenceDate": "2026-08-20",
+  "routes": [
+    {"id":"privacy-export","label":"Zepp app privacy export","kind":"consumer-export","access":"self-service"},
+    {"id":"workout-export","label":"Zepp workout import/export","kind":"consumer-export","access":"self-service"},
+    {"id":"zepp-os","label":"Zepp OS device APIs","kind":"official-sdk","access":"self-service"},
+    {"id":"integrations","label":"Supported integrations","kind":"integration","access":"self-service"},
+    {"id":"gadgetbridge","label":"Gadgetbridge direct device sync","kind":"open-source","access":"unsupported"},
+    {"id":"private-cloud","label":"Unofficial Huami/Zepp clients","kind":"unofficial","access":"unsupported"}
+  ],
+  "coverage": [
+    {
+      "taxonomyId": "body.composition",
+      "providerNames": ["Weight", "BMI", "Body Fat", "Muscle Mass", "Body Age"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "derived", "user-entered", "external"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"NA","zepp-os":"U","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "The policy documents scale, entered and derived composition values; no public export schema establishes portability."
+    },
+    {
+      "taxonomyId": "activity.daily",
+      "providerNames": ["Steps", "Stand-up Times", "Distance", "Floors"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"A","integrations":"P","gadgetbridge":"A","private-cloud":"P"},
+      "notes": "Zepp OS exposes daily steps; integrations and direct-device support are selective."
+    },
+    {
+      "taxonomyId": "activity.energy",
+      "providerNames": ["Calories Burned", "Activity Goals"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["normalized", "derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"A","integrations":"P","gadgetbridge":"A","private-cloud":"P"},
+      "notes": "Daily and workout calories are documented, but parity across routes is not."
+    },
+    {
+      "taxonomyId": "cardio.heart-rate",
+      "providerNames": ["Heart Rate", "Resting Heart Rate", "Heart Rate Zones"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"A","integrations":"P","gadgetbridge":"A","private-cloud":"P"},
+      "notes": "Zepp OS documents live and current-day values; complete account history remains unknown."
+    },
+    {
+      "taxonomyId": "cardio.hrv",
+      "providerNames": ["HRV", "Sleep HRV"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"U","zepp-os":"U","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "HRV is a documented app/readiness input, but no current official extraction mapping was established."
+    },
+    {
+      "taxonomyId": "cardio.blood-pressure",
+      "providerNames": ["Blood Pressure"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["user-entered", "external"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"NA","zepp-os":"U","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "Current app listing describes manually added external blood-pressure readings."
+    },
+    {
+      "taxonomyId": "cardio.ecg-rhythm",
+      "providerNames": ["ECG", "Atrial Fibrillation Records"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"NA","zepp-os":"P","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "Policy and Zepp OS heart API document rhythm-related data; hardware and regional support vary."
+    },
+    {
+      "taxonomyId": "cardio.vo2max",
+      "providerNames": ["VO2 Max", "Exercise Capacity"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"U","zepp-os":"U","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "The policy documents derived exercise-capacity values but not a portable field mapping."
+    },
+    {
+      "taxonomyId": "respiratory.rate-oxygen",
+      "providerNames": ["Blood Oxygen Saturation", "Sleep Breathing"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"U","zepp-os":"A","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "Zepp OS exposes current and recent SpO2; respiration portability is not established."
+    },
+    {
+      "taxonomyId": "temperature.body-skin",
+      "providerNames": ["Temperature", "Readiness Temperature Input"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"U","zepp-os":"P","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "Temperature collection is documented; availability depends on compatible hardware."
+    },
+    {
+      "taxonomyId": "sleep.sessions-stages",
+      "providerNames": ["Sleep", "REM", "Light Sleep", "Deep Sleep", "Naps"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"A","integrations":"P","gadgetbridge":"A","private-cloud":"U"},
+      "notes": "Zepp OS documents session and stage values; complete cloud history is unknown."
+    },
+    {
+      "taxonomyId": "sleep.insights-score",
+      "providerNames": ["Sleep Score", "Sleep Analysis", "Recovery Quality"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"A","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "Sleep score is available through the device API, but broader analysis parity is not promised."
+    },
+    {
+      "taxonomyId": "recovery.stress",
+      "providerNames": ["Stress"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"A","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "Zepp OS documents current, daily and seven-day stress windows."
+    },
+    {
+      "taxonomyId": "recovery.energy-readiness",
+      "providerNames": ["PAI", "Readiness", "Physical Recovery", "Mental Recovery"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"P","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "Zepp OS exposes PAI; the policy documents Readiness inputs and score, but complete portability is unknown."
+    },
+    {
+      "taxonomyId": "training.load-status",
+      "providerNames": ["Training Effect", "Sports Load", "Training Status", "Recovery Insights"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"U","integrations":"U","gadgetbridge":"P","private-cloud":"P"},
+      "notes": "Derived training values are documented in the app/policy but no complete route mapping exists."
+    },
+    {
+      "taxonomyId": "training.performance-predictions",
+      "providerNames": ["Exercise Capacity", "Zepp Coach Recommendations"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"U","zepp-os":"U","integrations":"U","gadgetbridge":"U","private-cloud":"U"},
+      "notes": "The app produces coaching and capacity outputs; public extraction behavior is unknown."
+    },
+    {
+      "taxonomyId": "workout.sessions",
+      "providerNames": ["Workouts", "Exercise Records"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"A","zepp-os":"P","integrations":"A","gadgetbridge":"A","private-cloud":"A"},
+      "notes": "The app and community tools provide workout routes; exact stream fidelity varies."
+    },
+    {
+      "taxonomyId": "workout.route-elevation",
+      "providerNames": ["Movement Track", "GPS Route", "Altitude", "Air Pressure"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"P","integrations":"P","gadgetbridge":"A","private-cloud":"A"},
+      "notes": "Routes and altitude are documented, but official workout export format and precision need validation."
+    },
+    {
+      "taxonomyId": "workout.sport-dynamics",
+      "providerNames": ["Cadence", "Stride Length", "Stroke Rate", "SWOLF", "Strength Logs"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["captured", "normalized", "derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"U","integrations":"P","gadgetbridge":"P","private-cloud":"P"},
+      "notes": "Policy and app listing document these values; route-by-route field parity is unknown."
+    },
+    {
+      "taxonomyId": "workout.plans-courses",
+      "providerNames": ["Zepp Coach", "Workout Plans", "Targets", "Imported Routes"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived", "user-entered", "external"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"U","zepp-os":"U","integrations":"P","gadgetbridge":"U","private-cloud":"U"},
+      "notes": "Plans and route import exist, but extraction of complete authored content is unknown."
+    },
+    {
+      "taxonomyId": "mobility.gait-function",
+      "providerNames": ["One-legged Standing Test"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"NA","zepp-os":"U","integrations":"U","gadgetbridge":"U","private-cloud":"U"},
+      "notes": "The privacy policy names a one-legged standing test; broader gait-function coverage is not established."
+    },
+    {
+      "taxonomyId": "reproductive.cycle-pregnancy",
+      "providerNames": ["Female Health", "Menstrual Cycle", "Symptoms", "Mood"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived", "user-entered"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"NA","zepp-os":"U","integrations":"U","gadgetbridge":"U","private-cloud":"U"},
+      "notes": "Cycle records and predictions are documented, while pregnancy-specific coverage is not established."
+    },
+    {
+      "taxonomyId": "nutrition.hydration",
+      "providerNames": ["Food Diary", "Calories", "Carbohydrates", "Protein", "Fat"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived", "user-entered", "external"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"NA","zepp-os":"U","integrations":"U","gadgetbridge":"U","private-cloud":"U"},
+      "notes": "Current app supports food logging and macro analysis; hydration records were not separately confirmed."
+    },
+    {
+      "taxonomyId": "clinical.records-medications",
+      "providerNames": ["Blood Glucose"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["user-entered", "external"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"NA","zepp-os":"U","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "The app listing describes manually added glucose readings; general clinical records and medications are unknown."
+    },
+    {
+      "taxonomyId": "wellbeing.mindfulness-mood",
+      "providerNames": ["Emotions", "Mood", "Emotional Guidance"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived", "user-entered"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"NA","zepp-os":"U","integrations":"U","gadgetbridge":"U","private-cloud":"U"},
+      "notes": "Emotion records and guidance are documented in the privacy policy."
+    },
+    {
+      "taxonomyId": "hearing.audio-audiogram",
+      "providerNames": ["Ambient Sound", "Earphone Volume"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"NA","zepp-os":"U","integrations":"U","gadgetbridge":"U","private-cloud":"U"},
+      "notes": "The policy names ambient sound and earphone volume; no audiogram family was established."
+    },
+    {
+      "taxonomyId": "insights.trends-alerts-awards",
+      "providerNames": ["Goals", "Readiness", "Zepp Coach", "Zepp Aura", "Alerts"],
+      "presence": "present",
+      "appVisible": "yes",
+      "productionLayers": ["derived"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"N","zepp-os":"P","integrations":"U","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "App-visible insights and coaching do not have a published portability contract."
+    },
+    {
+      "taxonomyId": "device.raw-sensors",
+      "providerNames": ["Accelerometer", "PPG", "Device Sensor Callbacks"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured"],
+      "routeCoverage": {"privacy-export":"NA","workout-export":"N","zepp-os":"A","integrations":"N","gadgetbridge":"P","private-cloud":"U"},
+      "notes": "Zepp OS exposes live accelerometer and selected sensor interfaces; raw historical PPG export is not established."
+    },
+    {
+      "taxonomyId": "provenance.metadata",
+      "providerNames": ["Device ID", "Model", "Firmware Version", "Timestamps", "Source App"],
+      "presence": "present",
+      "appVisible": "partial",
+      "productionLayers": ["captured", "normalized"],
+      "routeCoverage": {"privacy-export":"U","workout-export":"P","zepp-os":"P","integrations":"P","gadgetbridge":"A","private-cloud":"P"},
+      "notes": "The policy documents device metadata; preservation through export and integrations is unknown."
+    }
+  ]
+}

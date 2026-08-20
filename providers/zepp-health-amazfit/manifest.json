@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "provider": "Zepp Health / Amazfit",
+  "priority": 7,
+  "status": "reviewed",
+  "generatedAt": "2026-08-20T11:29:08.000Z",
+  "verifiedAt": "2026-08-20T11:37:06.910Z",
+  "reviewedAt": "2026-08-20T11:37:23.088Z",
+  "files": {
+    "audit": "README.md",
+    "resources": "resources.md",
+    "claims": "claims.json",
+    "coverage": "coverage.json",
+    "verification": "verification.json"
+  }
+}
