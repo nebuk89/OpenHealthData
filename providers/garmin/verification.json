@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Garmin",
-  "checkedAt": "2026-08-19T16:46:03.535Z",
+  "checkedAt": "2026-08-20T08:45:53.538Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -13,10 +13,34 @@
       "finalUrl": "https://sso.garmin.com/portal/sso/en-US/sign-in?clientId=ACCOUNT_MANAGEMENT_CENTER&service=https%3A%2F%2Fwww.garmin.com%2Fen-US%2Faccount%2Fdatamanagement%2Fexportdata%2F"
     },
     {
+      "url": "https://www.garmin.com/en-US/garmin-technology/health-science/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.garmin.com/en-US/garmin-technology/health-science/"
+    },
+    {
+      "url": "https://www.garmin.com/en-US/garmin-technology/running-science/physiological-measurements/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.garmin.com/en-US/garmin-technology/running-science/physiological-measurements/"
+    },
+    {
       "url": "https://www.garmin.com/en-US/privacy/",
       "status": "ok",
       "httpStatus": 200,
       "finalUrl": "https://www.garmin.com/en-US/privacy/"
+    },
+    {
+      "url": "https://www.garmin.com/en-US/garmin-technology/health-science/sleep-tracking/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.garmin.com/en-US/garmin-technology/health-science/sleep-tracking/"
+    },
+    {
+      "url": "https://www.garmin.com/en-US/garmin-technology/health-science/body-battery/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.garmin.com/en-US/garmin-technology/health-science/body-battery/"
     },
     {
       "url": "https://developer.garmin.com/gc-developer-program/overview/",
@@ -166,7 +190,7 @@
       "url": "https://developer.android.com/health-and-fitness/health-connect",
       "status": "ok",
       "httpStatus": 200,
-      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect"
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect?hl=tr"
     }
   ],
   "projects": [

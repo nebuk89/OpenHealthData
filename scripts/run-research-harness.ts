@@ -45,6 +45,7 @@ const mainRequiredSections = [
   "## Bottom line",
   "## Access snapshot",
   "## Openness comparison",
+  "## Data inventory and route coverage",
   "## Official access routes",
   "## Data available",
   "## Ecosystem integrations",
@@ -76,6 +77,8 @@ const opennessRatings = [
 type OpennessRating = (typeof opennessRatings)[number];
 
 const opennessTestResults = ["Yes", "Partial", "No", "Unknown"] as const;
+
+const dataCoverageCodes = ["A", "P", "N", "U", "NA"] as const;
 
 const resourceRequiredSections = [
   "## Official developer documentation",
@@ -565,11 +568,11 @@ async function synthesizeProvider(
           `# ${provider.name}`,
           "",
           "The main audit must follow audit-rubric.md and include: an evidence date; Bottom line;",
-          "Access snapshot; Openness comparison; Official access routes; Data available and",
-          "granularity; direct export and privacy routes; Ecosystem integrations with explicit",
-          "directionality; Open-source routes; Material barriers and risks; Rubric snapshot;",
-          "Provisional openness assessment without cross-provider superlatives; and Evidence gaps",
-          "and hands-on checks.",
+          "Access snapshot; Openness comparison; Data inventory and route coverage; Official",
+          "access routes; Data available and granularity; direct export and privacy routes;",
+          "Ecosystem integrations with explicit directionality; Open-source routes; Material",
+          "barriers and risks; Rubric snapshot; Provisional openness assessment without",
+          "cross-provider superlatives; and Evidence gaps and hands-on checks.",
           "",
           "The Openness comparison section is mandatory. Use the exact six-row table from",
           "audit-rubric.md: App-to-interface parity; Self-service developer access; Official",
@@ -578,6 +581,16 @@ async function synthesizeProvider(
           "Rate the overall row with exactly one of: Open, Mostly open, Partial, Restricted,",
           "Closed, or Unknown. Judge the route an ordinary account holder can use, not the richest",
           "partner-only capability.",
+          "",
+          "The Data inventory and route coverage section is mandatory. Enumerate at least ten",
+          "evidence-backed metric families covering device-captured, normalized, user-entered and",
+          "app-derived outputs. Name major derived metrics individually. Use columns: Data family;",
+          "Included metrics or app outputs; Captured or produced as; then at least four",
+          "provider-specific access routes spanning consumer export, official programmable",
+          "access, integrations and open-source/unofficial access. Every route cell must begin",
+          "with exactly A, P, N, U or NA as defined in audit-rubric.md. Do not infer that a derived",
+          "score is available merely because its input signals are available. Keep raw or",
+          "normalized values in separate rows from app-derived classifications and scores.",
           mainEndMarker,
           resourcesStartMarker,
           `# ${provider.name} resources`,
@@ -903,6 +916,62 @@ function checkOpennessComparison(content: string): string[] {
   return failures;
 }
 
+function checkDataInventory(content: string): string[] {
+  const section = content.match(
+    /## Data inventory and route coverage\s*([\s\S]*?)(?=\n## |\s*$)/i,
+  )?.[1];
+  if (!section) {
+    return [];
+  }
+
+  const failures: string[] = [];
+  const tableLines = section
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith("|"));
+  const headerIndex = tableLines.findIndex((line) =>
+    /^\|\s*Data family\s*\|/i.test(line.replaceAll("**", "")),
+  );
+  if (headerIndex < 0) {
+    return ['README.md data inventory must include a table headed "Data family"'];
+  }
+
+  const headerCells = tableLines[headerIndex]
+    .split("|")
+    .slice(1, -1)
+    .map((cell) => cell.trim());
+  if (headerCells.length < 7) {
+    failures.push("README.md data inventory must include at least four access-route columns");
+  }
+
+  const dataRows = tableLines.slice(headerIndex + 2).filter((line) => {
+    const cells = line.split("|").slice(1, -1);
+    return cells.length === headerCells.length;
+  });
+  if (dataRows.length < 10) {
+    failures.push("README.md data inventory must include at least ten metric-family rows");
+  }
+
+  for (const row of dataRows) {
+    const cells = row
+      .split("|")
+      .slice(1, -1)
+      .map((cell) => cell.trim().replaceAll("**", ""));
+    const family = cells[0] || "unnamed";
+    for (const cell of cells.slice(3)) {
+      const codePattern = new RegExp(`^(${dataCoverageCodes.join("|")})(?:\\b|\\s|$)`, "i");
+      if (!codePattern.test(cell)) {
+        failures.push(
+          `README.md data inventory row "${family}" has a route cell without an A/P/N/U/NA code`,
+        );
+        break;
+      }
+    }
+  }
+
+  return failures;
+}
+
 async function runQualityGate(
   provider: Provider,
   main: string,
@@ -912,6 +981,7 @@ async function runQualityGate(
   const failures = [
     ...checkRequiredSections(main, mainRequiredSections, "README.md"),
     ...checkOpennessComparison(main),
+    ...checkDataInventory(main),
     ...checkRequiredSections(resources, resourceRequiredSections, "resources.md"),
   ];
   const warnings: string[] = [];

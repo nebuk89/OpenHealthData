@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Garmin",
-  "evidenceDate": "2026-08-19",
+  "evidenceDate": "2026-08-20",
   "claims": [
     {
       "id": "account-export-requires-sign-in",
@@ -100,6 +100,13 @@
       "sourceUrl": "https://github.com/pe-st/garmin-connect-export",
       "evidence": "The maintainer states that the community could not work around Garmin's new TLS fingerprinting and probably will not continue until access is possible.",
       "confidence": "high"
+    },
+    {
+      "id": "garmin-app-api-parity-undocumented",
+      "claim": "Garmin's public Health API catalogue does not establish endpoint coverage for every proprietary wellness and performance value shown by Garmin devices and Garmin Connect.",
+      "sourceUrl": "https://developer.garmin.com/gc-developer-program/health-api/",
+      "evidence": "The Health API page names selected health families, while Garmin's separate feature catalogues include additional derived outputs; Garmin publishes no complete app-to-endpoint parity statement.",
+      "confidence": "medium"
     }
   ],
   "projects": [

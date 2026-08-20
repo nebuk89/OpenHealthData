@@ -1,6 +1,6 @@
 # Apple resources
 
-**Evidence date:** 18 August 2026  
+**Evidence date:** 20 August 2026
 **Audit:** [Apple](./README.md)
 
 Links are grouped by role and deduplicated. "Accessed" records the research date, not the page's
@@ -38,6 +38,17 @@ publication date.
 - [Get a copy of Apple account data](https://support.apple.com/en-us/102208) — **Apple**;
   accessed 2026-08-18. Data & Privacy process and confirmation that Health data is available
   through an account data request.
+- [Track your vitals on Apple Watch](https://support.apple.com/guide/watch/vitals-apd15aa7ed96/watchos)
+  — **Apple**; accessed 2026-08-20. Overnight metrics, typical ranges and outlier notifications.
+- [Track your sleep with Apple Watch](https://support.apple.com/guide/watch/track-your-sleep-apd830528336/watchos)
+  — **Apple**; accessed 2026-08-20. Sleep stages, schedules, goals, trends and sleeping respiratory
+  rate.
+- [Check your heart rate on Apple Watch](https://support.apple.com/guide/watch/heart-rate-apda88aefe4c/watchos)
+  — **Apple**; accessed 2026-08-20. Current, resting, walking, workout and post-workout heart-rate
+  views.
+- [Track your training load](https://support.apple.com/guide/watch/track-your-training-load-apde4c07a6cf/26/watchos/26)
+  — **Apple**; accessed 2026-08-20. Seven-day versus 28-day workout-load calculation and UI
+  classification.
 - [Apple Data & Privacy portal](https://privacy.apple.com/) — **Apple**; accessed 2026-08-18.
   Authenticated account export and privacy controls.
 - [Apple Privacy Policy](https://www.apple.com/legal/privacy/en-ww/) — **Apple**; accessed

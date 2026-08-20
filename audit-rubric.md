@@ -48,6 +48,44 @@ Overall ratings mean:
 - **Closed:** No meaningful machine-readable route is available to an ordinary account holder.
 - **Unknown:** Evidence is insufficient to rate the provider responsibly.
 
+## Mandatory data inventory and route coverage
+
+Every provider audit must include a `## Data inventory and route coverage` section. It must start
+from what compatible devices capture and what first-party apps calculate or display, then map those
+data families to the provider's distinct access routes.
+
+The inventory is exhaustive at the documented **metric-family** level, not a claim that every
+device model, firmware version, region or internal field has been discovered. Keep raw or
+device-captured values separate from normalized, user-entered and proprietary derived outputs.
+Name important individual outputs such as HRV, VO2 max, sleep score, readiness, training load and
+recovery rather than hiding them under "wellness."
+
+Use this table shape:
+
+| Data family | Included metrics or app outputs | Captured or produced as | Route 1 | Route 2 | Route 3 | ... |
+|---|---|---|---|---|---|---|
+| At least ten evidence-backed families | Concrete examples | Captured / normalized / user-entered / derived | A / P / N / U / NA | A / P / N / U / NA | A / P / N / U / NA | ... |
+
+Route columns are provider-specific and must cover all materially distinct direct routes: consumer
+exports, official programmable interfaces, restricted partner APIs or SDKs, supported
+integrations, and credible open-source or unofficial retrieval. A route group may be used only when
+the same audit links to a more detailed route-by-route table.
+
+Coverage codes:
+
+- **A - Available:** Current evidence establishes that the route supplies the data family. This
+  does not imply every field or complete history unless stated.
+- **P - Partial:** Only a subset, summary, limited history, device-dependent record or lossy
+  representation is established.
+- **N - Not available:** Evidence affirmatively excludes the family or the route cannot carry it by
+  design.
+- **U - Unknown:** Current evidence does not establish availability or absence.
+- **NA - Not applicable:** The route is for a different direction or purpose.
+
+An HTTP 200, a marketing feature page or a generic "sync" statement is not evidence that a route
+contains the underlying record. Derived scores need explicit route evidence; the availability of
+their input signals is not enough.
+
 ## Publication states
 
 - **Generated:** The research swarm and synthesis completed, but automated evidence checks have

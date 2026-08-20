@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "provider": "Apple",
-  "checkedAt": "2026-08-19T16:45:58.267Z",
+  "checkedAt": "2026-08-20T08:45:25.278Z",
   "result": "passed",
   "failures": [],
   "warnings": [],
@@ -11,6 +11,12 @@
       "status": "ok",
       "httpStatus": 200,
       "finalUrl": "https://developer.apple.com/documentation/healthkit"
+    },
+    {
+      "url": "https://developer.apple.com/documentation/healthkit/data-types",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.apple.com/documentation/healthkit/data-types"
     },
     {
       "url": "https://developer.apple.com/documentation/healthkit/authorizing-access-to-health-data",
@@ -29,12 +35,6 @@
       "status": "ok",
       "httpStatus": 200,
       "finalUrl": "https://developer.apple.com/documentation/sensorkit"
-    },
-    {
-      "url": "https://developer.apple.com/documentation/healthkit/data-types",
-      "status": "ok",
-      "httpStatus": 200,
-      "finalUrl": "https://developer.apple.com/documentation/healthkit/data-types"
     },
     {
       "url": "https://developer.apple.com/documentation/healthkit/setting-up-healthkit",
@@ -73,6 +73,24 @@
       "finalUrl": "https://support.apple.com/en-us/102208"
     },
     {
+      "url": "https://support.apple.com/guide/watch/vitals-apd15aa7ed96/watchos",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.apple.com/guide/watch/vitals-apd15aa7ed96/watchos"
+    },
+    {
+      "url": "https://support.apple.com/guide/watch/track-your-sleep-apd830528336/watchos",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.apple.com/guide/watch/track-your-sleep-apd830528336/watchos"
+    },
+    {
+      "url": "https://support.apple.com/guide/watch/track-your-training-load-apde4c07a6cf/26/watchos/26",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.apple.com/guide/watch/track-your-training-load-apde4c07a6cf/26/watchos/26"
+    },
+    {
       "url": "https://support.apple.com/en-us/108779",
       "status": "ok",
       "httpStatus": 200,
@@ -83,6 +101,12 @@
       "status": "ok",
       "httpStatus": 200,
       "finalUrl": "https://support.apple.com/guide/security/protecting-access-to-users-health-data-sec88be9900f/web"
+    },
+    {
+      "url": "https://support.apple.com/guide/watch/heart-rate-apda88aefe4c/watchos",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.apple.com/guide/watch/heart-rate-apda88aefe4c/watchos"
     },
     {
       "url": "https://support.apple.com/108353",

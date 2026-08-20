@@ -1,6 +1,6 @@
 # Garmin
 
-**Evidence date:** 2026-08-19
+**Evidence date:** 2026-08-20
 
 ## Bottom line
 
@@ -41,6 +41,56 @@ Garmin changes login or endpoint behaviour.
 | Complete history | Unknown | Archive depth, API retention and every-metric backfill are not publicly guaranteed |
 | Raw and derived data coverage | Partial | FIT and partner products expose rich records, but proprietary scores, source detail and every app-visible metric are not guaranteed |
 | **Overall personal-data openness** | **Restricted** | Useful machine-readable exports exist, but supported programmable access is partner-gated |
+
+## Data inventory and route coverage
+
+This family-level inventory combines Garmin's
+[health](https://developer.garmin.com/gc-developer-program/health-api/),
+[activity](https://developer.garmin.com/gc-developer-program/activity-api/) and
+[women's health](https://developer.garmin.com/gc-developer-program/womens-health-api/) API
+catalogues with its device/app feature catalogues for
+[health science](https://www.garmin.com/en-US/garmin-technology/health-science/) and
+[physiological measurements](https://www.garmin.com/en-US/garmin-technology/running-science/physiological-measurements/).
+Features vary substantially by device, sensors, firmware, region and subscription. Garmin's
+feature pages are JavaScript-rendered and no official field-by-device/export parity matrix exists.
+
+**Codes:** `A` available; `P` partial, conditional or lossy; `N` not available; `U` unknown from
+current evidence; `NA` not applicable. `Archive` remains `U` where Garmin has not published a
+schema. `Health API`, `Activity API`, `Women's API`, `Training/Courses APIs` and `Health SDK` are
+business-gated, not ordinary-user developer routes.
+
+| Data family | Included metrics or app outputs | Captured or produced as | Archive | Activity FIT/GPX/TCX | Health API | Activity API | Women's API | Training/Courses APIs | Health SDK | Connect IQ | Supported integrations | Unofficial clients/parsers |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Daily movement and energy | Steps, distance, floors, active/resting calories | Motion-derived epochs and daily summaries | U | P | A | NA | NA | NA | P | P | P | A |
+| Heart rate | Continuous, resting and workout HR; zones | Optical/electrical samples plus summaries | U | A | A | A | NA | NA | A | P | P | A |
+| HRV status | Overnight HRV, baseline and status bands | Firstbeat-derived trend and classification | U | N | U | NA | NA | NA | U | U | U | P |
+| Pulse Ox | Overnight and on-demand SpO2 | Optical samples and summaries | U | P | A | NA | NA | NA | P | U | P | A |
+| Respiration | All-day, sleep and activity respiration | Sensor-derived epochs | U | P | A | NA | NA | NA | U | U | P | A |
+| Skin/body temperature | Overnight skin-temperature deviation on compatible devices | Sensor samples plus baseline deviation | U | U | U | NA | NA | NA | U | U | U | P |
+| Stress | All-day stress levels and trends | Firstbeat-derived epochs and daily summaries | U | U | A | NA | NA | NA | P | U | U | A |
+| Body Battery | Energy level, charge and drain | Proprietary HRV/stress/activity/sleep derivation | U | N | U | NA | NA | NA | P | U | N | A |
+| Sleep | Duration, stages, score, naps and coaching where supported | Sensor-derived intervals plus proprietary score | U | N | A | NA | NA | NA | P | U | P | A |
+| Body composition | Weight, BMI, body fat, muscle, bone and water from compatible scales | Connected-scale or entered measurements | U | NA | A | NA | NA | NA | P | NA | P | A |
+| VO2 max | Running and cycling VO2 max estimates | Firstbeat-derived periodic estimate | U | U | U | U | NA | NA | U | U | N | P |
+| Training status, load and readiness | Status, load, readiness, recovery and training effect | Proprietary workout and wellness derivations | U | P | U | U | NA | NA | U | U | N | P |
+| Other performance predictions | Additional first-party performance estimates on selected devices; exact current list needs rendered confirmation | Proprietary derived estimates | U | P | U | U | NA | NA | U | U | N | P |
+| Activity summary | Sport, duration, distance, calories, laps and events | Recorded session plus summaries | U | A | NA | A | NA | NA | P | P | A | A |
+| GPS route and elevation | Track points, course, speed/pace and elevation | GNSS/barometer series | U | A | NA | A | NA | P | P | P | A | A |
+| Sport dynamics | Power, cadence, stride, running dynamics, swim strokes and SWOLF | Device/sensor series and derived fields | U | A | NA | A | NA | NA | P | P | P | A |
+| Intensity Minutes and Move IQ | Moderate/vigorous minutes and auto-detected activity events | Garmin-derived aggregates/classification | U | U | U | U | NA | NA | P | U | U | P |
+| Women's health | Cycle logging, symptoms, pregnancy and predictions | User-entered records plus app-derived predictions | U | NA | NA | NA | A | NA | U | NA | U | P |
+| Health Snapshot | Two-minute HR, HRV, SpO2, respiration and stress bundle | Captured point-in-time bundle | U | U | U | U | NA | NA | P | U | U | P |
+| ECG | Waveform and classification on supported models/regions | Electrical series plus regulated classification | U | U | U | U | NA | NA | U | U | U | U |
+| Nutrition and hydration | Food/calories and water logs | User-entered or connected-app records | U | NA | U | NA | NA | NA | U | U | P | A |
+| Structured workouts, plans and courses | Workout steps, targets, training plans and navigation courses | User/coach-authored content sent to devices | U | P | NA | NA | NA | A | P | P | A | P |
+| Real-time sensor streams | Live HR, accelerometer and current-activity metrics | Device streams | NA | NA | NA | NA | NA | NA | A | P | NA | P |
+| Provenance and device metadata | Device, sensor, firmware, session and record metadata | File/API metadata | U | A | P | A | NA | NA | P | P | P | A |
+
+`Supported integrations` aggregates the consumer routes in the
+[route-by-route table](#ecosystem-integrations); none is a lossless mirror. `Unofficial
+clients/parsers` combines private Garmin Connect clients with parsers for files already obtained.
+The former can expose cloud-only scores but carry account-token risk; the latter cannot recover
+records that Garmin did not write to a file.
 
 ## Official access routes
 

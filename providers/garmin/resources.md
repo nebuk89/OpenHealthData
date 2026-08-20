@@ -1,6 +1,6 @@
 # Garmin resources
 
-**Evidence date:** 2026-08-19
+**Evidence date:** 2026-08-20
 
 All resources were accessed on the evidence date. Garmin Support FAQ pages are JavaScript-rendered;
 an HTTP 200 confirms link availability but not the rendered article body.
@@ -36,6 +36,15 @@ an HTTP 200 confirms link availability but not the rendered article body.
   regional account-rights entry point.
 - [Exporting files from Garmin Connect](https://support.strava.com/en-us/articles/15402167-exporting-files-from-garmin-connect)
   — **Strava**; current instructions for Garmin's per-activity FIT/GPX/TCX export controls.
+- [Garmin health science](https://www.garmin.com/en-US/garmin-technology/health-science/) —
+  **Garmin**; device/app health-feature catalogue. The page is JavaScript-rendered, so individual
+  feature claims require rendered or product-manual confirmation.
+- [Garmin physiological measurements](https://www.garmin.com/en-US/garmin-technology/running-science/physiological-measurements/)
+  — **Garmin**; catalogue of performance and training-derived measurements on selected devices.
+- [Garmin sleep tracking](https://www.garmin.com/en-US/garmin-technology/health-science/sleep-tracking/)
+  — **Garmin**; device-dependent sleep analysis and app outputs.
+- [Body Battery energy monitoring](https://www.garmin.com/en-US/garmin-technology/health-science/body-battery/)
+  — **Garmin**; first-party description of Garmin's proprietary energy score.
 
 ## Integration documentation
 

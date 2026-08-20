@@ -1,6 +1,6 @@
 # Apple
 
-**Evidence date:** 18 August 2026  
+**Evidence date:** 20 August 2026
 **Products in scope:** Apple Watch, iPhone Health, Fitness, HealthKit and related Apple health
 frameworks  
 **Resource index:** [Apple resources](./resources.md)
@@ -46,6 +46,52 @@ edits, deletions and historical backfill are frequently lost or restricted.
 | Complete history | Partial | Authorized retained local history is queryable, but there is no universal retention guarantee and the two export routes are not documented as equivalent |
 | Raw and derived data coverage | Partial | Samples, workouts, routes and metadata are strong; some raw sensors, rings, reports and proprietary derivations are absent or constrained |
 | **Overall personal-data openness** | **Partial** | Substantial user-controlled access exists, but it is incomplete and tightly dependent on Apple's platform |
+
+## Data inventory and route coverage
+
+This is a family-level inventory of records documented in
+[HealthKit](https://developer.apple.com/documentation/healthkit/data-types) plus outputs documented
+in the Apple Watch [Vitals](https://support.apple.com/guide/watch/vitals-apd15aa7ed96/watchos),
+[Sleep](https://support.apple.com/guide/watch/track-your-sleep-apd830528336/watchos) and
+[Training Load](https://support.apple.com/guide/watch/track-your-training-load-apde4c07a6cf/26/watchos/26)
+apps. Availability varies by hardware, OS, region, user settings and source app. It does not claim
+that Apple publishes a complete internal schema for the Health or Fitness UI.
+
+**Codes:** `A` available; `P` partial, conditional or lossy; `N` not available; `U` unknown from
+current evidence; `NA` not applicable. A code establishes family-level coverage, not every field
+or complete history.
+
+| Data family | Included metrics or app outputs | Captured or produced as | HealthKit | Health XML export | Account privacy export | SensorKit | Supported integrations | Open-source routes |
+|---|---|---|---|---|---|---|---|---|
+| Body measurements | Height, weight, BMI, body fat, lean mass | User-entered or connected-device samples | A | P | P | NA | P | P |
+| Daily movement and energy | Steps, distance, flights, active/basal energy | Motion-derived samples and aggregates | A | P | P | NA | P | P |
+| Activity rings and goals | Move, exercise and stand values and targets | Apple-derived daily summaries | A | U | U | NA | P | P |
+| Heart rate | Current, resting, walking, workout and recovery HR | Optical/electrical samples plus normalized summaries | A | P | P | NA | P | A |
+| HRV | SDNN samples and trends | Derived from heartbeat timing | A | P | P | NA | P | P |
+| Cardio fitness estimate | VO2 max quantity | Apple-derived estimate | A | P | U | NA | P | P |
+| Cardio fitness classification | Low-to-high fitness labels and trends | Apple-derived UI interpretation | U | U | U | NA | U | U |
+| Overnight vital samples | HR, respiratory rate, wrist temperature, SpO2 and sleep duration | Sensor samples and normalized summaries | A | P | U | NA | P | P |
+| Vitals ranges and notifications | Typical ranges and multi-metric outlier alerts | Apple-derived baseline and UI interpretation | U | U | U | NA | U | U |
+| ECG and rhythm features | ECG waveform, classification, irregular-rhythm and rate notifications | Electrical series plus regulated classifications | P | P | U | NA | U | P |
+| Blood oxygen and respiration | SpO2, respiratory rate, peak flow and lung measurements | Sensor, connected-device or entered samples | A | P | P | NA | P | P |
+| Blood pressure and glucose | Systolic/diastolic pressure and blood glucose | Connected-device or user-entered samples | A | P | P | NA | P | P |
+| Temperature | Body and wrist temperature samples and baseline deviations | Sensor samples plus Apple-derived baseline | P | P | U | NA | P | P |
+| Sleep | In-bed, awake, core, deep and REM intervals; schedules, goals and trends | Motion/heart-derived stages plus user configuration | P | P | P | NA | P | P |
+| Workouts and routes | Type, duration, energy, distance, events, effort, linked samples and GPS route | Captured session plus normalized records | A | P | P | NA | P | P |
+| Heart-rate zones and training load | Personalized zones; 7-day intensity/duration versus previous 28 days; classification from well below to well above | Apple-derived workout interpretation | U | U | U | NA | U | U |
+| Sport and mobility metrics | Running power/cadence/stride, cycling/swimming metrics, gait, walking steadiness and stair speed | Sensor-derived samples and estimates | A | P | P | NA | P | P |
+| Reproductive health | Cycle, symptoms, ovulation/fertile-window estimates, pregnancy and lactation | User-entered records plus predictions | A | P | P | NA | P | P |
+| Nutrition and hydration | Energy, macro/micronutrients, caffeine and water | User-entered or third-party records | A | P | P | NA | P | P |
+| Hearing and wellbeing | Audio exposure, audiograms, mindful minutes, symptoms and State of Mind | Sensor, user-entered and structured records | A | P | P | NA | P | P |
+| Clinical and medication records | Allergies, conditions, labs, medications, procedures and FHIR resources | Institution-supplied or user-entered structured records | P | U | U | NA | P | P |
+| Trends, awards and notifications | Change-detection narratives, badges, risk labels and alerts | Apple-derived UI output | U | U | U | NA | U | U |
+| Research-only sensor signals | Ambient light/pressure, device usage, keyboard, on-wrist, visits and telephony signals | Prospective device sensor or behavior streams | N | N | N | A | N | U |
+| Provenance and metadata | UUID, timestamps, source revision, device and record metadata | Store metadata | A | P | P | P | P | P |
+
+`Supported integrations` is deliberately aggregate here because each partner selects different
+types. The [route-by-route table](#ecosystem-integrations) below records the confirmed direction
+and losses. `Open-source routes` covers authorized HealthKit clients, XML parsers and user-owned
+backup analysis; no single project covers every row.
 
 ## Official access routes
 
