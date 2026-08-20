@@ -13,7 +13,7 @@ manifest.
 | 3 | [Google / Fitbit](./google-fitbit/README.md) | Partial | Verified | [Coverage](./google-fitbit/coverage.json) | [Resources](./google-fitbit/resources.md) |
 | 4 | [Samsung](./samsung/README.md) | Partial | Verified | [Coverage](./samsung/coverage.json) | [Resources](./samsung/resources.md) |
 | 5 | [Huawei](./huawei/README.md) | Restricted | Verified | [Coverage](./huawei/coverage.json) | [Resources](./huawei/resources.md) |
-| 6 | Xiaomi | Pending | Pending | Pending | Pending |
+| 6 | [Xiaomi](./xiaomi/README.md) | Unknown | Verified | [Coverage](./xiaomi/coverage.json) | [Resources](./xiaomi/resources.md) |
 | 7 | [Zepp Health / Amazfit](./zepp-health-amazfit/README.md) | Restricted | Verified | [Coverage](./zepp-health-amazfit/coverage.json) | [Resources](./zepp-health-amazfit/resources.md) |
 | 8 | [WHOOP](./whoop/README.md) | Partial | Verified | [Coverage](./whoop/coverage.json) | [Resources](./whoop/resources.md) |
 | 9 | [Oura](./oura/README.md) | Mostly open | Verified | [Coverage](./oura/coverage.json) | [Resources](./oura/resources.md) |
