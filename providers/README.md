@@ -12,7 +12,7 @@ manifest.
 | 2 | [Garmin](./garmin/README.md) | Restricted | Verified | [Coverage](./garmin/coverage.json) | [Resources](./garmin/resources.md) |
 | 3 | Google / Fitbit | Pending | Pending | Pending | Pending |
 | 4 | Samsung | Pending | Pending | Pending | Pending |
-| 5 | Huawei | Pending | Pending | Pending | Pending |
+| 5 | [Huawei](./huawei/README.md) | Restricted | Verified | [Coverage](./huawei/coverage.json) | [Resources](./huawei/resources.md) |
 | 6 | Xiaomi | Pending | Pending | Pending | Pending |
 | 7 | Zepp Health / Amazfit | Pending | Pending | Pending | Pending |
 | 8 | WHOOP | Pending | Pending | Pending | Pending |

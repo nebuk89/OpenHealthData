@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "provider": "Huawei",
+  "evidenceDate": "2026-08-20",
+  "claims": [
+    {
+      "id": "health-kit-is-authorized-app-surface",
+      "claim": "Huawei Health Kit is a supported application integration surface for permissioned health and fitness records rather than an unrestricted personal account API.",
+      "sourceUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-introduction-0000001050071662",
+      "evidence": "Huawei's introduction describes application access to a user's health and fitness data following authorization.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-kit-requires-app-configuration",
+      "claim": "Health Kit access requires a configured Huawei developer application and service setup.",
+      "sourceUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-configuring-0000001050030937",
+      "evidence": "Huawei's integration preparation guide places Health Kit behind developer project, application and signing configuration.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-kit-uses-data-specific-authorization",
+      "claim": "A Health Kit application must obtain user authorization for the health-data permissions it requests.",
+      "sourceUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-authorize-0000001050030936",
+      "evidence": "Huawei's authorization guide defines permission-scoped authorization rather than blanket account access.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-kit-does-not-prove-app-parity",
+      "claim": "Huawei's public Health Kit documentation does not establish API availability for every collected or derived value shown in Huawei Health.",
+      "sourceUrl": "https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/health-development-overview-0000001050071660",
+      "evidence": "The development overview describes typed capability areas but publishes no complete Huawei Health screen-to-interface parity statement.",
+      "confidence": "medium"
+    },
+    {
+      "id": "privacy-policy-is-not-export-schema",
+      "claim": "Huawei documents personal-data access and copy rights but does not publish a universal Huawei Health archive schema or completeness guarantee in its consumer privacy policy.",
+      "sourceUrl": "https://consumer.huawei.com/en/privacy/privacy-policy/",
+      "evidence": "The policy provides rights and regional process context without a Huawei Health field inventory, format or retention contract.",
+      "confidence": "high"
+    },
+    {
+      "id": "hitrava-documents-health-export-workflow",
+      "claim": "Hitrava documents an in-app Huawei Health privacy workflow that produces a password-encrypted ZIP containing convertible workout data.",
+      "sourceUrl": "https://github.com/CTHRU/Hitrava",
+      "evidence": "The maintained project documents Privacy Center > Request Your Data > Health, an email download, encrypted ZIP input and support for Huawei's 2025 ZIP generation.",
+      "confidence": "high"
+    },
+    {
+      "id": "hitrava-is-workout-parser-not-account-client",
+      "claim": "Hitrava converts supplied Huawei workout data to HiTrack, JSON and TCX outputs but does not retrieve a user's complete Huawei Health account.",
+      "sourceUrl": "https://github.com/CTHRU/Hitrava",
+      "evidence": "The project operates on privacy ZIP, JSON or legacy files and lists workout conversion features rather than cloud authentication or whole-account parsing.",
+      "confidence": "high"
+    },
+    {
+      "id": "apple-health-limited-bidirectional-sync",
+      "claim": "Huawei Health for iOS documents writing weight and motion/exercise data to HealthKit and obtaining exercise data from HealthKit.",
+      "sourceUrl": "https://apps.apple.com/us/app/huawei-health/id1325481372",
+      "evidence": "Huawei's current App Store description explicitly names weight synchronization, Huawei Health exercise data written to HealthKit and exercise data obtained from HealthKit.",
+      "confidence": "high"
+    },
+    {
+      "id": "health-sync-is-third-party-bridge",
+      "claim": "Health Sync is an independent Android bridge and does not establish a native Huawei Health connector to Health Connect, Samsung Health or Google Fit.",
+      "sourceUrl": "https://healthsync.app/f-a-q/",
+      "evidence": "Health Sync documents its own synchronization and file-generation behavior as a third-party application.",
+      "confidence": "high"
+    },
+    {
+      "id": "google-fit-route-is-transition-sensitive",
+      "claim": "Any Huawei Health bridge to Google Fit is transition-sensitive because Google deprecated the Fit APIs in favor of Health Connect.",
+      "sourceUrl": "https://developers.google.com/fit",
+      "evidence": "Google's developer documentation directs migrations away from the deprecated Google Fit APIs.",
+      "confidence": "high"
+    },
+    {
+      "id": "gadgetbridge-is-local-not-cloud",
+      "claim": "Gadgetbridge can communicate locally with supported Huawei or Honor wearables without a vendor account, but it is not a Huawei Health cloud-history exporter.",
+      "sourceUrl": "https://codeberg.org/Freeyourgadget/Gadgetbridge",
+      "evidence": "The project describes account-free Bluetooth gadget management and model-specific supported devices.",
+      "confidence": "high"
+    },
+    {
+      "id": "legacy-tcx-converter-is-archived",
+      "claim": "Huawei-TCX-Converter is an archived MIT project for converting legacy Huawei HiTrack workout files to TCX.",
+      "sourceUrl": "https://github.com/aricooperdavis/Huawei-TCX-Converter",
+      "evidence": "The repository metadata reports an archived Python project, MIT license and a HiTrack-to-TCX purpose.",
+      "confidence": "high"
+    },
+    {
+      "id": "kobackupdec-is-backup-building-block",
+      "claim": "kobackupdec decrypts compatible user-password-protected Huawei backups but does not parse Huawei Health record semantics.",
+      "sourceUrl": "https://github.com/RealityNet/kobackupdec",
+      "evidence": "The project documents HiSuite/KoBackup decryption and restored raw application/database paths, and explicitly declares end-of-life.",
+      "confidence": "high"
+    },
+    {
+      "id": "regional-export-equivalence-unknown",
+      "claim": "Current evidence does not establish that mainland-China and international Huawei accounts receive identical Huawei Health export workflows, formats or data.",
+      "sourceUrl": "https://consumer.huawei.com/en/privacy/",
+      "evidence": "Huawei provides regional privacy information, but no comparative Huawei Health export specification was found.",
+      "confidence": "medium"
+    }
+  ],
+  "projects": [
+    {
+      "name": "CTHRU/Hitrava",
+      "repositoryUrl": "https://github.com/CTHRU/Hitrava",
+      "license": "NOASSERTION"
+    },
+    {
+      "name": "aricooperdavis/Huawei-TCX-Converter",
+      "repositoryUrl": "https://github.com/aricooperdavis/Huawei-TCX-Converter",
+      "license": "MIT"
+    },
+    {
+      "name": "RealityNet/kobackupdec",
+      "repositoryUrl": "https://github.com/RealityNet/kobackupdec",
+      "license": "MIT"
+    }
+  ]
+}
+
