@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "provider": "Samsung",
+  "checkedAt": "2026-08-20T11:36:11.147Z",
+  "result": "passed",
+  "failures": [],
+  "warnings": [],
+  "links": [
+    {
+      "url": "https://developer.samsung.com/health/blog/en/accessing-samsung-health-data-through-health-connect",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/blog/en/accessing-samsung-health-data-through-health-connect"
+    },
+    {
+      "url": "https://developer.samsung.com/health/data/overview.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/data/overview.html"
+    },
+    {
+      "url": "https://developer.samsung.com/health/sensor/overview.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/sensor/overview.html"
+    },
+    {
+      "url": "https://developer.samsung.com/health/data/process.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/data/process.html"
+    },
+    {
+      "url": "https://developer.samsung.com/health/data/guide/developer-mode.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/data/guide/developer-mode.html"
+    },
+    {
+      "url": "https://developer.samsung.com/health/sensor/guide/data-specifications.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/sensor/guide/data-specifications.html"
+    },
+    {
+      "url": "https://developer.samsung.com/health/sensor/process.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/sensor/process.html"
+    },
+    {
+      "url": "https://developer.samsung.com/health/accessory/overview.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/accessory/overview.html"
+    },
+    {
+      "url": "https://developer.samsung.com/health/android/overview.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/android/overview.html"
+    },
+    {
+      "url": "https://developer.samsung.com/health/research/overview.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/research/overview.html"
+    },
+    {
+      "url": "https://developer.samsung.com/health/data/faq.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/data/faq.html"
+    },
+    {
+      "url": "https://developer.samsung.com/health/partnerships",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/partnerships"
+    },
+    {
+      "url": "https://developer.samsung.com/health/blog/en/managing-sleep-data-with-samsung-health-and-health-connect",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/blog/en/managing-sleep-data-with-samsung-health-and-health-connect"
+    },
+    {
+      "url": "https://developer.samsung.com/health/data/api-reference/index.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/data/api-reference/index.html"
+    },
+    {
+      "url": "https://developer.samsung.com/health/research/developer-guide/portal-REST-API-reference/overview.html",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.samsung.com/health/research/developer-guide/portal-REST-API-reference/overview.html"
+    },
+    {
+      "url": "https://www.samsung.com/us/apps/samsung-health/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.samsung.com/us/apps/samsung-health/"
+    },
+    {
+      "url": "https://www.samsung.com/us/support/owners/app/samsung-health",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://www.samsung.com/us/support/owners/app/samsung-health"
+    },
+    {
+      "url": "https://privacy.samsung.com/",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://privacy.samsung.com/"
+    },
+    {
+      "url": "https://support.strava.com/en-us/articles/15401747-samsung-health-and-strava",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://support.strava.com/en-us/articles/15401747-samsung-health-and-strava"
+    },
+    {
+      "url": "https://github.com/v-2841/samsung-health-export",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/v-2841/samsung-health-export"
+    },
+    {
+      "url": "https://github.com/Devasy/samsung-health-sdk",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/Devasy/samsung-health-sdk"
+    },
+    {
+      "url": "https://github.com/S-HealthStack/app-sdk",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/S-HealthStack/app-sdk"
+    },
+    {
+      "url": "https://github.com/S-HealthStack/backend-system",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://github.com/S-HealthStack/backend-system"
+    },
+    {
+      "url": "https://developer.android.com/health-and-fitness/health-connect/data-types",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/data-types"
+    },
+    {
+      "url": "https://developer.android.com/health-and-fitness/health-connect/read-data",
+      "status": "ok",
+      "httpStatus": 200,
+      "finalUrl": "https://developer.android.com/health-and-fitness/health-connect/read-data?hl=pl"
+    }
+  ],
+  "projects": [
+    {
+      "name": "v-2841/samsung-health-export",
+      "repositoryUrl": "https://github.com/v-2841/samsung-health-export",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "Devasy/samsung-health-sdk",
+      "repositoryUrl": "https://github.com/Devasy/samsung-health-sdk",
+      "declaredLicense": "MIT",
+      "detectedLicense": "MIT",
+      "status": "ok"
+    },
+    {
+      "name": "S-HealthStack/app-sdk",
+      "repositoryUrl": "https://github.com/S-HealthStack/app-sdk",
+      "declaredLicense": "Apache-2.0",
+      "detectedLicense": "Apache-2.0",
+      "status": "ok"
+    },
+    {
+      "name": "S-HealthStack/backend-system",
+      "repositoryUrl": "https://github.com/S-HealthStack/backend-system",
+      "declaredLicense": "Apache-2.0",
+      "detectedLicense": "Apache-2.0",
+      "status": "ok"
+    }
+  ]
+}
